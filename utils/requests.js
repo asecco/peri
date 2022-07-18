@@ -1,79 +1,79 @@
 const API_KEY = process.env.API_KEY;
 
 export default {
-    fetchTrending: {
+    Trending: {
         title: 'Trending',
         url: `trending/all/week?api_key=${API_KEY}`,
     },
-    fetchTopRated: {
+    TopRated: {
         title: 'Top Rated',
         url: `movie/top_rated?api_key=${API_KEY}`,
     },
-    fetchActionMovies: {
+    ActionMovies: {
         title: 'Action',
         url: `discover/movie?api_key=${API_KEY}&with_genres=28`,
     },
-    fetchAdventureMovies: {
+    AdventureMovies: {
         title: 'Adventure',
         url: `discover/movie?api_key=${API_KEY}&with_genres=12`,
     },
-    fetchAnimationMovies: {
+    AnimationMovies: {
         title: 'Animation',
         url: `discover/movie?api_key=${API_KEY}&with_genres=16`,
     },
-    fetchComedyMovies: {
+    ComedyMovies: {
         title: 'Comedy',
         url: `discover/movie?api_key=${API_KEY}&with_genres=35`,
     },
-    fetchCrimeMovies: {
+    CrimeMovies: {
         title: 'Crime',
         url: `discover/movie?api_key=${API_KEY}&with_genres=80`,
     },
-    fetchDocumentaryMovies: {
+    DocumentaryMovies: {
         title: 'Documentary',
         url: `discover/movie?api_key=${API_KEY}&with_genres=99`,
     },
-    fetchDramaMovies: {
+    DramaMovies: {
         title: 'Drama',
         url: `discover/movie?api_key=${API_KEY}&with_genres=18`,
     },
-    fetchFamilyMovies: {
+    FamilyMovies: {
         title: 'Family',
         url: `discover/movie?api_key=${API_KEY}&with_genres=10751`,
     },
-    fetchFantasyMovies: {
+    FantasyMovies: {
         title: 'Fantasy',
         url: `discover/movie?api_key=${API_KEY}&with_genres=14`,
     },
-    fetchHistoryMovies: {
+    HistoryMovies: {
         title: 'History',
         url: `discover/movie?api_key=${API_KEY}&with_genres=36`,
     },
-    fetchHorrorMovies: {
+    HorrorMovies: {
         title: 'Horror',
         url: `discover/movie?api_key=${API_KEY}&with_genres=27`,
     },
-    fetchMysteryMovies: {
+    MysteryMovies: {
         title: 'Mystery',
         url: `discover/movie?api_key=${API_KEY}&with_genres=9648`,
     },
-    fetchRomanceMovies: {
+    RomanceMovies: {
         title: 'Romance',
         url: `discover/movie?api_key=${API_KEY}&with_genres=10749`,
     },
-    fetchSciFiMovies: {
+    SciFiMovies: {
         title: 'Sci-Fi',
         url: `discover/movie?api_key=${API_KEY}&with_genres=878`,
     },
-    fetchThrillerMovies: {
+    ThrillerMovies: {
         title: 'Thriller',
         url: `discover/movie?api_key=${API_KEY}&with_genres=53`,
     },
-    fetchWarMovies: {
+    WarMovies: {
         title: 'War',
         url: `discover/movie?api_key=${API_KEY}&with_genres=10752`,
     },
-    fetchWesternMovies: {
+    WesternMovies: {
         title: 'Western',
         url: `discover/movie?api_key=${API_KEY}&with_genres=37`,
     },
