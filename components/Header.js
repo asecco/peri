@@ -19,7 +19,7 @@ function Header() {
                 <HeaderItem title='SEARCH' Icon={SearchIcon} />
                 <HeaderItem title='ACCOUNT' Icon={UserIcon} />
             </div>
-            <Image className='object-contain' src={PeriLogo} width={250} height={100} />
+            <Image className='object-contain' src={PeriLogo} alt='Peri' width={250} height={100} />
         </header>
     );
 }
