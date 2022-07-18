@@ -6,7 +6,7 @@ import HeaderItem from './HeaderItem';
 
 function Footer() { 
     return (
-        <div className='flex flex-row sm:flex-row mb-5 justify-between items-center h-auto'>
+        <div className='flex flex-row sm:flex-row justify-between items-center h-auto'>
             <HeaderItem title='Previous' Icon={ArrowCircleLeftIcon} />
             <HeaderItem title='Next' Icon={ArrowCircleRightIcon} />
         </div>
