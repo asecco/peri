@@ -21,7 +21,7 @@ function Header() {
             </div>
             <Image className='object-contain' src={PeriLogo} width={250} height={100} />
         </header>
-    )
+    );
 }
 
 export default Header;
