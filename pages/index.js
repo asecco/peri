@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Image from 'next/image'
+import Header from '../components/Header'
 
 export default function Home() {
   return (
@@ -9,6 +9,8 @@ export default function Home() {
         <meta name="description" content="Peri" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      <Header />
     </div>
   )
 }
