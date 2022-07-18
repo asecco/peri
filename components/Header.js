@@ -1,6 +1,5 @@
 import {
     HomeIcon,
-    TrendingUpIcon,
     BookmarkIcon,
     SearchIcon,
     UserIcon,
@@ -14,7 +13,6 @@ function Header() {
         <header className="flex flex-col sm:flex-row mb-5 justify-between items-center h-auto">
             <div className='flex flex-grow max-w-2xl'>
                 <HeaderItem title='HOME' Icon={HomeIcon} />
-                <HeaderItem title='TRENDING' Icon={TrendingUpIcon} />
                 <HeaderItem title='LIBRARY' Icon={BookmarkIcon} />
                 <HeaderItem title='SEARCH' Icon={SearchIcon} />
                 <HeaderItem title='ACCOUNT' Icon={UserIcon} />
