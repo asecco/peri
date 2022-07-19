@@ -20,9 +20,11 @@ export default function Home({results}) {
   );
 }
 
+const trending = `trending/all/week?api_key=${process.env.API_KEY}`;
+
 export async function getServerSideProps(context) {
   const genre = context.query.genre
-  const req = await fetch(`https://api.themoviedb.org/3/${requests[genre]?.url || requests.Trending.url}`).then((res) => res.json())
+  const req = await fetch(`https://api.themoviedb.org/3/${requests[genre]?.url || trending}`).then((res) => res.json())
 
   return {
     props: {
