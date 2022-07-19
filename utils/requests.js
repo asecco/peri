@@ -1,10 +1,6 @@
 const API_KEY = process.env.API_KEY;
 
 export default {
-    Trending: {
-        title: 'Trending',
-        url: `trending/all/week?api_key=${API_KEY}`,
-    },
     TopRated: {
         title: 'Top Rated',
         url: `movie/top_rated?api_key=${API_KEY}`,
