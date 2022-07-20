@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import {
     HomeIcon,
     BookmarkIcon,
@@ -24,6 +24,8 @@ function SearchResults() {
         }
     }
 
+    const autoFocus = useCallback(el => el ? el.focus() : null, []);
+
   return (
     <div>
         <header className="flex flex-col sm:flex-row mb-5 justify-between items-center h-auto">
@@ -37,7 +39,7 @@ function SearchResults() {
         </header>
 
         <div className="flex items-center max-w-sm mx-auto mb-5">
-            <input type="text" onChange={search} className="h-14 w-96 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-1 focus:outline-red-400 text-black text-center" placeholder="Search..."></input>
+            <input ref={autoFocus} autoFocus type="text" onChange={search} className="h-14 w-96 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-1 focus:outline-red-400 text-black text-center" placeholder="Search..."></input>
             <SearchIcon onClick={search} className='w-8 m-1 hover:cursor-pointer hover:text-red-400 active:text-red-500' />
         </div>
         
