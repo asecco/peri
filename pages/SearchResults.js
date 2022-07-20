@@ -19,8 +19,8 @@ function SearchResults() {
     const search = async (event) => {
         const searchQuery = event.target.value;
         if (searchQuery) {
-            const searchReq = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.NEXT_PUBLIC_API_KEY}&query=${searchQuery}`).then((res) => res.json());
-            setSearchResults(searchReq.results);;
+            const searchReq = await fetch(`https://api.themoviedb.org/3/search/multi?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&query=${searchQuery}&include_adult=false`).then((res) => res.json());
+            setSearchResults(searchReq.results);
         }
     }
 
@@ -44,13 +44,13 @@ function SearchResults() {
         </div>
         
         <div>
-        <FlipMove className="px-5 my-10 sm:grid md:grid-cols-2 xl:grid-cols-4 2xl:grid-cols-6 3xl:grid-cols-8">
-            {searchResults.map((movie) => (
-            <>
-                <Thumbnail result={movie} />
-            </>
-            ))}
-        </FlipMove>
+            <FlipMove className="px-5 my-10 sm:grid md:grid-cols-2 xl:grid-cols-4 2xl:grid-cols-6 3xl:grid-cols-8">
+                {searchResults.map((movie) => (
+                <>
+                    <Thumbnail result={movie} />
+                </>
+                ))}
+            </FlipMove>
         </div>
     </div>
   );
