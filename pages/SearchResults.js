@@ -2,8 +2,6 @@ import React, {useState, useCallback} from 'react';
 import {
     HomeIcon,
     BookmarkIcon,
-    FilmIcon,
-    VideoCameraIcon,
     SearchIcon,
 } from '@heroicons/react/outline';
 import Image from 'next/image';
@@ -13,7 +11,6 @@ import Thumbnail from '../components/Thumbnail';
 import FlipMove from "react-flip-move";
 
 function SearchResults() {
-
     const [searchResults, setSearchResults] = useState([]);
 
     const search = async (event) => {
@@ -31,8 +28,6 @@ function SearchResults() {
         <header className="flex flex-col sm:flex-row mb-5 justify-between items-center h-auto">
             <div className='flex flex-grow max-w-2xl'>
                 <a href='/'><HeaderItem title='HOME' Icon={HomeIcon} /></a>
-                <a href='/'><HeaderItem title='FILMS' Icon={FilmIcon} /></a>
-                <a href='/'><HeaderItem title='SERIES' Icon={VideoCameraIcon} /></a>
                 <a href='/'><HeaderItem title='LIBRARY' Icon={BookmarkIcon} /></a>
             </div>
             <Image className='object-contain' src={PeriLogo} alt='Peri' width={250} height={100} />
