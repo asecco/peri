@@ -8,10 +8,17 @@ module.exports = {
         "xl": "1900px",
         "2xl": "2000px",
         "3xl": "2800px",
+      },
+      lineClamp: {
+        7: '7',
+        8: '8',
+        9: '9',
+        10: '10',
       }
     },
   },
   plugins: [
-    require('tailwind-scrollbar-hide')
+    require('tailwind-scrollbar-hide'),
+    require('@tailwindcss/line-clamp')
   ],
 }

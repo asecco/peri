@@ -11,7 +11,7 @@ import Thumbnail from '../components/Thumbnail';
 import FlipMove from "react-flip-move";
 import {useRouter} from "next/router";
 
-function SearchResults() {
+function Search() {
     const [searchResults, setSearchResults] = useState([]);
 
     const search = async (event) => {
@@ -57,4 +57,4 @@ function SearchResults() {
   );
 }
 
-export default SearchResults;
+export default Search;
