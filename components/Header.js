@@ -15,8 +15,8 @@ function Header() {
         <div>
             <header className="flex flex-col sm:flex-row mb-5 justify-between items-center h-auto">
                 <div className='flex flex-grow max-w-2xl'>
-                    <a href='/'><HeaderItem title='HOME' Icon={HomeIcon} /></a>
-                    <a href='/'><HeaderItem title='LIBRARY' Icon={BookmarkIcon} /></a>
+                    <HeaderItem title='HOME' Icon={HomeIcon} />
+                    <HeaderItem title='LIBRARY' Icon={BookmarkIcon} />
                 </div>
                 <Image className='object-contain' src={PeriLogo} alt='Peri' width={250} height={100} />
             </header>
