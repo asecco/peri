@@ -46,7 +46,7 @@ function SearchResults() {
         
         <div>
             <FlipMove className="px-5 my-10 sm:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6">
-                {searchResults.map((movie) => (
+                {searchResults.map((movie) => movie.backdrop_path && (
                 <>
                     <Thumbnail result={movie} />
                 </>
