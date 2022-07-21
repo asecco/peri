@@ -9,6 +9,7 @@ import PeriLogo from '../public/peri.png';
 import HeaderItem from '../components/HeaderItem';
 import Thumbnail from '../components/Thumbnail';
 import FlipMove from "react-flip-move";
+import {useRouter} from "next/router";
 
 function SearchResults() {
     const [searchResults, setSearchResults] = useState([]);
@@ -23,12 +24,17 @@ function SearchResults() {
 
     const autoFocus = useCallback(el => el ? el.focus() : null, []);
 
+    const router = useRouter();
+    const routePage = (page) => {
+        router.push(page);
+    }
+
   return (
     <div>
         <header className="flex flex-col sm:flex-row mb-5 justify-between items-center h-auto">
             <div className='flex flex-grow max-w-2xl'>
-                <HeaderItem title='HOME' Icon={HomeIcon} />
-                <HeaderItem title='LIBRARY' Icon={BookmarkIcon} />
+                <div onClick={() => routePage('/')}><HeaderItem title='HOME' Icon={HomeIcon} /></div>
+                <div onClick={() => routePage('/')}><HeaderItem title='LIBRARY' Icon={BookmarkIcon} /></div>
             </div>
             <Image className='object-contain' src={PeriLogo} alt='Peri' width={250} height={100} />
         </header>
