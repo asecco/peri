@@ -25,8 +25,8 @@ function Header() {
             </header>
 
             <div className="flex items-center max-w-sm mx-auto mb-5">
-                <input type="text" onClick={() => routePage('/SearchResults')} className="h-14 w-96 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-1 focus:outline-red-400 text-black text-center" placeholder="Search..."></input>
-                <SearchIcon onClick={() => routePage('/SearchResults')} className='w-8 m-1 hover:cursor-pointer hover:text-red-400 active:text-red-500' />
+                <input type="text" onClick={() => routePage('/Search')} className="h-14 w-96 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-1 focus:outline-red-400 text-black text-center" placeholder="Search..."></input>
+                <SearchIcon onClick={() => routePage('/Search')} className='w-8 m-1 hover:cursor-pointer hover:text-red-400 active:text-red-500' />
             </div>
         </div>
     );
