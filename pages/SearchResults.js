@@ -45,7 +45,7 @@ function SearchResults() {
         </div>
         
         <div>
-            <FlipMove className="px-5 my-10 sm:grid md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5">
+            <FlipMove className="px-5 my-10 sm:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6">
                 {searchResults.map((movie) => (
                 <>
                     <Thumbnail result={movie} />
