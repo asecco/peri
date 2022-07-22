@@ -1,5 +1,6 @@
 import {useRouter} from "next/router";
 import React, {useState, useEffect} from 'react';
+import ModalVideo from 'react-modal-video'
 import Image from "next/image";
 import {
     HomeIcon,
@@ -41,6 +42,8 @@ function MovieInfo() {
 
     useEffect(() => {searchReq()}, [movie]);
 
+    const [isOpen, setOpen] = useState(false)
+
     const routePage = (page) => router.push(page);
 
     return (
@@ -65,10 +68,11 @@ function MovieInfo() {
                         </div>
                         <p className="text-xl text-white text-center font-style: italic">{movie2.tagline}</p>
                         <p className="text-2xl text-white line-clamp-16">{movie.description || movie.overview}</p>
+                        <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId="L61p2uyiMSo" onClose={() => setOpen(false)} />
 
                         <div className="flex items-center justify-center space-x-4">
                             <button className="h-14 w-28 bg-red-400 hover:bg-red-500 text-white text-lg font-bold rounded inline-flex items-center justify-center"><PlayIcon className="h-12" />Play</button>
-                            <button className="h-14 w-28 bg-red-400 hover:bg-red-500 text-white text-lg font-bold rounded inline-flex items-center justify-center"><FilmIcon className="h-12" />Trailer</button>
+                            <button onClick={()=> setOpen(true)} className="h-14 w-28 bg-red-400 hover:bg-red-500 text-white text-lg font-bold rounded inline-flex items-center justify-center"><FilmIcon className="h-12" />Trailer</button>
                             <button className="h-14 w-28 bg-red-400 hover:bg-red-500 text-white text-lg font-bold rounded inline-flex items-center justify-center"><HeartIcon className="h-12" /></button>
                             <button className="h-14 w-28 bg-red-400 hover:bg-red-500 text-white text-lg font-bold rounded inline-flex items-center justify-center"><TrashIcon className="h-12" /></button>
                         </div>
