@@ -21,7 +21,7 @@ function MovieInfo() {
 
     const [cast, setCast] = useState([]);
     const searchCast = async () => {
-        const mediaType = movie.media_type === 'movie' ? 'movie' : 'tv';
+        const mediaType = movie.media_type || 'movie';
         const castReq = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movie.id}/credits?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
         if(castReq.cast) {
             setCast(castReq.cast.slice(0, 16));
