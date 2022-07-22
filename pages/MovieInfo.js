@@ -6,7 +6,8 @@ import {
     BookmarkIcon,
     StarIcon,
     PlayIcon,
-    PlusCircleIcon,
+    HeartIcon,
+    TrashIcon,
     FilmIcon,
 } from '@heroicons/react/outline';
 import PeriLogo from '../public/peri.png';
@@ -33,6 +34,11 @@ function MovieInfo() {
         }
     }
 
+    const genres = '';
+    for(let i in movie2.genres) {
+        genres += movie2.genres[i].name + ', ';
+    }
+
     useEffect(() => {searchReq()}, [movie]);
 
     const routePage = (page) => router.push(page);
@@ -51,10 +57,10 @@ function MovieInfo() {
                 <div className="mx-auto px-20 flex-col flex gap-10 object-bottom md:flex-row">
                     <div className="flex flex-col gap-4 lg:w-8/12 xl:w-3/5">
                         <h1 className="font-bold text-7xl text-center text-red-400">{movie.title || movie.original_name}</h1>
-                        <div className="flex items-center justify-center space-x-40 font-bold text-2xl text-center text-white">
-                            <p>{movie.media_type || 'movie'}</p>
-                            <p>{`${movie2.runtime || 'N/A '}min`}</p>
-                            <p>{movie.release_date || movie.first_air_date}</p>
+                        <div className="flex items-center justify-center space-x-40 font-bold text-xl text-center text-white">
+                            <p>{movie.release_date.slice(0, -6) || movie.first_air_date.slice(0, -6)}</p>
+                            <p>{genres.slice(0, -2)}</p>
+                            <p>{`${movie2.runtime || 'N/A'} mins`}</p>
                             <StarIcon className="h-6 mx-2" />{Math.round(movie.vote_average * 10) / 10}/10
                         </div>
                         <p className="text-xl text-white text-center font-style: italic">{movie2.tagline}</p>
@@ -62,8 +68,9 @@ function MovieInfo() {
 
                         <div className="flex items-center justify-center space-x-4">
                             <button className="h-14 w-28 bg-red-400 hover:bg-red-500 text-white text-lg font-bold rounded inline-flex items-center justify-center"><PlayIcon className="h-12" />Play</button>
-                            <button className="h-14 w-28 bg-red-400 hover:bg-red-500 text-white text-lg font-bold rounded inline-flex items-center justify-center"><FilmIcon className="h-12" />Watch Trailer</button>
-                            <button className="h-14 w-28 bg-red-400 hover:bg-red-500 text-white text-lg font-bold rounded inline-flex items-center justify-center"><PlusCircleIcon className="h-12" />Add to Favorites</button>
+                            <button className="h-14 w-28 bg-red-400 hover:bg-red-500 text-white text-lg font-bold rounded inline-flex items-center justify-center"><FilmIcon className="h-12" />Trailer</button>
+                            <button className="h-14 w-28 bg-red-400 hover:bg-red-500 text-white text-lg font-bold rounded inline-flex items-center justify-center"><HeartIcon className="h-12" /></button>
+                            <button className="h-14 w-28 bg-red-400 hover:bg-red-500 text-white text-lg font-bold rounded inline-flex items-center justify-center"><TrashIcon className="h-12" /></button>
                         </div>
                     </div>
                     <div className="w-full lg:w-3/12 mx-14">
