@@ -1,6 +1,7 @@
 import {useRouter} from "next/router";
 import React, {useState, useEffect} from 'react';
-import ModalVideo from 'react-modal-video'
+import ModalVideo from 'react-modal-video';
+import movieTrailer from 'movie-trailer';
 import Image from "next/image";
 import {
     HomeIcon,
@@ -23,6 +24,7 @@ function MovieInfo() {
 
     const [cast, setCast] = useState([]);
     const [movie2, setMovie2] = useState([]);
+    const [trailerID, setTrailerId] = useState([]);
     const searchReq = async () => {
         const mediaType = movie.media_type || 'movie';
         const castReq = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movie.id}/credits?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
@@ -33,6 +35,8 @@ function MovieInfo() {
         if(castReq.cast) {
             setCast(castReq.cast.slice(0, 16));
         }
+        const trailerId = await movieTrailer(movie.title || movie.original_name, {id: true});
+        setTrailerId(trailerId);
     }
 
     const genres = '';
@@ -68,7 +72,7 @@ function MovieInfo() {
                         </div>
                         <p className="text-xl text-white text-center font-style: italic">{movie2.tagline}</p>
                         <p className="text-2xl text-white line-clamp-16">{movie.description || movie.overview}</p>
-                        <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId="L61p2uyiMSo" onClose={() => setOpen(false)} />
+                        <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId={trailerID} onClose={() => setOpen(false)} />
 
                         <div className="flex items-center justify-center space-x-4">
                             <button className="h-14 w-28 bg-red-400 hover:bg-red-500 text-white text-lg font-bold rounded inline-flex items-center justify-center"><PlayIcon className="h-12" />Play</button>
