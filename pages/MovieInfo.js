@@ -62,16 +62,16 @@ function MovieInfo() {
 
             <div className="w-full">
                 <div className="mx-auto px-20 flex-col flex gap-10 object-bottom md:flex-row">
-                    <div className="flex flex-col gap-4 lg:w-8/12 xl:w-3/5">
-                        <h1 className="font-bold text-7xl text-center text-red-400">{movie.title || movie.original_name}</h1>
-                        <div className="flex items-center justify-center space-x-40 font-bold text-lg text-center text-white">
+                    <div className="flex flex-col gap-4 md:w-5/12 lg:w-6/12 xl:w-8/12 2xl:w-10/12">
+                        <h1 className="font-bold md:text-5xl lg:text-7xl text-center text-red-400">{movie.title || movie.original_name}</h1>
+                        <div className="flex items-center justify-center lg:space-x-28 font-bold lg:text-lg md:text-base md:space-x-10 text-center text-white">
                             <p>{movie.release_date === undefined ? movie.first_air_date.slice(0, -6) : movie.release_date.slice(0, -6)}</p>                            
-                            <p className="truncate">{genres.slice(0, -2)}</p>
+                            <p className=" xl:truncate">{genres.slice(0, -2)}</p>
                             <p>{`${movie2.runtime || 'N/A'} mins`}</p>
                             <StarIcon className="h-6 mx-2" />{Math.round(movie.vote_average * 10) / 10}/10
                         </div>
-                        <p className="text-xl text-white text-center font-style: italic">{movie2.tagline}</p>
-                        <p className="text-2xl text-white line-clamp-14">{movie.description || movie.overview}</p>
+                        <p className="lg:text-xl text-white text-center font-style: italic">{movie2.tagline}</p>
+                        <p className="lg:text-2xl text-white line-clamp-14">{movie.description || movie.overview}</p>
                         <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId={trailerID === null ? "dQw4w9WgXcQ" : trailerID} onClose={() => setOpen(false)} />
 
                         <div className="flex items-center justify-center space-x-4">
@@ -82,7 +82,7 @@ function MovieInfo() {
                         </div>
                     </div>
                     <div className="w-full lg:w-3/12 mx-14">
-                        <Image src={`${BASE_URL}${movie.poster_path}`} alt='' height={960} width={640}/>
+                        <Image layout="responsive" src={`${BASE_URL}${movie.poster_path}`} alt='' height={960} width={640}/>
                     </div>
                 </div>
             </div>

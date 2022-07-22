@@ -5,7 +5,7 @@ function Cast({member}) {
     return (
         <div>
             <div className="text-center px-3 py-16 mx-auto">
-                    <div className="mb-2">
+                    <div className="mb-2 sm:px-14 md:px-10 lg:px-2">
                         <Image className="rounded-full hover:animate-pulse" layout='responsive' src={`${BASE_URL}${member.profile_path}`} title={member.name} alt='' height={192} width={176}/>
                     </div>
                     <p className="text-2xl font-bold text-red-400 truncate">{member.name}</p>
