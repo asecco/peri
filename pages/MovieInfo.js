@@ -36,7 +36,7 @@ function MovieInfo() {
             <header className="flex flex-col sm:flex-row mb-5 justify-between items-center h-auto">
                 <div className='flex flex-grow max-w-2xl'>
                     <div onClick={() => routePage('/')}><HeaderItem title='HOME' Icon={HomeIcon} /></div>
-                    <div onClick={() => routePage('/')}><HeaderItem title='LIBRARY' Icon={BookmarkIcon} /></div>
+                    <div onClick={() => routePage('/Favorites')}><HeaderItem title='FAVORITES' Icon={BookmarkIcon} /></div>
                 </div>
                 <Image className='object-contain' src={PeriLogo} alt='Peri' width={250} height={100} />
             </header>
@@ -56,7 +56,7 @@ function MovieInfo() {
                         <div className="flex items-center justify-center space-x-4">
                             <button className="h-14 w-28 bg-red-400 hover:bg-red-500 text-white text-lg font-bold rounded inline-flex items-center justify-center"><PlayIcon className="h-12" />Play</button>
                             <button className="h-14 w-28 bg-red-400 hover:bg-red-500 text-white text-lg font-bold rounded inline-flex items-center justify-center"><FilmIcon className="h-12" />Watch Trailer</button>
-                            <button className="h-14 w-28 bg-red-400 hover:bg-red-500 text-white text-lg font-bold rounded inline-flex items-center justify-center"><PlusCircleIcon className="h-12" />Add to Library</button>
+                            <button className="h-14 w-28 bg-red-400 hover:bg-red-500 text-white text-lg font-bold rounded inline-flex items-center justify-center"><PlusCircleIcon className="h-12" />Add to Favorites</button>
                         </div>
                     </div>
                     <div className="w-full lg:w-3/12 mx-14">

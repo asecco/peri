@@ -1,14 +1,13 @@
 import {
     HomeIcon,
     BookmarkIcon,
-    SearchIcon,
 } from '@heroicons/react/outline';
-import Image from 'next/image';
 import PeriLogo from '../public/peri.png';
-import HeaderItem from './HeaderItem';
+import HeaderItem from "../components/HeaderItem";
+import Image from "next/image";
 import {useRouter} from "next/router";
 
-function Header() {
+function Favorites() { 
     const router = useRouter();
     const routePage = (page) => router.push(page);
 
@@ -21,13 +20,9 @@ function Header() {
                 </div>
                 <Image className='object-contain' src={PeriLogo} alt='Peri' width={250} height={100} />
             </header>
-
-            <div className="flex items-center max-w-sm mx-auto mb-5">
-                <input type="text" onClick={() => routePage('/Search')} className="h-14 w-96 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-1 focus:outline-red-400 text-black text-center" placeholder="Search..."></input>
-                <SearchIcon onClick={() => routePage('/Search')} className='w-8 m-1 hover:cursor-pointer hover:text-red-400 active:text-red-500' />
-            </div>
+            <p className='text-6xl font-bold text-white text-center'>Coming Soon...</p>
         </div>
     );
 }
 
-export default Header;
+export default Favorites;
