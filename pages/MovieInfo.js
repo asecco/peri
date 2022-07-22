@@ -50,7 +50,7 @@ function MovieInfo() {
                             <p>{movie.release_date || movie.first_air_date}</p>
                             <ThumbUpIcon className="h-6 mx-2" />{movie.vote_count}
                         </div>
-                        <p className="text-2xl text-white">{movie.description || movie.overview}</p>
+                        <p className="text-2xl text-white line-clamp-16">{movie.description || movie.overview}</p>
 
                         <div className="flex items-center justify-center space-x-4">
                             <button className="h-14 w-28 bg-red-400 hover:bg-red-500 text-white text-lg font-bold rounded inline-flex items-center justify-center"><PlayIcon className="h-12" />Play</button>
