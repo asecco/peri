@@ -35,7 +35,7 @@ function MovieInfo() {
         if(castReq.cast) {
             setCast(castReq.cast.slice(0, 16));
         }
-        const trailerId = await movieTrailer(movie.title || movie.original_name, {id: true});
+        const trailerId = await movieTrailer(`${movie.title || movie.original_name}`, {id: true});
         setTrailerId(trailerId);
         checkRelease();
     }
