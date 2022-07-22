@@ -46,7 +46,7 @@ function MovieInfo() {
 
     useEffect(() => {searchReq()}, [movie]);
 
-    const [isOpen, setOpen] = useState(false)
+    const [isOpen, setOpen] = useState(false);
 
     const routePage = (page) => router.push(page);
 
@@ -64,14 +64,14 @@ function MovieInfo() {
                 <div className="mx-auto px-20 flex-col flex gap-10 object-bottom md:flex-row">
                     <div className="flex flex-col gap-4 lg:w-8/12 xl:w-3/5">
                         <h1 className="font-bold text-7xl text-center text-red-400">{movie.title || movie.original_name}</h1>
-                        <div className="flex items-center justify-center space-x-40 font-bold text-xl text-center text-white">
+                        <div className="flex items-center justify-center space-x-40 font-bold text-lg text-center text-white">
                             <p>{movie.release_date === undefined ? movie.first_air_date.slice(0, -6) : movie.release_date.slice(0, -6)}</p>                            
-                            <p>{genres.slice(0, -2)}</p>
+                            <p className="truncate">{genres.slice(0, -2)}</p>
                             <p>{`${movie2.runtime || 'N/A'} mins`}</p>
                             <StarIcon className="h-6 mx-2" />{Math.round(movie.vote_average * 10) / 10}/10
                         </div>
                         <p className="text-xl text-white text-center font-style: italic">{movie2.tagline}</p>
-                        <p className="text-2xl text-white line-clamp-16">{movie.description || movie.overview}</p>
+                        <p className="text-2xl text-white line-clamp-14">{movie.description || movie.overview}</p>
                         <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId={trailerID === null ? "dQw4w9WgXcQ" : trailerID} onClose={() => setOpen(false)} />
 
                         <div className="flex items-center justify-center space-x-4">
