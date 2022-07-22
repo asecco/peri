@@ -4,7 +4,7 @@ import Image from "next/image";
 import {
     HomeIcon,
     BookmarkIcon,
-    ThumbUpIcon,
+    StarIcon,
     PlayIcon,
     PlusCircleIcon,
     FilmIcon,
@@ -30,7 +30,7 @@ function MovieInfo() {
     searchCast();
 
     const routePage = (page) => router.push(page);
-    
+
     return (
         <div>
             <header className="flex flex-col sm:flex-row mb-5 justify-between items-center h-auto">
@@ -48,8 +48,9 @@ function MovieInfo() {
                         <div className="flex items-center justify-center space-x-40 font-bold text-2xl text-center text-white">
                             <p>{movie.media_type}</p>
                             <p>{movie.release_date || movie.first_air_date}</p>
-                            <ThumbUpIcon className="h-6 mx-2" />{movie.vote_count}
+                            <StarIcon className="h-6 mx-2" />{Math.round(movie.vote_average * 10) / 10}/10
                         </div>
+                        <p className="text-2xl text-white">{movie.tagline}</p>
                         <p className="text-2xl text-white line-clamp-16">{movie.description || movie.overview}</p>
 
                         <div className="flex items-center justify-center space-x-4">
