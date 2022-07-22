@@ -1,5 +1,5 @@
 import {useRouter} from "next/router";
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Image from "next/image";
 import {
     HomeIcon,
@@ -32,7 +32,8 @@ function MovieInfo() {
             setCast(castReq.cast.slice(0, 16));
         }
     }
-    searchReq();
+
+    useEffect(() => {searchReq()}, [movie]);
 
     const routePage = (page) => router.push(page);
 
