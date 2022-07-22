@@ -72,7 +72,7 @@ function MovieInfo() {
                         </div>
                         <p className="text-xl text-white text-center font-style: italic">{movie2.tagline}</p>
                         <p className="text-2xl text-white line-clamp-16">{movie.description || movie.overview}</p>
-                        <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId={trailerID} onClose={() => setOpen(false)} />
+                        <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId={trailerID === null ? "dQw4w9WgXcQ" : trailerID} onClose={() => setOpen(false)} />
 
                         <div className="flex items-center justify-center space-x-4">
                             <button className="h-14 w-28 bg-red-400 hover:bg-red-500 text-white text-lg font-bold rounded inline-flex items-center justify-center"><PlayIcon className="h-12" />Play</button>
