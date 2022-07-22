@@ -25,9 +25,7 @@ function Search() {
     const autoFocus = useCallback(el => el ? el.focus() : null, []);
 
     const router = useRouter();
-    const routePage = (page) => {
-        router.push(page);
-    }
+    const routePage = (page) => router.push(page);
 
   return (
     <div>

@@ -29,9 +29,8 @@ function MovieInfo() {
     }
     searchCast();
 
-    const routePage = (page) => {
-        router.push(page);
-    }
+    const routePage = (page) => router.push(page);
+    
     return (
         <div>
             <header className="flex flex-col sm:flex-row mb-5 justify-between items-center h-auto">
