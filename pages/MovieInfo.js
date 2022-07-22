@@ -58,7 +58,7 @@ function MovieInfo() {
                     <div className="flex flex-col gap-4 lg:w-8/12 xl:w-3/5">
                         <h1 className="font-bold text-7xl text-center text-red-400">{movie.title || movie.original_name}</h1>
                         <div className="flex items-center justify-center space-x-40 font-bold text-xl text-center text-white">
-                            <p>{movie.release_date.slice(0, -6) || movie.first_air_date.slice(0, -6)}</p>
+                            <p>{movie.release_date === undefined ? movie.first_air_date.slice(0, -6) : movie.release_date.slice(0, -6)}</p>                            
                             <p>{genres.slice(0, -2)}</p>
                             <p>{`${movie2.runtime || 'N/A'} mins`}</p>
                             <StarIcon className="h-6 mx-2" />{Math.round(movie.vote_average * 10) / 10}/10
