@@ -46,7 +46,7 @@ function MovieInfo() {
                     <div className="flex flex-col gap-4 lg:w-8/12 xl:w-3/5">
                         <h1 className="font-bold text-7xl text-center text-red-400">{movie.title || movie.original_name}</h1>
                         <div className="flex items-center justify-center space-x-40 font-bold text-2xl text-center text-white">
-                            <p>{movie.media_type}</p>
+                            <p>{movie.media_type || 'movie'}</p>
                             <p>{movie.release_date || movie.first_air_date}</p>
                             <StarIcon className="h-6 mx-2" />{Math.round(movie.vote_average * 10) / 10}/10
                         </div>
