@@ -8,9 +8,7 @@ const Thumbnail = forwardRef(({result}, ref) => {
     const [hoverInfo, setHoverInfo] = useState({display: 'none'});
 
     const router = useRouter();
-    const routeQuery = () => {
-        router.push({pathname: '/MovieInfo', query: result});
-    }
+    const routeQuery = () => router.push({pathname: '/MovieInfo', query: result});
 
     return (
         <div onClick={routeQuery} ref={ref} className='p-2 group cursor-pointer transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50' onMouseEnter={e => { setHoverInfo({display: 'block'});}} onMouseLeave={e => { setHoverInfo({display: 'none'})}}>

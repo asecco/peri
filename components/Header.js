@@ -10,9 +10,7 @@ import {useRouter} from "next/router";
 
 function Header() {
     const router = useRouter();
-    const routePage = (page) => {
-        router.push(page);
-    }
+    const routePage = (page) => router.push(page);
 
     return (
         <div>
