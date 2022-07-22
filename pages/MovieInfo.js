@@ -21,7 +21,8 @@ function MovieInfo() {
 
     const [cast, setCast] = useState([]);
     const searchCast = async () => {
-        const castReq = await fetch(`https://api.themoviedb.org/3/movie/${movie.id}/credits?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
+        const mediaType = movie.media_type === 'movie' ? 'movie' : 'tv';
+        const castReq = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movie.id}/credits?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
         if(castReq.cast) {
             setCast(castReq.cast.slice(0, 16));
         }
@@ -59,7 +60,7 @@ function MovieInfo() {
                         </div>
                     </div>
                     <div className="w-full lg:w-3/12 mx-14">
-                        <Image className="" src={`${BASE_URL}${movie.poster_path}`} alt='' height={960} width={640}/>
+                        <Image src={`${BASE_URL}${movie.poster_path}`} alt='' height={960} width={640}/>
                     </div>
                 </div>
             </div>
