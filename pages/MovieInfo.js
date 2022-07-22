@@ -23,7 +23,7 @@ function MovieInfo() {
     const searchCast = async () => {
         const castReq = await fetch(`https://api.themoviedb.org/3/movie/${movie.id}/credits?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
         if(castReq.cast) {
-            setCast(castReq.cast.slice(0, 8));
+            setCast(castReq.cast.slice(0, 16));
         }
     }
     searchCast();
@@ -63,7 +63,7 @@ function MovieInfo() {
                     </div>
                 </div>
             </div>
-            <FlipMove className="px-5 my-10 sm:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6">
+            <FlipMove className="px-5 my-10 sm:grid md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-10 3xl:grid-cols-12">
                 {cast?.map((cast) => cast.profile_path && (
                 <>
                     <Cast member={cast} />
