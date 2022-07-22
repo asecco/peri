@@ -20,14 +20,19 @@ function MovieInfo() {
     const movie = router.query;
 
     const [cast, setCast] = useState([]);
-    const searchCast = async () => {
+    const [movie2, setMovie2] = useState([]);
+    const searchReq = async () => {
         const mediaType = movie.media_type || 'movie';
         const castReq = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movie.id}/credits?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
+        const movie2Req = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movie.id}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
+        if(movie2Req) {
+            setMovie2(movie2Req);
+        }
         if(castReq.cast) {
             setCast(castReq.cast.slice(0, 16));
         }
     }
-    searchCast();
+    searchReq();
 
     const routePage = (page) => router.push(page);
 
@@ -47,10 +52,11 @@ function MovieInfo() {
                         <h1 className="font-bold text-7xl text-center text-red-400">{movie.title || movie.original_name}</h1>
                         <div className="flex items-center justify-center space-x-40 font-bold text-2xl text-center text-white">
                             <p>{movie.media_type || 'movie'}</p>
+                            <p>{`${movie2.runtime || 'N/A '}min`}</p>
                             <p>{movie.release_date || movie.first_air_date}</p>
                             <StarIcon className="h-6 mx-2" />{Math.round(movie.vote_average * 10) / 10}/10
                         </div>
-                        <p className="text-2xl text-white">{movie.tagline}</p>
+                        <p className="text-xl text-white text-center font-style: italic">{movie2.tagline}</p>
                         <p className="text-2xl text-white line-clamp-16">{movie.description || movie.overview}</p>
 
                         <div className="flex items-center justify-center space-x-4">
