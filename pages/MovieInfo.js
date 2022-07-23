@@ -55,7 +55,6 @@ function MovieInfo() {
     }
 
     const [releaseYear, setReleaseYear] = useState([]);
-    console.log(seasons)
     const [similarDiv, setSimilarDiv] = useState(false);
     const checkRelease = () => {
         if(movie.media_type === 'movie') {
