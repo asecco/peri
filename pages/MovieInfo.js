@@ -98,10 +98,10 @@ function MovieInfo() {
                         <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId={trailerID === null ? "dQw4w9WgXcQ" : trailerID} onClose={() => setOpen(false)} />
 
                         <div className="flex items-center justify-center space-x-4">
-                            <button className="h-14 w-28 bg-red-400 hover:bg-red-500 text-white text-lg font-bold rounded inline-flex items-center justify-center"><PlayIcon className="h-12" /></button>
-                            <button onClick={()=> setOpen(true)} className="h-14 w-28 bg-red-400 hover:bg-red-500 text-white text-lg font-bold rounded inline-flex items-center justify-center"><FilmIcon className="h-12" /></button>
-                            <button className="h-14 w-28 bg-red-400 hover:bg-red-500 text-white text-lg font-bold rounded inline-flex items-center justify-center"><HeartIcon className="h-12" /></button>
-                            <button className="h-14 w-28 bg-red-400 hover:bg-red-500 text-white text-lg font-bold rounded inline-flex items-center justify-center"><TrashIcon className="h-12" /></button>
+                            <button title="Play" className="h-14 w-28 bg-red-400 hover:bg-red-500 text-white text-lg font-bold rounded-2xl inline-flex items-center justify-center"><PlayIcon className="h-12" /></button>
+                            <button title="Watch Trailer" onClick={()=> setOpen(true)} className="h-14 w-28 bg-red-400 hover:bg-red-500 text-white text-lg font-bold rounded-2xl inline-flex items-center justify-center"><FilmIcon className="h-12" /></button>
+                            <button title="Favorite" className="h-14 w-28 bg-red-400 hover:bg-red-500 text-white text-lg font-bold rounded-2xl inline-flex items-center justify-center"><HeartIcon className="h-12" /></button>
+                            <button title="Unfavorite" className="h-14 w-28 bg-red-400 hover:bg-red-500 text-white text-lg font-bold rounded-2xl inline-flex items-center justify-center"><TrashIcon className="h-12" /></button>
                         </div>
                     </div>
                     <div className="w-full lg:w-3/12 mx-14">
