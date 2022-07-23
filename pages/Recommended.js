@@ -24,7 +24,7 @@ function Recommended() {
                 </div>
                 <Image className='object-contain' src={PeriLogo} alt='Peri' width={250} height={100} />
             </header>
-            <p className='font-bold md:text-5xl lg:text-6xl text-left mx-6 text-red-white'>You May Like</p>
+            <p className='font-bold md:text-5xl lg:text-6xl text-left mx-6 text-white'>You May Like</p>
         </div>
     );
 }

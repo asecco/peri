@@ -49,7 +49,7 @@ function Upcoming() {
                 <Image className='object-contain' src={PeriLogo} alt='Peri' width={250} height={100} />
             </header>
 
-            <p className='font-bold md:text-5xl lg:text-6xl text-left mx-6 text-red-white'>Upcoming Movies</p>
+            <p className='font-bold md:text-5xl lg:text-6xl text-left mx-6 text-white'>Upcoming Movies</p>
             <div>
                 <FlipMove className="px-5 my-10 sm:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6">
                     {upcoming.map((up) => (
