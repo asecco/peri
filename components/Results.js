@@ -10,8 +10,6 @@ function Results({results}) {
             <Thumbnail key={result.id} result={result} />
         ))}
         </FlipMove>
-        
-        <Footer />
     </div>
   );
 }
