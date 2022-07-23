@@ -30,24 +30,24 @@ function MovieInfo() {
     const [movie2, setMovie2] = useState([]);
     const [trailerID, setTrailerId] = useState([]);
     const [similarMovie, setSimilarMovie] = useState([]);
-    const searchReq = async () => {
-        const mediaType = movie.media_type || 'movie';
-        const castReq = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movie.id}/credits?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
-        const movie2Req = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movie.id}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
-        const similarReq = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movie.id}/similar?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
-        if(movie2Req) {
+    const [seasons, setSeasons] = useState([]);
+    useEffect(() => {
+        const searchReq = async () => {
+            const mediaType = movie.media_type || 'movie';
+            const castReq = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movie.id}/credits?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
+            const movie2Req = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movie.id}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
+            const seasonReq = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movie.id}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
+            const similarReq = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movie.id}/similar?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
             setMovie2(movie2Req);
-        }
-        if(castReq.cast) {
+            setSeasons(seasonReq.seasons);
             setCast(castReq.cast.slice(0, 12));
-        }
-        if(similarReq.results) {
             setSimilarMovie(similarReq.results.slice(0, 12));
+            const trailerId = await movieTrailer(`${movie.title || movie.original_name}`, {id: true});
+            setTrailerId(trailerId);
+            checkRelease();
         }
-        const trailerId = await movieTrailer(`${movie.title || movie.original_name}`, {id: true});
-        setTrailerId(trailerId);
-        checkRelease();
-    }
+        searchReq();
+    }, []);
 
     const genres = '';
     for(let i in movie2.genres) {
@@ -55,7 +55,7 @@ function MovieInfo() {
     }
 
     const [releaseYear, setReleaseYear] = useState([]);
-    const [seasons, setSeasons] = useState([]);
+    console.log(seasons)
     const [similarDiv, setSimilarDiv] = useState(false);
     const checkRelease = () => {
         if(movie.media_type === 'movie') {
@@ -64,14 +64,11 @@ function MovieInfo() {
         } else if(movie.media_type === 'tv') {
             const sliced = movie.first_air_date.slice(0, -6)
             setReleaseYear(sliced);
-            setSeasons(movie2.seasons);
             setSimilarDiv(true);
         } else {
             setReleaseYear(movie.release_date);
         }
     }
-
-    useEffect(() => {searchReq()});
 
     const [isOpen, setOpen] = useState(false);
 
