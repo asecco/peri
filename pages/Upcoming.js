@@ -28,6 +28,10 @@ function Upcoming() {
             }
         }
         searchReq();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     }, [page]);
 
     const router = useRouter();
