@@ -17,7 +17,7 @@ import {
 import PeriLogo from '../public/peri.png';
 import HeaderItem from '../components/HeaderItem';
 import Cast from "../components/Cast";
-import Thumbnail from "../components/Thumbnail";
+import Similar from "../components/Similar";
 import Seasons from "../components/Seasons";
 import FlipMove from "react-flip-move";
 
@@ -47,7 +47,6 @@ function MovieInfo() {
         const trailerId = await movieTrailer(`${movie.title || movie.original_name}`, {id: true});
         setTrailerId(trailerId);
         checkRelease();
-        checkSeasons();
     }
 
     const genres = '';
@@ -56,6 +55,7 @@ function MovieInfo() {
     }
 
     const [releaseYear, setReleaseYear] = useState([]);
+    const [seasons, setSeasons] = useState([]);
     const checkRelease = () => {
         if(movie.media_type === 'movie') {
             const sliced = movie.release_date.slice(0, -6)
@@ -63,20 +63,13 @@ function MovieInfo() {
         } else if(movie.media_type === 'tv') {
             const sliced = movie.first_air_date.slice(0, -6)
             setReleaseYear(sliced);
+            setSeasons(movie2.seasons);
         } else {
-            const currentYear = new Date().getFullYear();
-            setReleaseYear(currentYear);
+            setReleaseYear(movie.release_date);
         }
     }
 
-    const [seasons, setSeasons] = useState([]);
-    const checkSeasons = () => {
-        if(movie.media_type === 'tv') {
-            setSeasons(movie2.seasons)
-        }
-    }
-
-    useEffect(() => {searchReq()}, [movie]);
+    useEffect(() => {searchReq()});
 
     const [isOpen, setOpen] = useState(false);
 
@@ -127,7 +120,7 @@ function MovieInfo() {
                 <FlipMove className="px-5 my-10 sm:grid md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-10 3xl:grid-cols-12">
                     {seasons?.map((season) => (
                     <>
-                        <Seasons result={season} />
+                        <Seasons result={season} id={movie2.id} />
                     </>
                     ))}
                 </FlipMove>
@@ -138,7 +131,7 @@ function MovieInfo() {
                 <FlipMove className="px-5 my-10 sm:grid md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8 3xl:grid-cols-10">
                     {similarMovie?.map((similar) => (
                     <>
-                        <Thumbnail result={similar} />
+                        <Similar result={similar} />
                     </>
                     ))}
                 </FlipMove>
