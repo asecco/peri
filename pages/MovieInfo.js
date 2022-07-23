@@ -125,7 +125,7 @@ function MovieInfo() {
             </div>
 
             <div hidden={similarDiv}>
-                <p className="font-bold text-white sm:text-xl md:text-2xl lg:text-3xl mx-7">Similar:</p>
+                <p className="font-bold text-white sm:text-xl md:text-2xl lg:text-3xl mx-7">More Like This:</p>
                 <FlipMove className="px-5 my-10 sm:grid md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8 3xl:grid-cols-10">
                     {similarMovie?.map((similar) => (
                     <>

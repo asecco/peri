@@ -19,6 +19,7 @@ function EpisodeList() {
     const seasonNum = router.query.season;
     const overview = router.query.overview;
     const poster_path = router.query.poster;
+    const air_date = router.query.air_date;
     const routePage = (page) => router.push(page);
 
     const [episodes, setEpisodes] = useState([]);
@@ -47,6 +48,7 @@ function EpisodeList() {
             <div className="mx-auto px-20 flex-col flex gap-10 object-bottom md:flex-row">
                 <div className="flex flex-col gap-4 md:w-5/12 lg:w-6/12 xl:w-8/12 2xl:w-10/12">
                     <h1 className="font-bold md:text-5xl lg:text-7xl text-center text-red-400">{`Season ${seasonNum}`}</h1>
+                    <p className="lg:text-2xl text-white text-center">{`${air_date}`}</p>
                     <p className="lg:text-2xl text-white line-clamp-14">{overview}</p>
                 </div>
 
