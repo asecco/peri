@@ -13,10 +13,12 @@ import FlipMove from 'react-flip-move';
 import {useRouter} from "next/router";
 
 function EpisodeList() {
+    const BASE_URL = 'https://image.tmdb.org/t/p/original/';
     const router = useRouter();
-    const seasons = router.query;
     const showId = router.query.showId;
     const seasonNum = router.query.season;
+    const overview = router.query.overview;
+    const poster_path = router.query.poster;
     const routePage = (page) => router.push(page);
 
     const [episodes, setEpisodes] = useState([]);
@@ -39,6 +41,17 @@ function EpisodeList() {
                 </div>
                 <Image className='object-contain' src={PeriLogo} alt='Peri' width={250} height={100} />
             </header>
+
+            <div className="mx-auto px-20 flex-col flex gap-10 object-bottom md:flex-row">
+                <div className="flex flex-col gap-4 md:w-5/12 lg:w-6/12 xl:w-8/12 2xl:w-10/12">
+                    <h1 className="font-bold md:text-5xl lg:text-7xl text-center text-red-400">{`Season ${seasonNum}`}</h1>
+                    <p className="lg:text-2xl text-white line-clamp-14">{overview}</p>
+                </div>
+
+                <div className="w-full lg:w-3/12 mx-14">
+                    <Image layout="responsive" src={`${BASE_URL}${poster_path}`} alt='' height={960} width={640}/>
+                </div>
+            </div>
 
             <div>
                 <FlipMove className="px-5 my-10 md:grid lg:grid-cols-2 xl:grid-cols-4 2xl:grid-cols-6 3xl:grid-cols-8">
