@@ -9,7 +9,7 @@ function Cast({member}) {
                         <Image className="rounded-full hover:animate-pulse" layout='responsive' src={`${BASE_URL}${member.profile_path}`} title={member.name} alt='' height={192} width={176}/>
                     </div>
                     <p className="text-2xl font-bold text-red-400 truncate">{member.name}</p>
-                    <p className="text-lg font-bold">{member.character}</p>
+                    <p className="text-lg font-bold truncate">{member.character}</p>
             </div>
         </div>
     );

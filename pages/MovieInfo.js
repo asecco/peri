@@ -89,10 +89,11 @@ function MovieInfo() {
                 <div className="mx-auto px-20 flex-col flex gap-10 object-bottom md:flex-row">
                     <div className="flex flex-col gap-4 md:w-5/12 lg:w-6/12 xl:w-8/12 2xl:w-10/12">
                         <h1 className="font-bold md:text-5xl lg:text-7xl text-center text-red-400">{movie.title || movie.original_name}</h1>
-                        <div className="flex items-center justify-center lg:space-x-28 font-bold lg:text-lg md:text-base md:space-x-10 text-center text-white">
+                        <div className="flex items-center justify-center lg:space-x-20 font-bold lg:text-lg md:text-base md:space-x-6 text-center text-white">
+                            <p>{movie2.status}</p>
                             <p>{releaseYear}</p>
                             <p className=" xl:truncate">{genres.slice(0, -2)}</p>
-                            <p>{`${movie2.runtime || 'N/A'} mins`}</p>
+                            <p>{`${movie2.runtime || movie2.episode_run_time} mins`}</p>
                             <StarIcon className="h-6 mx-2" />{Math.round(movie.vote_average * 10) / 10}/10
                         </div>
                         <p className="lg:text-xl text-white text-center font-style: italic">{movie2.tagline}</p>
@@ -113,7 +114,7 @@ function MovieInfo() {
             </div>
 
             <div>
-                <p className="font-bold text-white sm:text-xl md:text-2xl lg:text-3xl mx-7">Similar Movies:</p>
+                <p className="font-bold text-white sm:text-xl md:text-2xl lg:text-3xl mx-7">Similar:</p>
                 <FlipMove className="px-5 my-10 sm:grid md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8 3xl:grid-cols-10">
                     {similarMovie?.map((similar) => (
                     <>
