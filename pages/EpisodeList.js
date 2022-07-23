@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
     HomeIcon,
     BookmarkIcon,
@@ -22,13 +22,15 @@ function EpisodeList() {
     const routePage = (page) => router.push(page);
 
     const [episodes, setEpisodes] = useState([]);
-    const searchReq = async () => {
-        const episodeReq = await fetch(`https://api.themoviedb.org/3/tv/${showId}/season/${seasonNum}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
-        if(episodeReq) {
-            setEpisodes(episodeReq.episodes);
+    useEffect(() => {
+        const searchReq = async () => {
+            const episodeReq = await fetch(`https://api.themoviedb.org/3/tv/${showId}/season/${seasonNum}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
+            if(episodeReq) {
+                setEpisodes(episodeReq.episodes);
+            }
         }
-    }
-    searchReq();
+        searchReq();
+    }, []);
 
     return (
         <div>
