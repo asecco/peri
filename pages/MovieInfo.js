@@ -18,6 +18,7 @@ import PeriLogo from '../public/peri.png';
 import HeaderItem from '../components/HeaderItem';
 import Cast from "../components/Cast";
 import Thumbnail from "../components/Thumbnail";
+import Seasons from "../components/Seasons";
 import FlipMove from "react-flip-move";
 
 function MovieInfo() {
@@ -46,6 +47,7 @@ function MovieInfo() {
         const trailerId = await movieTrailer(`${movie.title || movie.original_name}`, {id: true});
         setTrailerId(trailerId);
         checkRelease();
+        checkSeasons();
     }
 
     const genres = '';
@@ -64,6 +66,13 @@ function MovieInfo() {
         } else {
             const currentYear = new Date().getFullYear();
             setReleaseYear(currentYear);
+        }
+    }
+
+    const [seasons, setSeasons] = useState([]);
+    const checkSeasons = () => {
+        if(movie.media_type === 'tv') {
+            setSeasons(movie2.seasons)
         }
     }
 
@@ -111,6 +120,17 @@ function MovieInfo() {
                         <Image layout="responsive" src={`${BASE_URL}${movie.poster_path}`} alt='' height={960} width={640}/>
                     </div>
                 </div>
+            </div>
+
+            <div>
+                <p className="font-bold text-white sm:text-xl md:text-2xl lg:text-3xl mx-7">{movie.media_type === 'movie' ? '' : 'Seasons:'}</p>
+                <FlipMove className="px-5 my-10 sm:grid md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-10 3xl:grid-cols-12">
+                    {seasons?.map((season) => (
+                    <>
+                        <Seasons result={season} />
+                    </>
+                    ))}
+                </FlipMove>
             </div>
 
             <div>
