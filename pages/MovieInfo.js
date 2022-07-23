@@ -56,6 +56,7 @@ function MovieInfo() {
 
     const [releaseYear, setReleaseYear] = useState([]);
     const [seasons, setSeasons] = useState([]);
+    const [similarDiv, setSimilarDiv] = useState(false);
     const checkRelease = () => {
         if(movie.media_type === 'movie') {
             const sliced = movie.release_date.slice(0, -6)
@@ -64,6 +65,7 @@ function MovieInfo() {
             const sliced = movie.first_air_date.slice(0, -6)
             setReleaseYear(sliced);
             setSeasons(movie2.seasons);
+            setSimilarDiv(true);
         } else {
             setReleaseYear(movie.release_date);
         }
@@ -126,7 +128,7 @@ function MovieInfo() {
                 </FlipMove>
             </div>
 
-            <div>
+            <div hidden={similarDiv}>
                 <p className="font-bold text-white sm:text-xl md:text-2xl lg:text-3xl mx-7">Similar:</p>
                 <FlipMove className="px-5 my-10 sm:grid md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8 3xl:grid-cols-10">
                     {similarMovie?.map((similar) => (
