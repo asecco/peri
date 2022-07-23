@@ -40,7 +40,7 @@ function MovieInfo() {
         if(castReq.cast) {
             setCast(castReq.cast.slice(0, 12));
         }
-        if(similarReq) {
+        if(similarReq.results) {
             setSimilarMovie(similarReq.results.slice(0, 12));
         }
         const trailerId = await movieTrailer(`${movie.title || movie.original_name}`, {id: true});
