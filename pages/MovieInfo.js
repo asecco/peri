@@ -16,6 +16,7 @@ import {
 import PeriLogo from '../public/peri.png';
 import HeaderItem from '../components/HeaderItem';
 import Cast from "../components/Cast";
+import Thumbnail from "../components/Thumbnail";
 import FlipMove from "react-flip-move";
 
 function MovieInfo() {
@@ -26,15 +27,20 @@ function MovieInfo() {
     const [cast, setCast] = useState([]);
     const [movie2, setMovie2] = useState([]);
     const [trailerID, setTrailerId] = useState([]);
+    const [similarMovie, setSimilarMovie] = useState([]);
     const searchReq = async () => {
         const mediaType = movie.media_type || 'movie';
         const castReq = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movie.id}/credits?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
         const movie2Req = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movie.id}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
+        const similarReq = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movie.id}/similar?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
         if(movie2Req) {
             setMovie2(movie2Req);
         }
         if(castReq.cast) {
-            setCast(castReq.cast.slice(0, 16));
+            setCast(castReq.cast.slice(0, 12));
+        }
+        if(similarReq) {
+            setSimilarMovie(similarReq.results.slice(0, 12));
         }
         const trailerId = await movieTrailer(`${movie.title || movie.original_name}`, {id: true});
         setTrailerId(trailerId);
@@ -92,8 +98,8 @@ function MovieInfo() {
                         <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId={trailerID === null ? "dQw4w9WgXcQ" : trailerID} onClose={() => setOpen(false)} />
 
                         <div className="flex items-center justify-center space-x-4">
-                            <button className="h-14 w-28 bg-red-400 hover:bg-red-500 text-white text-lg font-bold rounded inline-flex items-center justify-center"><PlayIcon className="h-12" />Play</button>
-                            <button onClick={()=> setOpen(true)} className="h-14 w-28 bg-red-400 hover:bg-red-500 text-white text-lg font-bold rounded inline-flex items-center justify-center"><FilmIcon className="h-12" />Trailer</button>
+                            <button className="h-14 w-28 bg-red-400 hover:bg-red-500 text-white text-lg font-bold rounded inline-flex items-center justify-center"><PlayIcon className="h-12" /></button>
+                            <button onClick={()=> setOpen(true)} className="h-14 w-28 bg-red-400 hover:bg-red-500 text-white text-lg font-bold rounded inline-flex items-center justify-center"><FilmIcon className="h-12" /></button>
                             <button className="h-14 w-28 bg-red-400 hover:bg-red-500 text-white text-lg font-bold rounded inline-flex items-center justify-center"><HeartIcon className="h-12" /></button>
                             <button className="h-14 w-28 bg-red-400 hover:bg-red-500 text-white text-lg font-bold rounded inline-flex items-center justify-center"><TrashIcon className="h-12" /></button>
                         </div>
@@ -103,13 +109,28 @@ function MovieInfo() {
                     </div>
                 </div>
             </div>
-            <FlipMove className="px-5 my-10 sm:grid md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-10 3xl:grid-cols-12">
-                {cast?.map((cast) => cast.profile_path && (
-                <>
-                    <Cast member={cast} />
-                </>
-                ))}
-            </FlipMove>
+
+            <div>
+                <p className="font-bold text-white sm:text-xl md:text-2xl lg:text-3xl mx-7">Similar Movies:</p>
+                <FlipMove className="px-5 my-10 sm:grid md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8 3xl:grid-cols-10">
+                    {similarMovie?.map((similar) => (
+                    <>
+                        <Thumbnail result={similar} />
+                    </>
+                    ))}
+                </FlipMove>
+            </div>
+
+            <div>
+                <p className="font-bold text-white sm:text-xl md:text-2xl lg:text-3xl mx-7">Cast:</p>
+                <FlipMove className="px-5 my-10 sm:grid md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8 3xl:grid-cols-10">
+                    {cast?.map((cast) => cast.profile_path && (
+                    <>
+                        <Cast member={cast} />
+                    </>
+                    ))}
+                </FlipMove>
+            </div>
     </div>
     );
 }
