@@ -11,6 +11,7 @@ import {
     HeartIcon,
     TrashIcon,
     FilmIcon,
+    CalendarIcon,
 } from '@heroicons/react/outline';
 import PeriLogo from '../public/peri.png';
 import HeaderItem from '../components/HeaderItem';
@@ -47,13 +48,15 @@ function MovieInfo() {
 
     const [releaseYear, setReleaseYear] = useState([]);
     const checkRelease = () => {
-        if(movie.media_type === 'movie') { const sliced = movie.release_date.slice(0, -6)
+        if(movie.media_type === 'movie') {
+            const sliced = movie.release_date.slice(0, -6)
             setReleaseYear(sliced);
         } else if(movie.media_type === 'tv') {
             const sliced = movie.first_air_date.slice(0, -6)
             setReleaseYear(sliced);
         } else {
-            setReleaseYear('');
+            const currentYear = new Date().getFullYear();
+            setReleaseYear(currentYear);
         }
     }
 
@@ -68,6 +71,7 @@ function MovieInfo() {
             <header className="flex flex-col sm:flex-row mb-5 justify-between items-center h-auto">
                 <div className='flex flex-grow max-w-2xl'>
                     <div onClick={() => routePage('/')}><HeaderItem title='HOME' Icon={HomeIcon} /></div>
+                    <div onClick={() => routePage('/Upcoming')}><HeaderItem title='UPCOMING' Icon={CalendarIcon} /></div>
                     <div onClick={() => routePage('/Favorites')}><HeaderItem title='FAVORITES' Icon={BookmarkIcon} /></div>
                 </div>
                 <Image className='object-contain' src={PeriLogo} alt='Peri' width={250} height={100} />
