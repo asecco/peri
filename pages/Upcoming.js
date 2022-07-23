@@ -3,6 +3,8 @@ import {
     HomeIcon,
     BookmarkIcon,
     CalendarIcon,
+    ArrowCircleLeftIcon,
+    ArrowCircleRightIcon,
 } from '@heroicons/react/outline';
 import PeriLogo from '../public/peri.png';
 import HeaderItem from "../components/HeaderItem";
@@ -13,14 +15,20 @@ import {useRouter} from "next/router";
 
 function Upcoming() {
     const [upcoming, setUpcoming] = useState([]);
-    const searchReq = async () => {
-        const upcomingReq = await fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
-        if(upcomingReq) {
-            setUpcoming(upcomingReq.results);
-        }
+    const [page, setPage] = useState(1);
+    if(page < 1) {
+        setPage(1);
     }
+    useEffect(() => {
+        const searchReq = async () => {
+            const upcomingReq = await fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&page=${page}`).then((res) => res.json());
+            if(upcomingReq) {
+                setUpcoming(upcomingReq.results);
+            }
+        }
+        searchReq();
+    }, [page]);
 
-    useEffect(() => {searchReq()}, []);
     const router = useRouter();
     const routePage = (page) => router.push(page);
 
@@ -43,6 +51,11 @@ function Upcoming() {
                     </>
                     ))}
                 </FlipMove>
+            </div>
+
+            <div className='flex flex-row sm:flex-row justify-between items-center h-auto'>
+                <div onClick={() => setPage(page - 1)}><HeaderItem title='Previous' Icon={ArrowCircleLeftIcon} /></div>
+                <div onClick={() => setPage(page + 1)}><HeaderItem title='Next' Icon={ArrowCircleRightIcon} /></div>
             </div>
         </div>
     );
