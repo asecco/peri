@@ -69,18 +69,38 @@ function MovieInfo() {
         }
     }
 
+    const params = {
+        id: movie.id,
+        type : movie.media_type,
+    }
+
     const addToFav = () => {
-        const favorites = localStorage.getItem('favorites') ? JSON.parse(localStorage.getItem('favorites')) : [];
-        if(!favorites.includes(movie.id)) {
-            favorites.push(movie.id);
-            localStorage.setItem('favorites', JSON.stringify(favorites));
+        const localStorage = window.localStorage;
+        const localStorageParams = localStorage.getItem('favorites');
+        if(localStorageParams) {
+            const localStorageParamsObj = JSON.parse(localStorageParams);
+            const localStorageParamsObjIds = localStorageParamsObj.map(obj => obj.id);
+            if(!localStorageParamsObjIds.includes(movie.id)) {
+                localStorageParamsObj.push(params);
+                localStorage.setItem('favorites', JSON.stringify(localStorageParamsObj));
+            }
+        } else {
+            localStorage.setItem('favorites', JSON.stringify([params]));
         }
     }
+
     const removeFromFav = () => {
-        const favorites = localStorage.getItem('favorites') ? JSON.parse(localStorage.getItem('favorites')) : [];
-        if(favorites.includes(movie.id)) {
-            const newFavorites = favorites.filter(id => id !== movie.id);
-            localStorage.setItem('favorites', JSON.stringify(newFavorites));
+        const localStorage = window.localStorage;
+        const localStorageParams = localStorage.getItem('favorites');
+        if(localStorageParams) {
+            const localStorageParamsObj = JSON.parse(localStorageParams);
+            const localStorageParamsObjIds = localStorageParamsObj.map(obj => obj.id);
+            if(localStorageParamsObjIds.includes(movie.id)) {
+                const localStorageParamsObjIds = localStorageParamsObj.map(obj => obj.id);
+                const index = localStorageParamsObjIds.indexOf(movie.id);
+                localStorageParamsObj.splice(index, 1);
+                localStorage.setItem('favorites', JSON.stringify(localStorageParamsObj));
+            }
         }
     }
 

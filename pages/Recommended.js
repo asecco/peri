@@ -21,7 +21,7 @@ function Recommended() {
             const recArr = [];
             const favorites = JSON.parse(localStorage.getItem('favorites'));
             for(let i in favorites) {
-                const recommendReq = await fetch(`https://api.themoviedb.org/3/movie/${favorites[i]}/recommendations?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
+                const recommendReq = await fetch(`https://api.themoviedb.org/3/${favorites[i].type}/${favorites[i].id}/recommendations?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
                 for(let i in recommendReq.results) {
                     if(!recArr.includes(recommendReq.results[i])) {
                         recArr.push(recommendReq.results[i]);
