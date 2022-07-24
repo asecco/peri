@@ -17,7 +17,7 @@ import {
 import PeriLogo from '../public/peri.png';
 import HeaderItem from '../components/HeaderItem';
 import Cast from "../components/Cast";
-import Similar from "../components/Similar";
+import Recommend from "../components/Recommend";
 import Seasons from "../components/Seasons";
 import FlipMove from "react-flip-move";
 
@@ -29,7 +29,7 @@ function MovieInfo() {
     const [cast, setCast] = useState([]);
     const [movie2, setMovie2] = useState([]);
     const [trailerID, setTrailerId] = useState([]);
-    const [similarMovie, setSimilarMovie] = useState([]);
+    const [recommendMovie, setRecommendMovie] = useState([]);
     const [seasons, setSeasons] = useState([]);
     useEffect(() => {
         const searchReq = async () => {
@@ -37,11 +37,11 @@ function MovieInfo() {
             const castReq = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movie.id}/credits?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
             const movie2Req = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movie.id}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
             const seasonReq = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movie.id}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
-            const similarReq = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movie.id}/similar?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
+            const recommendReq = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movie.id}/recommendations?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
             setMovie2(movie2Req);
             setSeasons(seasonReq.seasons);
             setCast(castReq.cast.slice(0, 12));
-            setSimilarMovie(similarReq.results.slice(0, 12));
+            setRecommendMovie(recommendReq.results.slice(0, 12));
             const trailerId = await movieTrailer(`${movie.title || movie.original_name}`, {id: true});
             setTrailerId(trailerId);
             checkRelease();
@@ -55,7 +55,7 @@ function MovieInfo() {
     }
 
     const [releaseYear, setReleaseYear] = useState([]);
-    const [similarDiv, setSimilarDiv] = useState(false);
+    const [recommendDiv, setRecommendDiv] = useState(false);
     const checkRelease = () => {
         if(movie.media_type === 'movie') {
             const sliced = movie.release_date.slice(0, -6)
@@ -63,7 +63,7 @@ function MovieInfo() {
         } else if(movie.media_type === 'tv') {
             const sliced = movie.first_air_date.slice(0, -6)
             setReleaseYear(sliced);
-            setSimilarDiv(true);
+            setRecommendDiv(true);
         } else {
             setReleaseYear(movie.release_date);
         }
@@ -124,12 +124,12 @@ function MovieInfo() {
                 </FlipMove>
             </div>
 
-            <div hidden={similarDiv}>
+            <div hidden={recommendDiv}>
                 <p className="font-bold text-white text-2xl lg:text-3xl mx-7">More Like This:</p>
                 <FlipMove className="px-5 my-10 sm:grid md:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8 3xl:grid-cols-10">
-                    {similarMovie?.map((similar) => (
+                    {recommendMovie?.map((rec) => (
                     <>
-                        <Similar result={similar} />
+                        <Recommend result={rec} />
                     </>
                     ))}
                 </FlipMove>
