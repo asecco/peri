@@ -40,10 +40,14 @@ function Favorites() {
                 </div>
                 <Image className='object-contain' src={PeriLogo} alt='Peri' width={250} height={100} />
             </header>
-            <p className='font-bold md:text-5xl lg:text-6xl text-left mx-6 text-white'>You've Enjoyed</p>
+            <p className='font-bold text-white text-3xl md:text-4xl lg:text-5xl mx-7'>You've Enjoyed</p>
+            <div className='my-10 font-bold text-center mx-6 text-white'>
+                <p className='text-xl md:text-2xl lg:text-4xl 2xl:text-6xl'>{favRes.length > 0 ? '' : 'There are currently no favorites'}</p>
+                <p className='text-lg md:text-lg lg:text-2xl 2xl:text-4xl'>{favRes.length > 0 ? '': 'Give a film a ♡ and check back!'}</p>
+            </div>            
 
             <div>
-                <FlipMove className="px-5 my-10 sm:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6">
+                <FlipMove className="px-5 my-10 sm:grid md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6">
                     {favRes?.map((fav) => (
                     <>
                         <Thumbnail result={fav} />
