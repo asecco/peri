@@ -15,17 +15,21 @@ import FlipMove from 'react-flip-move';
 import Image from "next/image";
 import {useRouter} from "next/router";
 
-function Upcoming() {
-    const [upcoming, setUpcoming] = useState([]);
+function PopularSeries() {
+    const [pop, setPop] = useState([]);
     const [page, setPage] = useState(1);
     if(page < 1) {
         setPage(1);
     }
     useEffect(() => {
         const searchReq = async () => {
-            const upcomingReq = await fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&page=${page}`).then((res) => res.json());
-            if(upcomingReq) {
-                setUpcoming(upcomingReq.results);
+            const popReq = await fetch(`https://api.themoviedb.org/3/tv/popular?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&page=${page}`).then((res) => res.json());
+            if(popReq) {
+                const popArr = popReq.results;
+                popArr.forEach(obj => {
+                    obj.media_type = 'tv';
+                });
+                setPop(popArr);
             }
         }
         searchReq();
@@ -51,12 +55,12 @@ function Upcoming() {
                 <Image className='object-contain' src={PeriLogo} alt='Peri' width={250} height={100} />
             </header>
 
-            <p className='font-bold text-white text-3xl md:text-4xl lg:text-5xl mx-7'>Upcoming Movies</p>
+            <p className='font-bold text-white text-3xl md:text-4xl lg:text-5xl mx-7'>Popular</p>
             <div>
                 <FlipMove className="px-5 my-10 sm:grid md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6">
-                    {upcoming.map((up) => (
+                    {pop.map((popular) => (
                     <>
-                        <Thumbnail result={up} />
+                        <Thumbnail result={popular} />
                     </>
                     ))}
                 </FlipMove>
@@ -70,4 +74,4 @@ function Upcoming() {
     );
 }
 
-export default Upcoming;
+export default PopularSeries;
