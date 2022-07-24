@@ -16,12 +16,13 @@ function Favorites() {
     const router = useRouter();
     const routePage = (page) => router.push(page);
     const [favRes, setFavRes] = useState([]);
+
     useEffect(() => {
         const searchReq = async () => {
             const favArr = [];
             const favorites = JSON.parse(localStorage.getItem('favorites'));
             for(let i in favorites) {
-                const favReq = await fetch(`https://api.themoviedb.org/3/movie/${favorites[i]}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
+                const favReq = await fetch(`https://api.themoviedb.org/3/${favorites[i].type}/${favorites[i].id}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
                 favArr.push(favReq);
                 setFavRes(favArr);
             }
