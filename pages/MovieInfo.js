@@ -4,19 +4,13 @@ import ModalVideo from 'react-modal-video';
 import movieTrailer from 'movie-trailer';
 import Image from "next/image";
 import {
-    HomeIcon,
-    BookmarkIcon,
     StarIcon,
     PlayIcon,
     HeartIcon,
     TrashIcon,
     FilmIcon,
-    CalendarIcon,
-    ThumbUpIcon,
-    VideoCameraIcon,
 } from '@heroicons/react/outline';
-import PeriLogo from '../public/peri.png';
-import HeaderItem from '../components/HeaderItem';
+import Header from '../components/Header';
 import Cast from "../components/Cast";
 import Recommend from "../components/Recommend";
 import Seasons from "../components/Seasons";
@@ -26,12 +20,12 @@ function MovieInfo() {
     const BASE_URL = 'https://image.tmdb.org/t/p/original/';
     const router = useRouter();
     const movie = router.query;
-
     const [cast, setCast] = useState([]);
     const [movie2, setMovie2] = useState([]);
     const [trailerID, setTrailerId] = useState([]);
     const [recommendMovie, setRecommendMovie] = useState([]);
     const [seasons, setSeasons] = useState([]);
+    const [isOpen, setOpen] = useState(false);
     useEffect(() => {
         const searchReq = async () => {
             const mediaType = movie.media_type || 'movie';
@@ -104,23 +98,9 @@ function MovieInfo() {
         }
     }
 
-    const [isOpen, setOpen] = useState(false);
-
-    const routePage = (page) => router.push(page);
-
     return (
         <div>
-            <header className="flex flex-col sm:flex-row mb-5 justify-between items-center h-auto">
-                <div className='flex flex-grow max-w-2xl mt-2 md:mt-0'>
-                    <div onClick={() => routePage('/')}><HeaderItem title='HOME' Icon={HomeIcon} /></div>
-                    <div onClick={() => routePage('/PopularSeries')}><HeaderItem title='SERIES' Icon={VideoCameraIcon} /></div>
-                    <div onClick={() => routePage('/Upcoming')}><HeaderItem title='UPCOMING' Icon={CalendarIcon} /></div>
-                    <div onClick={() => routePage('/Favorites')}><HeaderItem title='FAVORITES' Icon={BookmarkIcon} /></div>
-                    <div onClick={() => routePage('/Recommended')}><HeaderItem title='RECOMMENDED' Icon={ThumbUpIcon} /></div>
-                </div>
-                <Image className='object-contain' src={PeriLogo} alt='Peri' width={250} height={100} />
-            </header>
-
+            <Header />
             <div className="w-full">
                 <div className="mx-auto px-20 flex flex-col-reverse gap-10 object-bottom md:flex-row">
                     <div className="flex flex-col gap-4 md:w-5/12 lg:w-6/12 xl:w-8/12 2xl:w-10/12">
