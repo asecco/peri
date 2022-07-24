@@ -58,6 +58,7 @@ function EpisodeList() {
             </div>
 
             <div>
+                <p className="font-bold text-white sm:text-xl md:text-2xl lg:text-3xl mx-7">Episodes:</p>
                 <FlipMove className="px-5 my-10 md:grid lg:grid-cols-2 xl:grid-cols-4 2xl:grid-cols-6 3xl:grid-cols-8">
                     {episodes?.map((episode) => (
                     <>
