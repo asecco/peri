@@ -47,7 +47,7 @@ function MovieInfo() {
             checkRelease();
         }
         searchReq();
-    }, []);
+    }, [movie.id]);
 
     const genres = '';
     for(let i in movie2.genres) {
