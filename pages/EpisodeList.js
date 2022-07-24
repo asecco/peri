@@ -53,4 +53,4 @@ function EpisodeList() {
     );
 }
 
-export default EpisodeList;;
+export default EpisodeList;
