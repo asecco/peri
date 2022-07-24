@@ -76,7 +76,7 @@ function MovieInfo() {
     return (
         <div>
             <header className="flex flex-col sm:flex-row mb-5 justify-between items-center h-auto">
-                <div className='flex flex-grow max-w-2xl'>
+                <div className='flex flex-grow max-w-2xl mt-2 md:mt-0'>
                     <div onClick={() => routePage('/')}><HeaderItem title='HOME' Icon={HomeIcon} /></div>
                     <div onClick={() => routePage('/Upcoming')}><HeaderItem title='UPCOMING' Icon={CalendarIcon} /></div>
                     <div onClick={() => routePage('/Favorites')}><HeaderItem title='FAVORITES' Icon={BookmarkIcon} /></div>
@@ -86,35 +86,35 @@ function MovieInfo() {
             </header>
 
             <div className="w-full">
-                <div className="mx-auto px-20 flex-col flex gap-10 object-bottom md:flex-row">
+                <div className="mx-auto px-20 flex flex-col-reverse gap-10 object-bottom md:flex-row">
                     <div className="flex flex-col gap-4 md:w-5/12 lg:w-6/12 xl:w-8/12 2xl:w-10/12">
-                        <h1 className="font-bold md:text-5xl lg:text-7xl text-center text-red-400">{movie.title || movie.original_name}</h1>
-                        <div className="flex items-center justify-center lg:space-x-20 font-bold lg:text-lg md:text-base md:space-x-6 text-center text-white">
+                        <h1 className="font-bold text-3xl md:text-5xl lg:text-7xl text-center text-red-400">{movie.title || movie.original_name}</h1>
+                        <div className="flex items-center justify-center space-x-5 lg:space-x-20 font-bold lg:text-lg text-sm text-center text-white">
                             <p>{movie2.status}</p>
                             <p>{releaseYear}</p>
-                            <p className=" xl:truncate">{genres.slice(0, -2)}</p>
+                            <p className="xl:truncate">{genres.slice(0, -2)}</p>
                             <p>{`${movie2.runtime || movie2.episode_run_time} mins`}</p>
-                            <StarIcon className="h-6 mx-2" />{Math.round(movie.vote_average * 10) / 10}/10
+                            <StarIcon className="h-10 my-4 lg:h-6 lg:mx-2 lg:my-0" />{Math.round(movie.vote_average * 10) / 10}/10
                         </div>
                         <p className="lg:text-xl text-white text-center font-style: italic">{movie2.tagline}</p>
-                        <p className="lg:text-2xl text-white line-clamp-14">{movie.description || movie.overview}</p>
+                        <p className="text-center text-base md:text-left lg:text-2xl text-white line-clamp-14">{movie.description || movie.overview}</p>
                         <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId={trailerID === null ? "dQw4w9WgXcQ" : trailerID} onClose={() => setOpen(false)} />
 
-                        <div className="flex items-center justify-center space-x-4">
+                        <div className="flex items-center justify-center space-x-4 my-2">
                             <button title="Play" className="h-14 w-28 bg-red-400 hover:bg-red-500 text-white text-lg font-bold rounded-2xl inline-flex items-center justify-center"><PlayIcon className="h-12" /></button>
                             <button title="Watch Trailer" onClick={()=> setOpen(true)} className="h-14 w-28 bg-red-400 hover:bg-red-500 text-white text-lg font-bold rounded-2xl inline-flex items-center justify-center"><FilmIcon className="h-12" /></button>
                             <button title="Favorite" className="h-14 w-28 bg-red-400 hover:bg-red-500 text-white text-lg font-bold rounded-2xl inline-flex items-center justify-center"><HeartIcon className="h-12" /></button>
                             <button title="Unfavorite" className="h-14 w-28 bg-red-400 hover:bg-red-500 text-white text-lg font-bold rounded-2xl inline-flex items-center justify-center"><TrashIcon className="h-12" /></button>
                         </div>
                     </div>
-                    <div className="w-full lg:w-3/12 mx-14">
+                    <div className="w-8/12 md:w-4/12 lg:w-3/12 mx-10 md:mx-20 lg:mx-14">
                         <Image layout="responsive" src={`${BASE_URL}${movie.poster_path}`} alt='' height={960} width={640}/>
                     </div>
                 </div>
             </div>
 
             <div>
-                <p className="font-bold text-white sm:text-xl md:text-2xl lg:text-3xl mx-7">{movie.media_type != 'tv' ? '' : 'Seasons:'}</p>
+                <p className="font-bold text-white text-2xl lg:text-3xl mx-7 mt-10 md:mt-0">{movie.media_type != 'tv' ? '' : 'Seasons:'}</p>
                 <FlipMove className="px-5 my-10 sm:grid md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-10 3xl:grid-cols-12">
                     {seasons?.map((season) => (
                     <>
@@ -125,8 +125,8 @@ function MovieInfo() {
             </div>
 
             <div hidden={similarDiv}>
-                <p className="font-bold text-white sm:text-xl md:text-2xl lg:text-3xl mx-7">More Like This:</p>
-                <FlipMove className="px-5 my-10 sm:grid md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8 3xl:grid-cols-10">
+                <p className="font-bold text-white text-2xl lg:text-3xl mx-7">More Like This:</p>
+                <FlipMove className="px-5 my-10 sm:grid md:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8 3xl:grid-cols-10">
                     {similarMovie?.map((similar) => (
                     <>
                         <Similar result={similar} />
@@ -136,8 +136,8 @@ function MovieInfo() {
             </div>
 
             <div>
-                <p className="font-bold text-white sm:text-xl md:text-2xl lg:text-3xl mx-7">Cast:</p>
-                <FlipMove className="px-5 my-10 sm:grid md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8 3xl:grid-cols-10">
+                <p className="font-bold text-white text-2xl lg:text-3xl mx-7">Cast:</p>
+                <FlipMove className="px-5 my-10 sm:grid md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8 3xl:grid-cols-10">
                     {cast?.map((cast) => cast.profile_path && (
                     <>
                         <Cast member={cast} />
