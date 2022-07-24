@@ -36,12 +36,11 @@ function MovieInfo() {
             const mediaType = movie.media_type || 'movie';
             const castReq = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movie.id}/credits?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
             const movie2Req = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movie.id}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
-            const seasonReq = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movie.id}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
             const recommendReq = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movie.id}/recommendations?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
             setMovie2(movie2Req);
-            setSeasons(seasonReq.seasons);
-            setCast(castReq.cast.slice(0, 12));
-            setRecommendMovie(recommendReq.results.slice(0, 12));
+            setSeasons(movie2Req.seasons);
+            setCast(castReq.cast);
+            setRecommendMovie(recommendReq.results);
             const trailerId = await movieTrailer(`${movie.title || movie.original_name}`, {id: true});
             setTrailerId(trailerId);
             checkRelease();
