@@ -13,6 +13,7 @@ import {
     FilmIcon,
     CalendarIcon,
     ThumbUpIcon,
+    VideoCameraIcon,
 } from '@heroicons/react/outline';
 import PeriLogo from '../public/peri.png';
 import HeaderItem from '../components/HeaderItem';
@@ -39,8 +40,8 @@ function MovieInfo() {
             const recommendReq = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movie.id}/recommendations?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
             setMovie2(movie2Req);
             setSeasons(movie2Req.seasons);
-            setCast(castReq.cast);
-            setRecommendMovie(recommendReq.results);
+            setCast(castReq.cast.slice(0, 12));
+            setRecommendMovie(recommendReq.results.slice(0, 12));
             const trailerId = await movieTrailer(`${movie.title || movie.original_name}`, {id: true});
             setTrailerId(trailerId);
             checkRelease();
@@ -112,6 +113,7 @@ function MovieInfo() {
             <header className="flex flex-col sm:flex-row mb-5 justify-between items-center h-auto">
                 <div className='flex flex-grow max-w-2xl mt-2 md:mt-0'>
                     <div onClick={() => routePage('/')}><HeaderItem title='HOME' Icon={HomeIcon} /></div>
+                    <div onClick={() => routePage('/PopularSeries')}><HeaderItem title='SERIES' Icon={VideoCameraIcon} /></div>
                     <div onClick={() => routePage('/Upcoming')}><HeaderItem title='UPCOMING' Icon={CalendarIcon} /></div>
                     <div onClick={() => routePage('/Favorites')}><HeaderItem title='FAVORITES' Icon={BookmarkIcon} /></div>
                     <div onClick={() => routePage('/Recommended')}><HeaderItem title='RECOMMENDED' Icon={ThumbUpIcon} /></div>
