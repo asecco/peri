@@ -152,7 +152,7 @@ function MovieInfo() {
             <div>
                 <p className="font-bold text-white text-2xl lg:text-3xl mx-7 mt-10 md:mt-0">{movie.media_type != 'tv' ? '' : 'Seasons:'}</p>
                 <FlipMove className="px-5 my-10 sm:grid md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-10 3xl:grid-cols-12">
-                    {seasons?.map((season) => (
+                    {seasons?.map((season) => season.poster_path && (
                     <>
                         <Seasons result={season} id={movie2.id} />
                     </>
