@@ -36,7 +36,7 @@ function EpisodeList() {
     return (
         <div>
             <header className="flex flex-col sm:flex-row mb-5 justify-between items-center h-auto">
-                <div className='flex flex-grow max-w-2xl'>
+                <div className='flex flex-grow max-w-2xl mt-2 md:mt-0'>
                     <div onClick={() => routePage('/')}><HeaderItem title='HOME' Icon={HomeIcon} /></div>
                     <div onClick={() => routePage('/Upcoming')}><HeaderItem title='UPCOMING' Icon={CalendarIcon} /></div>
                     <div onClick={() => routePage('/Favorites')}><HeaderItem title='FAVORITES' Icon={BookmarkIcon} /></div>
@@ -45,21 +45,21 @@ function EpisodeList() {
                 <Image className='object-contain' src={PeriLogo} alt='Peri' width={250} height={100} />
             </header>
 
-            <div className="mx-auto px-20 flex-col flex gap-10 object-bottom md:flex-row">
+            <div className="mx-auto px-20 flex flex-col-reverse gap-10 object-bottom md:flex-row">
                 <div className="flex flex-col gap-4 md:w-5/12 lg:w-6/12 xl:w-8/12 2xl:w-10/12">
-                    <h1 className="font-bold md:text-5xl lg:text-7xl text-center text-red-400">{`Season ${seasonNum}`}</h1>
-                    <p className="lg:text-2xl text-white text-center">{`${air_date}`}</p>
-                    <p className="lg:text-2xl text-white line-clamp-14">{overview}</p>
+                    <h1 className="font-bold text-3xl md:text-5xl lg:text-7xl text-center text-red-400">{`Season ${seasonNum}`}</h1>
+                    <p className="font-bold lg:text-2xl 2xl:text-3xl text-white text-center">{`${air_date}`}</p>
+                    <p className="text-center md:text-left text-base md:text-lg lg:text-2xl text-white line-clamp-14 mb-6 md:mb-0">{overview}</p>
                 </div>
 
-                <div className="w-full lg:w-3/12 mx-14">
+                <div className="w-8/12 md:w-4/12 lg:w-3/12 mx-10 md:mx-20 lg:mx-14">
                     <Image layout="responsive" src={`${BASE_URL}${poster_path}`} alt='' height={960} width={640}/>
                 </div>
             </div>
 
             <div>
-                <p className="font-bold text-white sm:text-xl md:text-2xl lg:text-3xl mx-7">Episodes:</p>
-                <FlipMove className="px-5 my-10 md:grid lg:grid-cols-2 xl:grid-cols-4 2xl:grid-cols-6 3xl:grid-cols-8">
+                <p className="font-bold text-white text-2xl lg:text-3xl mx-7">Episodes:</p>
+                <FlipMove className="px-5 my-10 sm:grid md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6 3xl:grid-cols-8">
                     {episodes?.map((episode) => (
                     <>
                         <Episodes result={episode} />
