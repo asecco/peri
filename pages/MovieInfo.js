@@ -69,6 +69,21 @@ function MovieInfo() {
         }
     }
 
+    const addToFav = () => {
+        const favorites = localStorage.getItem('favorites') ? JSON.parse(localStorage.getItem('favorites')) : [];
+        if(!favorites.includes(movie.id)) {
+            favorites.push(movie.id);
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+        }
+    }
+    const removeFromFav = () => {
+        const favorites = localStorage.getItem('favorites') ? JSON.parse(localStorage.getItem('favorites')) : [];
+        if(favorites.includes(movie.id)) {
+            const newFavorites = favorites.filter(id => id !== movie.id);
+            localStorage.setItem('favorites', JSON.stringify(newFavorites));
+        }
+    }
+
     const [isOpen, setOpen] = useState(false);
 
     const routePage = (page) => router.push(page);
@@ -103,8 +118,8 @@ function MovieInfo() {
                         <div className="flex items-center justify-center space-x-4 my-2">
                             <button title="Play" className="h-14 w-28 bg-red-400 hover:bg-red-500 text-white text-lg font-bold rounded-2xl inline-flex items-center justify-center"><PlayIcon className="h-12" /></button>
                             <button title="Watch Trailer" onClick={()=> setOpen(true)} className="h-14 w-28 bg-red-400 hover:bg-red-500 text-white text-lg font-bold rounded-2xl inline-flex items-center justify-center"><FilmIcon className="h-12" /></button>
-                            <button title="Favorite" className="h-14 w-28 bg-red-400 hover:bg-red-500 text-white text-lg font-bold rounded-2xl inline-flex items-center justify-center"><HeartIcon className="h-12" /></button>
-                            <button title="Unfavorite" className="h-14 w-28 bg-red-400 hover:bg-red-500 text-white text-lg font-bold rounded-2xl inline-flex items-center justify-center"><TrashIcon className="h-12" /></button>
+                            <button onClick={addToFav} title="Favorite" className="h-14 w-28 bg-red-400 hover:bg-red-500 text-white text-lg font-bold rounded-2xl inline-flex items-center justify-center"><HeartIcon className="h-12" /></button>
+                            <button onClick={removeFromFav} title="Unfavorite" className="h-14 w-28 bg-red-400 hover:bg-red-500 text-white text-lg font-bold rounded-2xl inline-flex items-center justify-center"><TrashIcon className="h-12" /></button>
                         </div>
                     </div>
                     <div className="w-8/12 md:w-4/12 lg:w-3/12 mx-10 md:mx-20 lg:mx-14">
