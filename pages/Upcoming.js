@@ -1,19 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import {
-    HomeIcon,
-    BookmarkIcon,
-    CalendarIcon,
     ArrowCircleLeftIcon,
     ArrowCircleRightIcon,
-    ThumbUpIcon,
-    VideoCameraIcon,
 } from '@heroicons/react/outline';
-import PeriLogo from '../public/peri.png';
 import HeaderItem from "../components/HeaderItem";
+import Header from '../components/Header';
 import Thumbnail from '../components/Thumbnail';
 import FlipMove from 'react-flip-move';
-import Image from "next/image";
-import {useRouter} from "next/router";
 
 function Upcoming() {
     const [upcoming, setUpcoming] = useState([]);
@@ -35,22 +28,9 @@ function Upcoming() {
         });
     }, [page]);
 
-    const router = useRouter();
-    const routePage = (page) => router.push(page);
-
     return (
         <div>
-            <header className="flex flex-col sm:flex-row mb-5 justify-between items-center h-auto">
-                <div className='flex flex-grow max-w-2xl mt-2 md:mt-0'>
-                    <div onClick={() => routePage('/')}><HeaderItem title='HOME' Icon={HomeIcon} /></div>
-                    <div onClick={() => routePage('/PopularSeries')}><HeaderItem title='SERIES' Icon={VideoCameraIcon} /></div>
-                    <div onClick={() => routePage('/Upcoming')}><HeaderItem title='UPCOMING' Icon={CalendarIcon} /></div>
-                    <div onClick={() => routePage('/Favorites')}><HeaderItem title='FAVORITES' Icon={BookmarkIcon} /></div>
-                    <div onClick={() => routePage('/Recommended')}><HeaderItem title='RECOMMENDED' Icon={ThumbUpIcon} /></div>
-                </div>
-                <Image className='object-contain' src={PeriLogo} alt='Peri' width={250} height={100} />
-            </header>
-
+            <Header />
             <p className='font-bold text-white text-3xl md:text-4xl lg:text-5xl mx-7'>Upcoming Movies</p>
             <div>
                 <FlipMove className="px-5 my-10 sm:grid md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6">

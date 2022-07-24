@@ -1,14 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import {
-    HomeIcon,
-    BookmarkIcon,
-    CalendarIcon,
-    ThumbUpIcon,
-    VideoCameraIcon,
-} from '@heroicons/react/outline';
-import PeriLogo from '../public/peri.png';
-import HeaderItem from "../components/HeaderItem";
 import Image from "next/image";
+import Header from '../components/Header';
 import Episodes from '../components/Episodes';
 import FlipMove from 'react-flip-move';
 import {useRouter} from "next/router";
@@ -21,8 +13,6 @@ function EpisodeList() {
     const overview = router.query.overview;
     const poster_path = router.query.poster;
     const air_date = router.query.air_date;
-    const routePage = (page) => router.push(page);
-
     const [episodes, setEpisodes] = useState([]);
     useEffect(() => {
         const searchReq = async () => {
@@ -36,17 +26,7 @@ function EpisodeList() {
 
     return (
         <div>
-            <header className="flex flex-col sm:flex-row mb-5 justify-between items-center h-auto">
-                <div className='flex flex-grow max-w-2xl mt-2 md:mt-0'>
-                    <div onClick={() => routePage('/')}><HeaderItem title='HOME' Icon={HomeIcon} /></div>
-                    <div onClick={() => routePage('/PopularSeries')}><HeaderItem title='SERIES' Icon={VideoCameraIcon} /></div>
-                    <div onClick={() => routePage('/Upcoming')}><HeaderItem title='UPCOMING' Icon={CalendarIcon} /></div>
-                    <div onClick={() => routePage('/Favorites')}><HeaderItem title='FAVORITES' Icon={BookmarkIcon} /></div>
-                    <div onClick={() => routePage('/Recommended')}><HeaderItem title='RECOMMENDED' Icon={ThumbUpIcon} /></div>
-                </div>
-                <Image className='object-contain' src={PeriLogo} alt='Peri' width={250} height={100} />
-            </header>
-
+            <Header />
             <div className="mx-auto px-20 flex flex-col-reverse gap-10 object-bottom md:flex-row">
                 <div className="flex flex-col gap-4 md:w-5/12 lg:w-6/12 xl:w-8/12 2xl:w-10/12">
                     <h1 className="font-bold text-3xl md:text-5xl lg:text-7xl text-center text-red-400">{`Season ${seasonNum}`}</h1>

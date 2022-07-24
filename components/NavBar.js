@@ -1,7 +1,7 @@
 import requests from "../utils/requests";
 import {useRouter} from "next/router";
 
-function Nav() { 
+function NavBar() { 
     const router = useRouter();
 
     return (
@@ -16,4 +16,4 @@ function Nav() {
     );
 }
 
-export default Nav;
+export default NavBar;

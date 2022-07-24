@@ -1,8 +1,9 @@
 import Head from 'next/head';
 import Header from '../components/Header';
-import Nav from '../components/Nav';
-import Results from '../components/Results';
+import NavBar from '../components/NavBar';
+import HomeScreen from '../components/HomeScreen';
 import requests from '../utils/requests';
+import SearchBar from '../components/SearchBar';
 
 export default function Home({results}) {
   return (
@@ -12,10 +13,10 @@ export default function Home({results}) {
         <meta name="description" content="Peri" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <Header />
-      <Nav />
-      <Results results={results} />
+      <SearchBar />
+      <NavBar />
+      <HomeScreen results={results} />
     </div>
   );
 }
