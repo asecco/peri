@@ -137,7 +137,7 @@ function MovieInfo() {
 
             <div>
                 <p className="font-bold text-white text-2xl lg:text-3xl mx-7">Cast:</p>
-                <FlipMove className="px-5 my-10 sm:grid md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8 3xl:grid-cols-10">
+                <FlipMove className="px-10 md:px-5 my-10 sm:grid md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8 3xl:grid-cols-10">
                     {cast?.map((cast) => cast.profile_path && (
                     <>
                         <Cast member={cast} />
