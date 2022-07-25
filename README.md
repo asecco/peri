@@ -28,7 +28,7 @@
     <br> 
 </p>
 
-![2](https://user-images.githubusercontent.com/40510223/180703850-78ff7ff2-e5c1-44bc-b942-10c24007f8d2.png)
+![2](https://user-images.githubusercontent.com/40510223/180708193-0894f709-ab09-4175-a609-991a445f9512.png)
 
 ## Getting Started
 
