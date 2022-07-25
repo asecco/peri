@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  background-color: #4a5c5b;
+  background-color: #202F3B;
   color: lightgray;
 }
 
@@ -12,7 +12,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-	background: #4a5c5b;
+	background: #202F3B;
 }
 
 ::-webkit-scrollbar-thumb {
