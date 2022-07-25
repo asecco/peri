@@ -1,75 +1,79 @@
-const API_KEY = process.env.API_KEY;
+const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
 export default {
+    Popular: {
+        title: 'Popular',
+        url: `movie/popular?api_key=${API_KEY}`,
+    },
     TopRated: {
         title: 'Top Rated',
         url: `movie/top_rated?api_key=${API_KEY}`,
     },
-    ActionMovies: {
+    Action: {
         title: 'Action',
         url: `discover/movie?api_key=${API_KEY}&with_genres=28`,
     },
-    AdventureMovies: {
+    Adventure: {
         title: 'Adventure',
         url: `discover/movie?api_key=${API_KEY}&with_genres=12`,
     },
-    AnimationMovies: {
+    Animation: {
         title: 'Animation',
         url: `discover/movie?api_key=${API_KEY}&with_genres=16`,
     },
-    ComedyMovies: {
+    Comedy: {
         title: 'Comedy',
         url: `discover/movie?api_key=${API_KEY}&with_genres=35`,
     },
-    CrimeMovies: {
+    Crime: {
         title: 'Crime',
         url: `discover/movie?api_key=${API_KEY}&with_genres=80`,
     },
-    DocumentaryMovies: {
+    Documentary: {
         title: 'Documentary',
         url: `discover/movie?api_key=${API_KEY}&with_genres=99`,
     },
-    DramaMovies: {
+    Drama: {
         title: 'Drama',
         url: `discover/movie?api_key=${API_KEY}&with_genres=18`,
     },
-    FamilyMovies: {
+    Family: {
         title: 'Family',
         url: `discover/movie?api_key=${API_KEY}&with_genres=10751`,
     },
-    FantasyMovies: {
+    Fantasy: {
         title: 'Fantasy',
         url: `discover/movie?api_key=${API_KEY}&with_genres=14`,
     },
-    HistoryMovies: {
+    History: {
         title: 'History',
         url: `discover/movie?api_key=${API_KEY}&with_genres=36`,
     },
-    HorrorMovies: {
+    Horror: {
         title: 'Horror',
         url: `discover/movie?api_key=${API_KEY}&with_genres=27`,
     },
-    MysteryMovies: {
+    Mystery: {
         title: 'Mystery',
         url: `discover/movie?api_key=${API_KEY}&with_genres=9648`,
     },
-    RomanceMovies: {
+    Romance: {
         title: 'Romance',
         url: `discover/movie?api_key=${API_KEY}&with_genres=10749`,
     },
-    SciFiMovies: {
+    SciFi: {
         title: 'Sci-Fi',
         url: `discover/movie?api_key=${API_KEY}&with_genres=878`,
     },
-    ThrillerMovies: {
+    Thriller: {
         title: 'Thriller',
         url: `discover/movie?api_key=${API_KEY}&with_genres=53`,
     },
-    WarMovies: {
+    WarM: {
         title: 'War',
         url: `discover/movie?api_key=${API_KEY}&with_genres=10752`,
     },
-    WesternMovies: {
+    Western: {
         title: 'Western',
         url: `discover/movie?api_key=${API_KEY}&with_genres=37`,
     },
