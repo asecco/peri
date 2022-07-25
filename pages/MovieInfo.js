@@ -26,7 +26,6 @@ function MovieInfo() {
     const [recommendMovie, setRecommendMovie] = useState([]);
     const [seasons, setSeasons] = useState([]);
     const [isOpen, setOpen] = useState(false);
-    const [runtime, setRunTime] = useState([]);
     useEffect(() => {
         const searchReq = async () => {
             const mediaType = movie.media_type || 'movie';
@@ -99,6 +98,7 @@ function MovieInfo() {
         }
     }
 
+    const [runtime, setRunTime] = useState([]);
     useEffect(() => {
         if(movie.media_type === 'movie') {
             const minutes = movie2.runtime % 60;
@@ -128,10 +128,10 @@ function MovieInfo() {
                         <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId={trailerID === null ? "dQw4w9WgXcQ" : trailerID} onClose={() => setOpen(false)} />
 
                         <div className="flex items-center justify-center space-x-4 my-2">
-                            <button title="Play" className="transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 h-14 w-28 bg-gray-600 hover:bg-white text-white hover:text-gray-700 text-lg font-bold rounded-lg inline-flex items-center justify-center"><PlayIcon className="h-12" /></button>
-                            <button title="Watch Trailer" onClick={()=> setOpen(true)} className="transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 h-14 w-28 bg-gray-600 hover:bg-white text-white hover:text-gray-700 text-lg font-bold rounded-lg inline-flex items-center justify-center"><FilmIcon className="h-12" /></button>
-                            <button onClick={addToFav} title="Favorite" className="transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 h-14 w-28 bg-gray-600 hover:bg-white text-white hover:text-gray-700 text-lg font-bold rounded-lg inline-flex items-center justify-center"><HeartIcon className="h-12" /></button>
-                            <button onClick={removeFromFav} title="Unfavorite" className="transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 h-14 w-28 bg-gray-600 hover:bg-white text-white hover:text-gray-700 text-lg font-bold rounded-lg inline-flex items-center justify-center"><TrashIcon className="h-12" /></button>
+                            <button title="Play" className="transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 h-16 w-24 bg-gray-600 hover:bg-white text-white hover:text-gray-700 text-lg font-bold rounded-lg inline-flex items-center justify-center"><PlayIcon className="h-12" /></button>
+                            <button title="Watch Trailer" onClick={()=> setOpen(true)} className="transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 h-16 w-24 bg-gray-600 hover:bg-white text-white hover:text-gray-700 text-lg font-bold rounded-lg inline-flex items-center justify-center"><FilmIcon className="h-12" /></button>
+                            <button onClick={addToFav} title="Favorite" className="transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 h-16 w-24 bg-gray-600 hover:bg-white text-white hover:text-gray-700 text-lg font-bold rounded-lg inline-flex items-center justify-center"><HeartIcon className="h-12" /></button>
+                            <button onClick={removeFromFav} title="Unfavorite" className="transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 h-16 w-24 bg-gray-600 hover:bg-white text-white hover:text-gray-700 text-lg font-bold rounded-lg inline-flex items-center justify-center"><TrashIcon className="h-12" /></button>
                         </div>
                     </div>
                     <div className="w-8/12 md:w-4/12 lg:w-3/12 mx-10 md:mx-20 lg:mx-14">
