@@ -22,7 +22,7 @@ function Favorites() {
     return (
         <div>
             <Header />
-            <p className='font-bold text-white text-3xl md:text-4xl lg:text-5xl mx-7'>You've Enjoyed</p>
+            <p className='font-bold text-white text-3xl md:text-4xl lg:text-5xl mx-7'>{favRes.length > 0 ? "You've Enjoyed" : ''}</p>
             <div className='my-10 font-bold text-center mx-6 text-white'>
                 <p className='text-xl md:text-2xl lg:text-4xl 2xl:text-6xl'>{favRes.length > 0 ? '' : 'There are currently no favorites'}</p>
                 <p className='text-lg md:text-lg lg:text-2xl 2xl:text-4xl'>{favRes.length > 0 ? '': 'Give a film a ♡ and check back!'}</p>
