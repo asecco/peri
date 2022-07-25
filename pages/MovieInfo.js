@@ -26,6 +26,7 @@ function MovieInfo() {
     const [recommendMovie, setRecommendMovie] = useState([]);
     const [seasons, setSeasons] = useState([]);
     const [isOpen, setOpen] = useState(false);
+    const [runtime, setRunTime] = useState([]);
     useEffect(() => {
         const searchReq = async () => {
             const mediaType = movie.media_type || 'movie';
@@ -98,6 +99,16 @@ function MovieInfo() {
         }
     }
 
+    useEffect(() => {
+        if(movie.media_type === 'movie') {
+            const minutes = movie2.runtime % 60;
+            const hours = Math.floor(movie2.runtime / 60);
+            setRunTime(`${hours}h ${minutes}min`);
+        } else {
+            setRunTime(`${movie2.episode_run_time} mins`);
+        }
+    }, [movie2.runtime, movie2.episode_run_time]);
+
     return (
         <div>
             <Header />
@@ -109,7 +120,7 @@ function MovieInfo() {
                             <p>{movie2.status}</p>
                             <p>{releaseYear}</p>
                             <p className="xl:truncate">{genres.slice(0, -2)}</p>
-                            <p>{`${movie2.runtime || movie2.episode_run_time} mins`}</p>
+                            <p>{runtime}</p>
                             <StarIcon className="h-10 my-4 lg:h-6 lg:mx-2 lg:my-0" />{Math.round(movie.vote_average * 10) / 10}/10
                         </div>
                         <p className="lg:text-xl text-white text-center font-style: italic">{movie2.tagline}</p>
