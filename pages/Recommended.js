@@ -29,7 +29,7 @@ function Recommended() {
     return (
         <div>
             <Header />
-            <p className='font-bold text-white text-3xl md:text-4xl lg:text-5xl mx-7'>Chosen For You</p>
+            <p className='font-bold text-white text-3xl md:text-4xl lg:text-5xl mx-7'>{recRes.length > 0 ? 'Chosen For You' : ''}</p>
             <div className='my-10 font-bold text-center mx-6 text-white'>
                 <p className='text-xl md:text-2xl lg:text-4xl 2xl:text-6xl'>{recRes.length > 0 ? '' : 'There are currently no recommendations'}</p>
                 <p className='text-lg md:text-lg lg:text-2xl 2xl:text-4xl'>{recRes.length > 0 ? '': 'Give a film a ♡ and check back!'}</p>
@@ -37,7 +37,7 @@ function Recommended() {
 
             <div>
                 <FlipMove className="px-5 my-10 sm:grid md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6">
-                    {recRes?.map((rec) => (
+                    {recRes?.map((rec) => rec !== undefined && rec.backdrop_path && (
                     <>
                         <Thumbnail result={rec} />
                     </>
