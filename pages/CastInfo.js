@@ -16,6 +16,9 @@ function CastInfo() {
         const searchReq = async () => {
             const castReq = await fetch(`https://api.themoviedb.org/3/person/${castId}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
             const knownForReq = await fetch(`https://api.themoviedb.org/3/person/${castId}/movie_credits?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
+            for(let i in knownForReq.cast) {
+                knownForReq.cast[i].media_type = 'movie';
+            }
             setCastInfo(castReq);
             setKnownFor(knownForReq.cast.slice(0, 8));
         }
