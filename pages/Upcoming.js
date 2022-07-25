@@ -17,9 +17,10 @@ function Upcoming() {
     useEffect(() => {
         const searchReq = async () => {
             const upcomingReq = await fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&page=${page}`).then((res) => res.json());
-            if(upcomingReq) {
-                setUpcoming(upcomingReq.results);
+            for(let i in upcomingReq.results) {
+                upcomingReq.results[i].media_type = 'movie';
             }
+            setUpcoming(upcomingReq.results);
         }
         searchReq();
         window.scrollTo({
