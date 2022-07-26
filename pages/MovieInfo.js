@@ -110,26 +110,20 @@ function MovieInfo() {
         }
     }, [movie2.runtime, movie2.episode_run_time]);
 
+    const alertParams = {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        progress: undefined,
+        pauseOnFocusLoss: false,
+    }
+
     const toastNotify = (status) => {
         if(status === 'add') {
-            toast.success('Added to favorites', {
-                position: "top-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                progress: undefined,
-                pauseOnFocusLoss: false,
-            });
+            toast.success('Added to favorites', alertParams);
         } else {
-            toast.info('Removed from favorites', {
-                position: "top-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                progress: undefined,
-                pauseOnFocusLoss: false,
-                    
-            });
+            toast.info('Removed from favorites', alertParams);
         }
     }
 
