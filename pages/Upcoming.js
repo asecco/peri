@@ -1,8 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {
-    ArrowCircleLeftIcon,
-    ArrowCircleRightIcon,
-} from '@heroicons/react/outline';
+import {ArrowCircleLeftIcon,ArrowCircleRightIcon} from '@heroicons/react/outline';
 import HeaderItem from "../components/HeaderItem";
 import Header from '../components/Header';
 import Thumbnail from '../components/Thumbnail';
@@ -11,9 +8,7 @@ import FlipMove from 'react-flip-move';
 function Upcoming() {
     const [upcoming, setUpcoming] = useState([]);
     const [page, setPage] = useState(1);
-    if(page < 1) {
-        setPage(1);
-    }
+    if(page < 1) setPage(1);
     useEffect(() => {
         const searchReq = async () => {
             const upcomingReq = await fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&page=${page}`).then((res) => res.json());

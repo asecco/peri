@@ -1,11 +1,4 @@
-import {
-    HomeIcon,
-    BookmarkIcon,
-    CalendarIcon,
-    ThumbUpIcon,
-    VideoCameraIcon,
-    FilmIcon,
-} from '@heroicons/react/outline';
+import {HomeIcon, BookmarkIcon, CalendarIcon, ThumbUpIcon, VideoCameraIcon, FilmIcon} from '@heroicons/react/outline';
 import Image from 'next/image';
 import PeriLogo from '../public/peri.png';
 import HeaderItem from './HeaderItem';
@@ -20,11 +13,11 @@ function Header() {
             <header className="flex flex-col sm:flex-row mb-5 justify-between items-center h-auto">
                 <div className='flex flex-grow max-w-2xl mt-2 md:mt-0'>
                     <div onClick={() => routePage('/')}><HeaderItem title='HOME' Icon={HomeIcon} /></div>
-                    <div onClick={() => routePage('/Movies')}><HeaderItem title='MOVIES' Icon={FilmIcon} /></div>
-                    <div onClick={() => routePage('/Series')}><HeaderItem title='SERIES' Icon={VideoCameraIcon} /></div>
-                    <div onClick={() => routePage('/Upcoming')}><HeaderItem title='UPCOMING' Icon={CalendarIcon} /></div>
-                    <div onClick={() => routePage('/Favorites')}><HeaderItem title='FAVORITES' Icon={BookmarkIcon} /></div>
-                    <div onClick={() => routePage('/Recommended')}><HeaderItem title='RECOMMENDED' Icon={ThumbUpIcon} /></div>
+                    <div onClick={() => routePage('/movies')}><HeaderItem title='MOVIES' Icon={FilmIcon} /></div>
+                    <div onClick={() => routePage('/series')}><HeaderItem title='SERIES' Icon={VideoCameraIcon} /></div>
+                    <div onClick={() => routePage('/upcoming')}><HeaderItem title='UPCOMING' Icon={CalendarIcon} /></div>
+                    <div onClick={() => routePage('/favorites')}><HeaderItem title='FAVORITES' Icon={BookmarkIcon} /></div>
+                    <div onClick={() => routePage('/recommended')}><HeaderItem title='RECOMMENDED' Icon={ThumbUpIcon} /></div>
                 </div>
                 <Image className='object-contain' src={PeriLogo} alt='Peri' width={250} height={100} />
             </header>

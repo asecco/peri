@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import Header from '../components/Header';
 import HomeScreen from '../components/HomeScreen';
-import requests from '../utils/requests';
 import SearchBar from '../components/SearchBar';
 
 export default function Home({results}) {

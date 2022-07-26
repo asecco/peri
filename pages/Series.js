@@ -1,8 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {
-    ArrowCircleLeftIcon,
-    ArrowCircleRightIcon,
-} from '@heroicons/react/outline';
+import {ArrowCircleLeftIcon, ArrowCircleRightIcon} from '@heroicons/react/outline';
 import HeaderItem from "../components/HeaderItem";
 import Header from '../components/Header';
 import Thumbnail from '../components/Thumbnail';
@@ -13,9 +10,7 @@ function Series() {
     const [series, setSeries] = useState([]);
     const [genre, setGenre] = useState('Popular');
     const [page, setPage] = useState(1);
-    if(page < 1) {
-        setPage(1);
-    }
+    if(page < 1) setPage(1);
     useEffect(() => {
         const searchReq = async () => {
             const req = await fetch(`https://api.themoviedb.org/3/${requestsTV[genre].url}&page=${page}`).then((res) => res.json());

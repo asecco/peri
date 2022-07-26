@@ -5,7 +5,7 @@ import {useRouter} from "next/router";
 const Thumbnail = forwardRef(({result}, ref) => {
     const BASE_URL = 'https://image.tmdb.org/t/p/original/';
     const router = useRouter();
-    const routeQuery = () => router.push({pathname: '/MovieInfo', query: result}, `/${result.id}`);
+    const routeQuery = () => router.push({pathname: '/info', query: result}, `/${result.id}`);
 
     return (
         <div onClick={routeQuery} ref={ref} className='p-2 group cursor-pointer transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50'>

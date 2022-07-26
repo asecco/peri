@@ -1,7 +1,5 @@
 import React, {useState, useCallback} from 'react';
-import {
-    SearchIcon,
-} from '@heroicons/react/outline';
+import {SearchIcon} from '@heroicons/react/outline';
 import Header from '../components/Header';
 import Thumbnail from '../components/Thumbnail';
 import FlipMove from "react-flip-move";
@@ -15,7 +13,6 @@ function Search() {
             setSearchResults(searchReq.results);
         }
     }
-
     const autoFocus = useCallback(el => el ? el.focus() : null, []);
 
     return (
