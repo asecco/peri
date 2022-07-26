@@ -13,6 +13,7 @@ function CastInfo() {
     const [knownFor, setKnownFor] = useState([]);
     const [age, setAge] = useState([]);
     useEffect(() => {
+        document.title = castInfo.name;
         const searchReq = async () => {
             const castReq = await fetch(`https://api.themoviedb.org/3/person/${castId}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
             const knownForReq = await fetch(`https://api.themoviedb.org/3/person/${castId}/movie_credits?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());

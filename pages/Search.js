@@ -5,6 +5,7 @@ import Thumbnail from '../components/Thumbnail';
 import FlipMove from "react-flip-move";
 
 function Search() {
+    document.title = 'Peri';
     const [searchResults, setSearchResults] = useState([]);
     const search = async (event) => {
         const searchQuery = event.target.value;

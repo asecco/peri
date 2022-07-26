@@ -6,6 +6,7 @@ import Thumbnail from '../components/Thumbnail';
 function Favorites() {
     const [favRes, setFavRes] = useState([]);
     useEffect(() => {
+        document.title = 'Favorites';
         const searchReq = async () => {
             const favArr = [];
             const favorites = JSON.parse(localStorage.getItem('favorites'));
