@@ -11,7 +11,7 @@ import Seasons from "../components/Seasons";
 import FlipMove from "react-flip-move";
 import {ToastContainer, toast} from 'react-toastify';
 
-function Info() {
+function MovieInfo() {
     const BASE_URL = 'https://image.tmdb.org/t/p/original/';
     const router = useRouter();
     const movie = router.query;
@@ -190,4 +190,4 @@ function Info() {
     );
 }
 
-export default Info;
+export default MovieInfo;
