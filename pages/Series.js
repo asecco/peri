@@ -43,7 +43,7 @@ function Series() {
             <p className='font-bold text-white text-3xl md:text-4xl lg:text-5xl mx-7'>{genre}</p>
             <div>
                 <FlipMove className="px-5 my-10 sm:grid md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6">
-                    {series.map((tv) => (
+                    {series.map((tv) => tv.backdrop_path && (
                     <>
                         <Thumbnail result={tv} />
                     </>
