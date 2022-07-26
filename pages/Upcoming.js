@@ -10,6 +10,7 @@ function Upcoming() {
     const [page, setPage] = useState(1);
     if(page < 1) setPage(1);
     useEffect(() => {
+        document.title = 'Upcoming';
         const searchReq = async () => {
             const upcomingReq = await fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&page=${page}`).then((res) => res.json());
             for(let i in upcomingReq.results) {

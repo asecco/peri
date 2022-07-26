@@ -11,7 +11,7 @@ import Seasons from "../components/Seasons";
 import FlipMove from "react-flip-move";
 import {ToastContainer, toast} from 'react-toastify';
 
-function MovieInfo() {
+function Info() {
     const BASE_URL = 'https://image.tmdb.org/t/p/original/';
     const router = useRouter();
     const movie = router.query;
@@ -22,6 +22,7 @@ function MovieInfo() {
     const [seasons, setSeasons] = useState([]);
     const [isOpen, setOpen] = useState(false);
     useEffect(() => {
+        document.title = `${movie.title || movie.original_name}`;
         const searchReq = async () => {
             const mediaType = movie.media_type || 'movie';
             const castReq = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movie.id}/credits?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
@@ -189,4 +190,4 @@ function MovieInfo() {
     );
 }
 
-export default MovieInfo;
+export default Info;

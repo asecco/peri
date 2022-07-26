@@ -6,6 +6,7 @@ import Thumbnail from '../components/Thumbnail';
 function Recommended() {
     const [recRes, setRecRes] = useState([]);
     useEffect(() => {
+        document.title = 'Recommended';
         const searchReq = async () => {
             const recArr = [];
             const favorites = JSON.parse(localStorage.getItem('favorites'));
