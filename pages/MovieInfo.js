@@ -15,6 +15,7 @@ import Cast from "../components/Cast";
 import Recommend from "../components/Recommend";
 import Seasons from "../components/Seasons";
 import FlipMove from "react-flip-move";
+import {ToastContainer, toast} from 'react-toastify';
 
 function MovieInfo() {
     const BASE_URL = 'https://image.tmdb.org/t/p/original/';
@@ -69,7 +70,6 @@ function MovieInfo() {
     }
 
     const addToFav = () => {
-        const localStorage = window.localStorage;
         const localStorageParams = localStorage.getItem('favorites');
         if(localStorageParams) {
             const localStorageParamsObj = JSON.parse(localStorageParams);
@@ -77,6 +77,7 @@ function MovieInfo() {
             if(!localStorageParamsObjIds.includes(movie.id)) {
                 localStorageParamsObj.push(params);
                 localStorage.setItem('favorites', JSON.stringify(localStorageParamsObj));
+                toastNotify('add');
             }
         } else {
             localStorage.setItem('favorites', JSON.stringify([params]));
@@ -84,7 +85,6 @@ function MovieInfo() {
     }
 
     const removeFromFav = () => {
-        const localStorage = window.localStorage;
         const localStorageParams = localStorage.getItem('favorites');
         if(localStorageParams) {
             const localStorageParamsObj = JSON.parse(localStorageParams);
@@ -94,6 +94,7 @@ function MovieInfo() {
                 const index = localStorageParamsObjIds.indexOf(movie.id);
                 localStorageParamsObj.splice(index, 1);
                 localStorage.setItem('favorites', JSON.stringify(localStorageParamsObj));
+                toastNotify('remove');
             }
         }
     }
@@ -109,8 +110,32 @@ function MovieInfo() {
         }
     }, [movie2.runtime, movie2.episode_run_time]);
 
+    const toastNotify = (status) => {
+        if(status === 'add') {
+            toast.success('Added to favorites', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                progress: undefined,
+                pauseOnFocusLoss: false,
+            });
+        } else {
+            toast.info('Removed from favorites', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                progress: undefined,
+                pauseOnFocusLoss: false,
+                    
+            });
+        }
+    }
+
     return (
         <div>
+            <ToastContainer theme="dark"/>
             <Header />
             <div className="w-full">
                 <div className="mx-auto px-20 flex flex-col-reverse gap-10 object-bottom md:flex-row">
