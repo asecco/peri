@@ -16,8 +16,9 @@
 </div>
 
 <p align="center">
-  <a href="#description">Description</a> •
+  <a href="#about">About</a> •
   <a href="#features">Features</a> •
+  <a href="#built-with">Built With</a> •
   <a href="#screenshots">Screenshots</a> •
   <a href="#license">License</a>
 </p>
@@ -30,7 +31,7 @@
 
 ![1](https://user-images.githubusercontent.com/40510223/180893862-9d581af1-02ad-4a6b-af68-da3b9bc81958.png)
 
-## Description
+## About
 Peri was originally designed to be similar to a modern streaming media service with the UI being inspired by platforms such as Plex and Hulu. Peri includes no streaming functionality and serves as an extensive catalog of films and tv series, allowing you to browse and garner information on whichever type of media you desire.
 
 ## Features
@@ -41,10 +42,9 @@ Peri was originally designed to be similar to a modern streaming media service w
 - Server-side rendering via Next.js
 
 ## Built With
-- [![React][React.js]][React-url]
-- [![Next][Next.js]][Next-url]
-- [![Tailwind][React.js]][React-url]
-
+- [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org)
+- [![Next.js](https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org)
+- [![Tailwind CSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
 
 ## Screenshots
 ![2](https://user-images.githubusercontent.com/40510223/180894004-a89c3b73-6d5c-4b13-b30f-cfe6ec4c86e0.png)
