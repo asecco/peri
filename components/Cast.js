@@ -4,7 +4,7 @@ import {useRouter} from "next/router";
 function Cast({member}) {
     const BASE_URL = 'https://image.tmdb.org/t/p/original/';
     const router = useRouter();
-    const routeQuery = () => router.push({pathname: '/castinfo', query: member.id}, `/person/${member.id}`);
+    const routeQuery = () => router.push({pathname: '/CastInfo', query: member.id}, `/person/${member.id}`);
 
     return (
         <div>
