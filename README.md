@@ -16,7 +16,7 @@
 </div>
 
 <p align="center">
-  <a href="#getting-started">Getting Started</a> •
+  <a href="#description">Description</a> •
   <a href="#features">Features</a> •
   <a href="#screenshots">Screenshots</a> •
   <a href="#license">License</a>
@@ -28,21 +28,32 @@
     <br> 
 </p>
 
-![2](https://user-images.githubusercontent.com/40510223/180708193-0894f709-ab09-4175-a609-991a445f9512.png)
+![1](https://user-images.githubusercontent.com/40510223/180893862-9d581af1-02ad-4a6b-af68-da3b9bc81958.png)
 
-## Getting Started
+## Description
+Peri was originally designed to be similar to a modern streaming media service with the UI being inspired by platforms such as Plex and Hulu. Peri includes no streaming functionality and serves as an extensive catalog of films and tv series, allowing you to browse and garner information on whichever type of media you desire.
 
 ## Features
 - Personalized recommendations
-- Beautiful UI and fully mobile responsive
+- Modern UI and fully mobile responsive
 - Local storage for storing favorites
 - Lazy loading
 - Server-side rendering via Next.js
 
+## Built With
+- [![React][React.js]][React-url]
+- [![Next][Next.js]][Next-url]
+- [![Tailwind][React.js]][React-url]
+
+
 ## Screenshots
-![1](https://user-images.githubusercontent.com/40510223/180704561-6f2367cb-02d0-4ef0-937b-e472dfd9b423.png)
-![3](https://user-images.githubusercontent.com/40510223/180704569-47e5b128-8374-4b2e-85f4-cb8345b233f3.png)
-![4](https://user-images.githubusercontent.com/40510223/180704575-ebe6757c-7b52-4ed5-9159-a6ea17f1204b.png)
+![2](https://user-images.githubusercontent.com/40510223/180894004-a89c3b73-6d5c-4b13-b30f-cfe6ec4c86e0.png)
+![3](https://user-images.githubusercontent.com/40510223/180894010-acdc9db4-937f-49f7-ab6b-a6c8d09de32d.png)
+![4](https://user-images.githubusercontent.com/40510223/180894013-89a83ef9-1fe9-437a-8029-102e21e09a9c.png)
+![5](https://user-images.githubusercontent.com/40510223/180894015-7f58801c-59de-4e66-940b-aea8ad4e6867.png)
+![6](https://user-images.githubusercontent.com/40510223/180894019-cdeef5c6-6995-4f1a-8af2-e6d2dead1fec.png)
+![7](https://user-images.githubusercontent.com/40510223/180894024-e7dd9bde-ef9b-4a9a-9277-5f3fe15b577d.png)
+
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
