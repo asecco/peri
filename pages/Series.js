@@ -12,7 +12,7 @@ function Series() {
     const [page, setPage] = useState(1);
     if(page < 1) setPage(1);
     useEffect(() => {
-        document.title = 'Series';
+        document.title = `Series || ${genre}`;
         const searchReq = async () => {
             const req = await fetch(`https://api.themoviedb.org/3/${requestsTV[genre].url}&page=${page}`).then((res) => res.json());
             const arr = req.results;
