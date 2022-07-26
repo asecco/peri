@@ -3,13 +3,7 @@ import React, {useState, useEffect} from 'react';
 import ModalVideo from 'react-modal-video';
 import movieTrailer from 'movie-trailer';
 import Image from "next/image";
-import {
-    StarIcon,
-    PlayIcon,
-    HeartIcon,
-    TrashIcon,
-    FilmIcon,
-} from '@heroicons/react/outline';
+import {StarIcon, PlayIcon, HeartIcon, TrashIcon, FilmIcon} from '@heroicons/react/outline';
 import Header from '../components/Header';
 import Cast from "../components/Cast";
 import Recommend from "../components/Recommend";
