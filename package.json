@@ -11,19 +11,23 @@
   "dependencies": {
     "@heroicons/react": "^1.0.6",
     "@tailwindcss/line-clamp": "^0.4.0",
+    "glob-parent": "^6.0.2",
+    "got": "^12.2.0",
     "movie-trailer": "^2.1.0",
     "next": "12.2.2",
+    "node-fetch": "^3.2.9",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-flip-move": "^3.0.4",
     "react-modal-video": "^1.2.9",
     "react-toastify": "^9.0.7",
-    "tailwind-scrollbar-hide": "^1.1.7"
+    "tailwind-scrollbar-hide": "^1.1.7",
+    "trim-newlines": "^4.0.2"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.7",
     "eslint": "8.20.0",
-    "eslint-config-next": "12.2.2",
+    "eslint-config-next": "12.2.3",
     "postcss": "^8.4.14",
     "tailwindcss": "^3.1.6"
   }
