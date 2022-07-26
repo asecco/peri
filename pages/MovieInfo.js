@@ -149,7 +149,7 @@ function MovieInfo() {
                         </div>
                     </div>
                     <div className="w-8/12 md:w-4/12 lg:w-3/12 mx-10 md:mx-20 lg:mx-14">
-                        <Image layout="responsive" src={`${BASE_URL}${movie.poster_path}`} alt='' height={960} width={640}/>
+                        <Image priority={true} layout="responsive" src={`${BASE_URL}${movie.poster_path}`} alt='' height={960} width={640}/>
                     </div>
                 </div>
             </div>
