@@ -10,7 +10,6 @@
   [![Last Commit](https://img.shields.io/github/last-commit/asecco/Peri)](https://github.com/asecco/Peri)
   [![GitHub stars](https://badgen.net/github/stars/asecco/Peri)](https://github.com/asecco/Peri/stargazers)
   [![GitHub Issues](https://img.shields.io/github/issues/asecco/Peri.svg)](https://github.com/asecco/Peri/issues)
-  [![TypeScript](https://img.shields.io/badge/Made%20with-React-blue)](https://www.typescriptlang.org/)
   [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
 </div>
