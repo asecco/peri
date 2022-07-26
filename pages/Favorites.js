@@ -14,12 +14,12 @@ function Favorites() {
                 const favReq = await fetch(`https://api.themoviedb.org/3/${favorites[i].type}/${favorites[i].id}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
                 favReq.media_type = favorites[i].type;
                 favArr.push(favReq);
-                setFavRes(favArr);
             }
+            setFavRes(favArr);
         }
         searchReq();
     }, []);
-
+    
     return (
         <div>
             <Header />
