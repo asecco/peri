@@ -69,7 +69,7 @@ export default {
         title: 'Thriller',
         url: `discover/movie?api_key=${API_KEY}&with_genres=53`,
     },
-    WarM: {
+    War: {
         title: 'War',
         url: `discover/movie?api_key=${API_KEY}&with_genres=10752`,
     },
