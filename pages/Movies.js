@@ -12,7 +12,7 @@ function Movies() {
     const [page, setPage] = useState(1);
     if(page < 1) setPage(1);
     useEffect(() => {
-        document.title = `Movies || ${genre}`;
+        document.title = `Movies | ${genre}`;
         const searchReq = async () => {
             const req = await fetch(`https://api.themoviedb.org/3/${requests[genre].url}&page=${page}`).then((res) => res.json());
             const arr = req.results;
