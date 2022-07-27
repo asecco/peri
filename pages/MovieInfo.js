@@ -141,6 +141,7 @@ function MovieInfo() {
     }, [availablityLink]);
 
     const goToAvailablity = () => {
+        setAvailablityLink(availablityLink);
         if(availablityLink) {
             window.open(availablityLink, '_blank');
         } else {
