@@ -10,6 +10,7 @@ import Recommend from "../components/Recommend";
 import Seasons from "../components/Seasons";
 import FlipMove from "react-flip-move";
 import {ToastContainer, toast} from 'react-toastify';
+import JustWatch from "justwatch-api";
 
 function MovieInfo() {
     const BASE_URL = 'https://image.tmdb.org/t/p/original/';
@@ -35,6 +36,7 @@ function MovieInfo() {
             const trailerId = await movieTrailer(`${movie.title || movie.original_name}`, {id: true});
             setTrailerId(trailerId);
             checkRelease();
+            getAvailablity();
         }
         searchReq();
     }, [movie.id]);
@@ -122,6 +124,25 @@ function MovieInfo() {
         }
     }
 
+    const jw = new JustWatch("en_US");
+    const [availablityLink, setAvailablityLink] = useState(false);
+    const getAvailablity = async () => {
+        const availability = await jw.search(movie.title || movie.original_name);
+        const availabilityObj = availability.items[0];
+        if(availabilityObj['offers'] && availabilityObj['offers'].length > 0) {
+            const availablityUrl = availabilityObj.offers[0].urls.standard_web;
+            setAvailablityLink(availablityUrl);
+        }
+    }
+
+    const goToAvailablity = () => {
+        if(availablityLink) {
+            window.open(availablityLink, '_blank');
+        } else {
+            toast.error('Not available to stream', alertParams);
+        }
+    }
+
     return (
         <div>
             <ToastContainer theme="dark"/>
@@ -142,8 +163,8 @@ function MovieInfo() {
                         <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId={trailerID === null ? "dQw4w9WgXcQ" : trailerID} onClose={() => setOpen(false)} />
 
                         <div className="flex items-center justify-center space-x-4 my-2">
-                            <button title="Play" className="transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 h-12 w-20 md:h-14 md:w-20 lg:h-16 lg:w-24 bg-gray-600 hover:bg-white text-white hover:text-primary text-lg font-bold rounded-lg inline-flex items-center justify-center"><PlayIcon className="h-12" /></button>
-                            <button title="Watch Trailer" onClick={()=> setOpen(true)} className="transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 h-12 w-20 md:h-14 md:w-20 lg:h-16 lg:w-24 bg-gray-600 hover:bg-white text-white hover:text-primary text-lg font-bold rounded-lg inline-flex items-center justify-center"><FilmIcon className="h-12" /></button>
+                            <button onClick={goToAvailablity} title="Play" className="transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 h-12 w-20 md:h-14 md:w-20 lg:h-16 lg:w-24 bg-gray-600 hover:bg-white text-white hover:text-primary text-lg font-bold rounded-lg inline-flex items-center justify-center"><PlayIcon className="h-12" /></button>
+                            <button onClick={()=> setOpen(true)} title="Watch Trailer" className="transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 h-12 w-20 md:h-14 md:w-20 lg:h-16 lg:w-24 bg-gray-600 hover:bg-white text-white hover:text-primary text-lg font-bold rounded-lg inline-flex items-center justify-center"><FilmIcon className="h-12" /></button>
                             <button onClick={addToFav} title="Favorite" className="transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 h-12 w-20 md:h-14 md:w-20 lg:h-16 lg:w-24 bg-gray-600 hover:bg-white text-white hover:text-primary text-lg font-bold rounded-lg inline-flex items-center justify-center"><HeartIcon className="h-12" /></button>
                             <button onClick={removeFromFav} title="Unfavorite" className="transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 h-12 w-20 md:h-14 md:w-20 lg:h-16 lg:w-24 bg-gray-600 hover:bg-white text-white hover:text-primary text-lg font-bold rounded-lg inline-flex items-center justify-center"><TrashIcon className="h-12" /></button>
                         </div>
