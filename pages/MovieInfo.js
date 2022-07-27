@@ -10,7 +10,6 @@ import Recommend from "../components/Recommend";
 import Seasons from "../components/Seasons";
 import FlipMove from "react-flip-move";
 import {ToastContainer, toast} from 'react-toastify';
-import JustWatch from "justwatch-api";
 
 function MovieInfo() {
     const BASE_URL = 'https://image.tmdb.org/t/p/original/';
@@ -126,17 +125,28 @@ function MovieInfo() {
         }
     }
 
-    const jw = new JustWatch("en_US");
-    const streamAvailability = () => {
-        jw.search(movie.title || movie.original_name).then(res => {
-            const availabilityObj = res.items[0];
-            if(availabilityObj['offers'] && availabilityObj['offers'].length > 0) {
-                const availabilityUrl = availabilityObj.offers[0].urls.standard_web;
-                window.open(availabilityUrl, '_blank');
-            } else {
-                toast.error('Not available to stream', alertParams);
-            }
-        });
+    // const jw = new JustWatch("en_US"); **Original JustWatch request, runs into CORS request was blocked**
+    // const streamAvailability = () => {
+    //     jw.search(movie.title || movie.original_name).then(res => {
+    //         const availabilityObj = res.items[0];
+    //         if(availabilityObj['offers'] && availabilityObj['offers'].length > 0) {
+    //             const availabilityUrl = availabilityObj.offers[0].urls.standard_web;
+    //             window.open(availabilityUrl, '_blank');
+    //         } else {
+    //             toast.error('Not available to stream', alertParams);
+    //         }
+    //     });
+    // }
+
+    const streamAvailability = async () => {
+        const watchMode = await fetch(`https://api.watchmode.com/v1/title/${movie.media_type}-${movie.id}/sources/?apiKey=${process.env.NEXT_PUBLIC_WatchMode}`).then((res) => res.json());
+        if(watchMode.length > 0) {
+            const watchModeUrl = watchMode[0].web_url;
+            window.open(watchModeUrl, '_blank');
+        } else {
+            toast.error('Not available to stream', alertParams);
+        }
+
     }
 
     return (
