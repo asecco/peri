@@ -24,18 +24,19 @@
 
 ---
 
-<p align="center"> Catalog for browsing your favorite movies/series or finding the perfect watch for the night, personalized with recommendations based on what you’ve enjoyed.
+<p align="center"> Database for browsing your favorite movies/series or finding the perfect watch for the night, personalized with recommendations based on what you’ve enjoyed.
     <br> 
 </p>
 
 ![1](https://user-images.githubusercontent.com/40510223/180893862-9d581af1-02ad-4a6b-af68-da3b9bc81958.png)
 
 ## About
-Peri was originally designed to be similar to a modern streaming media service with the UI being inspired by platforms such as Plex and Hulu. Peri includes no streaming functionality and serves as an extensive catalog of films and tv series, allowing you to browse and garner information on whichever type of media you desire.
+Peri was originally designed to be similar to a modern streaming media service with the UI being inspired by platforms such as [Plex](https://www.plex.tv) and [Hulu](https://www.hulu.com). Peri includes no streaming functionality and serves as an extensive database of films and tv series, allowing you to browse and garner information on whichever type of media you desire.
 
 ## Features
 - Personalized recommendations
 - Modern UI and fully mobile responsive
+- Direct links to legal streaming options(Netflix, Prime Video, Apple TV, etc.)
 - Local storage for storing favorites
 - Lazy loading
 - Server-side rendering via Next.js
