@@ -7,7 +7,6 @@ import FlipMove from "react-flip-move";
 function Search() {
     const [searchResults, setSearchResults] = useState([]);
     const search = async (event) => {
-        document.title = 'Peri';
         const searchQuery = event.target.value;
         if (searchQuery) {
             const searchReq = await fetch(`https://api.themoviedb.org/3/search/multi?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&query=${searchQuery}&include_adult=false`).then((res) => res.json());
@@ -15,6 +14,10 @@ function Search() {
         }
     }
     const autoFocus = useCallback(el => el ? el.focus() : null, []);
+
+    if (typeof window !== 'undefined') {
+        document.title = 'Peri';
+    }
 
     return (
         <div>
