@@ -35,7 +35,6 @@ function MovieInfo() {
             const trailerId = await movieTrailer(`${movie.title || movie.original_name}`, {id: true});
             setTrailerId(trailerId);
             checkRelease();
-            getAvailablity();
         }
         searchReq();
     }, [movie.id]);
@@ -129,14 +128,17 @@ function MovieInfo() {
 
     const jw = new JustWatch("en_US");
     const [availablityLink, setAvailablityLink] = useState(false);
-    const getAvailablity = async () => {
-        const availability = await jw.search(movie.title || movie.original_name);
-        const availabilityObj = availability.items[0];
-        if(availabilityObj['offers'] && availabilityObj['offers'].length > 0) {
-            const availablityUrl = availabilityObj.offers[0].urls.standard_web;
-            setAvailablityLink(availablityUrl);
+    useEffect(() => {
+        const getAvailablity = async () => {
+            const availability = await jw.search(movie.title || movie.original_name);
+            const availabilityObj = availability.items[0];
+            if(availabilityObj['offers'] && availabilityObj['offers'].length > 0) {
+                const availablityUrl = availabilityObj.offers[0].urls.standard_web;
+                setAvailablityLink(availablityUrl);
+            }
         }
-    }
+        getAvailablity();
+    }, [availablityLink]);
 
     const goToAvailablity = () => {
         if(availablityLink) {
@@ -159,7 +161,7 @@ function MovieInfo() {
                             <p>{releaseYear}</p>
                             <p className="xl:truncate">{genres.slice(0, -2)}</p>
                             <p>{runtime}</p>
-                            <StarIcon className="h-10 my-4 lg:h-6 lg:mx-2 lg:my-0" />{Math.round(movie.vote_average * 10) / 10}/10
+                            <StarIcon className="h-4 my-4 md:h-6 lg:mx-2 lg:my-0" />{Math.round(movie.vote_average * 10) / 10}/10
                         </div>
                         <p className="lg:text-xl text-white text-center font-style: italic">{movie2.tagline}</p>
                         <p className="text-center text-base md:text-left lg:text-2xl text-white line-clamp-14">{movie.description || movie.overview}</p>
