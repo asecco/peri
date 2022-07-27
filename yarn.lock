@@ -3616,6 +3616,11 @@ jsonfile@^6.0.1:
     array-includes "^3.1.5"
     object.assign "^4.1.2"
 
+justwatch-api@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/justwatch-api/-/justwatch-api-1.0.7.tgz#4573436b3ae86c1ce4a089e6e153898ae0e4e569"
+  integrity sha512-Tg3aP6jSzUv7UMQKVmDi/MnXzUr6/DzNWfOmoi7UEQPQu/roLMaaG+xY9erP1afcTRzZW6p8mgvOdWi8Ifj8xQ==
+
 keyv@^3.0.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/keyv/-/keyv-3.1.0.tgz#ecc228486f69991e49e9476485a5be1e8fc5c4d9"
