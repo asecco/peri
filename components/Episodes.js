@@ -14,7 +14,7 @@ function Episodes({result}) {
 
             <div className='p-2 text-center'>
                 <h2 className='mt-1 text-lg lg:text-2xl text-white transition-all duration-100 ease-in-out group-hover:font-bold group-hover:text-red-400 truncate max-w-md'>{result.name}</h2>
-                <h2 className='mt-1 text-base lg:text-md text-white transition-all duration-100 ease-in-out group-hover:font-bold truncate max-w-md'>{`Episode ${result.episode_number}`}</h2>
+                <h2 className='mt-1 text-base lg:text-md text-white transition-all duration-100 ease-in-out group-hover:font-medium truncate max-w-md'>{`Episode ${result.episode_number}`}</h2>
             </div>
         </div>
     );
