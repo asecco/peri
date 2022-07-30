@@ -9,8 +9,9 @@ import Cast from "../components/Cast";
 import Recommend from "../components/Recommend";
 import Seasons from "../components/Seasons";
 import FlipMove from "react-flip-move";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import { BASE_URL } from "../utils/requests";
+import { toastNotify, alertParams } from "../utils/notifications";
 
 function MovieInfo() {
     const router = useRouter();
@@ -66,7 +67,7 @@ function MovieInfo() {
         id: movie.id,
         type : movie.media_type,
     }
-
+    
     const addToFav = () => {
         const localStorageParams = localStorage.getItem('favorites');
         if(localStorageParams) {
@@ -81,7 +82,7 @@ function MovieInfo() {
             localStorage.setItem('favorites', JSON.stringify([params]));
         }
     }
-
+    
     const removeFromFav = () => {
         const localStorageParams = localStorage.getItem('favorites');
         if(localStorageParams) {
@@ -107,23 +108,6 @@ function MovieInfo() {
             setRunTime(`${movie2.episode_run_time} mins`);
         }
     }, [movie2.runtime, movie2.episode_run_time]);
-
-    const alertParams = {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        progress: undefined,
-        pauseOnFocusLoss: false,
-    }
-
-    const toastNotify = (status) => {
-        if(status === 'add') {
-            toast.success('Added to favorites', alertParams);
-        } else {
-            toast.info('Removed from favorites', alertParams);
-        }
-    }
 
     // const jw = new JustWatch("en_US"); **Original JustWatch request, runs into CORS request was blocked**
     // const streamAvailability = () => {
