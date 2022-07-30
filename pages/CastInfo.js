@@ -1,12 +1,12 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from "next/image";
 import Header from '../components/Header';
 import Recommend from '../components/Recommend';
 import FlipMove from 'react-flip-move';
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
+import { BASE_URL } from "../utils/requests";
 
 function CastInfo() {
-    const BASE_URL = 'https://image.tmdb.org/t/p/original/';
     const router = useRouter();
     const castId = Object.keys(router.query);
     const [castInfo, setCastInfo] = useState([]);

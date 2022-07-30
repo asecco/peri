@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {ArrowCircleLeftIcon,ArrowCircleRightIcon} from '@heroicons/react/outline';
+import React, { useState, useEffect } from 'react';
+import { ArrowCircleLeftIcon,ArrowCircleRightIcon } from '@heroicons/react/outline';
 import HeaderItem from "../components/HeaderItem";
 import Header from '../components/Header';
 import Thumbnail from '../components/Thumbnail';

@@ -1,5 +1,5 @@
-import React, {useState, useCallback} from 'react';
-import {SearchIcon} from '@heroicons/react/outline';
+import React, { useState, useCallback } from 'react';
+import { SearchIcon } from '@heroicons/react/outline';
 import Header from '../components/Header';
 import Thumbnail from '../components/Thumbnail';
 import FlipMove from "react-flip-move";
