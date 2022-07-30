@@ -1,4 +1,7 @@
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
+const BASE_URL = 'https://image.tmdb.org/t/p/original/';
+
+export {BASE_URL};
 
 export default {
     Popular: {

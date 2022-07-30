@@ -1,8 +1,8 @@
 import Image from "next/image";
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
+import { BASE_URL } from "../utils/requests";
 
 function Seasons({result, id}) {
-    const BASE_URL = 'https://image.tmdb.org/t/p/original/';
     const router = useRouter();
     const routeQuery = () => router.push({pathname: '/EpisodeList', query: {showId: id, season: result.season_number, overview: result.overview, poster: result.poster_path, air_date: result.air_date}}, `/${id}/season/${result.season_number}`);
 

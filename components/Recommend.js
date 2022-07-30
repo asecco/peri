@@ -1,8 +1,8 @@
 import Image from "next/image";
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
+import { BASE_URL } from "../utils/requests";
 
 function Recommend({result}) {
-    const BASE_URL = 'https://image.tmdb.org/t/p/original/';
     const router = useRouter();
     const routeQuery = () => router.push({pathname: '/MovieInfo', query: result}, `/${result.id}`);
 

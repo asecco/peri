@@ -1,18 +1,18 @@
-import {useRouter} from "next/router";
-import React, {useState, useEffect} from 'react';
+import { useRouter } from "next/router";
+import React, { useState, useEffect } from 'react';
 import ModalVideo from 'react-modal-video';
 import movieTrailer from 'movie-trailer';
 import Image from "next/image";
-import {StarIcon, PlayIcon, HeartIcon, TrashIcon, FilmIcon} from '@heroicons/react/outline';
+import { StarIcon, PlayIcon, HeartIcon, TrashIcon, FilmIcon } from '@heroicons/react/outline';
 import Header from '../components/Header';
 import Cast from "../components/Cast";
 import Recommend from "../components/Recommend";
 import Seasons from "../components/Seasons";
 import FlipMove from "react-flip-move";
-import {ToastContainer, toast} from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
+import { BASE_URL } from "../utils/requests";
 
 function MovieInfo() {
-    const BASE_URL = 'https://image.tmdb.org/t/p/original/';
     const router = useRouter();
     const movie = router.query;
     const [cast, setCast] = useState([]);

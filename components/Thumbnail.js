@@ -1,9 +1,9 @@
 import Image from 'next/image';
-import {forwardRef} from 'react';
-import {useRouter} from "next/router";
+import { forwardRef } from 'react';
+import { useRouter } from "next/router";
+import { BASE_URL } from "../utils/requests";
 
 const Thumbnail = forwardRef(({result}, ref) => {
-    const BASE_URL = 'https://image.tmdb.org/t/p/original/';
     const router = useRouter();
     const routeQuery = () => router.push({pathname: '/MovieInfo', query: result}, `/${result.id}`);
 

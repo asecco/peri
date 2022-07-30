@@ -1,8 +1,8 @@
-import {HomeIcon, BookmarkIcon, CalendarIcon, ThumbUpIcon, VideoCameraIcon, FilmIcon} from '@heroicons/react/outline';
+import { HomeIcon, BookmarkIcon, CalendarIcon, ThumbUpIcon, VideoCameraIcon, FilmIcon } from '@heroicons/react/outline';
 import Image from 'next/image';
 import PeriLogo from '../public/peri.png';
 import HeaderItem from './HeaderItem';
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
 
 function Header() {
     const router = useRouter();

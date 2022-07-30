@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Image from "next/image";
+import { BASE_URL } from '../utils/requests';
 
 function Episodes({result}) {
-    const BASE_URL = 'https://image.tmdb.org/t/p/original/';
     const [hoverInfo, setHoverInfo] = useState({display: 'none'});
 
     return (
