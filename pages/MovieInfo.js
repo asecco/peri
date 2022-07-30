@@ -38,7 +38,6 @@ function MovieInfo() {
         }
         searchReq();
     }, [movie.id]);
-    console.log(movie)
 
     if (typeof window !== 'undefined') {
         document.title = `${movie.title || movie.original_name}`;
