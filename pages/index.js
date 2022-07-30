@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import Header from '../components/Header';
 import HomeScreen from '../components/HomeScreen';
-import SearchBar from '../components/SearchBar';
 
 export default function Home({results}) {
   return (
@@ -12,7 +11,6 @@ export default function Home({results}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <SearchBar />
       <HomeScreen results={results} />
     </div>
   );
