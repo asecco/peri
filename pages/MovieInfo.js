@@ -9,7 +9,7 @@ import Cast from "../components/Cast";
 import Recommend from "../components/Recommend";
 import Seasons from "../components/Seasons";
 import FlipMove from "react-flip-move";
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import { BASE_URL } from "../utils/requests";
 import { toastNotify, alertParams } from "../utils/notifications";
 
@@ -22,9 +22,9 @@ function MovieInfo() {
     const [recommendMovie, setRecommendMovie] = useState([]);
     const [seasons, setSeasons] = useState([]);
     const [isOpen, setOpen] = useState(false);
+    const mediaType = movie.media_type || 'movie';
     useEffect(() => {
         const searchReq = async () => {
-            const mediaType = movie.media_type || 'movie';
             const castReq = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movie.id}/credits?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
             const movie2Req = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movie.id}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
             const recommendReq = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movie.id}/recommendations?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
@@ -38,6 +38,7 @@ function MovieInfo() {
         }
         searchReq();
     }, [movie.id]);
+    console.log(movie)
 
     if (typeof window !== 'undefined') {
         document.title = `${movie.title || movie.original_name}`;
@@ -51,10 +52,10 @@ function MovieInfo() {
     const [releaseYear, setReleaseYear] = useState([]);
     const [recommendDiv, setRecommendDiv] = useState(false);
     const checkRelease = () => {
-        if(movie.media_type === 'movie') {
+        if(mediaType === 'movie') {
             const sliced = movie.release_date.slice(0, -6)
             setReleaseYear(sliced);
-        } else if(movie.media_type === 'tv') {
+        } else if(mediaType === 'tv') {
             const sliced = movie.first_air_date.slice(0, -6)
             setReleaseYear(sliced);
             setRecommendDiv(true);
@@ -65,7 +66,7 @@ function MovieInfo() {
 
     const params = {
         id: movie.id,
-        type : movie.media_type,
+        type : mediaType,
     }
     
     const addToFav = () => {
@@ -100,7 +101,7 @@ function MovieInfo() {
 
     const [runtime, setRunTime] = useState([]);
     useEffect(() => {
-        if(movie.media_type === 'movie') {
+        if(mediaType === 'movie') {
             const minutes = movie2.runtime % 60;
             const hours = Math.floor(movie2.runtime / 60);
             setRunTime(`${hours}h ${minutes}min`);
@@ -123,7 +124,7 @@ function MovieInfo() {
     // }
 
     const streamAvailability = async () => {
-        const watchMode = await fetch(`https://api.watchmode.com/v1/title/${movie.media_type}-${movie.id}/sources/?apiKey=${process.env.NEXT_PUBLIC_WatchMode}`).then((res) => res.json());
+        const watchMode = await fetch(`https://api.watchmode.com/v1/title/${mediaType}-${movie.id}/sources/?apiKey=${process.env.NEXT_PUBLIC_WatchMode}`).then((res) => res.json());
         if(watchMode.length > 0) {
             const watchModeUrl = watchMode[0].web_url;
             window.open(watchModeUrl, '_blank');
@@ -166,7 +167,7 @@ function MovieInfo() {
             </div>
 
             <div>
-                <p className="font-bold text-white text-2xl lg:text-3xl mx-7 mt-10 md:mt-4 lg:mt-0">{movie.media_type != 'tv' ? '' : 'Seasons:'}</p>
+                <p className="font-bold text-white text-2xl lg:text-3xl mx-7 mt-10 md:mt-4 lg:mt-0">{mediaType != 'tv' ? '' : 'Seasons:'}</p>
                 <FlipMove className="grid grid-cols-2 px-5 my-10 sm:grid md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-10 3xl:grid-cols-12">
                     {seasons?.map((season) => season.poster_path && (
                     <>
