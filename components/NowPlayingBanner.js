@@ -19,10 +19,10 @@ function NowPlayingBanner() {
 
     return (
         <div className="w-full relative h-96 overflow-hidden px-8 hidden md:block">
-            <div class="absolute w-full h-full opacity-50 top-0 left-0 z-10 bg-gradient-to-r from-primary via-primary"></div>
-                <div class="absolute z-20 flex flex-col items-left w-1/2 justify-center h-full px-10">
-                    <div class="text-red-400 font-bold text-5xl text-center">{nowPlaying.title || nowPlaying.original_title}</div>
-                    <div class="text-white text-xl mt-4 font-medium md:line-clamp-5 lg:line-clamp-6">{nowPlaying.overview}</div>
+            <div className="absolute w-full h-full opacity-50 top-0 left-0 z-10 bg-gradient-to-r from-primary via-primary"></div>
+                <div className="absolute z-20 flex flex-col items-left w-1/2 justify-center h-full px-10">
+                    <div className="text-red-400 font-bold text-5xl text-center">{nowPlaying.title || nowPlaying.original_title}</div>
+                    <div className="text-white text-xl mt-4 font-medium md:line-clamp-5 lg:line-clamp-6">{nowPlaying.overview}</div>
                     <div className='text-center'>
                         <button onClick={routeQuery} title="More Info" className="transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 h-12 w-20 md:h-14 md:w-20 lg:h-16 lg:w-24 bg-primary hover:bg-white text-white hover:text-primary text-lg font-bold rounded-lg inline-flex items-center justify-center my-4">More Info</button>
                     </div>
