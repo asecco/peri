@@ -24,7 +24,7 @@ function NowPlayingBanner() {
                     <div className="text-red-400 font-bold text-5xl text-center">{nowPlaying.title || nowPlaying.original_title}</div>
                     <div className="text-white text-xl mt-4 font-medium md:line-clamp-5 lg:line-clamp-6">{nowPlaying.overview}</div>
                     <div className='text-center'>
-                        <button onClick={routeQuery} title="More Info" className="transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 h-12 w-20 md:h-14 md:w-20 lg:h-16 lg:w-24 bg-primary hover:bg-white text-white hover:text-primary text-lg font-bold rounded-lg inline-flex items-center justify-center my-4">More Info</button>
+                        <button onClick={routeQuery} title="More Info" className="transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 h-12 w-20 md:h-16 md:w-20 lg:w-24 bg-primary hover:bg-white text-white hover:text-primary text-lg font-bold rounded-lg inline-flex items-center justify-center my-4">More Info</button>
                     </div>
                 </div>
             <Image src={`${BASE_URL}${nowPlaying.backdrop_path || nowPlaying.poster_path}`} alt='' height={1080} width={1920}/>
