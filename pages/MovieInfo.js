@@ -141,15 +141,15 @@ function MovieInfo() {
                 <div className="mx-auto px-20 flex flex-col-reverse gap-10 object-bottom md:flex-row">
                     <div className="flex flex-col gap-4 md:w-5/12 lg:w-6/12 xl:w-8/12 2xl:w-10/12">
                         <h1 className="font-bold text-3xl md:text-5xl lg:text-7xl text-center text-red-400">{movie.title || movie.original_name}</h1>
-                        <div className="flex items-center justify-center space-x-5 lg:space-x-20 font-bold lg:text-lg text-sm text-center text-white">
+                        <div className="flex items-center justify-center space-x-5 lg:space-x-20 font-bold lg:text-lg text-sm md:text-base text-center text-white">
                             <p>{movie2.status}</p>
                             <p>{releaseYear}</p>
                             <p className="xl:truncate">{genres.slice(0, -2)}</p>
                             <p>{runtime}</p>
                             <StarIcon className="h-4 my-4 md:h-6 lg:mx-2 lg:my-0" />{Math.round(movie.vote_average * 10) / 10}/10
                         </div>
-                        <p className="lg:text-xl text-white text-center font-style: italic">{movie2.tagline}</p>
-                        <p className="text-center text-base md:text-left lg:text-2xl text-white line-clamp-14">{movie.description || movie.overview}</p>
+                        <p className="md:text-lg lg:text-xl text-white text-center font-style: italic">{movie2.tagline}</p>
+                        <p className="text-center text-base md:text-left md:text-xl lg:text-2xl text-white line-clamp-14">{movie.description || movie.overview}</p>
                         <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId={trailerID === null ? "dQw4w9WgXcQ" : trailerID} onClose={() => setOpen(false)} />
 
                         <div className="flex items-center justify-center space-x-4 my-2">
@@ -159,7 +159,7 @@ function MovieInfo() {
                             <button onClick={removeFromFav} title="Unfavorite" className="transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 h-12 w-20 md:h-14 md:w-20 lg:h-16 lg:w-24 bg-gray-600 hover:bg-white text-white hover:text-primary text-lg font-bold rounded-lg inline-flex items-center justify-center"><TrashIcon className="h-12" /></button>
                         </div>
                     </div>
-                    <div className="w-8/12 md:w-4/12 lg:w-3/12 mx-10 md:mx-20 lg:mx-14">
+                    <div className="w-8/12 md:w-4/12 lg:w-3/12 mx-10 md:mx-28 lg:mx-14">
                         <Image priority={true} layout="responsive" src={`${BASE_URL}${movie.poster_path}`} alt='' height={960} width={640}/>
                     </div>
                 </div>

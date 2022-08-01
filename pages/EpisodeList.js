@@ -28,11 +28,11 @@ function EpisodeList() {
             <div className="mx-auto px-20 flex flex-col-reverse gap-10 object-bottom md:flex-row">
                 <div className="flex flex-col gap-4 md:w-5/12 lg:w-6/12 xl:w-8/12 2xl:w-10/12">
                     <h1 className="font-bold text-3xl md:text-5xl lg:text-7xl text-center text-red-400">{`Season ${seasonNum}`}</h1>
-                    <p className="font-bold lg:text-2xl 2xl:text-3xl text-white text-center">{`${air_date}`}</p>
-                    <p className="text-center md:text-left text-base md:text-lg lg:text-2xl text-white line-clamp-14 mb-6 md:mb-0">{overview}</p>
+                    <p className="font-bold md:text-lg lg:text-2xl 2xl:text-3xl text-white text-center">{`${air_date}`}</p>
+                    <p className="text-center md:text-left text-base md:text-xl lg:text-2xl text-white line-clamp-14 mb-6 md:mb-0">{overview}</p>
                 </div>
 
-                <div className="w-8/12 md:w-4/12 lg:w-3/12 mx-10 md:mx-20 lg:mx-14">
+                <div className="w-8/12 md:w-4/12 lg:w-3/12 mx-10 md:mx-28 lg:mx-14">
                     <Image layout="responsive" src={`${BASE_URL}${poster_path}`} alt='' height={960} width={640}/>
                 </div>
             </div>
