@@ -1,7 +1,7 @@
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 const BASE_URL = 'https://image.tmdb.org/t/p/original/';
 
-export {BASE_URL};
+export { BASE_URL };
 
 export default {
     Popular: {
@@ -14,70 +14,70 @@ export default {
     },
     Action: {
         title: 'Action',
-        url: `discover/movie?api_key=${API_KEY}&with_genres=28`,
+        url: `discover/movie?api_key=${API_KEY}&with_genres=28&sort_by=vote_count.desc&include_adult=false`,
     },
     Adventure: {
         title: 'Adventure',
-        url: `discover/movie?api_key=${API_KEY}&with_genres=12`,
+        url: `discover/movie?api_key=${API_KEY}&with_genres=12&sort_by=vote_count.desc&include_adult=false`,
     },
     Animation: {
         title: 'Animation',
-        url: `discover/movie?api_key=${API_KEY}&with_genres=16`,
+        url: `discover/movie?api_key=${API_KEY}&with_genres=16&sort_by=vote_count.desc&include_adult=false`,
     },
     Comedy: {
         title: 'Comedy',
-        url: `discover/movie?api_key=${API_KEY}&with_genres=35`,
+        url: `discover/movie?api_key=${API_KEY}&with_genres=35&sort_by=vote_count.desc&include_adult=false`,
     },
     Crime: {
         title: 'Crime',
-        url: `discover/movie?api_key=${API_KEY}&with_genres=80`,
+        url: `discover/movie?api_key=${API_KEY}&with_genres=80&sort_by=vote_count.desc&include_adult=false`,
     },
     Documentary: {
         title: 'Documentary',
-        url: `discover/movie?api_key=${API_KEY}&with_genres=99`,
+        url: `discover/movie?api_key=${API_KEY}&with_genres=99&sort_by=vote_count.desc&include_adult=false`,
     },
     Drama: {
         title: 'Drama',
-        url: `discover/movie?api_key=${API_KEY}&with_genres=18`,
+        url: `discover/movie?api_key=${API_KEY}&with_genres=18&sort_by=vote_count.desc&include_adult=false`,
     },
     Family: {
         title: 'Family',
-        url: `discover/movie?api_key=${API_KEY}&with_genres=10751`,
+        url: `discover/movie?api_key=${API_KEY}&with_genres=10751&sort_by=vote_count.desc&include_adult=false`,
     },
     Fantasy: {
         title: 'Fantasy',
-        url: `discover/movie?api_key=${API_KEY}&with_genres=14`,
+        url: `discover/movie?api_key=${API_KEY}&with_genres=14&sort_by=vote_count.desc&include_adult=false`,
     },
     History: {
         title: 'History',
-        url: `discover/movie?api_key=${API_KEY}&with_genres=36`,
+        url: `discover/movie?api_key=${API_KEY}&with_genres=36&sort_by=vote_count.desc&include_adult=false`,
     },
     Horror: {
         title: 'Horror',
-        url: `discover/movie?api_key=${API_KEY}&with_genres=27`,
+        url: `discover/movie?api_key=${API_KEY}&with_genres=27&sort_by=vote_count.desc&include_adult=false`,
     },
     Mystery: {
         title: 'Mystery',
-        url: `discover/movie?api_key=${API_KEY}&with_genres=9648`,
+        url: `discover/movie?api_key=${API_KEY}&with_genres=9648&sort_by=vote_count.desc&include_adult=false`,
     },
     Romance: {
         title: 'Romance',
-        url: `discover/movie?api_key=${API_KEY}&with_genres=10749`,
+        url: `discover/movie?api_key=${API_KEY}&with_genres=10749&sort_by=vote_count.desc&include_adult=false`,
     },
     SciFi: {
         title: 'Sci-Fi',
-        url: `discover/movie?api_key=${API_KEY}&with_genres=878`,
+        url: `discover/movie?api_key=${API_KEY}&with_genres=878&sort_by=vote_count.desc&include_adult=false`,
     },
     Thriller: {
         title: 'Thriller',
-        url: `discover/movie?api_key=${API_KEY}&with_genres=53`,
+        url: `discover/movie?api_key=${API_KEY}&with_genres=53&sort_by=vote_count.desc&include_adult=false`,
     },
     War: {
         title: 'War',
-        url: `discover/movie?api_key=${API_KEY}&with_genres=10752`,
+        url: `discover/movie?api_key=${API_KEY}&with_genres=10752&sort_by=vote_count.desc&include_adult=false`,
     },
     Western: {
         title: 'Western',
-        url: `discover/movie?api_key=${API_KEY}&with_genres=37`,
+        url: `discover/movie?api_key=${API_KEY}&with_genres=37&sort_by=vote_count.desc&include_adult=false`,
     },
 };
