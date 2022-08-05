@@ -40,7 +40,7 @@ function NowPlayingBanner() {
         <div className='hidden md:block'>
             <Slider {...settings}>
                 {nowPlaying.slice(0, 3).map((movie) => (
-                    <div className='w-full relative h-96 overflow-hidden px-8'>
+                    <div className='w-full relative h-96 overflow-hidden px-8' key={movie.id}>
                         <div className="absolute w-full h-full opacity-50 top-0 left-0 z-10 bg-gradient-to-r from-primary via-primary"></div>
                         <div className="absolute z-20 flex flex-col items-left w-1/2 justify-center h-full px-10">
                             <div className="text-red-400 font-bold text-4xl lg:text-5xl text-center">{movie.title || movie.original_title}</div>
