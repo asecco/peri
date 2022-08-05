@@ -133,6 +133,14 @@ function MovieInfo() {
 
     }
 
+    const checkTrailer = () => {
+        if(trailerID === null) {
+            toast.error('No trailer available', alertParams);
+        } else {
+            setOpen(true);
+        }
+    }
+
     return (
         <div>
             <ToastContainer theme="dark"/>
@@ -150,11 +158,11 @@ function MovieInfo() {
                         </div>
                         <p className="md:text-lg lg:text-xl text-white text-center font-style: italic">{movie2.tagline}</p>
                         <p className="text-center text-base md:text-left md:text-xl lg:text-2xl text-white line-clamp-14">{movie.description || movie.overview}</p>
-                        <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId={trailerID === null ? "dQw4w9WgXcQ" : trailerID} onClose={() => setOpen(false)} />
+                        <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId={trailerID} onClose={() => setOpen(false)} />
 
                         <div className="flex items-center justify-center space-x-4 my-2">
                             <button onClick={streamAvailability} title="Play" className="transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 h-12 w-20 md:h-14 md:w-20 lg:h-16 lg:w-24 bg-gray-600 hover:bg-white text-white hover:text-primary text-lg font-bold rounded-lg inline-flex items-center justify-center"><PlayIcon className="h-12" /></button>
-                            <button onClick={()=> setOpen(true)} title="Watch Trailer" className="transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 h-12 w-20 md:h-14 md:w-20 lg:h-16 lg:w-24 bg-gray-600 hover:bg-white text-white hover:text-primary text-lg font-bold rounded-lg inline-flex items-center justify-center"><FilmIcon className="h-12" /></button>
+                            <button onClick={checkTrailer} title="Watch Trailer" className="transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 h-12 w-20 md:h-14 md:w-20 lg:h-16 lg:w-24 bg-gray-600 hover:bg-white text-white hover:text-primary text-lg font-bold rounded-lg inline-flex items-center justify-center"><FilmIcon className="h-12" /></button>
                             <button onClick={addToFav} title="Favorite" className="transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 h-12 w-20 md:h-14 md:w-20 lg:h-16 lg:w-24 bg-gray-600 hover:bg-white text-white hover:text-primary text-lg font-bold rounded-lg inline-flex items-center justify-center"><HeartIcon className="h-12" /></button>
                             <button onClick={removeFromFav} title="Unfavorite" className="transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 h-12 w-20 md:h-14 md:w-20 lg:h-16 lg:w-24 bg-gray-600 hover:bg-white text-white hover:text-primary text-lg font-bold rounded-lg inline-flex items-center justify-center"><TrashIcon className="h-12" /></button>
                         </div>
