@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 @import 'react-toastify/dist/ReactToastify.css';
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
 
 body {
   background-color: #202F3B;
