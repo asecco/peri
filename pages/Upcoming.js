@@ -30,8 +30,8 @@ function Upcoming() {
             <Header />
             <p className='font-bold text-white text-3xl md:text-4xl lg:text-5xl mx-7'>Upcoming Movies</p>
             <div>
-                <FlipMove className="px-5 my-10 sm:grid md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6">
-                    {upcoming.map((up) => up.backdrop_path && (
+                <FlipMove className="px-5 my-10 sm:grid md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 3xl:grid-cols-7">
+                    {upcoming.map((up) => up.poster_path && (
                     <>
                         <Thumbnail result={up} />
                     </>

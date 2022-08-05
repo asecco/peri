@@ -42,8 +42,8 @@ function Movies() {
 
             <p className='font-bold text-white text-3xl md:text-4xl lg:text-5xl mx-7 my-4'>{genre}</p>
             <div>
-                <FlipMove className="px-5 my-10 sm:grid md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6">
-                    {movies.map((movie) => movie.backdrop_path && (
+                <FlipMove className="px-5 my-10 sm:grid md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 3xl:grid-cols-7">
+                    {movies.map((movie) => movie.poster_path && (
                     <>
                         <Thumbnail result={movie} />
                     </>
