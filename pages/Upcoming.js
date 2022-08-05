@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowCircleLeftIcon,ArrowCircleRightIcon } from '@heroicons/react/outline';
-import HeaderItem from "../components/HeaderItem";
+import FooterItem from "../components/FooterItem";
 import Header from '../components/Header';
 import Thumbnail from '../components/Thumbnail';
 import FlipMove from 'react-flip-move';
@@ -40,8 +40,8 @@ function Upcoming() {
             </div>
 
             <div className='flex flex-row sm:flex-row justify-between items-center h-auto'>
-                <div onClick={() => setPage(page - 1)}><HeaderItem title='Previous' Icon={ArrowCircleLeftIcon} /></div>
-                <div onClick={() => setPage(page + 1)}><HeaderItem title='Next' Icon={ArrowCircleRightIcon} /></div>
+                <div onClick={() => setPage(page - 1)}><FooterItem title='Previous' Icon={ArrowCircleLeftIcon} /></div>
+                <div onClick={() => setPage(page + 1)}><FooterItem title='Next' Icon={ArrowCircleRightIcon} /></div>
             </div>
         </div>
     );
