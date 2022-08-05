@@ -37,8 +37,8 @@ function Recommended() {
             </div> 
 
             <div>
-                <FlipMove className="px-5 my-10 sm:grid md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6">
-                    {recRes?.map((rec) => rec !== undefined && rec.backdrop_path && (
+                <FlipMove className="px-5 my-10 sm:grid md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 3xl:grid-cols-7">
+                    {recRes?.map((rec) => rec !== undefined && rec.poster_path && (
                     <>
                         <Thumbnail result={rec} />
                     </>

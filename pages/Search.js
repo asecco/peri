@@ -28,7 +28,7 @@ function Search() {
             </div>
 
             <div>
-                <FlipMove className="px-5 my-10 sm:grid md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6">
+                <FlipMove className="px-5 my-10 sm:grid md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 3xl:grid-cols-7">
                     {searchResults.map((movie) => movie.backdrop_path && (
                     <>
                         <Thumbnail result={movie} />
