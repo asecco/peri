@@ -28,7 +28,7 @@
     <br> 
 </p>
 
-![1](https://user-images.githubusercontent.com/40510223/182759583-242e6f09-de1e-44de-b49d-18897098cb60.png)
+![1](https://user-images.githubusercontent.com/40510223/183317827-fa4a2b63-5d56-4906-9921-d6ff7575f16b.png)
 
 ## About
 Peri was originally designed to be similar to a modern streaming media service with the UI being inspired by platforms such as [Plex](https://www.plex.tv) and [Hulu](https://www.hulu.com). Peri includes no streaming functionality and serves as an extensive database of films and tv series, allowing you to browse and garner information on whichever type of media you desire.
@@ -47,13 +47,12 @@ Peri was originally designed to be similar to a modern streaming media service w
 - [![Tailwind CSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
 
 ## Screenshots
-![2](https://user-images.githubusercontent.com/40510223/180894004-a89c3b73-6d5c-4b13-b30f-cfe6ec4c86e0.png)
-![3](https://user-images.githubusercontent.com/40510223/180894010-acdc9db4-937f-49f7-ab6b-a6c8d09de32d.png)
-![4](https://user-images.githubusercontent.com/40510223/180894013-89a83ef9-1fe9-437a-8029-102e21e09a9c.png)
-![5](https://user-images.githubusercontent.com/40510223/180894015-7f58801c-59de-4e66-940b-aea8ad4e6867.png)
-![6](https://user-images.githubusercontent.com/40510223/180894019-cdeef5c6-6995-4f1a-8af2-e6d2dead1fec.png)
-![7](https://user-images.githubusercontent.com/40510223/180894024-e7dd9bde-ef9b-4a9a-9277-5f3fe15b577d.png)
-
+![2](https://user-images.githubusercontent.com/40510223/183317859-df3c7836-9205-4c9f-9958-193198b2b748.png)
+![3](https://user-images.githubusercontent.com/40510223/183317865-f7d685b4-7622-4081-a283-b4ec76ec67e1.png)
+![4](https://user-images.githubusercontent.com/40510223/183317876-81a41ca4-ca5d-485d-b38c-7082de656660.png)
+![5](https://user-images.githubusercontent.com/40510223/183317878-01721286-1f02-4f31-86e4-ad31b2eaadcb.png)
+![6](https://user-images.githubusercontent.com/40510223/183317881-c23ebeba-65e8-4a34-b3b8-ab3739f5d15c.png)
+![7](https://user-images.githubusercontent.com/40510223/183317882-ecf9766e-fe4b-4a36-959f-a686177f69f2.png)
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
