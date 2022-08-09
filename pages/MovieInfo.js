@@ -26,7 +26,7 @@ function MovieInfo() {
     useEffect(() => {
         const searchReq = async () => {
             const castReq = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movie.id}/credits?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
-            const movie2Req = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movie.id}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
+            const movie2Req = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movie.id}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&append_to_response=release_dates`).then((res) => res.json());
             const recommendReq = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movie.id}/recommendations?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
             setMovie2(movie2Req);
             setSeasons(movie2Req.seasons);
@@ -42,6 +42,15 @@ function MovieInfo() {
     if (typeof window !== 'undefined') {
         document.title = `${movie.title || movie.original_name}`;
     }
+
+    const [certification, setCertification] = useState([]);
+    useEffect(() => {
+        if(movie2.release_dates) {
+            if(movie2.release_dates.results.length > 0) {
+                setCertification(movie2.release_dates.results.find(obj => obj.iso_3166_1 === 'US').release_dates[0].certification);
+            }
+        }
+    }, [movie2.release_dates]);
 
     const genres = '';
     for(let i in movie2.genres) {
@@ -150,6 +159,7 @@ function MovieInfo() {
                     <div className="flex flex-col gap-4 md:w-5/12 lg:w-6/12 xl:w-8/12 2xl:w-10/12">
                         <h1 className="font-bold text-3xl md:text-5xl lg:text-7xl text-center text-red-400">{movie.title || movie.original_name}</h1>
                         <div className="flex items-center justify-center space-x-5 lg:space-x-20 font-bold lg:text-lg text-sm md:text-base text-center text-white">
+                            <p className="border-2 border-white px-1">{mediaType !== 'tv' ? certification : 'N/A'}</p>
                             <p>{movie2.status}</p>
                             <p>{releaseYear}</p>
                             <p className="xl:truncate">{genres.slice(0, -2)}</p>
