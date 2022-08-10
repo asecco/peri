@@ -18,6 +18,7 @@
   <a href="#about">About</a> •
   <a href="#features">Features</a> •
   <a href="#built-with">Built With</a> •
+  <a href="#contributing">Contributing</a> •
   <a href="#screenshots">Screenshots</a> •
   <a href="#license">License</a>
 </p>
@@ -46,11 +47,19 @@ Peri was originally designed to be similar to a modern streaming media service w
 - [![Next.js](https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org)
 - [![Tailwind CSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
 
+## Contributing
+I would love to expand upon this project over time with continuous updates to ensure it remains up-to-date and a great resource for movie fans.
+
+Pull requests are welcome.
+
+![upates2](https://user-images.githubusercontent.com/40510223/184010219-96e98fde-8f7e-4383-8fac-f25b2f914d0f.gif)
+![updates](https://user-images.githubusercontent.com/40510223/184007866-240f831c-6d52-43b5-8414-b5c1f93f0aa0.gif)
+
 ## Screenshots
 ![2](https://user-images.githubusercontent.com/40510223/183317859-df3c7836-9205-4c9f-9958-193198b2b748.png)
-![3](https://user-images.githubusercontent.com/40510223/183317865-f7d685b4-7622-4081-a283-b4ec76ec67e1.png)
+![3](https://user-images.githubusercontent.com/40510223/184006853-ee9cca16-1640-4af2-a6e6-1734f4de1cc5.png)
 ![4](https://user-images.githubusercontent.com/40510223/183317876-81a41ca4-ca5d-485d-b38c-7082de656660.png)
-![5](https://user-images.githubusercontent.com/40510223/183317878-01721286-1f02-4f31-86e4-ad31b2eaadcb.png)
+![5](https://user-images.githubusercontent.com/40510223/184006885-829e79eb-c51e-436d-b368-e3e85741e42e.png)
 ![6](https://user-images.githubusercontent.com/40510223/183317881-c23ebeba-65e8-4a34-b3b8-ab3739f5d15c.png)
 ![7](https://user-images.githubusercontent.com/40510223/183317882-ecf9766e-fe4b-4a36-959f-a686177f69f2.png)
 
