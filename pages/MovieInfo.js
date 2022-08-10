@@ -146,12 +146,11 @@ function MovieInfo() {
                     <div className="flex flex-col gap-4 md:w-5/12 lg:w-6/12 xl:w-8/12 2xl:w-10/12">
                         <h1 className="font-bold text-3xl md:text-5xl lg:text-7xl text-center text-red-400">{movie.title || movie.original_name}</h1>
                         <div className="flex items-center justify-center space-x-5 lg:space-x-20 font-bold lg:text-lg text-sm md:text-base text-center text-white">
-                            <p className="border-2 border-white px-1">{mediaType !== 'tv' ? certification : 'N/A'}</p>
-                            <p>{movie2.status}</p>
+                            <p className="border-2 border-white px-1">{mediaType !== 'tv' ? certification : movie2.status}</p>
                             <p>{releaseYear}</p>
                             <p className="xl:truncate">{genres.slice(0, -2)}</p>
                             <p>{runtime}</p>
-                            <StarIcon className="h-4 my-4 md:h-6 lg:mx-2 lg:my-0" />{Math.round(movie.vote_average * 10) / 10}/10
+                            <StarIcon className="h-4 my-4 md:h-8 lg:h-6 lg:mx-2 lg:my-0 text-yellow-400 fill-yellow-400" />{Math.round(movie.vote_average * 10) / 10}/10
                         </div>
                         <p className="md:text-lg lg:text-xl text-white text-center font-style: italic">{movie2.tagline}</p>
                         <p className="text-center text-base md:text-left md:text-xl lg:text-2xl text-white line-clamp-14">{movie.description || movie.overview}</p>
