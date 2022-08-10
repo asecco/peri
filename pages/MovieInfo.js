@@ -54,6 +54,7 @@ function MovieInfo() {
 
     const genres = '';
     for(let i in movie2.genres) {
+        movie2.genres.length = 3;
         genres += movie2.genres[i].name + ', ';
     }
 
