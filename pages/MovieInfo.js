@@ -77,23 +77,8 @@ function MovieInfo() {
         id: movie.id,
         type : mediaType,
     }
-    
-    const addToFav = () => {
-        const localStorageParams = localStorage.getItem('favorites');
-        if(localStorageParams) {
-            const localStorageParamsObj = JSON.parse(localStorageParams);
-            const localStorageParamsObjIds = localStorageParamsObj.map(obj => obj.id);
-            if(!localStorageParamsObjIds.includes(movie.id)) {
-                localStorageParamsObj.push(params);
-                localStorage.setItem('favorites', JSON.stringify(localStorageParamsObj));
-                toastNotify('add');
-            }
-        } else {
-            localStorage.setItem('favorites', JSON.stringify([params]));
-        }
-    }
-    
-    const removeFromFav = () => {
+
+    const checkFav = () => {
         const localStorageParams = localStorage.getItem('favorites');
         if(localStorageParams) {
             const localStorageParamsObj = JSON.parse(localStorageParams);
@@ -104,7 +89,14 @@ function MovieInfo() {
                 localStorageParamsObj.splice(index, 1);
                 localStorage.setItem('favorites', JSON.stringify(localStorageParamsObj));
                 toastNotify('remove');
+            } else {
+                localStorageParamsObj.push(params);
+                localStorage.setItem('favorites', JSON.stringify(localStorageParamsObj));
+                toastNotify('add');
             }
+        } else {
+            localStorage.setItem('favorites', JSON.stringify([params]));
+            toastNotify('add');
         }
     }
 
@@ -160,8 +152,7 @@ function MovieInfo() {
                         <div className="flex items-center justify-center space-x-4 my-2">
                             <button onClick={streamAvailability} title="Play" className="transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 h-12 w-20 md:h-14 md:w-20 lg:h-16 lg:w-24 bg-gray-600 hover:bg-white text-white hover:text-primary text-lg font-bold rounded-lg inline-flex items-center justify-center"><PlayIcon className="h-12" /></button>
                             <button onClick={checkTrailer} title="Watch Trailer" className="transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 h-12 w-20 md:h-14 md:w-20 lg:h-16 lg:w-24 bg-gray-600 hover:bg-white text-white hover:text-primary text-lg font-bold rounded-lg inline-flex items-center justify-center"><FilmIcon className="h-12" /></button>
-                            <button onClick={addToFav} title="Favorite" className="transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 h-12 w-20 md:h-14 md:w-20 lg:h-16 lg:w-24 bg-gray-600 hover:bg-white text-white hover:text-primary text-lg font-bold rounded-lg inline-flex items-center justify-center"><HeartIcon className="h-12" /></button>
-                            <button onClick={removeFromFav} title="Unfavorite" className="transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 h-12 w-20 md:h-14 md:w-20 lg:h-16 lg:w-24 bg-gray-600 hover:bg-white text-white hover:text-primary text-lg font-bold rounded-lg inline-flex items-center justify-center"><TrashIcon className="h-12" /></button>
+                            <button onClick={checkFav} title="Favorite" className="transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 h-12 w-20 md:h-14 md:w-20 lg:h-16 lg:w-24 bg-gray-600 hover:bg-white text-white hover:text-primary text-lg font-bold rounded-lg inline-flex items-center justify-center"><HeartIcon className="h-12" /></button>
                         </div>
                     </div>
                     <div className="w-8/12 md:w-4/12 lg:w-3/12 mx-10 md:mx-28 lg:mx-14">
