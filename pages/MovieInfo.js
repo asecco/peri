@@ -118,19 +118,6 @@ function MovieInfo() {
         }
     }, [movie2.runtime, movie2.episode_run_time]);
 
-    // const jw = new JustWatch("en_US"); **Original JustWatch request, runs into CORS request was blocked**
-    // const streamAvailability = () => {
-    //     jw.search(movie.title || movie.original_name).then(res => {
-    //         const availabilityObj = res.items[0];
-    //         if(availabilityObj['offers'] && availabilityObj['offers'].length > 0) {
-    //             const availabilityUrl = availabilityObj.offers[0].urls.standard_web;
-    //             window.open(availabilityUrl, '_blank');
-    //         } else {
-    //             toast.error('Not available to stream', alertParams);
-    //         }
-    //     });
-    // }
-
     const streamAvailability = async () => {
         const watchMode = await fetch(`https://api.watchmode.com/v1/title/${mediaType}-${movie.id}/sources/?apiKey=${process.env.NEXT_PUBLIC_WatchMode}`).then((res) => res.json());
         if(watchMode.length > 0) {
