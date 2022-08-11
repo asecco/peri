@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import ModalVideo from 'react-modal-video';
 import movieTrailer from 'movie-trailer';
 import Image from "next/image";
-import { StarIcon, PlayIcon, HeartIcon, TrashIcon, FilmIcon } from '@heroicons/react/outline';
+import { StarIcon, PlayIcon, HeartIcon, FilmIcon } from '@heroicons/react/outline';
 import Header from '../components/Header';
 import Cast from "../components/Cast";
 import Recommend from "../components/Recommend";
@@ -73,6 +73,22 @@ function MovieInfo() {
         }
     }
 
+    const [isFav, setIsFav] = useState(false);
+    useEffect(() => {
+        const localStorageParams = localStorage.getItem('favorites');
+        if(localStorageParams) {
+            const localStorageParamsObj = JSON.parse(localStorageParams);
+            const localStorageParamsObjIds = localStorageParamsObj.map(obj => obj.id);
+            if(localStorageParamsObjIds.includes(movie.id)) {
+                setIsFav(true);
+            } else {
+                setIsFav(false);
+            }
+        } else {
+            setIsFav(false);
+        }
+    }, [isFav]);
+
     const params = {
         id: movie.id,
         type : mediaType,
@@ -89,14 +105,17 @@ function MovieInfo() {
                 localStorageParamsObj.splice(index, 1);
                 localStorage.setItem('favorites', JSON.stringify(localStorageParamsObj));
                 toastNotify('remove');
+                setIsFav(false);
             } else {
                 localStorageParamsObj.push(params);
                 localStorage.setItem('favorites', JSON.stringify(localStorageParamsObj));
                 toastNotify('add');
+                setIsFav(true);
             }
         } else {
             localStorage.setItem('favorites', JSON.stringify([params]));
             toastNotify('add');
+            setIsFav(true);
         }
     }
 
@@ -152,7 +171,7 @@ function MovieInfo() {
                         <div className="flex items-center justify-center space-x-4 my-2">
                             <button onClick={streamAvailability} title="Play" className="transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 h-12 w-20 md:h-14 md:w-20 lg:h-16 lg:w-24 bg-gray-600 hover:bg-white text-white hover:text-primary text-lg font-bold rounded-lg inline-flex items-center justify-center"><PlayIcon className="h-12" /></button>
                             <button onClick={checkTrailer} title="Watch Trailer" className="transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 h-12 w-20 md:h-14 md:w-20 lg:h-16 lg:w-24 bg-gray-600 hover:bg-white text-white hover:text-primary text-lg font-bold rounded-lg inline-flex items-center justify-center"><FilmIcon className="h-12" /></button>
-                            <button onClick={checkFav} title="Favorite" className="transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 h-12 w-20 md:h-14 md:w-20 lg:h-16 lg:w-24 bg-gray-600 hover:bg-white text-white hover:text-primary text-lg font-bold rounded-lg inline-flex items-center justify-center"><HeartIcon className="h-12" /></button>
+                            <button onClick={checkFav} title="Favorite" className="transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 h-12 w-20 md:h-14 md:w-20 lg:h-16 lg:w-24 bg-gray-600 hover:bg-white text-white hover:text-primary text-lg font-bold rounded-lg inline-flex items-center justify-center"><HeartIcon className={isFav ? 'h-12 text-red-400 fill-red-400' : 'h-12'} /></button>
                         </div>
                     </div>
                     <div className="w-8/12 md:w-4/12 lg:w-3/12 mx-10 md:mx-28 lg:mx-14">
