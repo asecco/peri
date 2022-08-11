@@ -47,7 +47,12 @@ function MovieInfo() {
     useEffect(() => {
         if(movie2.release_dates) {
             if(movie2.release_dates.results.length > 0) {
-                setCertification(movie2.release_dates.results.find(obj => obj.iso_3166_1 === 'US').release_dates[0].certification);
+                const rating = movie2.release_dates.results.find(obj => obj.iso_3166_1 === 'US');
+                if(rating) {
+                    setCertification(rating.release_dates[0].certification);
+                } else {
+                    setCertification('N/A');
+                }
             }
         }
     }, [movie2.release_dates]);
