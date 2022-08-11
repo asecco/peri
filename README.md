@@ -25,8 +25,8 @@
 
 ---
 
-<p align="center"> Database for browsing your favorite movies/series or finding the perfect watch for the night, personalized with recommendations based on what you’ve enjoyed.
-    <br> 
+<p align="center"> Browse your favorite movies/series and find the perfect watch for the night, personalized with recommendations based on what you’ve enjoyed.
+  <br> 
 </p>
 
 ![1](https://user-images.githubusercontent.com/40510223/183317827-fa4a2b63-5d56-4906-9921-d6ff7575f16b.png)
