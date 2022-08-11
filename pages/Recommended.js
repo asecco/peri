@@ -13,14 +13,16 @@ function Recommended() {
             for(let i in favorites) {
                 const recommendReq = await fetch(`https://api.themoviedb.org/3/${favorites[i].type}/${favorites[i].id}/recommendations?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
                 for(let i in recommendReq.results) {
-                    if(recommendReq.results[i].original_language !== 'en') {
-                        recommendReq.results.splice(i, 1);
-                    }
-                    if(!recArr.includes(recommendReq.results[i])) {
-                        recArr.push(recommendReq.results[i]);
-                    }
+                    recArr.push(recommendReq.results[i]);
                 }
             }
+            recArr.map((item, index) => {
+                for(let i = index + 1; i < recArr.length; i++) {
+                    if(item.id === recArr[i].id) {
+                        recArr.splice(i, 1);
+                    }
+                }
+            });
             recArr.sort(() => Math.random() - 0.5);
             setRecRes(recArr.splice(0, 20));
         }
