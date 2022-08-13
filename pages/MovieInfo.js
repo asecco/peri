@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { API_KEY, WATCHMODE_API_KEY, BASE_URL, API_URL } from '../utils/constants';
 import React, { useState, useEffect } from 'react';
+import { Modal } from 'react-responsive-modal';
 import ModalVideo from 'react-modal-video';
 import movieTrailer from 'movie-trailer';
 import Image from "next/image";
@@ -139,21 +140,39 @@ function MovieInfo() {
         }
     }, [movie2.runtime, movie2.episode_run_time]);
 
+    const [watchModeSources, setWatchModeSources] = useState([]);
+    const [modalOpen, setModalOpen] = useState(false);
+    const onOpenModal = () => setModalOpen(true);
+    const onCloseModal = () => setModalOpen(false);
     const streamAvailability = async () => {
         const watchMode = await fetch(`https://api.watchmode.com/v1/title/${mediaType}-${movie.id}/sources/?apiKey=${WATCHMODE_API_KEY}`).then((res) => res.json());
         if(watchMode.length > 0) {
-            const watchModeUrl = watchMode[0].web_url;
-            window.open(watchModeUrl, '_blank');
+            setWatchModeSources(watchMode.filter((v,i,a)=>a.findIndex(v2=>(v2.name===v.name))===i));
+            onOpenModal();
         } else {
             toast.error('Not available to stream', alertParams);
         }
 
     }
 
+    console.log(watchModeSources);
+
     return (
         <div>
             <ToastContainer theme="dark"/>
             <Header />
+            <Modal open={modalOpen} onClose={onCloseModal} center styles={{ modal: {background: '#202F3B'}}}>
+                <div className="text-white">
+                    <h2 className="text-center text-2xl mb-2">Streaming Options</h2>
+                    {watchModeSources.map((source, index) => {
+                        return (
+                            <a key={index} href={source.web_url} target="_blank" rel="noreferrer"><div className="grid grid-cols-2 p-2 rounded-full hover:border-2 hover:border-red-400">
+                                <h3>{source.name}</h3>
+                                <p className="pl-24">{source.price ? `$${source.price}` : 'Sub'}</p>
+                            </div></a>
+                        )})}
+                </div>
+            </Modal>
             <div className="w-full">
                 <div className="mx-auto px-20 flex flex-col-reverse gap-10 object-bottom md:flex-row">
                     <div className="flex flex-col gap-4 md:w-5/12 lg:w-6/12 xl:w-8/12 2xl:w-10/12">

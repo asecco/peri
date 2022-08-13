@@ -21,6 +21,7 @@
     "react-dom": "18.2.0",
     "react-flip-move": "^3.0.4",
     "react-modal-video": "^1.2.9",
+    "react-responsive-modal": "^6.2.0",
     "react-slick": "^0.29.0",
     "react-toastify": "^9.0.7",
     "slick-carousel": "^1.8.1",
