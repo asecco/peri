@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { BASE_URL } from "../utils/requests";
+import { BASE_URL } from "../utils/constants";
 
 function Seasons({result, id}) {
     const router = useRouter();

@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { forwardRef } from 'react';
 import { useRouter } from "next/router";
-import { BASE_URL } from "../utils/requests";
+import { BASE_URL } from "../utils/constants";
 
 const Thumbnail = forwardRef(({result}, ref) => {
     const router = useRouter();

@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Image from "next/image";
 import Header from '../components/Header';
 import Episodes from '../components/Episodes';
-import FlipMove from 'react-flip-move';
 import { useRouter } from "next/router";
-import { BASE_URL } from '../utils/requests';
+import { BASE_URL, API_KEY } from '../utils/constants';
 
 function EpisodeList() {
     const router = useRouter();
@@ -12,11 +11,10 @@ function EpisodeList() {
     const seasonNum = router.query.season;
     const overview = router.query.overview;
     const poster_path = router.query.poster;
-    const air_date = router.query.air_date;
     const [episodes, setEpisodes] = useState([]);
     useEffect(() => {
         const searchReq = async () => {
-            const episodeReq = await fetch(`https://api.themoviedb.org/3/tv/${showId}/season/${seasonNum}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
+            const episodeReq = await fetch(`https://api.themoviedb.org/3/tv/${showId}/season/${seasonNum}?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
             setEpisodes(episodeReq.episodes);
         }
         searchReq();

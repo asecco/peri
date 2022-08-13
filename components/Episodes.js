@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { BASE_URL } from '../utils/requests';
+import { BASE_URL } from '../utils/constants';
 import { StarIcon } from '@heroicons/react/outline';
 
 function Episodes({result}) {

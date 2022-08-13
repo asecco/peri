@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import FlipMove from 'react-flip-move';
 import Thumbnail from '../components/Thumbnail';
+import { API_KEY } from '../utils/constants';
 
 function Favorites() {
     const [favRes, setFavRes] = useState([]);
@@ -11,7 +12,7 @@ function Favorites() {
             const favArr = [];
             const favorites = JSON.parse(localStorage.getItem('favorites'));
             for(let i in favorites) {
-                const favReq = await fetch(`https://api.themoviedb.org/3/${favorites[i].type}/${favorites[i].id}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
+                const favReq = await fetch(`https://api.themoviedb.org/3/${favorites[i].type}/${favorites[i].id}?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
                 favReq.media_type = favorites[i].type;
                 favArr.push(favReq);
             }

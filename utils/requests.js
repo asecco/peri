@@ -1,7 +1,4 @@
-const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
-const BASE_URL = 'https://image.tmdb.org/t/p/original/';
-
-export { BASE_URL };
+import { API_KEY } from "./constants";
 
 export default {
     Popular: {

@@ -4,7 +4,7 @@ import Header from '../components/Header';
 import Recommend from '../components/Recommend';
 import FlipMove from 'react-flip-move';
 import { useRouter } from "next/router";
-import { BASE_URL } from "../utils/requests";
+import { BASE_URL, API_KEY } from "../utils/constants";
 
 function CastInfo() {
     const router = useRouter();
@@ -15,8 +15,8 @@ function CastInfo() {
     useEffect(() => {
         document.title = castInfo.name;
         const searchReq = async () => {
-            const castReq = await fetch(`https://api.themoviedb.org/3/person/${castId}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
-            const knownForReq = await fetch(`https://api.themoviedb.org/3/person/${castId}/movie_credits?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
+            const castReq = await fetch(`https://api.themoviedb.org/3/person/${castId}?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
+            const knownForReq = await fetch(`https://api.themoviedb.org/3/person/${castId}/movie_credits?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
             for(let i in knownForReq.cast) {
                 knownForReq.cast[i].media_type = 'movie';
             }

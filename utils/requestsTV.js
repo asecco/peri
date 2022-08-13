@@ -1,4 +1,4 @@
-const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
+import { API_KEY } from "./constants";
 
 export default {
     Popular: {

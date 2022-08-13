@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import { API_KEY, WATCHMODE_API_KEY } from '../utils/constants';
 import React, { useState, useEffect } from 'react';
 import ModalVideo from 'react-modal-video';
 import movieTrailer from 'movie-trailer';
@@ -10,7 +11,7 @@ import Recommend from "../components/Recommend";
 import Seasons from "../components/Seasons";
 import FlipMove from "react-flip-move";
 import { ToastContainer, toast } from 'react-toastify';
-import { BASE_URL } from "../utils/requests";
+import { BASE_URL } from '../utils/constants';
 import { toastNotify, alertParams } from "../utils/notifications";
 
 function MovieInfo() {
@@ -25,9 +26,9 @@ function MovieInfo() {
     const mediaType = movie.media_type || 'movie';
     useEffect(() => {
         const searchReq = async () => {
-            const castReq = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movie.id}/credits?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
-            const movie2Req = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movie.id}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&append_to_response=release_dates`).then((res) => res.json());
-            const recommendReq = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movie.id}/recommendations?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`).then((res) => res.json());
+            const castReq = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movie.id}/credits?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
+            const movie2Req = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movie.id}?api_key=${API_KEY}&language=en-US&append_to_response=release_dates`).then((res) => res.json());
+            const recommendReq = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movie.id}/recommendations?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
             setMovie2(movie2Req);
             setSeasons(movie2Req.seasons);
             setCast(castReq.cast.slice(0, 12));
@@ -39,8 +40,18 @@ function MovieInfo() {
         searchReq();
     }, [movie.id]);
 
-    if (typeof window !== 'undefined') {
-        document.title = `${movie.title || movie.original_name}`;
+    const checkTrailer = () => {
+        if(trailerID === null) {
+            toast.error('No trailer available', alertParams);
+        } else {
+            setOpen(true);
+        }
+    }
+
+    const genres = '';
+    for(let i in movie2.genres) {
+        movie2.genres.length = 3;
+        genres += movie2.genres[i].name + ', ';
     }
 
     const [certification, setCertification] = useState([]);
@@ -56,12 +67,6 @@ function MovieInfo() {
             }
         }
     }, [movie2.release_dates]);
-
-    const genres = '';
-    for(let i in movie2.genres) {
-        movie2.genres.length = 3;
-        genres += movie2.genres[i].name + ', ';
-    }
 
     const [releaseYear, setReleaseYear] = useState([]);
     const [recommendDiv, setRecommendDiv] = useState(false);
@@ -136,7 +141,7 @@ function MovieInfo() {
     }, [movie2.runtime, movie2.episode_run_time]);
 
     const streamAvailability = async () => {
-        const watchMode = await fetch(`https://api.watchmode.com/v1/title/${mediaType}-${movie.id}/sources/?apiKey=${process.env.NEXT_PUBLIC_WatchMode}`).then((res) => res.json());
+        const watchMode = await fetch(`https://api.watchmode.com/v1/title/${mediaType}-${movie.id}/sources/?apiKey=${WATCHMODE_API_KEY}`).then((res) => res.json());
         if(watchMode.length > 0) {
             const watchModeUrl = watchMode[0].web_url;
             window.open(watchModeUrl, '_blank');
@@ -144,14 +149,6 @@ function MovieInfo() {
             toast.error('Not available to stream', alertParams);
         }
 
-    }
-
-    const checkTrailer = () => {
-        if(trailerID === null) {
-            toast.error('No trailer available', alertParams);
-        } else {
-            setOpen(true);
-        }
     }
 
     return (
