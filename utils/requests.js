@@ -53,6 +53,10 @@ export default {
         title: 'Horror',
         url: `discover/movie?api_key=${API_KEY}&with_genres=27&sort_by=vote_count.desc&include_adult=false`,
     },
+    Music: {
+        title: 'Music',
+        url: `discover/movie?api_key=${API_KEY}&with_genres=10402&sort_by=vote_count.desc&include_adult=false`,
+    },
     Mystery: {
         title: 'Mystery',
         url: `discover/movie?api_key=${API_KEY}&with_genres=9648&sort_by=vote_count.desc&include_adult=false`,
