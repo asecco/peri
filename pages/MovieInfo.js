@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { API_KEY, WATCHMODE_API_KEY } from '../utils/constants';
+import { API_KEY, WATCHMODE_API_KEY, BASE_URL, API_URL } from '../utils/constants';
 import React, { useState, useEffect } from 'react';
 import ModalVideo from 'react-modal-video';
 import movieTrailer from 'movie-trailer';
@@ -11,7 +11,6 @@ import Recommend from "../components/Recommend";
 import Seasons from "../components/Seasons";
 import FlipMove from "react-flip-move";
 import { ToastContainer, toast } from 'react-toastify';
-import { BASE_URL } from '../utils/constants';
 import { toastNotify, alertParams } from "../utils/notifications";
 
 function MovieInfo() {
@@ -26,9 +25,9 @@ function MovieInfo() {
     const mediaType = movie.media_type || 'movie';
     useEffect(() => {
         const searchReq = async () => {
-            const castReq = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movie.id}/credits?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
-            const movie2Req = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movie.id}?api_key=${API_KEY}&language=en-US&append_to_response=release_dates`).then((res) => res.json());
-            const recommendReq = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movie.id}/recommendations?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
+            const castReq = await fetch(`${API_URL}${mediaType}/${movie.id}/credits?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
+            const movie2Req = await fetch(`${API_URL}${mediaType}/${movie.id}?api_key=${API_KEY}&language=en-US&append_to_response=release_dates`).then((res) => res.json());
+            const recommendReq = await fetch(`${API_URL}${mediaType}/${movie.id}/recommendations?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
             setMovie2(movie2Req);
             setSeasons(movie2Req.seasons);
             setCast(castReq.cast.slice(0, 12));

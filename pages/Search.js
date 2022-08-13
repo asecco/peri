@@ -3,14 +3,14 @@ import { SearchIcon } from '@heroicons/react/outline';
 import Header from '../components/Header';
 import Thumbnail from '../components/Thumbnail';
 import FlipMove from "react-flip-move";
-import { API_KEY } from '../utils/constants';
+import { API_KEY, API_URL } from '../utils/constants';
 
 function Search() {
     const [searchResults, setSearchResults] = useState([]);
     const search = async (event) => {
         const searchQuery = event.target.value;
         if (searchQuery) {
-            const searchReq = await fetch(`https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&language=en-US&query=${searchQuery}&include_adult=false`).then((res) => res.json());
+            const searchReq = await fetch(`${API_URL}search/multi?api_key=${API_KEY}&language=en-US&query=${searchQuery}&include_adult=false`).then((res) => res.json());
             setSearchResults(searchReq.results);
         }
     }

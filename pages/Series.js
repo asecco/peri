@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import Thumbnail from '../components/Thumbnail';
 import FlipMove from 'react-flip-move';
 import requestsTV from '../utils/requestsTV';
+import { API_URL } from '../utils/constants';
 
 function Series() {
     const [series, setSeries] = useState([]);
@@ -14,7 +15,7 @@ function Series() {
     useEffect(() => {
         document.title = `Series | ${genre}`;
         const searchReq = async () => {
-            const req = await fetch(`https://api.themoviedb.org/3/${requestsTV[genre].url}&page=${page}`).then((res) => res.json());
+            const req = await fetch(`${API_URL}${requestsTV[genre].url}&page=${page}`).then((res) => res.json());
             const arr = req.results;
             arr.forEach(obj => {
                 obj.media_type = 'tv';

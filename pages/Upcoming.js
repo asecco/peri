@@ -4,7 +4,7 @@ import FooterItem from "../components/FooterItem";
 import Header from '../components/Header';
 import Thumbnail from '../components/Thumbnail';
 import FlipMove from 'react-flip-move';
-import { API_KEY } from '../utils/constants';
+import { API_KEY, API_URL } from '../utils/constants';
 
 function Upcoming() {
     const [upcoming, setUpcoming] = useState([]);
@@ -13,7 +13,7 @@ function Upcoming() {
     useEffect(() => {
         document.title = 'Upcoming';
         const searchReq = async () => {
-            const upcomingReq = await fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=${page}`).then((res) => res.json());
+            const upcomingReq = await fetch(`${API_URL}movie/upcoming?api_key=${API_KEY}&language=en-US&page=${page}`).then((res) => res.json());
             for(let i in upcomingReq.results) {
                 upcomingReq.results[i].media_type = 'movie';
             }

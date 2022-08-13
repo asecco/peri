@@ -3,7 +3,7 @@ import Image from "next/image";
 import Header from '../components/Header';
 import Episodes from '../components/Episodes';
 import { useRouter } from "next/router";
-import { BASE_URL, API_KEY } from '../utils/constants';
+import { BASE_URL, API_KEY, API_URL } from '../utils/constants';
 
 function EpisodeList() {
     const router = useRouter();
@@ -14,7 +14,7 @@ function EpisodeList() {
     const [episodes, setEpisodes] = useState([]);
     useEffect(() => {
         const searchReq = async () => {
-            const episodeReq = await fetch(`https://api.themoviedb.org/3/tv/${showId}/season/${seasonNum}?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
+            const episodeReq = await fetch(`${API_URL}tv/${showId}/season/${seasonNum}?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
             setEpisodes(episodeReq.episodes);
         }
         searchReq();

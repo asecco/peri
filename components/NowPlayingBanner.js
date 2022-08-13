@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from "next/router";
 import Image from 'next/image';
-import { BASE_URL, API_KEY } from "../utils/constants";
+import { BASE_URL, API_KEY, API_URL } from "../utils/constants";
 import Slider from "react-slick";
 
 function NowPlayingBanner() {
@@ -11,7 +11,7 @@ function NowPlayingBanner() {
     const [nowPlaying, setNowPlaying] = useState([]);
     useEffect(() => {
         const searchReq = async () => {
-            const nowReq = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
+            const nowReq = await fetch(`${API_URL}movie/now_playing?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
             const shuffleArray = (array) => {
                 for (let i = array.length - 1; i > 0; i--) {
                     const j = Math.floor(Math.random() * (i + 1));
