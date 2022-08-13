@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import React, { useState, useCallback } from 'react';
 import { SearchIcon } from '@heroicons/react/outline';
 import Header from '../components/Header';
@@ -16,12 +17,9 @@ function Search() {
     }
     const autoFocus = useCallback(el => el ? el.focus() : null, []);
 
-    if (typeof window !== 'undefined') {
-        document.title = 'Peri';
-    }
-
     return (
         <div>
+            <Head><title>Peri</title></Head>
             <Header />
             <div className="flex items-center ml-12 md:ml-auto mx-auto max-w-sm mb-5">
                 <input ref={autoFocus} autoFocus type="text" onChange={search} className="h-14 w-96 rounded-full focus:shadow focus:outline-1 focus:outline-red-400 text-black text-center" placeholder="Search..."></input>

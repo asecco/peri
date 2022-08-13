@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { useRouter } from "next/router";
 import { API_KEY, WATCHMODE_API_KEY, BASE_URL, API_URL } from '../utils/constants';
 import React, { useState, useEffect } from 'react';
@@ -159,6 +160,7 @@ function MovieInfo() {
 
     return (
         <div>
+            <Head><title>{movie.title || movie.original_name}</title></Head>
             <ToastContainer theme="dark"/>
             <Header />
             <Modal open={modalOpen} onClose={onCloseModal} center styles={{ modal: {background: '#202F3B'}}}>

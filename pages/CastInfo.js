@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import React, { useState, useEffect } from 'react';
 import Image from "next/image";
 import Header from '../components/Header';
@@ -13,7 +14,6 @@ function CastInfo() {
     const [knownFor, setKnownFor] = useState([]);
     const [age, setAge] = useState([]);
     useEffect(() => {
-        document.title = castInfo.name;
         const searchReq = async () => {
             const castReq = await fetch(`${API_URL}person/${castId}?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
             const knownForReq = await fetch(`${API_URL}person/${castId}/movie_credits?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
@@ -39,6 +39,7 @@ function CastInfo() {
 
     return (
         <div>
+            <Head><title>{castInfo.name}</title></Head>
             <Header />
             <div className="mx-auto px-20 flex flex-col-reverse gap-10 object-bottom md:flex-row">
                 <div className="flex flex-col gap-4 md:w-5/12 lg:w-6/12 xl:w-8/12 2xl:w-10/12">
