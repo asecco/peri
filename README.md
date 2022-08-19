@@ -46,7 +46,7 @@ Peri was originally designed to be similar to a modern streaming media service w
 ## Contributing
 I would love to expand upon this project over time with continuous updates to ensure it remains up-to-date and a great resource for movie fans.
 
-Pull requests are welcome. Head over to the [issues](https://github.com/asecco/Peri/issues) section to see if there is anything currently open, and head down to the [setup](#setup) section to get your development environment configured.
+Pull requests are welcome! Head over to the [issues](https://github.com/asecco/Peri/issues) section to see if there is anything currently open, and head down to the [setup](#setup) section to get your development environment configured.
 
 ![upates2](https://user-images.githubusercontent.com/40510223/184010219-96e98fde-8f7e-4383-8fac-f25b2f914d0f.gif)
 ![updates](https://user-images.githubusercontent.com/40510223/184007866-240f831c-6d52-43b5-8414-b5c1f93f0aa0.gif)
@@ -55,6 +55,8 @@ Pull requests are welcome. Head over to the [issues](https://github.com/asecco/P
 1. Clone the repo
 ```sh
 git clone https://github.com/asecco/Peri.git
+```
+```sh
 cd Peri
 ```
 
@@ -72,7 +74,7 @@ NEXT_PUBLIC_WatchMode = key
 
 4. Replace "key" with your API keys after registering on [TMDB](https://www.themoviedb.org) and [Watchmode](https://api.watchmode.com)
 
-5. Start development server
+5. Start the development server
 ```sh
 yarn run dev
 ```
