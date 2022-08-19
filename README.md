@@ -17,8 +17,9 @@
 <p align="center">
   <a href="#about">About</a> •
   <a href="#features">Features</a> •
-  <a href="#built-with">Built With</a> •
   <a href="#contributing">Contributing</a> •
+  <a href="#setup">Setup</a> •
+  <a href="#built-with">Built With</a> •
   <a href="#screenshots">Screenshots</a> •
   <a href="#license">License</a>
 </p>
@@ -42,18 +43,44 @@ Peri was originally designed to be similar to a modern streaming media service w
 - Lazy loading
 - Server-side rendering via Next.js
 
+## Contributing
+I would love to expand upon this project over time with continuous updates to ensure it remains up-to-date and a great resource for movie fans.
+
+Pull requests are welcome. Head over to the [issues](https://github.com/asecco/Peri/issues) section to see if there is anything currently open, and head down to the [setup](#setup) section to get your development environment configured.
+
+![upates2](https://user-images.githubusercontent.com/40510223/184010219-96e98fde-8f7e-4383-8fac-f25b2f914d0f.gif)
+![updates](https://user-images.githubusercontent.com/40510223/184007866-240f831c-6d52-43b5-8414-b5c1f93f0aa0.gif)
+
+## Setup
+1. Clone the repo
+```sh
+git clone https://github.com/asecco/Peri.git
+cd Peri
+```
+
+2. Install the dependencies
+```sh
+yarn install or npm install
+```
+
+3. Create a file for the environment variables in the root directory called `.env.local` with the following format
+```js
+API_KEY = key
+NEXT_PUBLIC_API_KEY = key
+NEXT_PUBLIC_WatchMode = key
+```
+
+4. Replace "key" with your API keys after registering on [TMDB](https://www.themoviedb.org) and [Watchmode](https://api.watchmode.com)
+
+5. Start development server
+```sh
+yarn run dev
+```
+
 ## Built With
 - [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org)
 - [![Next.js](https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org)
 - [![Tailwind CSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
-
-## Contributing
-I would love to expand upon this project over time with continuous updates to ensure it remains up-to-date and a great resource for movie fans.
-
-Pull requests are welcome. Head over to the [issues](https://github.com/asecco/Peri/issues) section to see if there is anything needed.
-
-![upates2](https://user-images.githubusercontent.com/40510223/184010219-96e98fde-8f7e-4383-8fac-f25b2f914d0f.gif)
-![updates](https://user-images.githubusercontent.com/40510223/184007866-240f831c-6d52-43b5-8414-b5c1f93f0aa0.gif)
 
 ## Screenshots
 ![2](https://user-images.githubusercontent.com/40510223/183317859-df3c7836-9205-4c9f-9958-193198b2b748.png)
