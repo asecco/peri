@@ -7,7 +7,7 @@ export default function Home({results}) {
     <div>
       <Head>
         <title>Peri</title>
-        <meta name="description" content="Peri" />
+        <meta name="description" content="Movie/Series library for finding the perfect watch" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />

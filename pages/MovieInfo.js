@@ -155,9 +155,7 @@ function MovieInfo() {
         }
 
     }
-
-    console.log(watchModeSources);
-
+    
     return (
         <div>
             <Head><title>{movie.title || movie.original_name}</title></Head>
