@@ -4,7 +4,7 @@ import { StarIcon } from '@heroicons/react/outline';
 
 function Episodes({result}) {
     return (
-        <div className="grid grid-cols-1 lg:grid-cols-2 w-full p-2 hover:bg-gray-600">
+        <div className="grid grid-cols-1 xl:grid-cols-2 w-full p-2 hover:bg-gray-600">
             <Image layout="responsive" src={`${BASE_URL}${result.still_path}`} alt='' height={1080} width={1920}/>
             <div className="p-6">
                 <div className="text-red-400 font-bold text-lg lg:text-xl">{`${result.episode_number}. ${result.name}`}</div>
