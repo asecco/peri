@@ -155,7 +155,7 @@ function MovieInfo() {
         }
 
     }
-    
+
     return (
         <div>
             <Head><title>{movie.title || movie.original_name}</title></Head>
@@ -205,7 +205,7 @@ function MovieInfo() {
                 <FlipMove className="grid grid-cols-2 px-5 my-10 sm:grid md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-10 3xl:grid-cols-12">
                     {seasons?.map((season) => season.poster_path && (
                     <>
-                        <Seasons result={season} id={movie2.id} />
+                        <Seasons result={season} id={movie2.id} title={movie.title || movie.original_name} />
                     </>
                     ))}
                 </FlipMove>

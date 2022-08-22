@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Image from "next/image";
 import Header from '../components/Header';
 import Episodes from '../components/Episodes';
+import Head from 'next/head';
 import { useRouter } from "next/router";
 import { BASE_URL, API_KEY, API_URL } from '../utils/constants';
 
@@ -11,6 +12,7 @@ function EpisodeList() {
     const seasonNum = router.query.season;
     const overview = router.query.overview;
     const poster_path = router.query.poster;
+    const tv_title = router.query.title;
     const [episodes, setEpisodes] = useState([]);
     useEffect(() => {
         const searchReq = async () => {
@@ -22,6 +24,7 @@ function EpisodeList() {
 
     return (
         <div>
+            <Head><title>{tv_title}</title></Head>
             <Header />
             <div className="mx-auto px-20 flex flex-col-reverse gap-10 object-bottom md:flex-row">
                 <div className="flex flex-col gap-4 md:w-5/12 lg:w-6/12 xl:w-8/12 2xl:w-10/12">

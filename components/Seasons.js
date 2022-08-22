@@ -2,9 +2,9 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { BASE_URL } from "../utils/constants";
 
-function Seasons({result, id}) {
+function Seasons({result, id, title}) {
     const router = useRouter();
-    const routeQuery = () => router.push({pathname: '/EpisodeList', query: {showId: id, season: result.season_number, overview: result.overview, poster: result.poster_path, air_date: result.air_date}}, `/${id}/season/${result.season_number}`);
+    const routeQuery = () => router.push({pathname: '/EpisodeList', query: {showId: id, season: result.season_number, overview: result.overview, poster: result.poster_path, air_date: result.air_date, title: title}}, `/${id}/season/${result.season_number}`);
 
     return (
         <div onClick={routeQuery} className='p-2 mx-4 md:mx-8 lg:mx-2 group cursor-pointer transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50'>
