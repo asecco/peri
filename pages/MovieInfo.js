@@ -137,7 +137,11 @@ function MovieInfo() {
             const hours = Math.floor(movie2.runtime / 60);
             setRunTime(`${hours}h ${minutes}min`);
         } else {
-            setRunTime(`${movie2.episode_run_time} mins`);
+            if(movie2.episode_run_time === undefined || movie2.episode_run_time.length === 0) {
+                setRunTime(`N/A mins`);
+            } else {
+                setRunTime(`${movie2.episode_run_time[0]} mins`);
+            }
         }
     }, [movie2.runtime, movie2.episode_run_time]);
 
