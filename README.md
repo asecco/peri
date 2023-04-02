@@ -67,7 +67,6 @@ yarn install or npm install
 
 3. Create a file for the environment variables in the root directory called `.env.local` in the following format
 ```js
-API_KEY = key
 NEXT_PUBLIC_API_KEY = key
 NEXT_PUBLIC_WatchMode = key
 ```

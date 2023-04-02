@@ -16,7 +16,7 @@ export default function Home({results}) {
   );
 }
 
-const trending = `trending/all/week?api_key=${process.env.API_KEY}`;
+const trending = `trending/all/week?api_key=${process.env.NEXT_PUBLIC_API_KEY}`;
 
 export async function getServerSideProps() {
   const req = await fetch(`https://api.themoviedb.org/3/${trending}`).then((res) => res.json())
