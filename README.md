@@ -30,7 +30,7 @@
   <br> 
 </p>
 
-![Untitled2](https://user-images.githubusercontent.com/40510223/229329523-d26892b6-9b89-4b51-8b57-944dda56f724.png)
+![1](https://user-images.githubusercontent.com/40510223/229329523-d26892b6-9b89-4b51-8b57-944dda56f724.png)
 
 ## About
 Peri was originally designed to be similar to a modern streaming media service with the UI being inspired by platforms such as [Plex](https://www.plex.tv) and [Hulu](https://www.hulu.com). Peri includes no streaming functionality and serves as an extensive database of films and tv series, allowing you to browse and garner information on whichever type of media you desire.
@@ -89,8 +89,9 @@ yarn run dev
 ![3](https://user-images.githubusercontent.com/40510223/184006853-ee9cca16-1640-4af2-a6e6-1734f4de1cc5.png)
 ![4](https://user-images.githubusercontent.com/40510223/183317876-81a41ca4-ca5d-485d-b38c-7082de656660.png)
 ![5](https://user-images.githubusercontent.com/40510223/184006885-829e79eb-c51e-436d-b368-e3e85741e42e.png)
-![6](https://user-images.githubusercontent.com/40510223/183317881-c23ebeba-65e8-4a34-b3b8-ab3739f5d15c.png)
-![7](https://user-images.githubusercontent.com/40510223/183317882-ecf9766e-fe4b-4a36-959f-a686177f69f2.png)
+![6](https://user-images.githubusercontent.com/40510223/229385353-342014fc-fbce-4788-ba5e-f96d05a227cc.png)
+![7](https://user-images.githubusercontent.com/40510223/183317881-c23ebeba-65e8-4a34-b3b8-ab3739f5d15c.png)
+![8](https://user-images.githubusercontent.com/40510223/183317882-ecf9766e-fe4b-4a36-959f-a686177f69f2.png)
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
