@@ -215,7 +215,7 @@ function MovieInfo() {
             </div>
 
             <div hidden={recommendDiv}>
-                <p className="font-bold text-white text-2xl lg:text-3xl mx-7">More Like This:</p>
+                <p className="font-bold text-white text-2xl lg:text-3xl mx-7">{recommendMovie.length > 0 ? 'More Like This:' : ''}</p>
                 <FlipMove className="px-5 my-10 sm:grid md:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8 3xl:grid-cols-10">
                     {recommendMovie?.map((rec) => rec.backdrop_path && (
                     <>
