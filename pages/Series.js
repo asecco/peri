@@ -15,7 +15,7 @@ function Series() {
     useEffect(() => {
         document.title = `Series | ${genre}`;
         const searchReq = async () => {
-            const req = await fetch(`${API_URL}${requestsTV[genre].url}&page=${page}`).then((res) => res.json());
+            const req = await fetch(`${API_URL}${requestsTV[genre].url}&page=${page}&with_original_language=en`).then((res) => res.json());
             const arr = req.results;
             arr.forEach(obj => {
                 obj.media_type = 'tv';
