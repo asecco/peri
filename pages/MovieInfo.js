@@ -56,12 +56,18 @@ function MovieInfo() {
     }
 
     const [certification, setCertification] = useState([]);
+    console.log(movie2.release_dates);
     useEffect(() => {
         if(movie2.release_dates) {
             if(movie2.release_dates.results.length > 0) {
                 const rating = movie2.release_dates.results.find(obj => obj.iso_3166_1 === 'US');
                 if(rating) {
-                    setCertification(rating.release_dates[0].certification);
+                    const cert = rating.release_dates.find(obj => obj.certification !== '');
+                    if(cert) {
+                        setCertification(cert.certification);
+                    } else {
+                        setCertification('N/A');
+                    }
                 } else {
                     setCertification('N/A');
                 }
