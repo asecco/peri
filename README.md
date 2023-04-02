@@ -72,7 +72,7 @@ NEXT_PUBLIC_WATCHMODE = key
 NEXT_PUBLIC_YOUTUBE_API_KEY = key
 ```
 
-4. Replace "key" with your API keys after registering on [TMDB](https://www.themoviedb.org), [Watchmode](https://api.watchmode.com), and [YouTube](https://developers.google.com/youtube/v3/getting-started)
+4. Replace "key" with your API keys after registering on [TMDB](https://www.themoviedb.org/documentation/api), [Watchmode](https://api.watchmode.com), and [YouTube](https://developers.google.com/youtube/v3/getting-started)
 
 5. Start the development server
 ```sh
