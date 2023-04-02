@@ -68,10 +68,11 @@ yarn install or npm install
 3. Create a file for the environment variables in the root directory called `.env.local` in the following format
 ```js
 NEXT_PUBLIC_API_KEY = key
-NEXT_PUBLIC_WatchMode = key
+NEXT_PUBLIC_WATCHMODE = key
+NEXT_PUBLIC_YOUTUBE_API_KEY = key
 ```
 
-4. Replace "key" with your API keys after registering on [TMDB](https://www.themoviedb.org) and [Watchmode](https://api.watchmode.com)
+4. Replace "key" with your API keys after registering on [TMDB](https://www.themoviedb.org), [Watchmode](https://api.watchmode.com), and [YouTube](https://developers.google.com/youtube/v3/getting-started)
 
 5. Start the development server
 ```sh
