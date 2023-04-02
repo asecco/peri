@@ -112,28 +112,22 @@ function MovieInfo() {
 
     const checkFav = () => {
         const localStorageParams = localStorage.getItem('favorites');
-        if(localStorageParams) {
-            const localStorageParamsObj = JSON.parse(localStorageParams);
-            const localStorageParamsObjIds = localStorageParamsObj.map(obj => obj.id);
-            if(localStorageParamsObjIds.includes(movie.id)) {
-                const localStorageParamsObjIds = localStorageParamsObj.map(obj => obj.id);
-                const index = localStorageParamsObjIds.indexOf(movie.id);
-                localStorageParamsObj.splice(index, 1);
-                localStorage.setItem('favorites', JSON.stringify(localStorageParamsObj));
-                toastNotify('remove');
-                setIsFav(false);
-            } else {
-                localStorageParamsObj.push(params);
-                localStorage.setItem('favorites', JSON.stringify(localStorageParamsObj));
-                toastNotify('add');
-                setIsFav(true);
-            }
+        const localStorageParamsObj = localStorageParams ? JSON.parse(localStorageParams) : [];
+        const localStorageParamsObjIds = localStorageParamsObj.map(obj => obj.id);
+        
+        if (localStorageParamsObjIds.includes(movie.id)) {
+            const index = localStorageParamsObjIds.indexOf(movie.id);
+            localStorageParamsObj.splice(index, 1);
+            localStorage.setItem('favorites', JSON.stringify(localStorageParamsObj));
+            toastNotify('remove');
+            setIsFav(false);
         } else {
-            localStorage.setItem('favorites', JSON.stringify([params]));
+            localStorageParamsObj.push(params);
+            localStorage.setItem('favorites', JSON.stringify(localStorageParamsObj));
             toastNotify('add');
             setIsFav(true);
         }
-    }
+      }
 
     const [runtime, setRunTime] = useState([]);
     useEffect(() => {
