@@ -173,10 +173,10 @@ function MovieInfo() {
             <Header />
             <Modal open={modalOpen} onClose={onCloseModal} center styles={{ modal: {background: '#202F3B'}}}>
                 <div className="text-white">
-                    <h2 className="text-center text-2xl mb-2">Streaming Options</h2>
+                    <h2 className="text-center text-2xl mb-2">Where to Watch</h2>
                     {watchModeSources.map((source, index) => {
                         return (
-                            <a key={index} href={source.web_url} target="_blank" rel="noreferrer"><div className="grid grid-cols-2 p-2 rounded-full hover:border-2 hover:border-red-400">
+                            <a key={index} href={source.web_url} target="_blank" rel="noreferrer"><div className="grid grid-cols-2 p-2 pt-2 rounded-full hover:pt-1 hover:border-2 hover:border-red-400">
                                 <h3>{source.name}</h3>
                                 <p className="pl-24">{source.price ? `$${source.price}` : 'Sub'}</p>
                             </div></a>
