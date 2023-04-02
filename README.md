@@ -30,7 +30,7 @@
   <br> 
 </p>
 
-![1](https://user-images.githubusercontent.com/40510223/183317827-fa4a2b63-5d56-4906-9921-d6ff7575f16b.png)
+![Untitled2](https://user-images.githubusercontent.com/40510223/229329523-d26892b6-9b89-4b51-8b57-944dda56f724.png)
 
 ## About
 Peri was originally designed to be similar to a modern streaming media service with the UI being inspired by platforms such as [Plex](https://www.plex.tv) and [Hulu](https://www.hulu.com). Peri includes no streaming functionality and serves as an extensive database of films and tv series, allowing you to browse and garner information on whichever type of media you desire.
