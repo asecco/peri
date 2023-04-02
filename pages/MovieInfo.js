@@ -1,10 +1,9 @@
 import Head from 'next/head';
 import { useRouter } from "next/router";
-import { API_KEY, WATCHMODE_API_KEY, BASE_URL, API_URL } from '../utils/constants';
+import { API_KEY, WATCHMODE_API_KEY, BASE_URL, API_URL, YOUTUBE_API_KEY, YOUTUBE_API_URL } from '../utils/constants';
 import React, { useState, useEffect } from 'react';
 import { Modal } from 'react-responsive-modal';
 import ModalVideo from 'react-modal-video';
-import movieTrailer from 'movie-trailer';
 import Image from "next/image";
 import { StarIcon, PlayIcon, HeartIcon, FilmIcon } from '@heroicons/react/outline';
 import Header from '../components/Header';
@@ -34,9 +33,12 @@ function MovieInfo() {
             setSeasons(movie2Req.seasons);
             setCast(castReq.cast.slice(0, 12));
             setRecommendMovie(recommendReq.results.slice(0, 12));
-            const trailerId = await movieTrailer(`${movie.title || movie.original_name}`, {id: true});
-            setTrailerId(trailerId);
             checkRelease();
+            
+            const trailer = await fetch(`${YOUTUBE_API_URL}${movie.title || movie.original_name}+trailer&part=snippet&maxResults=1&type=video&key=${YOUTUBE_API_KEY}`);
+            const trailerData = await trailer.json();
+            const trailerId = trailerData.items[0].id.videoId;
+            setTrailerId(trailerId);
         }
         searchReq();
     }, [movie.id]);
