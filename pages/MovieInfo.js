@@ -56,7 +56,6 @@ function MovieInfo() {
     }
 
     const [certification, setCertification] = useState([]);
-    console.log(movie2.release_dates);
     useEffect(() => {
         if(movie2.release_dates) {
             if(movie2.release_dates.results.length > 0) {
