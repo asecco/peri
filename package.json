@@ -13,8 +13,6 @@
     "@tailwindcss/line-clamp": "^0.4.0",
     "glob-parent": "^6.0.2",
     "got": "^12.2.0",
-    "justwatch-api": "^1.0.7",
-    "movie-trailer": "^2.1.0",
     "next": "12.2.2",
     "node-fetch": "^3.2.9",
     "react": "18.2.0",
