@@ -39,6 +39,7 @@ Peri was originally designed to be similar to a modern streaming media service w
 - Personalized recommendations
 - Modern UI and fully mobile responsive
 - Direct links to legal streaming options(Netflix, Prime Video, Apple TV, etc.)
+- Embedded trailers
 - Local storage for storing favorites
 - Lazy loading
 - Server-side rendering via Next.js
