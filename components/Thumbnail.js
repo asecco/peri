@@ -5,7 +5,7 @@ import { BASE_URL } from "../utils/constants";
 
 const Thumbnail = forwardRef(({result}, ref) => {
     const router = useRouter();
-    const routeQuery = () => router.push({pathname: '/MovieInfo', query: result}, `/${result.id}`);
+    const routeQuery = () => router.push({pathname: '/MovieInfo', query: {result: JSON.stringify(result)}, as: `/${result.id}`});
 
     return (
         <div onClick={routeQuery} ref={ref} className='p-2 mx-10 my-2 md:mx-4 lg:mx-8 group cursor-pointer transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50'>
