@@ -31,7 +31,7 @@ function Favorites() {
             </div>            
 
             <div>
-                <FlipMove className="px-5 my-10 sm:grid md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 3xl:grid-cols-7">
+                <FlipMove className="px-5 my-10 sm:grid md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5">
                     {favRes?.map((fav) => fav.poster_path && (
                     <>
                         <Thumbnail result={fav} />
