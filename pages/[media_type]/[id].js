@@ -22,7 +22,7 @@ function MovieInfo({ movie }) {
     const [recommendMovie, setRecommendMovie] = useState([]);
     const [seasons, setSeasons] = useState([]);
     const [isOpen, setOpen] = useState(false);
-    const [mediaType, setMediaType] = useState('movie');
+    const [mediaType, setMediaType] = useState(null);    
 
     useEffect(() => {
         const searchReq = async () => {
@@ -33,7 +33,7 @@ function MovieInfo({ movie }) {
                 } else {
                   setMediaType(parsedResult.media_type || 'movie');
                 }
-                router.push(`/MovieInfo/${parsedResult.id}`);
+                router.push(`/${parsedResult.media_type}/${parsedResult.id}`);
               }
             const movie2Req = await fetch(`${API_URL}${mediaType}/${movie?.id}?api_key=${API_KEY}&language=en-US&append_to_response=release_dates`).then((res) => res.json());
             const castReq = await fetch(`${API_URL}${mediaType}/${movie?.id}/credits?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
