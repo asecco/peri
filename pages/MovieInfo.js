@@ -34,19 +34,18 @@ function MovieInfo() {
             setCast(castReq.cast.slice(0, 12));
             setRecommendMovie(recommendReq.results.slice(0, 12));
             checkRelease();
-            
-            const trailer = await fetch(`${YOUTUBE_API_URL}${movie.title || movie.original_name}+trailer&part=snippet&maxResults=1&type=video&key=${YOUTUBE_API_KEY}`);
-            const trailerData = await trailer.json();
-            const trailerId = trailerData.items[0].id.videoId;
-            setTrailerId(trailerId);
         }
         searchReq();
     }, [movie.id]);
 
-    const checkTrailer = () => {
-        if(trailerID === null) {
+    const checkTrailer = async () => {
+        const trailer = await fetch(`${YOUTUBE_API_URL}${movie.title || movie.original_name}+trailer&part=snippet&maxResults=1&type=video&key=${YOUTUBE_API_KEY}`);
+        if(!trailer.ok) { //If api request fails/exceeds daily quota
             toast.error('No trailer available', alertParams);
         } else {
+            const trailerData = await trailer.json();
+            const trailerId = trailerData.items[0].id.videoId;
+            setTrailerId(trailerId);
             setOpen(true);
         }
     }
