@@ -1,23 +1,21 @@
 import Head from 'next/head';
 import { useRouter } from "next/router";
-import { API_KEY, WATCHMODE_API_KEY, BASE_URL, API_URL, YOUTUBE_API_KEY, YOUTUBE_API_URL } from '../utils/constants';
+import { API_KEY, WATCHMODE_API_KEY, BASE_URL, API_URL, YOUTUBE_API_KEY, YOUTUBE_API_URL } from '../../utils/constants';
 import React, { useState, useEffect } from 'react';
 import { Modal } from 'react-responsive-modal';
 import ModalVideo from 'react-modal-video';
 import Image from "next/image";
 import { StarIcon, PlayIcon, HeartIcon, FilmIcon } from '@heroicons/react/outline';
-import Header from '../components/Header';
-import Cast from "../components/Cast";
-import Recommend from "../components/Recommend";
-import Seasons from "../components/Seasons";
+import Header from '../../components/Header';
+import Cast from "../../components/Cast";
+import Recommend from "../../components/Recommend";
+import Seasons from "../../components/Seasons";
 import FlipMove from "react-flip-move";
 import { ToastContainer, toast } from 'react-toastify';
-import { toastNotify, alertParams } from "../utils/notifications";
+import { toastNotify, alertParams } from "../../utils/notifications";
 
-function MovieInfo() {
+function MovieInfo({ movie}) {
     const router = useRouter();
-    const result = router.query.result;
-    const movie = result ? JSON.parse(result) : null;
     const [cast, setCast] = useState([]);
     const [movie2, setMovie2] = useState([]);
     const [trailerID, setTrailerId] = useState([]);
@@ -27,6 +25,10 @@ function MovieInfo() {
     const mediaType = movie?.media_type || 'movie';
     useEffect(() => {
         const searchReq = async () => {
+            if (router.query.result) {
+                const parsedResult = JSON.parse(router.query.result);
+                router.push(`/MovieInfo/${parsedResult.id}`);
+            }
             const castReq = await fetch(`${API_URL}${mediaType}/${movie?.id}/credits?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
             const movie2Req = await fetch(`${API_URL}${mediaType}/${movie?.id}?api_key=${API_KEY}&language=en-US&append_to_response=release_dates`).then((res) => res.json());
             const recommendReq = await fetch(`${API_URL}${mediaType}/${movie?.id}/recommendations?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
@@ -244,6 +246,17 @@ function MovieInfo() {
             </div>
     </div>
     );
+}
+
+export async function getServerSideProps(context) {
+    const { id } = context.query;
+    const res = await fetch(`${API_URL}movie/${id}?api_key=${API_KEY}&language=en-US`);
+    const movie = await res.json();
+    return {
+        props: {
+            movie,
+        },
+    }
 }
 
 export default MovieInfo;
