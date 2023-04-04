@@ -14,7 +14,7 @@ import FlipMove from "react-flip-move";
 import { ToastContainer, toast } from 'react-toastify';
 import { toastNotify, alertParams } from "../../utils/notifications";
 
-function MovieInfo({ movie}) {
+function MovieInfo({ movie }) {
     const router = useRouter();
     const [cast, setCast] = useState([]);
     const [movie2, setMovie2] = useState([]);
@@ -22,15 +22,21 @@ function MovieInfo({ movie}) {
     const [recommendMovie, setRecommendMovie] = useState([]);
     const [seasons, setSeasons] = useState([]);
     const [isOpen, setOpen] = useState(false);
-    const mediaType = movie?.media_type || 'movie';
+    const [mediaType, setMediaType] = useState('movie');
+
     useEffect(() => {
         const searchReq = async () => {
-            if (router.query.result) {
+            if(router.query.result) {
                 const parsedResult = JSON.parse(router.query.result);
+                if (parsedResult.first_air_date) {
+                  setMediaType('tv');
+                } else {
+                  setMediaType(parsedResult.media_type || 'movie');
+                }
                 router.push(`/MovieInfo/${parsedResult.id}`);
-            }
-            const castReq = await fetch(`${API_URL}${mediaType}/${movie?.id}/credits?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
+              }
             const movie2Req = await fetch(`${API_URL}${mediaType}/${movie?.id}?api_key=${API_KEY}&language=en-US&append_to_response=release_dates`).then((res) => res.json());
+            const castReq = await fetch(`${API_URL}${mediaType}/${movie?.id}/credits?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
             const recommendReq = await fetch(`${API_URL}${mediaType}/${movie?.id}/recommendations?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
             setMovie2(movie2Req);
             setSeasons(movie2Req.seasons);
@@ -39,10 +45,10 @@ function MovieInfo({ movie}) {
             checkRelease();
         }
         searchReq();
-    }, [movie?.id]);
+    }, [movie2?.id, mediaType, router.query.result]);
 
     const checkTrailer = async () => {
-        const trailer = await fetch(`${YOUTUBE_API_URL}${movie?.title || movie?.original_name}+trailer&part=snippet&maxResults=1&type=video&key=${YOUTUBE_API_KEY}`);
+        const trailer = await fetch(`${YOUTUBE_API_URL}${movie2?.title || movie2?.original_name}+trailer&part=snippet&maxResults=1&type=video&key=${YOUTUBE_API_KEY}`);
         if(!trailer.ok) { //If api request fails/exceeds daily quota
             toast.error('No trailer available', alertParams);
         } else {
@@ -82,19 +88,19 @@ function MovieInfo({ movie}) {
     const [recommendDiv, setRecommendDiv] = useState(false);
     const checkRelease = () => {
         if(mediaType === 'movie') {
-            const sliced = movie?.release_date.slice(0, -6)
+            const sliced = movie2?.release_date?.slice(0, -6)
             setReleaseYear(sliced);
         } else if(mediaType === 'tv') {
-            const sliced = movie?.first_air_date.slice(0, -6)
+            const sliced = movie2?.first_air_date?.slice(0, -6)
             setReleaseYear(sliced);
             setRecommendDiv(true);
         } else {
-            setReleaseYear(movie?.release_date);
+            setReleaseYear(movie2?.release_date);
         }
     }
 
     const params = {
-        id: movie?.id,
+        id: movie2?.id,
         type : mediaType,
     }
 
@@ -104,7 +110,7 @@ function MovieInfo({ movie}) {
         if (localStorageParams) {
             const localStorageParamsObj = JSON.parse(localStorageParams);
             const localStorageParamsObjIds = localStorageParamsObj.map(obj => obj.id);
-            if (localStorageParamsObjIds.includes(movie?.id)) {
+            if (localStorageParamsObjIds.includes(movie2?.id)) {
                 setIsFav(true);
             } else {
                 setIsFav(false);
@@ -122,8 +128,8 @@ function MovieInfo({ movie}) {
         const localStorageParamsObj = localStorageParams ? JSON.parse(localStorageParams) : [];
         const localStorageParamsObjIds = localStorageParamsObj.map(obj => obj.id);
 
-        if (localStorageParamsObjIds.includes(movie?.id)) {
-            const index = localStorageParamsObjIds.indexOf(movie?.id);
+        if (localStorageParamsObjIds.includes(movie2?.id)) {
+            const index = localStorageParamsObjIds.indexOf(movie2?.id);
             localStorageParamsObj.splice(index, 1);
             localStorage.setItem('favorites', JSON.stringify(localStorageParamsObj));
             localStorage.setItem('isFav', JSON.stringify(false));
@@ -158,7 +164,7 @@ function MovieInfo({ movie}) {
     const onOpenModal = () => setModalOpen(true);
     const onCloseModal = () => setModalOpen(false);
     const streamAvailability = async () => {
-        const watchMode = await fetch(`https://api.watchmode.com/v1/title/${mediaType}-${movie?.id}/sources/?apiKey=${WATCHMODE_API_KEY}`).then((res) => res.json());
+        const watchMode = await fetch(`https://api.watchmode.com/v1/title/${mediaType}-${movie2?.id}/sources/?apiKey=${WATCHMODE_API_KEY}`).then((res) => res.json());
         if(watchMode.length > 0) {
             setWatchModeSources(watchMode.filter((v,i,a)=>a.findIndex(v2=>(v2.name===v.name))===i));
             onOpenModal();
@@ -170,7 +176,7 @@ function MovieInfo({ movie}) {
 
     return (
         <div>
-            <Head><title>{movie?.title || movie?.original_name}</title></Head>
+            <Head><title>{movie2?.title || movie2?.original_name}</title></Head>
             <ToastContainer theme="dark"/>
             <Header />
             <Modal open={modalOpen} onClose={onCloseModal} center styles={{ modal: {background: '#202F3B'}}}>
@@ -188,16 +194,16 @@ function MovieInfo({ movie}) {
             <div className="w-full">
                 <div className="mx-auto px-20 flex flex-col-reverse gap-10 object-bottom md:flex-row">
                     <div className="flex flex-col gap-4 md:w-5/12 lg:w-6/12 xl:w-8/12 2xl:w-10/12">
-                        <h1 className="font-bold text-3xl md:text-5xl lg:text-7xl text-center text-red-400">{movie?.title || movie?.original_name}</h1>
+                        <h1 className="font-bold text-3xl md:text-5xl lg:text-7xl text-center text-red-400">{movie2?.title || movie2?.original_name}</h1>
                         <div className="flex items-center justify-center space-x-5 lg:space-x-20 font-bold lg:text-lg text-sm md:text-base text-center text-white">
                             <p className="border-2 border-white px-1">{mediaType !== 'tv' ? certification : movie2.status}</p>
                             <p>{releaseYear}</p>
                             <p className="xl:truncate">{genres?.slice(0, -2)}</p>
                             <p>{runtime}</p>
-                            <StarIcon className="h-4 my-4 md:h-8 lg:h-6 lg:mx-2 lg:my-0 text-yellow-400 fill-yellow-400" />{Math.round(movie?.vote_average * 10) / 10}/10
+                            <StarIcon className="h-4 my-4 md:h-8 lg:h-6 lg:mx-2 lg:my-0 text-yellow-400 fill-yellow-400" />{Math.round(movie2?.vote_average * 10) / 10}/10
                         </div>
                         <p className="md:text-lg lg:text-xl text-white text-center font-style: italic">{movie2.tagline}</p>
-                        <p className="text-center text-base md:text-left md:text-xl lg:text-2xl text-white line-clamp-14">{movie?.description || movie?.overview}</p>
+                        <p className="text-center text-base md:text-left md:text-xl lg:text-2xl text-white line-clamp-14">{movie2?.description || movie2?.overview}</p>
                         <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId={trailerID} onClose={() => setOpen(false)} />
 
                         <div className="flex items-center justify-center space-x-4 my-2">
@@ -207,7 +213,7 @@ function MovieInfo({ movie}) {
                         </div>
                     </div>
                     <div className="w-8/12 md:w-4/12 lg:w-3/12 mx-10 md:mx-28 lg:mx-14">
-                        <Image priority={true} layout="responsive" src={`${BASE_URL}${movie?.poster_path}`} alt='' height={960} width={640}/>
+                        <Image priority={true} layout="responsive" src={`${BASE_URL}${movie2?.poster_path}`} alt='' height={960} width={640}/>
                     </div>
                 </div>
             </div>
@@ -217,7 +223,7 @@ function MovieInfo({ movie}) {
                 <FlipMove className="grid grid-cols-2 px-7 lg:px-14 my-10 sm:grid md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 3xl:grid-cols-10">
                     {seasons?.map((season) => season.poster_path && (
                     <>
-                        <Seasons result={season} id={movie2.id} title={movie?.title || movie?.original_name} />
+                        <Seasons result={season} id={movie2.id} title={movie2?.title || movie2?.original_name} />
                     </>
                     ))}
                 </FlipMove>
