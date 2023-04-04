@@ -207,7 +207,7 @@ function MovieInfo() {
 
             <div>
                 <p className="font-bold text-white text-2xl lg:text-3xl mx-7 mt-10 md:mt-4 lg:mt-0">{mediaType != 'tv' ? '' : 'Seasons:'}</p>
-                <FlipMove className="grid grid-cols-2 px-5 my-10 sm:grid md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-10 3xl:grid-cols-12">
+                <FlipMove className="grid grid-cols-2 px-5 my-10 sm:grid md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 3xl:grid-cols-10">
                     {seasons?.map((season) => season.poster_path && (
                     <>
                         <Seasons result={season} id={movie2.id} title={movie.title || movie.original_name} />
@@ -218,7 +218,7 @@ function MovieInfo() {
 
             <div hidden={recommendDiv}>
                 <p className="font-bold text-white text-2xl lg:text-3xl mx-7">{recommendMovie.length > 0 ? 'More Like This:' : ''}</p>
-                <FlipMove className="px-5 my-10 sm:grid md:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8 3xl:grid-cols-10">
+                <FlipMove className="px-5 my-10 sm:grid md:grid-cols-4 xl:grid-cols-6 3xl:grid-cols-8">
                     {recommendMovie?.map((rec) => rec.backdrop_path && (
                     <>
                         <Recommend result={rec} />
@@ -229,7 +229,7 @@ function MovieInfo() {
 
             <div>
                 <p className="font-bold text-white text-2xl lg:text-3xl mx-7">Cast:</p>
-                <FlipMove className="grid grid-cols-2 px-10 md:px-5 my-10 sm:grid md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8 3xl:grid-cols-10">
+                <FlipMove className="grid grid-cols-2 px-10 md:px-5 my-10 sm:grid md:grid-cols-4 xl:grid-cols-6 3xl:grid-cols-8">
                     {cast?.map((cast) => cast.profile_path && (
                     <>
                         <Cast member={cast} />
