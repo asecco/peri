@@ -34,7 +34,7 @@ function MovieInfo({ movie, cast, recommend }) {
             } else {
                 setMediaType(parsedResult.media_type || 'movie');
             }
-            router.push(`/${parsedResult.media_type}/${parsedResult.id}`);
+            router.push(`/${parsedResult.media_type || 'movie' }/${parsedResult.id}`);
         } else {
             setMediaType(router.query.media_type);
         }

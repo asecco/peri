@@ -1,28 +1,11 @@
-import React, { useState, useEffect } from 'react';
 import { useRouter } from "next/router";
 import Image from 'next/image';
-import { BASE_URL, API_KEY, API_URL } from "../utils/constants";
+import { BASE_URL } from "../utils/constants";
 import Slider from "react-slick";
 
-function NowPlayingBanner() {
+function NowPlayingBanner({ nowPlaying }) {
     const router = useRouter();
-    const routeQuery = (movie) => router.push({pathname: '/MovieInfo', query: movie}, `/${movie.id}`);
-
-    const [nowPlaying, setNowPlaying] = useState([]);
-    useEffect(() => {
-        const searchReq = async () => {
-            const nowReq = await fetch(`${API_URL}movie/now_playing?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
-            const shuffleArray = (array) => {
-                for (let i = array.length - 1; i > 0; i--) {
-                    const j = Math.floor(Math.random() * (i + 1));
-                    [array[i], array[j]] = [array[j], array[i]];
-                }
-                return array;
-            }
-            setNowPlaying(shuffleArray(nowReq.results));
-        }
-        searchReq();
-    }, []);
+    const routeQuery = (movie) => router.push({pathname: `/[media_type]/${movie.id}`, query: {result: JSON.stringify(movie)}});
 
     const settings = {
         autoplay: true,
