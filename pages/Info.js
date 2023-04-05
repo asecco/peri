@@ -46,7 +46,7 @@ function MovieInfo({ movie, cast, recommend }) {
     }, [mediaType, router.query.type, releaseYear]);
 
     const checkTrailer = async () => {
-        const trailer = await fetch(`${YOUTUBE_API_URL}${movie?.title || movie?.original_name}+trailer&part=snippet&maxResults=1&type=video&key=${YOUTUBE_API_KEY}`);
+        const trailer = await fetch(`${YOUTUBE_API_URL}${movie?.title || movie?.original_name}+${mediaType}+trailer&part=snippet&maxResults=1&type=video&key=${YOUTUBE_API_KEY}`);
         if(!trailer.ok) { //If api request fails/exceeds daily quota
             toast.error('No trailer available', alertParams);
         } else {
