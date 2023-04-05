@@ -24,24 +24,26 @@ function MovieInfo({ movie, cast, recommend }) {
 
     const castArr = cast.cast?.slice(0, 12);
     const recArr = recommend.results?.slice(0, 12);
-    const seasons = movie.seasons
+    const seasons = movie.seasons;
 
     useEffect(() => {
         if(router.query.result) {
-            const parsedResult = JSON.parse(router.query.result);
+            const parsedResult = JSON.parse(router.query.result || '{media_type: "movie"}');
             if (parsedResult.first_air_date) {
                 setMediaType('tv');
             } else {
                 setMediaType(parsedResult.media_type || 'movie');
             }
             router.push(`/${parsedResult.media_type}/${parsedResult.id}`);
+        } else {
+            setMediaType(router.query.media_type);
         }
 
         if(mediaType === 'movie') {
-            const sliced = movie?.release_date?.slice(0, -6)
+            const sliced = movie.release_date?.slice(0, -6)
             setReleaseYear(sliced);
         } else if(mediaType === 'tv') {
-            const sliced = movie?.first_air_date?.slice(0, -6)
+            const sliced = movie.first_air_date?.slice(0, -6)
             setReleaseYear(sliced);
             setRecommendDiv(true);
         } else {
@@ -80,7 +82,7 @@ function MovieInfo({ movie, cast, recommend }) {
                 }
             }
         }
-    }, [movie.release_dates]);
+    }, [movie.release_dates, certification,]);
 
     const params = {
         id: movie?.id,
@@ -140,7 +142,7 @@ function MovieInfo({ movie, cast, recommend }) {
                 setRunTime(`${movie.episode_run_time[0]} mins`);
             }
         }
-    }, [movie.runtime, movie.episode_run_time]);
+    }, [movie.runtime, movie.episode_run_time, runtime]);
 
     const [watchModeSources, setWatchModeSources] = useState([]);
     const [modalOpen, setModalOpen] = useState(false);
@@ -179,13 +181,13 @@ function MovieInfo({ movie, cast, recommend }) {
                     <div className="flex flex-col gap-4 md:w-5/12 lg:w-6/12 xl:w-8/12 2xl:w-10/12">
                         <h1 className="font-bold text-3xl md:text-5xl lg:text-7xl text-center text-red-400">{movie?.title || movie?.original_name}</h1>
                         <div className="flex items-center justify-center space-x-5 lg:space-x-20 font-bold lg:text-lg text-sm md:text-base text-center text-white">
-                            <p className="border-2 border-white px-1">{mediaType !== 'tv' ? certification : movie.status}</p>
+                            <p className="border-2 border-white px-1">{mediaType !== 'tv' ? certification : movie?.status}</p>
                             <p>{releaseYear}</p>
                             <p className="xl:truncate">{genres}</p>
                             <p>{runtime}</p>
                             <StarIcon className="h-4 my-4 md:h-8 lg:h-6 lg:mx-2 lg:my-0 text-yellow-400 fill-yellow-400" />{Math.round(movie?.vote_average * 10) / 10}/10
                         </div>
-                        <p className="md:text-lg lg:text-xl text-white text-center font-style: italic">{movie.tagline}</p>
+                        <p className="md:text-lg lg:text-xl text-white text-center font-style: italic">{movie?.tagline}</p>
                         <p className="text-center text-base md:text-left md:text-xl lg:text-2xl text-white line-clamp-14">{movie?.description || movie?.overview}</p>
                         <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId={trailerID} onClose={() => setOpen(false)} />
 
