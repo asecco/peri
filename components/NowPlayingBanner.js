@@ -5,7 +5,7 @@ import Slider from "react-slick";
 
 function NowPlayingBanner({ nowPlaying }) {
     const router = useRouter();
-    const routeQuery = (movie) => router.push({pathname: `/[media_type]/${movie.id}`, query: {result: JSON.stringify(movie)}});
+    const routeQuery = (movie) => router.push({pathname: `/info`, query: {type: 'movie', id: movie.id}});
 
     const settings = {
         autoplay: true,

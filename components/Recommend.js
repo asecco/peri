@@ -4,7 +4,7 @@ import { BASE_URL } from "../utils/constants";
 
 function Recommend({ result }) {
     const router = useRouter();
-    const routeQuery = () => router.push({pathname: `/[media_type]/${result.id}`, query: {result: JSON.stringify(result)}});
+    const routeQuery = () => router.push({pathname: `/info`, query: {type: result.media_type || 'movie', id: result.id}});
 
     return (
         <div onClick={routeQuery} className='p-2 group cursor-pointer transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50'>
