@@ -35,6 +35,6 @@ export async function getServerSideProps() {
 		props: {
 			results: req.results,
 			nowPlaying: shuffleArray(nowPlaying.results),
-			}
+		}
 	};
 } 

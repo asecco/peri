@@ -4,27 +4,11 @@ import Image from "next/image";
 import Header from '../components/Header';
 import Recommend from '../components/Recommend';
 import FlipMove from 'react-flip-move';
-import { useRouter } from "next/router";
 import { BASE_URL, API_KEY, API_URL } from "../utils/constants";
 
-function CastInfo() {
-    const router = useRouter();
-    const castId = Object.keys(router.query);
-    const [castInfo, setCastInfo] = useState([]);
-    const [knownFor, setKnownFor] = useState([]);
+function CastInfo({ castInfo, known }) {
+    const knownFor = known.slice(0, 8);
     const [age, setAge] = useState([]);
-    useEffect(() => {
-        const searchReq = async () => {
-            const castReq = await fetch(`${API_URL}person/${castId}?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
-            const knownForReq = await fetch(`${API_URL}person/${castId}/movie_credits?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
-            for(let i in knownForReq.cast) {
-                knownForReq.cast[i].media_type = 'movie';
-            }
-            setCastInfo(castReq);
-            setKnownFor(knownForReq.cast.slice(0, 8));
-        }
-        searchReq();
-    }, [age]); 
 
     useEffect(() => {
         const today = new Date();
@@ -65,6 +49,19 @@ function CastInfo() {
             </div>
         </div>
     );
+}
+
+export async function getServerSideProps(context) {
+    const id = context.query.id;
+    const cast = await fetch(`${API_URL}person/${id}?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
+    const knownFor = await fetch(`${API_URL}person/${id}/movie_credits?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
+    
+    return {
+        props: {
+            castInfo: cast,
+            known: knownFor.cast,
+        },
+    }
 }
 
 export default CastInfo;
