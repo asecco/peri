@@ -14,46 +14,39 @@ import FlipMove from "react-flip-move";
 import { ToastContainer, toast } from 'react-toastify';
 import { toastNotify, alertParams } from "../../utils/notifications";
 
-function MovieInfo({ movie }) {
+function MovieInfo({ movie, cast, recommend }) {
     const router = useRouter();
-    const [cast, setCast] = useState([]);
     const [trailerID, setTrailerId] = useState([]);
-    const [recommendMovie, setRecommendMovie] = useState([]);
-    const [seasons, setSeasons] = useState([]);
     const [isOpen, setOpen] = useState(false);
     const [mediaType, setMediaType] = useState(null);
     const [releaseYear, setReleaseYear] = useState([]);
     const [recommendDiv, setRecommendDiv] = useState(false);
 
-    useEffect(() => {
-        const searchReq = async () => {
-            if(router.query.result) {
-                const parsedResult = JSON.parse(router.query.result);
-                if (parsedResult.first_air_date) {
-                  setMediaType('tv');
-                } else {
-                  setMediaType(parsedResult.media_type || 'movie');
-                }
-                router.push(`/${parsedResult.media_type}/${parsedResult.id}`);
-              }
-            const castReq = await fetch(`${API_URL}${mediaType}/${movie?.id}/credits?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
-            const recommendReq = await fetch(`${API_URL}${mediaType}/${movie?.id}/recommendations?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
-            setSeasons(movie.seasons);
-            setCast(castReq.cast?.slice(0, 12));
-            setRecommendMovie(recommendReq.results?.slice(0, 12));
+    const castArr = cast.cast?.slice(0, 12);
+    const recArr = recommend.results?.slice(0, 12);
+    const seasons = movie.seasons
 
-            if(mediaType === 'movie') {
-                const sliced = movie?.release_date?.slice(0, -6)
-                setReleaseYear(sliced);
-            } else if(mediaType === 'tv') {
-                const sliced = movie?.first_air_date?.slice(0, -6)
-                setReleaseYear(sliced);
-                setRecommendDiv(true);
+    useEffect(() => {
+        if(router.query.result) {
+            const parsedResult = JSON.parse(router.query.result);
+            if (parsedResult.first_air_date) {
+                setMediaType('tv');
             } else {
-                setReleaseYear(movie?.release_date);
+                setMediaType(parsedResult.media_type || 'movie');
             }
+            router.push(`/${parsedResult.media_type}/${parsedResult.id}`);
         }
-        searchReq();
+
+        if(mediaType === 'movie') {
+            const sliced = movie?.release_date?.slice(0, -6)
+            setReleaseYear(sliced);
+        } else if(mediaType === 'tv') {
+            const sliced = movie?.first_air_date?.slice(0, -6)
+            setReleaseYear(sliced);
+            setRecommendDiv(true);
+        } else {
+            setReleaseYear(movie?.release_date);
+        }
     }, [mediaType, router.query.result, releaseYear]);
 
     const checkTrailer = async () => {
@@ -220,9 +213,9 @@ function MovieInfo({ movie }) {
             </div>
 
             <div hidden={recommendDiv}>
-                <p className="font-bold text-white text-2xl lg:text-3xl mx-7">{recommendMovie?.length > 0 ? 'More Like This:' : ''}</p>
+                <p className="font-bold text-white text-2xl lg:text-3xl mx-7">{recArr?.length > 0 ? 'More Like This:' : ''}</p>
                 <FlipMove className="px-5 my-10 sm:grid md:grid-cols-4 xl:grid-cols-6 3xl:grid-cols-8">
-                    {recommendMovie?.map((rec) => rec.backdrop_path && (
+                    {recArr?.map((rec) => rec.backdrop_path && (
                     <>
                         <Recommend result={rec} />
                     </>
@@ -233,7 +226,7 @@ function MovieInfo({ movie }) {
             <div>
                 <p className="font-bold text-white text-2xl md:text-3xl mx-7">Cast:</p>
                 <FlipMove className="grid grid-cols-2 px-10 md:px-5 my-10 sm:grid md:grid-cols-4 xl:grid-cols-6 3xl:grid-cols-8">
-                    {cast?.map((cast) => cast.profile_path && (
+                    {castArr?.map((cast) => cast.profile_path && (
                     <>
                         <Cast member={cast} />
                     </>
@@ -249,9 +242,17 @@ export async function getServerSideProps(context) {
     const res = await fetch(`${API_URL}${media_type}/${id}?api_key=${API_KEY}&language=en-US&append_to_response=release_dates`);
     const movie = await res.json();
 
+    const castRes = await fetch(`${API_URL}${media_type}/${id}/credits?api_key=${API_KEY}&language=en-US`)
+    const cast = await castRes.json();
+
+    const recommendRes = await fetch(`${API_URL}${media_type}/${id}/recommendations?api_key=${API_KEY}&language=en-US`)
+    const recommend = await recommendRes.json();
+
     return {
         props: {
             movie,
+            cast,
+            recommend,
         },
     }
 }
