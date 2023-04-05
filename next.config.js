@@ -16,6 +16,14 @@ const nextConfig = {
             source: '/tv/season',
             destination: '/EpisodeList',
         },
+        {
+            source: '/info',
+            destination: '/Info',
+        },
+        {
+            source: '/cast',
+            destination: '/CastInfo',
+        },
         ];
     },
 };

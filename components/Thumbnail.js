@@ -3,9 +3,9 @@ import { forwardRef } from 'react';
 import { useRouter } from "next/router";
 import { BASE_URL } from "../utils/constants";
 
-const Thumbnail = forwardRef(({result}, ref) => {
+const Thumbnail = forwardRef(({ result }, ref) => {
     const router = useRouter();
-    const routeQuery = () => router.push({pathname: `/[media_type]/${result.id}`, query: {result: JSON.stringify(result)}});
+    const routeQuery = () => router.push({pathname: `/info`, query: {type: result.media_type, id: result.id}});
 
     return (
         <div onClick={routeQuery} ref={ref} className='p-2 mx-10 my-2 md:mx-4 lg:mx-8 group cursor-pointer transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50'>

@@ -1,18 +1,18 @@
 import Head from 'next/head';
 import { useRouter } from "next/router";
-import { API_KEY, WATCHMODE_API_KEY, BASE_URL, API_URL, YOUTUBE_API_KEY, YOUTUBE_API_URL } from '../../utils/constants';
+import { API_KEY, WATCHMODE_API_KEY, BASE_URL, API_URL, YOUTUBE_API_KEY, YOUTUBE_API_URL } from '../utils/constants';
 import React, { useState, useEffect } from 'react';
 import { Modal } from 'react-responsive-modal';
 import ModalVideo from 'react-modal-video';
 import Image from "next/image";
 import { StarIcon, PlayIcon, HeartIcon, FilmIcon } from '@heroicons/react/outline';
-import Header from '../../components/Header';
-import Cast from "../../components/Cast";
-import Recommend from "../../components/Recommend";
-import Seasons from "../../components/Seasons";
+import Header from '../components/Header';
+import Cast from "../components/Cast";
+import Recommend from "../components/Recommend";
+import Seasons from "../components/Seasons";
 import FlipMove from "react-flip-move";
 import { ToastContainer, toast } from 'react-toastify';
-import { toastNotify, alertParams } from "../../utils/notifications";
+import { toastNotify, alertParams } from "../utils/notifications";
 
 function MovieInfo({ movie, cast, recommend }) {
     const router = useRouter();
@@ -27,16 +27,10 @@ function MovieInfo({ movie, cast, recommend }) {
     const seasons = movie.seasons;
 
     useEffect(() => {
-        if(router.query.result) {
-            const parsedResult = JSON.parse(router.query.result || '{media_type: "movie"}');
-            if (parsedResult.first_air_date) {
-                setMediaType('tv');
-            } else {
-                setMediaType(parsedResult.media_type || 'movie');
-            }
-            router.push(`/${parsedResult.media_type || 'movie' }/${parsedResult.id}`);
+        if(router.query.type === 'tv') {
+            setMediaType('tv');
         } else {
-            setMediaType(router.query.media_type);
+            setMediaType('movie');
         }
 
         if(mediaType === 'movie') {
@@ -49,7 +43,7 @@ function MovieInfo({ movie, cast, recommend }) {
         } else {
             setReleaseYear(movie?.release_date);
         }
-    }, [mediaType, router.query.result, releaseYear]);
+    }, [mediaType, router.query.type, releaseYear]);
 
     const checkTrailer = async () => {
         const trailer = await fetch(`${YOUTUBE_API_URL}${movie?.title || movie?.original_name}+trailer&part=snippet&maxResults=1&type=video&key=${YOUTUBE_API_KEY}`);
@@ -83,11 +77,6 @@ function MovieInfo({ movie, cast, recommend }) {
             }
         }
     }, [movie.release_dates, certification,]);
-
-    const params = {
-        id: movie?.id,
-        type: mediaType,
-      };
       
     const [isFav, setIsFav] = useState(false);
     useEffect(() => {
@@ -229,14 +218,14 @@ function MovieInfo({ movie, cast, recommend }) {
 }
 
 export async function getServerSideProps(context) {
-    const { id, media_type } = context.query;
-    const res = await fetch(`${API_URL}${media_type}/${id}?api_key=${API_KEY}&language=en-US&append_to_response=release_dates`);
+    const { id, type } = context.query;
+    const res = await fetch(`${API_URL}${type}/${id}?api_key=${API_KEY}&language=en-US&append_to_response=release_dates`);
     const movie = await res.json();
 
-    const castRes = await fetch(`${API_URL}${media_type}/${id}/credits?api_key=${API_KEY}&language=en-US`)
+    const castRes = await fetch(`${API_URL}${type}/${id}/credits?api_key=${API_KEY}&language=en-US`)
     const cast = await castRes.json();
 
-    const recommendRes = await fetch(`${API_URL}${media_type}/${id}/recommendations?api_key=${API_KEY}&language=en-US`)
+    const recommendRes = await fetch(`${API_URL}${type}/${id}/recommendations?api_key=${API_KEY}&language=en-US`)
     const recommend = await recommendRes.json();
 
     return {

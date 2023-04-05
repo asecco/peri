@@ -4,7 +4,7 @@ import { BASE_URL } from "../utils/constants";
 
 function Cast({ member }) {
     const router = useRouter();
-    const routeQuery = () => router.push({pathname: '/CastInfo', query: {id: member.id}});
+    const routeQuery = () => router.push({pathname: '/cast', query: {id: member.id}});
 
     return (
         <div>
