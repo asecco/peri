@@ -68,11 +68,7 @@ function MovieInfo({ movie }) {
         }
     }
 
-    const genres = '';
-    for(let i in movie.genres) {
-        movie.genres.length = 3;
-        genres += movie.genres[i].name + ', ';
-    }
+    const genres = movie.genres?.map((genre) => genre.name).slice(0, 3).join(', ');
 
     const [certification, setCertification] = useState([]);
     useEffect(() => {
@@ -192,7 +188,7 @@ function MovieInfo({ movie }) {
                         <div className="flex items-center justify-center space-x-5 lg:space-x-20 font-bold lg:text-lg text-sm md:text-base text-center text-white">
                             <p className="border-2 border-white px-1">{mediaType !== 'tv' ? certification : movie.status}</p>
                             <p>{releaseYear}</p>
-                            <p className="xl:truncate">{genres?.slice(0, -2)}</p>
+                            <p className="xl:truncate">{genres}</p>
                             <p>{runtime}</p>
                             <StarIcon className="h-4 my-4 md:h-8 lg:h-6 lg:mx-2 lg:my-0 text-yellow-400 fill-yellow-400" />{Math.round(movie?.vote_average * 10) / 10}/10
                         </div>
