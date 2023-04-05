@@ -86,48 +86,37 @@ function MovieInfo({ movie, cast, recommend }) {
 
     const params = {
         id: movie?.id,
-        type : mediaType,
-    }
-
+        type: mediaType,
+      };
+      
     const [isFav, setIsFav] = useState(false);
     useEffect(() => {
-        const localStorageParams = localStorage.getItem('favorites');
-        if (localStorageParams) {
-            const localStorageParamsObj = JSON.parse(localStorageParams);
-            const localStorageParamsObjIds = localStorageParamsObj.map(obj => obj.id);
-            if (localStorageParamsObjIds.includes(movie?.id)) {
-                setIsFav(true);
-            } else {
-                setIsFav(false);
-            }
+        const localStorageFavorites = localStorage.getItem('favorites');
+        if (localStorageFavorites) {
+            const favorites = JSON.parse(localStorageFavorites);
+            const isFavorite = favorites.some((fav) => fav.id === movie?.id && fav.type === mediaType);
+            setIsFav(isFavorite);
         } else {
             setIsFav(false);
         }
-
-        const localStorageIsFav = JSON.parse(localStorage.getItem('isFav'));
-        setIsFav(localStorageIsFav || false);
-    }, []);
+    }, [movie, mediaType]);
 
     const checkFav = () => {
-        const localStorageParams = localStorage.getItem('favorites');
-        const localStorageParamsObj = localStorageParams ? JSON.parse(localStorageParams) : [];
-        const localStorageParamsObjIds = localStorageParamsObj.map(obj => obj.id);
-
-        if (localStorageParamsObjIds.includes(movie?.id)) {
-            const index = localStorageParamsObjIds.indexOf(movie?.id);
-            localStorageParamsObj.splice(index, 1);
-            localStorage.setItem('favorites', JSON.stringify(localStorageParamsObj));
-            localStorage.setItem('isFav', JSON.stringify(false));
-            toastNotify('remove');
+        const localStorageFavorites = localStorage.getItem('favorites');
+        const favorites = localStorageFavorites ? JSON.parse(localStorageFavorites) : [];
+        const index = favorites.findIndex((fav) => fav.id === movie?.id && fav.type === mediaType);
+        if (index !== -1) {
+            favorites.splice(index, 1);
+            localStorage.setItem('favorites', JSON.stringify(favorites));
             setIsFav(false);
+            toastNotify('remove');
         } else {
-            localStorageParamsObj.push(params);
-            localStorage.setItem('favorites', JSON.stringify(localStorageParamsObj));
-            localStorage.setItem('isFav', JSON.stringify(true));
-            toastNotify('add');
+            favorites.push({ id: movie?.id, type: mediaType });
+            localStorage.setItem('favorites', JSON.stringify(favorites));
             setIsFav(true);
+            toastNotify('add');
         }
-    }
+    };
 
     const [runtime, setRunTime] = useState([]);
     useEffect(() => {
