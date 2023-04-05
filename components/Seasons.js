@@ -2,9 +2,9 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { BASE_URL } from "../utils/constants";
 
-function Seasons({ result, id, title }) {
+function Seasons({ result, id }) {
     const router = useRouter();
-    const routeQuery = () => router.push({pathname: `/tv/${id}/season/${result.season_number}`, query: {result: JSON.stringify(result), showId: id, title: title}});
+    const routeQuery = () => router.push({pathname: `/tv/season`, query: {num: result.season_number, id: id}});
 
     return (
         <div onClick={routeQuery} className='p-2 mx-4 md:mx-8 lg:mx-2 group cursor-pointer transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50'>

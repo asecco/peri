@@ -197,7 +197,7 @@ function MovieInfo({ movie, cast, recommend }) {
                 <FlipMove className="grid grid-cols-2 px-7 lg:px-14 my-10 sm:grid md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 3xl:grid-cols-10">
                     {seasons?.map((season) => season.poster_path && (
                     <>
-                        <Seasons result={season} id={movie.id} title={movie?.title || movie?.original_name} />
+                        <Seasons result={season} id={movie.id} />
                     </>
                     ))}
                 </FlipMove>

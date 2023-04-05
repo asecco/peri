@@ -13,7 +13,7 @@ const nextConfig = {
     async rewrites() {
         return [
         {
-            source: '/tv/:id/season/:season_number',
+            source: '/tv/season',
             destination: '/EpisodeList',
         },
         ];
