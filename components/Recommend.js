@@ -2,9 +2,9 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { BASE_URL } from "../utils/constants";
 
-function Recommend({result}) {
+function Recommend({ result }) {
     const router = useRouter();
-    const routeQuery = () => router.push({pathname: '/MovieInfo', query: result}, `/${result.id}`);
+    const routeQuery = () => router.push({pathname: `/[media_type]/${result.id}`, query: {result: JSON.stringify(result)}});
 
     return (
         <div onClick={routeQuery} className='p-2 group cursor-pointer transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50'>
