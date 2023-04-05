@@ -5,8 +5,8 @@ import Head from 'next/head';
 import { BASE_URL, API_KEY, API_URL } from '../utils/constants';
 
 function EpisodeList({ seasonNum, season, episodes, title }) {
-    const overview = season[seasonNum - 1].overview;
-    const poster = season[seasonNum - 1].poster_path;
+    const overview = season[seasonNum - 1]?.overview;
+    const poster = season[seasonNum - 1]?.poster_path;
 
     return (
         <div>
