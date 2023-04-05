@@ -41,7 +41,7 @@ function Series() {
                 <div className="absolute top-0 right-0 bg-gradient-to-l from-[#202F3B] h-10 w-1/12" />
             </nav>
 
-            <p className='font-bold text-white text-3xl md:text-4xl lg:text-5xl mx-7 my-4'>{genre}</p>
+            <p className='font-bold text-white text-3xl md:text-4xl lg:text-5xl mx-7 my-6 text-center md:text-left'>{genre}</p>
             <div>
                 <FlipMove className="px-5 my-10 sm:grid md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5">
                     {series.map((tv) => tv.poster_path && (
