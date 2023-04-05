@@ -11,21 +11,27 @@ function Recommended() {
         const searchReq = async () => {
             const recArr = [];
             const favorites = JSON.parse(localStorage.getItem('favorites'));
+            const favoriteIds = favorites.map((favorite) => favorite.id);
             for(let i in favorites) {
                 const recommendReq = await fetch(`${API_URL}${favorites[i].type}/${favorites[i].id}/recommendations?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
                 for(let i in recommendReq.results) {
                     recArr.push(recommendReq.results[i]);
                 }
             }
-            recArr.map((item, index) => {
+
+            recArr.map((item, index) => { //Removes the same movie from appearing twice
                 for(let i = index + 1; i < recArr.length; i++) {
                     if(item.id === recArr[i].id) {
                         recArr.splice(i, 1);
                     }
                 }
             });
+            
             recArr.sort(() => Math.random() - 0.5);
-            setRecRes(recArr.splice(0, 20));
+            const filteredArr = recArr.filter((obj) => { //Removes movies that are already in favorites
+                return !favoriteIds.includes(obj.id);
+            });
+            setRecRes(filteredArr.splice(0, 20));
         }
         searchReq();
     }, []);
