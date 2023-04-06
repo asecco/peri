@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import FlipMove from 'react-flip-move';
@@ -7,7 +8,6 @@ import { API_KEY, API_URL } from '../utils/constants';
 function Favorites() {
     const [favRes, setFavRes] = useState([]);
     useEffect(() => {
-        document.title = 'Favorites';
         const searchReq = async () => {
             const favArr = [];
             const favorites = JSON.parse(localStorage.getItem('favorites'));
@@ -23,6 +23,7 @@ function Favorites() {
     
     return (
         <div>
+            <Head><title>{`Favorites`}</title></Head>
             <Header />
             <p className='font-bold text-white text-3xl md:text-4xl lg:text-5xl mx-7 my-6 text-center md:text-left'>{favRes.length > 0 ? "You've Enjoyed" : ''}</p>
             <div className='my-10 font-bold text-center mx-6 text-white'>

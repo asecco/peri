@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { useRouter } from "next/router";
 import { ArrowCircleLeftIcon,ArrowCircleRightIcon } from '@heroicons/react/outline';
 import FooterItem from "../components/FooterItem";
@@ -11,6 +12,7 @@ function Upcoming({ upcoming, page, totalPages }) {
     const router = useRouter();
     return (
         <div>
+            <Head><title>{`Upcoming`}</title></Head>
             <Header />
             <p className='font-bold text-white text-3xl md:text-4xl lg:text-5xl mx-7 my-6 text-center md:text-left'>Upcoming Movies</p>
             <div>
