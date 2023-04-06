@@ -26,9 +26,9 @@ function Search() {
         <div>
             <Head><title>Peri</title></Head>
             <Header />
-            <form onSubmit={search} className="flex items-center ml-12 md:ml-auto mx-auto max-w-sm mb-5">
+            <form onSubmit={search} className="flex items-center ml-auto mx-auto max-w-sm mb-5 relative">
                 <input ref={autoFocus} autoFocus type="text" value={searchQuery} onChange={handleInputChange} className="h-14 w-96 rounded-md focus:shadow focus:outline-1 focus:outline-red-400 text-black text-center" placeholder="Search..."></input>
-                <SearchIcon onClick={search} className='w-8 m-1 hover:cursor-pointer text-white hover:text-red-400 active:text-red-500 invisible md:visible' />
+                <SearchIcon onClick={search} className='absolute right-0 h-full w-8 m-1 hover:cursor-pointer text-black hover:text-red-400 active:text-red-500' />
             </form>
 
             <div>
