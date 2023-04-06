@@ -3,12 +3,14 @@ import { ArrowCircleLeftIcon,ArrowCircleRightIcon } from '@heroicons/react/outli
 import FooterItem from "../components/FooterItem";
 import Header from '../components/Header';
 import Thumbnail from '../components/Thumbnail';
+import PaginationFooter from '../components/PaginationFooter';
 import FlipMove from 'react-flip-move';
 import { API_KEY, API_URL } from '../utils/constants';
 
 function Upcoming() {
     const [upcoming, setUpcoming] = useState([]);
     const [page, setPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
     if(page < 1) setPage(1);
     useEffect(() => {
         document.title = 'Upcoming';
@@ -18,6 +20,7 @@ function Upcoming() {
                 upcomingReq.results[i].media_type = 'movie';
             }
             setUpcoming(upcomingReq.results);
+            setTotalPages(upcomingReq.total_pages);
         }
         searchReq();
         window.scrollTo({
@@ -42,6 +45,7 @@ function Upcoming() {
 
             <div className='flex flex-row sm:flex-row justify-between items-center h-auto'>
                 <div onClick={() => setPage(page - 1)}><FooterItem title='Previous' Icon={ArrowCircleLeftIcon} /></div>
+                <PaginationFooter page={page} totalPages={totalPages} setPage={setPage} />
                 <div onClick={() => setPage(page + 1)}><FooterItem title='Next' Icon={ArrowCircleRightIcon} /></div>
             </div>
         </div>

@@ -3,6 +3,7 @@ import { ArrowCircleLeftIcon, ArrowCircleRightIcon } from '@heroicons/react/outl
 import FooterItem from "../components/FooterItem";
 import Header from '../components/Header';
 import Thumbnail from '../components/Thumbnail';
+import PaginationFooter from '../components/PaginationFooter';
 import FlipMove from 'react-flip-move';
 import requestsTV from '../utils/requestsTV';
 import { API_URL } from '../utils/constants';
@@ -11,6 +12,7 @@ function Series() {
     const [series, setSeries] = useState([]);
     const [genre, setGenre] = useState('Popular');
     const [page, setPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
     if(page < 1) setPage(1);
     useEffect(() => {
         document.title = `Series | ${genre}`;
@@ -21,6 +23,7 @@ function Series() {
                 obj.media_type = 'tv';
             });
             setSeries(arr);
+            setTotalPages(req.total_pages);
         }
         searchReq();
         window.scrollTo({
@@ -28,6 +31,10 @@ function Series() {
             behavior: 'smooth'
         });
     }, [page, genre]);
+
+    useEffect(() => {
+        setPage(1);
+    }, [genre]);
 
     return (
         <div>
@@ -54,6 +61,7 @@ function Series() {
 
             <div className='flex flex-row sm:flex-row justify-between items-center h-auto'>
                 <div onClick={() => setPage(page - 1)}><FooterItem title='Previous' Icon={ArrowCircleLeftIcon} /></div>
+                <PaginationFooter page={page} totalPages={totalPages} setPage={setPage} />
                 <div onClick={() => setPage(page + 1)}><FooterItem title='Next' Icon={ArrowCircleRightIcon} /></div>
             </div>
         </div>
