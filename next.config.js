@@ -24,6 +24,14 @@ const nextConfig = {
             source: '/cast',
             destination: '/CastInfo',
         },
+        {
+            source: '/movies/:genre/:page',
+            destination: '/movies',
+        },
+        {
+            source: '/series/:genre/:page',
+            destination: '/series',
+        },
         ];
     },
 };

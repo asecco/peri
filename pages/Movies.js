@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useRouter } from "next/router";
 import { ArrowCircleLeftIcon, ArrowCircleRightIcon } from '@heroicons/react/outline';
 import FooterItem from "../components/FooterItem";
 import Header from '../components/Header';
@@ -9,11 +10,11 @@ import requests from '../utils/requests';
 import { API_URL } from '../utils/constants';
 
 function Movies() {
+    const router = useRouter();
     const [movies, setMovies] = useState([]);
     const [genre, setGenre] = useState('Popular');
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
-    if(page < 1) setPage(1);
     useEffect(() => {
         document.title = `Movies | ${genre}`;
         const searchReq = async () => {
@@ -33,16 +34,31 @@ function Movies() {
     }, [page, genre]);
 
     useEffect(() => {
-        setPage(1);
-    }, [genre]);
+        const { query } = router;
+        const { genre: urlGenre, page: urlPage } = query;
+        setGenre(urlGenre || 'Popular');
+        setPage(Number(urlPage) || 1);
+      }, [router]);
 
+    const genreRoute = (key) => {
+        router.push(`/movies/${key}/1`);
+        setGenre(key);
+        setPage(1);
+    }
+
+    const pageRoute = (pageNumber) => {
+        const newPage = Math.max(pageNumber, 1);
+        router.push(`/movies/${genre}/${newPage}`);
+        setPage(newPage);
+    }      
+    
     return (
         <div>
             <Header />
             <nav className="relative">
                 <div className="flex px-10 p-2 sm:px-20 text-2xl whitespace-nowrap space-x-10 sm:space-x-20 overflow-x-scroll scrollbar-hide">
                     {Object.entries(requests).map(([key, {title}]) => (
-                        <h2 key={key} onClick={() => setGenre(key)} className="last:pr-10 cursor-pointer transition duration-100 transform hover:scale-125 text-white hover:text-red-400 active:text-red-500">{title}</h2>
+                        <h2 key={key} onClick={() => genreRoute(key)} className="last:pr-10 cursor-pointer transition duration-100 transform hover:scale-125 text-white hover:text-red-400 active:text-red-500">{title}</h2>
                     ))}
                 </div>
                 <div className="absolute top-0 right-0 bg-gradient-to-l from-[#202F3B] h-10 w-1/12" />
@@ -60,9 +76,9 @@ function Movies() {
             </div>
 
             <div className='flex flex-row sm:flex-row justify-between items-center h-auto'>
-                <div onClick={() => setPage(page - 1)}><FooterItem title='Previous' Icon={ArrowCircleLeftIcon} /></div>
-                <PaginationFooter page={page} totalPages={totalPages} setPage={setPage} />
-                <div onClick={() => setPage(page + 1)}><FooterItem title='Next' Icon={ArrowCircleRightIcon} /></div>
+                <div onClick={() => pageRoute(page - 1)}><FooterItem title='Previous' Icon={ArrowCircleLeftIcon} /></div>
+                <PaginationFooter page={page} totalPages={totalPages} setPage={pageRoute} />
+                <div onClick={() => pageRoute(page + 1)}><FooterItem title='Next' Icon={ArrowCircleRightIcon} /></div>
             </div>
         </div>
     );
