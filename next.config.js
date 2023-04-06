@@ -14,15 +14,15 @@ const nextConfig = {
         return [
         {
             source: '/tv/season',
-            destination: '/EpisodeList',
+            destination: '/episodes',
         },
         {
             source: '/info',
-            destination: '/Info',
+            destination: '/info',
         },
         {
             source: '/cast',
-            destination: '/CastInfo',
+            destination: '/cast',
         },
         {
             source: '/movies/:genre/:page',
