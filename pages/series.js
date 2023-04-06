@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import { useRouter } from "next/router";
 import { ArrowCircleLeftIcon, ArrowCircleRightIcon } from '@heroicons/react/outline';
 import FooterItem from "../components/FooterItem";
@@ -9,47 +8,15 @@ import FlipMove from 'react-flip-move';
 import requestsTV from '../utils/requestsTV';
 import { API_URL } from '../utils/constants';
 
-function Series() {
+function Series({ series, genre, page, totalPages }) {
     const router = useRouter();
-    const [series, setSeries] = useState([]);
-    const [genre, setGenre] = useState('Popular');
-    const [page, setPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(1);
-    useEffect(() => {
-        document.title = `Series | ${genre}`;
-        const searchReq = async () => {
-            const req = await fetch(`${API_URL}${requestsTV[genre].url}&page=${page}&with_original_language=en`).then((res) => res.json());
-            const arr = req.results;
-            arr.forEach(obj => {
-                obj.media_type = 'tv';
-            });
-            setSeries(arr);
-            setTotalPages(req.total_pages);
-        }
-        searchReq();
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    }, [page, genre]);
-
-    useEffect(() => {
-        const { query } = router;
-        const { genre: urlGenre, page: urlPage } = query;
-        setGenre(urlGenre || 'Popular');
-        setPage(Number(urlPage) || 1);
-      }, [router]);
-
     const genreRoute = (key) => {
         router.push(`/series/${key}/1`);
-        setGenre(key);
-        setPage(1);
     }
 
     const pageRoute = (pageNumber) => {
         const newPage = Math.max(pageNumber, 1);
         router.push(`/series/${genre}/${newPage}`);
-        setPage(newPage);
     }  
 
     return (
@@ -82,6 +49,30 @@ function Series() {
             </div>
         </div>
     );
+}
+
+export async function getServerSideProps(context) {
+    const { query } = context;
+    const genre = query.genre || 'Popular';
+    const page = Number(query.page) || 1;
+
+    const req = await fetch(`${API_URL}${requestsTV[genre].url}&page=${page}&with_original_language=en`);
+    const { results, total_pages } = await req.json();
+    const series = results.map((tv) => {
+        return {
+            ...tv,
+            media_type: 'tv',
+        };
+    });
+
+    return {
+        props: {
+            series,
+            genre,
+            page,
+            totalPages: total_pages,
+        }
+    }
 }
 
 export default Series;

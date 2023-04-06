@@ -32,6 +32,10 @@ const nextConfig = {
             source: '/series/:genre/:page',
             destination: '/series',
         },
+        {
+            source: '/upcoming/:page',
+            destination: '/upcoming',
+        },
         ];
     },
 };

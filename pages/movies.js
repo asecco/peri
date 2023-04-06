@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import { useRouter } from "next/router";
 import { ArrowCircleLeftIcon, ArrowCircleRightIcon } from '@heroicons/react/outline';
 import FooterItem from "../components/FooterItem";
@@ -9,49 +8,17 @@ import FlipMove from 'react-flip-move';
 import requests from '../utils/requests';
 import { API_URL } from '../utils/constants';
 
-function Movies() {
+function Movies({ movies, genre, page, totalPages }) {
     const router = useRouter();
-    const [movies, setMovies] = useState([]);
-    const [genre, setGenre] = useState('Popular');
-    const [page, setPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(1);
-    useEffect(() => {
-        document.title = `Movies | ${genre}`;
-        const searchReq = async () => {
-            const req = await fetch(`${API_URL}${requests[genre].url}&page=${page}&with_original_language=en`).then((res) => res.json());
-            const arr = req.results;
-            arr.forEach(obj => {
-                obj.media_type = 'movie';
-            });
-            setMovies(arr);
-            setTotalPages(req.total_pages);
-        }
-        searchReq();
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    }, [page, genre]);
-
-    useEffect(() => {
-        const { query } = router;
-        const { genre: urlGenre, page: urlPage } = query;
-        setGenre(urlGenre || 'Popular');
-        setPage(Number(urlPage) || 1);
-      }, [router]);
-
     const genreRoute = (key) => {
         router.push(`/movies/${key}/1`);
-        setGenre(key);
-        setPage(1);
     }
 
     const pageRoute = (pageNumber) => {
         const newPage = Math.max(pageNumber, 1);
         router.push(`/movies/${genre}/${newPage}`);
-        setPage(newPage);
-    }      
-    
+    }
+
     return (
         <div>
             <Header />
@@ -68,9 +35,9 @@ function Movies() {
             <div>
                 <FlipMove className="px-5 my-10 sm:grid md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5">
                     {movies.map((movie) => movie.poster_path && (
-                    <>
+                        <>
                         <Thumbnail result={movie} />
-                    </>
+                        </>
                     ))}
                 </FlipMove>
             </div>
@@ -82,6 +49,29 @@ function Movies() {
             </div>
         </div>
     );
+}
+
+export async function getServerSideProps(context) {
+    const { query } = context;
+    const genre = query.genre || 'Popular';
+    const page = Number(query.page) || 1;
+
+    const res = await fetch(`${API_URL}${requests[genre].url}&page=${page}&with_original_language=en`).then((res) => res.json());
+    const movies = res.results.map((movie) => {
+        return {
+            ...movie,
+            media_type: 'movie',
+        };
+    });
+
+    return {
+        props: {
+            movies,
+            genre,
+            page,
+            totalPages: res.total_pages,
+        },
+    }
 }
 
 export default Movies;

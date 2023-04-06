@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useRouter } from "next/router";
 import { ArrowCircleLeftIcon,ArrowCircleRightIcon } from '@heroicons/react/outline';
 import FooterItem from "../components/FooterItem";
 import Header from '../components/Header';
@@ -7,28 +7,8 @@ import PaginationFooter from '../components/PaginationFooter';
 import FlipMove from 'react-flip-move';
 import { API_KEY, API_URL } from '../utils/constants';
 
-function Upcoming() {
-    const [upcoming, setUpcoming] = useState([]);
-    const [page, setPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(1);
-    if(page < 1) setPage(1);
-    useEffect(() => {
-        document.title = 'Upcoming';
-        const searchReq = async () => {
-            const upcomingReq = await fetch(`${API_URL}movie/upcoming?api_key=${API_KEY}&language=en-US&page=${page}`).then((res) => res.json());
-            for(let i in upcomingReq.results) {
-                upcomingReq.results[i].media_type = 'movie';
-            }
-            setUpcoming(upcomingReq.results);
-            setTotalPages(upcomingReq.total_pages);
-        }
-        searchReq();
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    }, [page]);
-
+function Upcoming({ upcoming, page, totalPages }) {
+    const router = useRouter();
     return (
         <div>
             <Header />
@@ -44,12 +24,39 @@ function Upcoming() {
             </div>
 
             <div className='flex flex-row sm:flex-row justify-between items-center h-auto'>
-                <div onClick={() => setPage(page - 1)}><FooterItem title='Previous' Icon={ArrowCircleLeftIcon} /></div>
-                <PaginationFooter page={page} totalPages={totalPages} setPage={setPage} />
-                <div onClick={() => setPage(page + 1)}><FooterItem title='Next' Icon={ArrowCircleRightIcon} /></div>
+                <div onClick={() => router.push(`/upcoming/${page - 1}`)}><FooterItem title='Previous' Icon={ArrowCircleLeftIcon} /></div>
+                <PaginationFooter page={page} totalPages={totalPages} setPage={(pageNum) => router.push(`/upcoming/${pageNum}`)} />
+                <div onClick={() => router.push(`/upcoming/${page + 1}`)}><FooterItem title='Next' Icon={ArrowCircleRightIcon} /></div>
             </div>
         </div>
     );
+}
+
+export async function getServerSideProps(context) {
+    const page = context.query.page || 1;
+    if (page < 1) {
+        return {
+            redirect: {
+                destination: '/upcoming/1',
+                permanent: false,
+            },
+        };
+    }
+
+    const res = await fetch(`${API_URL}movie/upcoming?api_key=${API_KEY}&language=en-US&page=${page}`).then((res) => res.json());
+    const upcoming = res.results.map((up) => ({
+        ...up,
+        media_type: 'movie',
+    }));
+    const totalPages = res.total_pages;
+
+    return {
+        props: {
+            upcoming,
+            page: parseInt(page),
+            totalPages: parseInt(totalPages)
+        }
+    }
 }
 
 export default Upcoming;
