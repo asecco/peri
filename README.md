@@ -30,7 +30,7 @@
   <br> 
 </p>
 
-![1](https://user-images.githubusercontent.com/40510223/229329523-d26892b6-9b89-4b51-8b57-944dda56f724.png)
+![1](https://user-images.githubusercontent.com/40510223/230657563-b484c3dc-d8b1-4f1d-8f0f-68de3e494aa9.png)
 
 ## About
 Peri was originally designed to be similar to a modern streaming media service with the UI being inspired by platforms such as [Plex](https://www.plex.tv) and [Hulu](https://www.hulu.com). Peri includes no streaming functionality and serves as an extensive database of films and tv series, allowing you to browse and garner information on whichever type of media you desire.
@@ -63,7 +63,7 @@ cd Peri
 
 2. Install the dependencies
 ```sh
-yarn install or npm install
+yarn install
 ```
 
 3. Create a file for the environment variables in the root directory called `.env.local` in the following format
