@@ -142,16 +142,21 @@ function MovieInfo({ movie, cast, recommend }) {
             <Head><title>{movie?.title || movie?.original_name}</title></Head>
             <ToastContainer theme="dark"/>
             <Header />
-            <Modal open={modalOpen} onClose={onCloseModal} center styles={{ modal: {background: '#202F3B'}}}>
-                <div className="text-white">
-                    <h2 className="text-center text-2xl mb-2">Where to Watch</h2>
-                    {watchModeSources.map((source, index) => {
-                        return (
-                            <a key={index} href={source.web_url} target="_blank" rel="noreferrer"><div className="grid grid-cols-2 p-2 pt-2 rounded-full hover:pt-1 hover:border-2 hover:border-red-400">
-                                <h3>{source.name}</h3>
-                                <p className="pl-24">{source.price ? `$${source.price}` : 'Sub'}</p>
-                            </div></a>
-                        )})}
+            <Modal open={modalOpen} onClose={onCloseModal} center showCloseIcon={false} styles={{ modal: {background: '#202F3B'}}}>
+                <div className="shadow-2xl">
+                    <div className="relative rounded-md bg-red-400 px-4 py-4 xl:px-8 text-white text-center text-xl md:text-3xl xl:text-4xl font-bold">
+                        <p>Where to Watch</p>
+                    </div>
+                    <div className="h-full w-full px-4 pb-4 pt-4 xl:px-8">
+                        <div className="flex flex-col text-white text-xl md:text-3xl xl:text-4xl">
+                            {watchModeSources.map((source, index) => (
+                                <a key={index} href={source.web_url} target="_blank" rel="noreferrer" className="flex items-center justify-between py-1 rounded-md hover:text-red-400">
+                                    <h3>{source.name}</h3>
+                                    <p className="pl-24">{source.price ? `$${source.price}` : 'Sub'}</p>
+                                </a>
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </Modal>
             <div className="w-full">
