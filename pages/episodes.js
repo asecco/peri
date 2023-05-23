@@ -10,7 +10,7 @@ function EpisodeList({ seasonNum, season, episodes, title }) {
 
     return (
         <div>
-            <Head><title>{title}</title></Head>
+            <Head><title>{`${title} | Season ${seasonNum}`}</title></Head>
             <Header />
             <div className="mx-auto px-20 flex flex-col-reverse gap-10 object-bottom md:flex-row">
                 <div className="flex flex-col gap-4 md:w-5/12 lg:w-6/12 xl:w-8/12 2xl:w-10/12">
