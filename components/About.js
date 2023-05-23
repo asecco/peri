@@ -20,10 +20,10 @@ function About() {
                             suggestions and feedback, so if you have any ideas or comments, please feel free to reach out to me. I'm always looking for ways to improve the site!
                         </p>
                         <hr className="h-px my-6 bg-gray-400 border-0 dark:bg-gray-700"></hr>
-                        <div className='flex justify-center gap-4'>
-                            <a href='https://github.com/asecco/peri' target="_blank" rel="noreferrer"><FaGithub className='h-16 w-16 my-2 hover:text-red-400' /></a>
-                            <a href='https://ko-fi.com/asecco' target="_blank" rel="noreferrer"><FaDollarSign className='h-16 w-16 my-2 hover:text-red-400' /></a>
-                            <a href='mailto:asecco99@gmail.com' rel="noreferrer"><FaEnvelopeOpenText className='h-16 w-16 my-2 hover:text-red-400' /></a>
+                        <div className='flex justify-center gap-6'>
+                            <a href='https://github.com/asecco/peri' target="_blank" rel="noreferrer"><FaGithub className='h-12 w-12 my-2 hover:text-red-400 transition duration-200 ease-in transform sm:hover:scale-125' /></a>
+                            <a href='https://ko-fi.com/asecco' target="_blank" rel="noreferrer"><FaDollarSign className='h-12 w-12 my-2 hover:text-red-400  transition duration-200 ease-in transform sm:hover:scale-125' /></a>
+                            <a href='mailto:asecco99@gmail.com' rel="noreferrer"><FaEnvelopeOpenText className='h-12 w-12 my-2 hover:text-red-400  transition duration-200 ease-in transform sm:hover:scale-125' /></a>
                         </div>
                     </div>
                 </div>
