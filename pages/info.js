@@ -23,6 +23,9 @@ function MovieInfo({ movie, cast, recommend }) {
     const [recommendDiv, setRecommendDiv] = useState(false);
 
     const castArr = cast.cast?.slice(0, 12);
+    recommend.results?.sort((a, b) => {
+        return b.vote_count - a.vote_count;
+    });
     const recArr = recommend.results?.slice(0, 12);
     const seasons = movie.seasons;
 
@@ -198,7 +201,7 @@ function MovieInfo({ movie, cast, recommend }) {
             </div>
 
             <div hidden={recommendDiv}>
-                <p className="font-bold text-white text-2xl lg:text-3xl mx-7">{recArr?.length > 0 ? 'More Like This:' : ''}</p>
+                <p className="font-bold text-white text-2xl lg:text-3xl mx-7">{recArr?.length > 0 ? 'You May Enjoy:' : ''}</p>
                 <FlipMove className="px-5 my-10 sm:grid md:grid-cols-4 xl:grid-cols-6 3xl:grid-cols-8">
                     {recArr?.map((rec) => rec.backdrop_path && (
                     <>
