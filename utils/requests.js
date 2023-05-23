@@ -1,83 +1,83 @@
 import { API_KEY } from "./constants";
 
 export default {
-    Popular: {
+    popular: {
         title: 'Popular',
         url: `movie/popular?api_key=${API_KEY}`,
     },
-    TopRated: {
+    toprated: {
         title: 'Top Rated',
         url: `movie/top_rated?api_key=${API_KEY}`,
     },
-    Action: {
+    action: {
         title: 'Action',
         url: `discover/movie?api_key=${API_KEY}&with_genres=28&sort_by=vote_count.desc&include_adult=false`,
     },
-    Adventure: {
+    adventure: {
         title: 'Adventure',
         url: `discover/movie?api_key=${API_KEY}&with_genres=12&sort_by=vote_count.desc&include_adult=false`,
     },
-    Animation: {
+    animation: {
         title: 'Animation',
         url: `discover/movie?api_key=${API_KEY}&with_genres=16&sort_by=vote_count.desc&include_adult=false`,
     },
-    Comedy: {
+    comedy: {
         title: 'Comedy',
         url: `discover/movie?api_key=${API_KEY}&with_genres=35&sort_by=vote_count.desc&include_adult=false`,
     },
-    Crime: {
+    crime: {
         title: 'Crime',
         url: `discover/movie?api_key=${API_KEY}&with_genres=80&sort_by=vote_count.desc&include_adult=false`,
     },
-    Documentary: {
+    documentary: {
         title: 'Documentary',
         url: `discover/movie?api_key=${API_KEY}&with_genres=99&sort_by=vote_count.desc&include_adult=false`,
     },
-    Drama: {
+    drama: {
         title: 'Drama',
         url: `discover/movie?api_key=${API_KEY}&with_genres=18&sort_by=vote_count.desc&include_adult=false`,
     },
-    Family: {
+    family: {
         title: 'Family',
         url: `discover/movie?api_key=${API_KEY}&with_genres=10751&sort_by=vote_count.desc&include_adult=false`,
     },
-    Fantasy: {
+    fantasy: {
         title: 'Fantasy',
         url: `discover/movie?api_key=${API_KEY}&with_genres=14&sort_by=vote_count.desc&include_adult=false`,
     },
-    History: {
+    history: {
         title: 'History',
         url: `discover/movie?api_key=${API_KEY}&with_genres=36&sort_by=vote_count.desc&include_adult=false`,
     },
-    Horror: {
+    horror: {
         title: 'Horror',
         url: `discover/movie?api_key=${API_KEY}&with_genres=27&sort_by=vote_count.desc&include_adult=false`,
     },
-    Music: {
+    music: {
         title: 'Music',
         url: `discover/movie?api_key=${API_KEY}&with_genres=10402&sort_by=vote_count.desc&include_adult=false`,
     },
-    Mystery: {
+    mystery: {
         title: 'Mystery',
         url: `discover/movie?api_key=${API_KEY}&with_genres=9648&sort_by=vote_count.desc&include_adult=false`,
     },
-    Romance: {
+    romance: {
         title: 'Romance',
         url: `discover/movie?api_key=${API_KEY}&with_genres=10749&sort_by=vote_count.desc&include_adult=false`,
     },
-    SciFi: {
+    scifi: {
         title: 'Sci-Fi',
         url: `discover/movie?api_key=${API_KEY}&with_genres=878&sort_by=vote_count.desc&include_adult=false`,
     },
-    Thriller: {
+    thriller: {
         title: 'Thriller',
         url: `discover/movie?api_key=${API_KEY}&with_genres=53&sort_by=vote_count.desc&include_adult=false`,
     },
-    War: {
+    war: {
         title: 'War',
         url: `discover/movie?api_key=${API_KEY}&with_genres=10752&sort_by=vote_count.desc&include_adult=false`,
     },
-    Western: {
+    western: {
         title: 'Western',
         url: `discover/movie?api_key=${API_KEY}&with_genres=37&sort_by=vote_count.desc&include_adult=false`,
     },
