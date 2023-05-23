@@ -22,7 +22,7 @@ function Movies({ movies, genre, page, totalPages }) {
 
     return (
         <div>
-            <Head><title>{`Movies | ${genre}`}</title></Head>
+            <Head><title>{`Movies | ${requests[genre].title}`}</title></Head>
             <Header />
             <nav className="relative">
                 <div className="flex px-10 p-2 sm:px-20 text-2xl whitespace-nowrap space-x-10 sm:space-x-20 overflow-x-scroll scrollbar-hide">
