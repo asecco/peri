@@ -6,13 +6,13 @@ import { API_KEY, API_URL } from '../utils/constants';
 export default function Home({ results, nowPlaying }) {
 	return (
 		<div>
-		<Head>
-			<title>Peri</title>
-			<meta name="description" content="Movie/Series library for finding the perfect watch" />
-			<link rel="icon" href="/favicon.ico" />
-		</Head>
-		<Header />
-		<HomeScreen results={results} nowPlaying={nowPlaying}  />
+			<Head>
+				<title>Peri</title>
+				<meta name="description" content="Movie/Series library for finding the perfect watch" />
+				<link rel="icon" href="/favicon.ico" />
+			</Head>
+			<Header />
+			<HomeScreen results={results} nowPlaying={nowPlaying}  />
 		</div>
   	);
 }

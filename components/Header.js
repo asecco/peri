@@ -2,6 +2,7 @@ import { HomeIcon, BookmarkIcon, CalendarIcon, ThumbUpIcon, VideoCameraIcon, Fil
 import Image from 'next/image';
 import PeriLogo from '../public/peri.png';
 import HeaderItem from './HeaderItem';
+import About from '../components/About';
 
 function Header() {
     return (
@@ -18,6 +19,7 @@ function Header() {
                 </div>
                 <Image className='object-contain' src={PeriLogo} alt='Peri' width={250} height={100} />
             </header>
+            <About />
         </div>
     );
 }
