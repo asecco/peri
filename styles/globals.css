@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import 'react-toastify/dist/ReactToastify.css';
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
+@import 'react-responsive-modal/styles.css';
+
+body {
+  background-color: #202F3B;
+  color: lightgray;
+}
+
+::-webkit-scrollbar {
+	width: 12px;
+}
+
+::-webkit-scrollbar-track {
+	background: #202F3B;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #F87171;
+  border-radius: 4px;
+}
+
+.react-responsive-modal-overlay, 
+.react-responsive-modal-container,
+.react-responsive-modal-modal {
+  animation-fill-mode: forwards !important;
+}
