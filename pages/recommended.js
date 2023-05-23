@@ -31,6 +31,9 @@ function Recommended() {
             const filteredArr = recArr.filter((obj) => { //Removes movies that are already in favorites
                 return !favoriteIds.includes(obj.id);
             });
+            filteredArr.sort((a, b) => { //Sorts by vote count
+                return b.vote_count - a.vote_count;
+            });
             setRecRes(filteredArr.splice(0, 20));
         }
         searchReq();
