@@ -55,10 +55,10 @@ Pull requests are welcome! Head over to the [issues](https://github.com/asecco/P
 ## Setup
 1. Clone the repo
 ```sh
-git clone https://github.com/asecco/Peri.git
+git clone https://github.com/asecco/peri.git
 ```
 ```sh
-cd Peri
+cd peri
 ```
 
 2. Install the dependencies
