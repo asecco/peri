@@ -44,7 +44,7 @@ function Series({ series, genre, page, totalPages }) {
                 </FlipMove>
             </div>
 
-            <div className='flex flex-row sm:flex-row justify-between items-center h-auto'>
+            <div className='flex flex-row justify-center gap-x-2 py-10 md:py-0 items-center h-auto'>
                 <div onClick={() => pageRoute(page - 1)}><FooterItem title='Previous' Icon={ArrowCircleLeftIcon} /></div>
                 <PaginationFooter page={page} totalPages={totalPages} setPage={pageRoute} />
                 <div onClick={() => pageRoute(page + 1)}><FooterItem title='Next' Icon={ArrowCircleRightIcon} /></div>
