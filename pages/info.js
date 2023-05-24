@@ -146,7 +146,7 @@ function MovieInfo({ movie, cast, recommend }) {
             <ToastContainer theme="dark"/>
             <Header />
             <Modal open={modalOpen} onClose={onCloseModal} center showCloseIcon={false} styles={{ modal: {background: '#202F3B'}}}>
-                <div className="shadow-2xl">
+                <div className="shadow-2xl rounded-lg">
                     <div className="relative rounded-md bg-red-400 px-4 py-4 xl:px-8 text-white text-center text-xl md:text-3xl xl:text-4xl font-bold">
                         <p>Where to Watch</p>
                     </div>
