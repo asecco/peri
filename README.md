@@ -17,6 +17,7 @@
 <p align="center">
   <a href="#about">About</a> •
   <a href="#features">Features</a> •
+  <a href="#frequently-asked-questions">FAQ</a> •
   <a href="#contributing">Contributing</a> •
   <a href="#setup">Setup</a> •
   <a href="#built-with">Built With</a> •
@@ -32,6 +33,8 @@
 
 ![demo](https://github.com/asecco/peri/assets/40510223/bd177949-df1b-4ffb-85e8-0625cf52a8db)
 
+<p align="center">Like what you see? Please consider giving Peri a GitHub Star ⭐, it will help a lot!</p>
+
 ## About
 Peri was originally designed to be similar to a modern streaming media service with the UI being inspired by platforms such as [Plex](https://www.plex.tv) and [Hulu](https://www.hulu.com). Peri includes no streaming functionality and serves as an extensive database of films and tv series, allowing you to browse and garner information on whichever type of media you desire.
 
@@ -40,14 +43,28 @@ Peri was originally designed to be similar to a modern streaming media service w
 - Modern UI and fully mobile responsive
 - Direct links to legal streaming options(Netflix, Prime Video, Apple TV, etc.)
 - Embedded trailers
-- Local storage for storing favorites
+- Comment section for reviewing/discussing with the community
+- Local storage for saving favorites
 - Lazy loading
 - Server-side rendering via Next.js
+
+## Frequently Asked Questions
+### What is the purpose of Peri, and why should I use it?
+- I've always wanted Peri to be a great resource for avid movie/tv fans like myself to browse different content and find what they desire.
+- If you're debating why you should start using Peri over any alternatives, I think that a strength of Peri is that it's not overly complex and includes a lot of unique features as listed above.
+- I'm also consistently updating the site and always looking for ways to improve the overall feel and functionality.
+
+### My favorites disappeared, what happened to them?
+- Instead of opting for a more traditional account creation process, I use your browser's local storage to store the favorites. I find this is better for simplicity's sake and overall convenience for users.
+- If you recently lost your favorites, you likely switched your browser/device or cleared your browser's cache. Unfortunately, there is not currently a way of retrieving the lost data.
+
+### Can I contribute to this project?
+- Yes! Head down to the [contributing](#contributing) section to learn more about how you can help!
 
 ## Contributing
 I would love to expand upon this project over time with continuous updates to ensure it remains up-to-date and a great resource for movie fans.
 
-Pull requests are welcome! Head over to the [issues](https://github.com/asecco/Peri/issues) section to see if there is anything currently open, and head down to the [setup](#setup) section to get your development environment configured.
+Pull requests are welcome! Head over to the [issues](https://github.com/asecco/peri/issues) section to see if there is anything currently open, and head down to the [setup](#setup) section to get your development environment configured.
 
 ![upates2](https://user-images.githubusercontent.com/40510223/184010219-96e98fde-8f7e-4383-8fac-f25b2f914d0f.gif)
 ![updates](https://user-images.githubusercontent.com/40510223/184007866-240f831c-6d52-43b5-8414-b5c1f93f0aa0.gif)
