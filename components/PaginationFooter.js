@@ -32,7 +32,7 @@ function Pagination({ page, totalPages, setPage }) {
     return (
         <div className="flex justify-center space-x-4 mb-6">
             {pageNumbers.map((pageNumber) => (
-                <button key={pageNumber} onClick={() => handleClick(pageNumber)} className={`${pageNumber === page ? 'bg-red-500 text-white' : 'bg-white text-black hover:opacity-75'} text-xl px-4 py-2 rounded-full font-bold`}>{pageNumber}</button>
+                <button key={pageNumber} onClick={() => handleClick(pageNumber)} className={`${pageNumber === page ? 'bg-red-500 text-white' : 'bg-white text-black hover:opacity-75'} text-xl px-4 py-2 rounded-lg font-bold`}>{pageNumber}</button>
             ))}
         </div>
     );
