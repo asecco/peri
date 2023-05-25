@@ -9,20 +9,20 @@ import FlipMove from 'react-flip-move';
 import requestsTV from '../utils/requestsTV';
 import { API_URL } from '../utils/constants';
 
-function Series({ series, genre, page, totalPages }) {
+function TV({ tv, genre, page, totalPages }) {
     const router = useRouter();
     const genreRoute = (key) => {
-        router.push(`/series/${key}/1`);
+        router.push(`/tv/${key}/1`);
     }
 
     const pageRoute = (pageNumber) => {
         const newPage = Math.max(pageNumber, 1);
-        router.push(`/series/${genre}/${newPage}`);
+        router.push(`/tv/${genre}/${newPage}`);
     }  
 
     return (
         <div>
-            <Head><title>{`Series | ${requestsTV[genre].title}`}</title></Head>
+            <Head><title>{`TV | ${requestsTV[genre].title}`}</title></Head>
             <Header />
             <nav className="relative">
                 <div className="flex px-10 p-2 sm:px-20 text-2xl whitespace-nowrap space-x-10 sm:space-x-20 overflow-x-scroll scrollbar-hide">
@@ -36,7 +36,7 @@ function Series({ series, genre, page, totalPages }) {
             <p className='font-bold text-white text-3xl md:text-4xl lg:text-5xl mx-14 my-6 text-center md:text-left'>{requestsTV[genre].title}</p>
             <div>
                 <FlipMove className="px-5 my-10 sm:grid md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5">
-                    {series.map((tv) => tv.poster_path && (
+                    {tv.map((tv) => tv.poster_path && (
                     <>
                         <Thumbnail result={tv} />
                     </>
@@ -60,7 +60,7 @@ export async function getServerSideProps(context) {
 
     const req = await fetch(`${API_URL}${requestsTV[genre].url}&page=${page}&with_original_language=en`);
     const { results, total_pages } = await req.json();
-    const series = results.map((tv) => {
+    const tv = results.map((tv) => {
         return {
             ...tv,
             media_type: 'tv',
@@ -69,7 +69,7 @@ export async function getServerSideProps(context) {
 
     return {
         props: {
-            series,
+            tv,
             genre,
             page,
             totalPages: total_pages,
@@ -77,4 +77,4 @@ export async function getServerSideProps(context) {
     }
 }
 
-export default Series;
+export default TV;

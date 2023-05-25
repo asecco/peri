@@ -12,7 +12,7 @@ function Header() {
                     <a href={`/`} rel="noopener noreferrer"><HeaderItem title='HOME' Icon={HomeIcon} /></a>
                     <a href={`/search`} rel="noopener noreferrer"><HeaderItem title='SEARCH' Icon={SearchIcon} /></a>
                     <a href={`/movies`} rel="noopener noreferrer"><HeaderItem title='MOVIES' Icon={FilmIcon} /></a>
-                    <a href={`/series`} rel="noopener noreferrer"><HeaderItem title='SERIES' Icon={VideoCameraIcon} /></a>
+                    <a href={`/tv`} rel="noopener noreferrer"><HeaderItem title='TV' Icon={VideoCameraIcon} /></a>
                     <a href={`/upcoming`} rel="noopener noreferrer"><HeaderItem title='UPCOMING' Icon={CalendarIcon} /></a>
                     <a href={`/favorites`} rel="noopener noreferrer"><HeaderItem title='FAVORITES' Icon={BookmarkIcon} /></a>
                     <a href={`/recommended`} rel="noopener noreferrer"><HeaderItem title='RECOMMENDED' Icon={ThumbUpIcon} /></a>

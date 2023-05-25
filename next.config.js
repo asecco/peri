@@ -29,8 +29,8 @@ const nextConfig = {
             destination: '/movies',
         },
         {
-            source: '/series/:genre/:page',
-            destination: '/series',
+            source: '/tv/:genre/:page',
+            destination: '/tv',
         },
         {
             source: '/upcoming/:page',
