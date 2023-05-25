@@ -10,6 +10,7 @@ import Header from '../components/Header';
 import Cast from "../components/Cast";
 import Recommend from "../components/Recommend";
 import Seasons from "../components/Seasons";
+import Comment from "../components/Comment";
 import FlipMove from "react-flip-move";
 import { ToastContainer, toast } from 'react-toastify';
 import { toastNotify, alertParams } from "../utils/notifications";
@@ -137,7 +138,6 @@ function MovieInfo({ movie, cast, recommend }) {
         } else {
             toast.error('Not available to stream', alertParams);
         }
-
     }
 
     return (
@@ -190,8 +190,8 @@ function MovieInfo({ movie, cast, recommend }) {
             </div>
 
             <div>
-                <p className="font-bold text-white text-2xl md:text-3xl mx-7 mt-10 md:mt-4 lg:mt-0">{mediaType != 'tv' ? '' : 'Seasons:'}</p>
-                <FlipMove className="grid grid-cols-2 px-7 lg:px-14 my-10 sm:grid md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 3xl:grid-cols-10">
+                <p className="font-bold text-white text-2xl md:text-4xl mx-7 mt-10 md:mt-4 lg:mt-0">{mediaType != 'tv' ? '' : 'Seasons:'}</p>
+                <FlipMove className="grid grid-cols-2 px-5 my-10 sm:grid md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 3xl:grid-cols-10">
                     {seasons?.map((season) => season.poster_path && (
                     <>
                         <Seasons result={season} id={movie.id} />
@@ -201,7 +201,7 @@ function MovieInfo({ movie, cast, recommend }) {
             </div>
 
             <div hidden={recommendDiv}>
-                <p className="font-bold text-white text-2xl lg:text-3xl mx-7">{recArr?.length > 0 ? 'You May Enjoy:' : ''}</p>
+                <p className="font-bold text-white text-2xl lg:text-4xl mx-7">{recArr?.length > 0 ? 'You May Enjoy:' : ''}</p>
                 <FlipMove className="px-5 my-10 sm:grid md:grid-cols-4 xl:grid-cols-6 3xl:grid-cols-8">
                     {recArr?.map((rec) => rec.backdrop_path && (
                     <>
@@ -212,7 +212,7 @@ function MovieInfo({ movie, cast, recommend }) {
             </div>
 
             <div>
-                <p className="font-bold text-white text-2xl md:text-3xl mx-7">Cast:</p>
+                <p className="font-bold text-white text-2xl md:text-4xl mx-7">Cast:</p>
                 <FlipMove className="grid grid-cols-2 px-10 md:px-5 my-10 sm:grid md:grid-cols-4 xl:grid-cols-6 3xl:grid-cols-8">
                     {castArr?.map((cast) => cast.profile_path && (
                     <>
@@ -221,6 +221,7 @@ function MovieInfo({ movie, cast, recommend }) {
                     ))}
                 </FlipMove>
             </div>
+            <Comment title={movie.title || movie.original_name}type={mediaType} id={movie.id}/>
     </div>
     );
 }

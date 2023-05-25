@@ -3,7 +3,7 @@ import { BASE_URL } from "../utils/constants";
 
 function Seasons({ result, id }) {
     return (
-        <div className='p-2 mx-4 md:mx-8 lg:mx-2 group cursor-pointer transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50'>
+        <div className='p-2 group cursor-pointer transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50'>
             <a href={`/tv/season?num=${result.season_number}&id=${id}`} rel="noopener noreferrer">
                 <Image className='group-hover:opacity-50' layout='responsive' src={`${BASE_URL}${result.poster_path}`} alt='' height={1440} width={960}/>
                 <div className='p-2 text-center'>
