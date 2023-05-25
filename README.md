@@ -54,9 +54,17 @@ Peri was originally designed to be similar to a modern streaming media service w
 - If you're debating why you should start using Peri over any alternatives, I think that a strength of Peri is that it's not overly complex and includes a lot of unique features as listed above.
 - I'm also consistently updating the site and always looking for ways to improve the overall feel and functionality.
 
+### Can I use Peri without creating an account?
+- Yes! I want to keep this site as simple and convenient for all users, so you are never required to register an account or give any personal information.
+- For the community discussion/review section, there is an optional field for your email, but you're not required to give one in order to post. While this is great for preserving anonymity for users, in order to prevent spam and inappropriate posts, a moderator will have to approve the post before it gets displayed to everyone on the site.
+
 ### My favorites disappeared, what happened to them?
 - Instead of opting for a more traditional account creation process, I use your browser's local storage to store the favorites. I find this is better for simplicity's sake and overall convenience for users.
 - If you recently lost your favorites, you likely switched your browser/device or cleared your browser's cache. Unfortunately, there is not currently a way of retrieving the lost data.
+
+### Can I request new features or suggest improvements for Peri?
+- Definitely! I would love to hear any feedback from the community for ways of improving the site.
+- Head over to the [discussion](https://github.com/asecco/peri/discussions/categories/features-improvements) section and start a new thread.
 
 ### Can I contribute to this project?
 - Yes! Head down to the [contributing](#contributing) section to learn more about how you can help!
