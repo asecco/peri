@@ -63,8 +63,8 @@ Peri was originally designed to be similar to a modern streaming media service w
 - If you recently lost your favorites, you likely switched your browser/device or cleared your browser's cache. Unfortunately, there is not currently a way of retrieving the lost data.
 
 ### Can I request new features or suggest improvements for Peri?
-- Definitely! I would love to hear any feedback from the community for ways of improving the site.
-- Head over to the [discussion](https://github.com/asecco/peri/discussions/categories/features-improvements) section and start a new thread.
+- Definitely! I would love to hear any feedback from the community for ways to improve the site.
+- To get started, head over to the [discussion](https://github.com/asecco/peri/discussions/categories/features-improvements) section and start a new thread.
 
 ### Can I contribute to this project?
 - Yes! Head down to the [contributing](#contributing) section to learn more about how you can help!
