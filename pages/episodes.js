@@ -32,6 +32,14 @@ function EpisodeList({ seasonNum, season, episodes, title }) {
 
 export async function getServerSideProps(context) {
     const { num, id } = context.query;
+    if (!id) {
+        return {
+            redirect: {
+                destination: '/',
+                permanent: false,
+            },
+        };
+    }
     const show = await fetch(`${API_URL}tv/${id}?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
     const episode = await fetch(`${API_URL}tv/${id}/season/${num}?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
 

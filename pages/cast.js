@@ -56,6 +56,14 @@ function CastInfo({ castInfo, known }) {
 
 export async function getServerSideProps(context) {
     const id = context.query.id;
+    if (!id) {
+        return {
+            redirect: {
+                destination: '/',
+                permanent: false,
+            },
+        };
+    }
     const cast = await fetch(`${API_URL}person/${id}?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
     const knownFor = await fetch(`${API_URL}person/${id}/movie_credits?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
     

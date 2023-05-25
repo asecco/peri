@@ -228,6 +228,14 @@ function MovieInfo({ movie, cast, recommend }) {
 
 export async function getServerSideProps(context) {
     const { id, type } = context.query;
+    if (!id) {
+        return {
+            redirect: {
+                destination: '/',
+                permanent: false,
+            },
+        };
+    }
     const res = await fetch(`${API_URL}${type}/${id}?api_key=${API_KEY}&language=en-US&append_to_response=release_dates`);
     const movie = await res.json();
     let recommend = [];
