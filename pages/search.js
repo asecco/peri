@@ -18,6 +18,10 @@ function Search() {
         const searchReq = await fetch(`${API_URL}search/multi?api_key=${API_KEY}&language=en-US&query=${searchQuery}&include_adult=false`).then((res) => res.json());
         setSearchResults(searchReq.results);
     };
+
+    searchResults.sort((a, b) => { //Sorts by vote count
+        return b.vote_count - a.vote_count;
+    });
     
     const autoFocus = useCallback(e => e ? e.focus() : null, []);
 
