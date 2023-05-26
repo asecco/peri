@@ -47,7 +47,7 @@ function MovieInfo({ movie, cast, recommend }) {
         } else {
             setReleaseYear(movie?.release_date);
         }
-    }, [mediaType, router.query.type, releaseYear]);
+    }, [mediaType, router.query.type, releaseYear, movie?.release_date, movie?.first_air_date]);
 
     const checkTrailer = async () => {
         const trailer = await fetch(`${YOUTUBE_API_URL}${movie?.title || movie?.original_name}+${mediaType}+trailer&part=snippet&maxResults=1&type=video&key=${YOUTUBE_API_KEY}`);
@@ -124,7 +124,7 @@ function MovieInfo({ movie, cast, recommend }) {
                 setRunTime(`${movie.episode_run_time[0]} mins`);
             }
         }
-    }, [movie.runtime, movie.episode_run_time, runtime]);
+    }, [movie.runtime, movie.episode_run_time, runtime, mediaType]);
 
     const [watchModeSources, setWatchModeSources] = useState([]);
     const [modalOpen, setModalOpen] = useState(false);
