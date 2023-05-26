@@ -191,7 +191,7 @@ function MovieInfo({ movie, cast, recommend }) {
 
             <div>
                 <p className="font-bold text-white text-2xl md:text-4xl mx-7 mt-10 md:mt-4 lg:mt-0">{mediaType != 'tv' ? '' : 'Seasons:'}</p>
-                <FlipMove className="grid grid-cols-2 px-5 my-10 sm:grid md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 3xl:grid-cols-10">
+                <FlipMove className="grid grid-cols-2 px-5 my-10 sm:grid md:grid-cols-6 lg:grid-cols-7 xl:grid-cols-8 2xl:grid-cols-9 3xl:grid-cols-10">
                     {seasons?.map((season) => season.poster_path && (
                     <>
                         <Seasons result={season} id={movie.id} />
