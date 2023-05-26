@@ -13,7 +13,7 @@ function Upcoming({ upcoming, page, totalPages }) {
         <div>
             <Head><title>{`Upcoming`}</title></Head>
             <Header />
-            <p className='font-bold text-white text-3xl md:text-4xl lg:text-5xl mx-14 my-6 text-center md:text-left'>Upcoming Movies</p>
+            <p className='font-bold text-white text-3xl md:text-4xl lg:text-5xl mx-10 lg:mx-14 my-6 text-center md:text-left'>Upcoming</p>
             <Results results={upcoming} />
             <div className='flex flex-row justify-center gap-x-2 py-10 md:py-0 items-center h-auto'>
                 <div onClick={() => router.push(`/upcoming/${page - 1}`)}><FooterItem title='Previous' Icon={ArrowCircleLeftIcon} /></div>
