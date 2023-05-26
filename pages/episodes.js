@@ -23,7 +23,7 @@ function EpisodeList({ seasonNum, season, episodes, title }) {
                     </>
                     ))}
                 </div>
-                <div className="w-8/12 md:w-4/12 lg:w-3/12 mx-10 md:mx-28 lg:mx-14">
+                <div className="w-8/12 md:w-5/12 lg:w-4/12 mx-10 md:mx-14">
                     <Image layout="responsive" src={`${BASE_URL}${poster}`} alt='' height={960} width={640}/>
                 </div>
             </div>

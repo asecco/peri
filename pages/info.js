@@ -183,7 +183,7 @@ function MovieInfo({ movie, cast, recommend }) {
                             <button onClick={checkFav} title="Favorite" className="transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 h-12 w-20 md:h-14 md:w-20 lg:h-16 lg:w-24 bg-gray-600 hover:bg-white text-white hover:text-primary text-lg font-bold rounded-lg inline-flex items-center justify-center"><HeartIcon className={isFav ? 'h-12 text-red-400 fill-red-400' : 'h-12'} /></button>
                         </div>
                     </div>
-                    <div className="w-8/12 md:w-4/12 lg:w-3/12 mx-10 md:mx-28 lg:mx-14">
+                    <div className="w-8/12 md:w-5/12 lg:w-3/12 mx-10 md:mx-14">
                         <Image priority={true} layout="responsive" src={`${BASE_URL}${movie?.poster_path}`} alt='' height={960} width={640}/>
                     </div>
                 </div>
