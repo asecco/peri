@@ -12,10 +12,14 @@ function Recommended() {
             const recArr = [];
             const favorites = JSON.parse(localStorage.getItem('favorites'));
             const favoriteIds = favorites.map((favorite) => favorite.id);
-            for(let i in favorites) {
-                const recommendReq = await fetch(`${API_URL}${favorites[i].type}/${favorites[i].id}/recommendations?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
-                for(let i in recommendReq.results) {
-                    recArr.push(recommendReq.results[i]);
+            const shuffledIds = favoriteIds.sort(() => 0.5 - Math.random());
+            const selectedIds = shuffledIds.slice(0, 10); //Selects 10 random movies from favorites to get recommendations from
+
+            for (let i = 0; i < selectedIds.length; i++) {
+                const favorite = favorites.find((fav) => fav.id === selectedIds[i]);
+                const recommendReq = await fetch(`${API_URL}${favorite.type}/${favorite.id}/recommendations?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
+                for (let j in recommendReq.results) {
+                    recArr.push(recommendReq.results[j]);
                 }
             }
 
@@ -31,7 +35,13 @@ function Recommended() {
             const filteredArr = recArr.filter((obj) => { //Removes movies that are already in favorites
                 return !favoriteIds.includes(obj.id);
             });
-            const splicedArr = filteredArr.splice(0, 20);
+
+            const filteredAndSortedArr = filteredArr.filter((obj) => { //Removes movies with low vote count, < 100
+                return obj.vote_count >= 100;
+            });
+
+            const splicedArr = filteredAndSortedArr.splice(0, 20);
+            console.log(splicedArr);
             splicedArr.sort((a, b) => { //Sorts by vote count
                 return b.vote_count - a.vote_count;
             });
