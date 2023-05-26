@@ -7,7 +7,7 @@ import About from '../components/About';
 function Header() {
     return (
         <div>
-            <header className="flex flex-col sm:flex-row mb-5 justify-between items-center h-auto">
+            <header className="flex flex-col sm:flex-row mb-5 justify-between items-center h-auto mt-2">
                 <div className='flex flex-grow max-w-2xl mt-2 md:mt-0'>
                     <a href={`/`} rel="noopener noreferrer"><HeaderItem title='HOME' Icon={HomeIcon} /></a>
                     <a href={`/search`} rel="noopener noreferrer"><HeaderItem title='SEARCH' Icon={SearchIcon} /></a>
