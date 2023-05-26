@@ -12,9 +12,10 @@ function EpisodeList({ seasonNum, season, episodes, title }) {
         <div>
             <Head><title>{`${title} | Season ${seasonNum}`}</title></Head>
             <Header />
-            <div className="mx-auto px-20 flex flex-col-reverse gap-10 object-bottom md:flex-row">
+            <div className="mx-auto px-20 flex flex-col-reverse gap-10 object-bottom md:flex-row mb-8">
                 <div className="flex flex-col gap-4 md:w-5/12 lg:w-6/12 xl:w-8/12 2xl:w-10/12">
-                    <h1 className="font-bold text-3xl md:text-5xl lg:text-7xl text-center text-red-400">{`Season ${seasonNum}`}</h1>
+                    <h1 className="font-bold text-3xl md:text-5xl lg:text-7xl text-center text-red-400">{title}</h1>
+                    <h2 className="font-bold text-2xl md:text-4xl lg:text-5xl text-center text-white">{`Season ${seasonNum}`}</h2>
                     <p className="text-center md:text-left text-base md:text-xl lg:text-2xl text-white line-clamp-14 mb-6 md:mb-0">{overview}</p>
                     {episodes?.map((episode) => episode.still_path && (
                     <>

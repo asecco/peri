@@ -41,7 +41,6 @@ function Recommended() {
             });
 
             const splicedArr = filteredAndSortedArr.splice(0, 20);
-            console.log(splicedArr);
             splicedArr.sort((a, b) => { //Sorts by vote count
                 return b.vote_count - a.vote_count;
             });
@@ -56,8 +55,8 @@ function Recommended() {
             <Header />
             <p className='font-bold text-white text-3xl md:text-4xl lg:text-5xl mx-14 my-6 text-center md:text-left'>{recRes.length > 0 ? 'Chosen For You' : ''}</p>
             <div className='my-10 font-bold text-center mx-6 text-white'>
-                <p className='text-xl md:text-3xl lg:text-4xl'>{recRes.length > 0 ? '' : 'There are currently no recommendations'}</p>
-                <p className='text-md md:text-xl lg:text-2xl'>{recRes.length > 0 ? '': 'Give a film a ♡ and check back!'}</p>
+                <p className='text-2xl md:text-3xl lg:text-4xl mb-2'>{recRes.length > 0 ? '' : 'There are currently no recommendations'}</p>
+                <p className='text-lg md:text-xl lg:text-2xl'>{recRes.length > 0 ? '': 'Give a film/show a ♡ and check back!'}</p>
             </div> 
 
             <div>
