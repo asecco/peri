@@ -62,8 +62,8 @@ function Search() {
                     {autoCompleteResults.length > 0 && searchResults.length === 0 && (
                         <div className="absolute z-10 w-full mt-1">
                             {autoCompleteResults.map((result) => (
-                                <a href={`/info?type=${result.media_type}&id=${result.id}`} rel="noopener noreferrer">
-                                    <div key={result.id} className="text-white bg-gray-800 text-center hover:text-red-400 rounded-md shadow-md p-2 mb-2 cursor-pointer">{result.title || result.name} • {result.media_type} • {result.release_date ? result.release_date.substring(0, 4) : (result.first_air_date ? result.first_air_date.substring(0, 4) : '')}</div>
+                                <a key={result.id} href={`/info?type=${result.media_type}&id=${result.id}`} rel="noopener noreferrer">
+                                    <div className="text-white bg-gray-800 text-center hover:text-red-400 rounded-md shadow-md p-2 mb-2 cursor-pointer">{result.title || result.name} • {result.media_type} • {result.release_date ? result.release_date.substring(0, 4) : (result.first_air_date ? result.first_air_date.substring(0, 4) : '')}</div>
                                 </a>
                             ))}
                         </div>
