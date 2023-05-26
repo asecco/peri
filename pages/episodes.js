@@ -5,8 +5,9 @@ import Head from 'next/head';
 import { BASE_URL, API_KEY, API_URL } from '../utils/constants';
 
 function EpisodeList({ seasonNum, season, episodes, title }) {
-    const overview = season[seasonNum - 1]?.overview;
-    const poster = season[seasonNum - 1]?.poster_path;
+    const targetSeason = season.find((s) => s.season_number === seasonNum);
+    const overview = targetSeason?.overview;
+    const poster = targetSeason?.poster_path;
 
     return (
         <div>
@@ -46,7 +47,7 @@ export async function getServerSideProps(context) {
 
     return {
         props: {
-            seasonNum: num,
+            seasonNum: parseInt(num),
             season: show.seasons,
             episodes: episode.episodes,
             title: show.original_name,
