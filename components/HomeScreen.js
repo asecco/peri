@@ -5,7 +5,7 @@ function HomeScreen({ results, nowPlaying }) {
     return (
         <div>
             <NowPlayingBanner nowPlaying={nowPlaying} />
-            <p className='font-bold text-white text-3xl md:text-4xl lg:text-5xl mx-8 mt-14 text-center md:text-left'>Trending</p>
+            <p className='font-bold text-white text-3xl md:text-4xl lg:text-5xl mx-8 xl:mx-10 mt-14 text-center md:text-left'>Trending</p>
             <Results results={results} />
         </div>
     );

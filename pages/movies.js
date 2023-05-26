@@ -32,7 +32,7 @@ function Movies({ movies, genre, page, totalPages }) {
                 <div className="absolute top-0 right-0 bg-gradient-to-l from-[#202F3B] h-10 w-1/12" />
             </nav>
 
-            <p className='font-bold text-white text-3xl md:text-4xl lg:text-5xl mx-8 my-6 text-center md:text-left'>{requests[genre].title}</p>
+            <p className='font-bold text-white text-3xl md:text-4xl lg:text-5xl mx-8 xl:mx-10 my-6 text-center md:text-left'>{requests[genre].title}</p>
             <Results results={movies} />
             <div className='flex flex-row justify-center gap-x-2 py-10 md:py-0 items-center h-auto'>
                 <div onClick={() => pageRoute(page - 1)}><FooterItem title='Previous' Icon={ArrowCircleLeftIcon} /></div>

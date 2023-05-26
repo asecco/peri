@@ -41,8 +41,8 @@ function CastInfo({ castInfo, known }) {
             </div>
 
             <div>
-                <p className="font-bold text-white text-2xl md:text-4xl lg:text-3xl mx-7">Known For:</p>
-                <FlipMove className="px-5 my-10 sm:grid md:grid-cols-4 lg:grid-cols-4 3xl:grid-cols-6">
+                <p className="font-bold text-white text-2xl md:text-4xl lg:text-3xl mx-9">Known For:</p>
+                <FlipMove className="px-5 my-10 ml-2 grid grid-cols-2 md:grid-cols-4 xl:grid-cols-4">
                     {knownFor?.map((movie) => movie.backdrop_path && (
                     <>
                         <Recommend result={movie} />
