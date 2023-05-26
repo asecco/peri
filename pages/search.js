@@ -23,7 +23,8 @@ function Search() {
     const fetchAutoCompleteResults = async (query) => {
         if (query.trim() !== "") {
             const autocompleteReq = await fetch(`${API_URL}search/multi?api_key=${API_KEY}&language=en-US&query=${query}&include_adult=false`).then((res) => res.json());
-            setAutoCompleteResults(autocompleteReq.results.slice(0, 5));
+            const sortedResults = sortResults(autocompleteReq.results);
+            setAutoCompleteResults(sortedResults.slice(0, 5));
         } else {
             setAutoCompleteResults([]);
         }
@@ -32,7 +33,8 @@ function Search() {
     const search = async (event) => {
         event.preventDefault();
         const searchReq = await fetch(`${API_URL}search/multi?api_key=${API_KEY}&language=en-US&query=${searchQuery}&include_adult=false`).then((res) => res.json());
-        setSearchResults(searchReq.results);
+        const sortedResults = sortResults(searchReq.results);
+        setSearchResults(sortedResults);
         setAutoCompleteResults([]);
         searchInputRef.current.blur(); //Removes focus from search bar
     };
@@ -44,9 +46,11 @@ function Search() {
         searchInputRef.current.focus(); // Set focus back to search input
     };
 
-    searchResults.sort((a, b) => { //Sorts by vote count
-        return b.vote_count - a.vote_count;
-    });
+    const sortResults = (results) => { //Sorts by vote count
+        return results.sort((a, b) => {
+            return b.vote_count - a.vote_count;
+        });
+    };
 
     return (
         <div>
