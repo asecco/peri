@@ -1,8 +1,7 @@
 import Head from 'next/head';
 import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
-import FlipMove from 'react-flip-move';
-import Thumbnail from '../components/Thumbnail';
+import Results from '../components/Results';
 import { API_KEY, API_URL } from '../utils/constants';
 
 function Favorites() {
@@ -29,17 +28,8 @@ function Favorites() {
             <div className='my-10 font-bold text-center mx-6 text-white'>
                 <p className='text-2xl md:text-3xl lg:text-4xl mb-2'>{favRes.length > 0 ? '' : 'There are currently no favorites'}</p>
                 <p className='text-lg md:text-xl lg:text-2xl'>{favRes.length > 0 ? '': 'Give a film/show a ♡ and check back!'}</p>
-            </div>            
-
-            <div>
-                <FlipMove className="px-5 my-10 sm:grid md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5">
-                    {favRes?.map((fav) => fav.poster_path && (
-                    <>
-                        <Thumbnail result={fav} />
-                    </>
-                    ))}
-                </FlipMove>
             </div>
+            <Results results={favRes} />
         </div>
     );
 }

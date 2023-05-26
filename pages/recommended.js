@@ -1,8 +1,7 @@
 import Head from 'next/head';
 import React, { useState, useEffect } from 'react';
 import Header from "../components/Header";
-import FlipMove from 'react-flip-move';
-import Thumbnail from '../components/Thumbnail';
+import Results from '../components/Results';
 import { API_KEY, API_URL } from '../utils/constants';
 
 function Recommended() {
@@ -57,17 +56,8 @@ function Recommended() {
             <div className='my-10 font-bold text-center mx-6 text-white'>
                 <p className='text-2xl md:text-3xl lg:text-4xl mb-2'>{recRes.length > 0 ? '' : 'There are currently no recommendations'}</p>
                 <p className='text-lg md:text-xl lg:text-2xl'>{recRes.length > 0 ? '': 'Give a film/show a ♡ and check back!'}</p>
-            </div> 
-
-            <div>
-                <FlipMove className="px-5 my-10 sm:grid md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5">
-                    {recRes?.map((rec) => rec !== undefined && rec.poster_path && (
-                    <>
-                        <Thumbnail result={rec} />
-                    </>
-                    ))}
-                </FlipMove>
             </div>
+            <Results results={recRes} />
         </div>
     );
 }

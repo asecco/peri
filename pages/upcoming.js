@@ -3,9 +3,8 @@ import { useRouter } from "next/router";
 import { ArrowCircleLeftIcon,ArrowCircleRightIcon } from '@heroicons/react/outline';
 import FooterItem from "../components/FooterItem";
 import Header from '../components/Header';
-import Thumbnail from '../components/Thumbnail';
 import PaginationFooter from '../components/PaginationFooter';
-import FlipMove from 'react-flip-move';
+import Results from '../components/Results';
 import { API_KEY, API_URL } from '../utils/constants';
 
 function Upcoming({ upcoming, page, totalPages }) {
@@ -15,16 +14,7 @@ function Upcoming({ upcoming, page, totalPages }) {
             <Head><title>{`Upcoming`}</title></Head>
             <Header />
             <p className='font-bold text-white text-3xl md:text-4xl lg:text-5xl mx-14 my-6 text-center md:text-left'>Upcoming Movies</p>
-            <div>
-                <FlipMove className="px-5 my-10 sm:grid md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5">
-                    {upcoming.map((up) => up.poster_path && (
-                    <>
-                        <Thumbnail result={up} />
-                    </>
-                    ))}
-                </FlipMove>
-            </div>
-
+            <Results results={upcoming} />
             <div className='flex flex-row justify-center gap-x-2 py-10 md:py-0 items-center h-auto'>
                 <div onClick={() => router.push(`/upcoming/${page - 1}`)}><FooterItem title='Previous' Icon={ArrowCircleLeftIcon} /></div>
                 <PaginationFooter page={page} totalPages={totalPages} setPage={(pageNum) => router.push(`/upcoming/${pageNum}`)} />

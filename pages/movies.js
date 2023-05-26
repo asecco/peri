@@ -3,9 +3,8 @@ import { useRouter } from "next/router";
 import { ArrowCircleLeftIcon, ArrowCircleRightIcon } from '@heroicons/react/outline';
 import FooterItem from "../components/FooterItem";
 import Header from '../components/Header';
-import Thumbnail from '../components/Thumbnail';
+import Results from '../components/Results';
 import PaginationFooter from '../components/PaginationFooter';
-import FlipMove from 'react-flip-move';
 import requests from '../utils/requests';
 import { API_URL } from '../utils/constants';
 
@@ -34,16 +33,7 @@ function Movies({ movies, genre, page, totalPages }) {
             </nav>
 
             <p className='font-bold text-white text-3xl md:text-4xl lg:text-5xl mx-14 my-6 text-center md:text-left'>{requests[genre].title}</p>
-            <div>
-                <FlipMove className="px-5 my-10 sm:grid md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5">
-                    {movies.map((movie) => movie.poster_path && (
-                        <>
-                        <Thumbnail result={movie} />
-                        </>
-                    ))}
-                </FlipMove>
-            </div>
-
+            <Results results={movies} />
             <div className='flex flex-row justify-center gap-x-2 py-10 md:py-0 items-center h-auto'>
                 <div onClick={() => pageRoute(page - 1)}><FooterItem title='Previous' Icon={ArrowCircleLeftIcon} /></div>
                 <PaginationFooter page={page} totalPages={totalPages} setPage={pageRoute} />

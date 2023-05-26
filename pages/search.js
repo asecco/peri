@@ -2,8 +2,7 @@ import Head from 'next/head';
 import React, { useState, useCallback } from 'react';
 import { SearchIcon } from '@heroicons/react/outline';
 import Header from '../components/Header';
-import Thumbnail from '../components/Thumbnail';
-import FlipMove from "react-flip-move";
+import Results from '../components/Results';
 import { API_KEY, API_URL } from '../utils/constants';
 
 function Search() {
@@ -30,16 +29,7 @@ function Search() {
                 <input ref={autoFocus} type="text" value={searchQuery} onChange={handleInputChange} className="h-16 w-full rounded-md focus:shadow focus:outline-1 focus:outline-red-400 text-black text-center text-2xl lg:text-3xl" placeholder="Search..."></input>
                 <SearchIcon onClick={search} className='absolute right-1 w-8 hover:cursor-pointer text-primary hover:text-red-400 active:text-red-500'/>
             </form>
-
-            <div>
-                <FlipMove className="px-5 my-10 sm:grid md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5">
-                    {searchResults.map((movie) => movie.backdrop_path && (
-                    <>
-                        <Thumbnail result={movie} />
-                    </>
-                    ))}
-                </FlipMove>
-            </div>
+            <Results results={searchResults} />
         </div>
   );
 }
