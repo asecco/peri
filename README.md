@@ -21,7 +21,6 @@
   <a href="#contributing">Contributing</a> •
   <a href="#setup">Setup</a> •
   <a href="#built-with">Built With</a> •
-  <a href="#screenshots">Screenshots</a> •
   <a href="#license">License</a>
 </p>
 
@@ -33,7 +32,7 @@
 
 ![demo](https://github.com/asecco/peri/assets/40510223/bd177949-df1b-4ffb-85e8-0625cf52a8db)
 
-<p align="center">Like what you see? Please consider giving Peri a GitHub Star ⭐, it will help a lot!</p>
+<p align="center">Like what you see? Please consider giving Peri a GitHub star ⭐, it will help a lot!</p>
 
 ## About
 Peri was originally designed to be similar to a modern streaming media service with the UI being inspired by platforms such as [Plex](https://www.plex.tv) and [Hulu](https://www.hulu.com). Peri includes no streaming functionality and serves as an extensive database of films and tv series, allowing you to browse and garner information on whichever type of media you desire.
@@ -44,6 +43,7 @@ Peri was originally designed to be similar to a modern streaming media service w
 - Direct links to legal streaming options(Netflix, Prime Video, Apple TV, etc.)
 - Embedded trailers
 - Comment section for reviewing/discussing with the community
+- Search functionality with autocomplete suggestions
 - Local storage for saving favorites
 - Lazy loading
 - Server-side rendering via Next.js
@@ -109,15 +109,6 @@ yarn run dev
 - [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org)
 - [![Next.js](https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org)
 - [![Tailwind CSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
-
-## Screenshots
-![2](https://user-images.githubusercontent.com/40510223/183317859-df3c7836-9205-4c9f-9958-193198b2b748.png)
-![3](https://user-images.githubusercontent.com/40510223/184006853-ee9cca16-1640-4af2-a6e6-1734f4de1cc5.png)
-![4](https://user-images.githubusercontent.com/40510223/183317876-81a41ca4-ca5d-485d-b38c-7082de656660.png)
-![5](https://user-images.githubusercontent.com/40510223/184006885-829e79eb-c51e-436d-b368-e3e85741e42e.png)
-![6](https://user-images.githubusercontent.com/40510223/229385353-342014fc-fbce-4788-ba5e-f96d05a227cc.png)
-![7](https://user-images.githubusercontent.com/40510223/183317881-c23ebeba-65e8-4a34-b3b8-ab3739f5d15c.png)
-![8](https://user-images.githubusercontent.com/40510223/183317882-ecf9766e-fe4b-4a36-959f-a686177f69f2.png)
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
