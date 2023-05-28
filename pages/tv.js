@@ -1,10 +1,8 @@
 import Head from 'next/head';
 import { useRouter } from "next/router";
-import { ArrowCircleLeftIcon, ArrowCircleRightIcon } from '@heroicons/react/outline';
-import FooterItem from "../components/FooterItem";
 import Header from '../components/Header';
-import PaginationFooter from '../components/PaginationFooter';
 import Results from '../components/Results';
+import Footer from '../components/Footer';
 import requestsTV from '../utils/requestsTV';
 import { API_URL } from '../utils/constants';
 
@@ -13,11 +11,6 @@ function TV({ tv, genre, page, totalPages }) {
     const genreRoute = (key) => {
         router.push(`/tv/${key}/1`);
     }
-
-    const pageRoute = (pageNumber) => {
-        const newPage = Math.max(pageNumber, 1);
-        router.push(`/tv/${genre}/${newPage}`);
-    }  
 
     return (
         <div>
@@ -34,11 +27,7 @@ function TV({ tv, genre, page, totalPages }) {
 
             <p className='font-bold text-white text-4xl lg:text-5xl mx-8 xl:mx-10 my-6 text-center md:text-left'>{requestsTV[genre].title}</p>
             <Results results={tv} />
-            <div className='flex flex-row justify-center gap-x-2 py-10 md:py-0 items-center h-auto'>
-                <div onClick={() => pageRoute(page - 1)}><FooterItem title='Previous' Icon={ArrowCircleLeftIcon} /></div>
-                <PaginationFooter page={page} totalPages={totalPages} setPage={pageRoute} />
-                <div onClick={() => pageRoute(page + 1)}><FooterItem title='Next' Icon={ArrowCircleRightIcon} /></div>
-            </div>
+            <Footer type={'tv'} genre={genre} page={page} totalPages={totalPages} />
         </div>
     );
 }

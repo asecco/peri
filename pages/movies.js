@@ -1,10 +1,8 @@
 import Head from 'next/head';
 import { useRouter } from "next/router";
-import { ArrowCircleLeftIcon, ArrowCircleRightIcon } from '@heroicons/react/outline';
-import FooterItem from "../components/FooterItem";
 import Header from '../components/Header';
 import Results from '../components/Results';
-import PaginationFooter from '../components/PaginationFooter';
+import Footer from '../components/Footer';
 import requests from '../utils/requests';
 import { API_URL } from '../utils/constants';
 
@@ -12,11 +10,6 @@ function Movies({ movies, genre, page, totalPages }) {
     const router = useRouter();
     const genreRoute = (key) => {
         router.push(`/movies/${key}/1`);
-    }
-
-    const pageRoute = (pageNumber) => {
-        const newPage = Math.max(pageNumber, 1);
-        router.push(`/movies/${genre}/${newPage}`);
     }
 
     return (
@@ -34,11 +27,7 @@ function Movies({ movies, genre, page, totalPages }) {
 
             <p className='font-bold text-white text-4xl lg:text-5xl mx-8 xl:mx-10 my-6 text-center md:text-left'>{requests[genre].title}</p>
             <Results results={movies} />
-            <div className='flex flex-row justify-center gap-x-2 py-10 md:py-0 items-center h-auto'>
-                <div onClick={() => pageRoute(page - 1)}><FooterItem title='Previous' Icon={ArrowCircleLeftIcon} /></div>
-                <PaginationFooter page={page} totalPages={totalPages} setPage={pageRoute} />
-                <div onClick={() => pageRoute(page + 1)}><FooterItem title='Next' Icon={ArrowCircleRightIcon} /></div>
-            </div>
+            <Footer type={'movies'} genre={genre} page={page} totalPages={totalPages} />
         </div>
     );
 }
