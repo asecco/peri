@@ -72,7 +72,9 @@ Peri was originally designed to be similar to a modern streaming media service w
 ## Contributing
 I would love to expand upon this project over time with continuous updates to ensure it remains up-to-date and a great resource for movie fans.
 
-Pull requests are welcome! Head over to the [issues](https://github.com/asecco/peri/issues) section to see if there is anything currently open, and head down to the [setup](#setup) section to get your development environment configured.
+Pull requests are welcome for simple bug fixes and general improvements! Head over to the [issues](https://github.com/asecco/peri/issues) section to see if there is anything currently open, and head down to the [setup](#setup) section to get your development environment configured.
+
+If you want to contribute new features or drastically change a current feature. Please open a [discussion](https://github.com/asecco/peri/discussions/categories/general) before working on it, so that I can ensure this is a change that I feel is properly suited for this project.
 
 ![upates2](https://user-images.githubusercontent.com/40510223/184010219-96e98fde-8f7e-4383-8fac-f25b2f914d0f.gif)
 ![updates](https://user-images.githubusercontent.com/40510223/184007866-240f831c-6d52-43b5-8414-b5c1f93f0aa0.gif)
