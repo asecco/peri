@@ -50,7 +50,7 @@ Peri was originally designed to be similar to a modern streaming media service w
 
 ## Frequently Asked Questions
 ### What is the purpose of Peri, and why should I use it?
-- I've always wanted Peri to be a great resource for avid movie/tv fans like myself to browse different content and find what they desire.
+- I've always wanted Peri to be a great resource for avid movie/tv fans like myself to browse different content and find what they desire. In today's world, there are dozens of different streaming services with varying amounts of content. This can make it troublesome to know where to look, and that's where Peri comes in!
 - If you're debating why you should start using Peri over any alternatives, I think that a strength of Peri is that it's not overly complex and includes a lot of unique features as listed above.
 - I'm also consistently updating the site and always looking for ways to improve the overall feel and functionality.
 
