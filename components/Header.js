@@ -17,7 +17,7 @@ function Header() {
                     <a href={`/favorites`} rel="noopener noreferrer"><HeaderItem title='FAVORITES' Icon={BookmarkIcon} /></a>
                     <a href={`/recommended`} rel="noopener noreferrer"><HeaderItem title='RECOMMENDED' Icon={ThumbUpIcon} /></a>
                 </div>
-                <Image className='object-contain' src={PeriLogo} alt='Peri' width={250} height={100} />
+                <Image priority={true} className='object-contain' src={PeriLogo} alt='Peri' width={250} height={100} />
             </header>
             <About />
         </div>
