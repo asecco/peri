@@ -2,6 +2,7 @@ import Head from 'next/head';
 import React, { useState, useEffect } from 'react';
 import Header from "../components/Header";
 import Results from '../components/Results';
+import LocalStorageMessage from '../components/LocalStorageMesage';
 import { API_KEY, API_URL } from '../utils/constants';
 
 function Recommended() {
@@ -52,11 +53,7 @@ function Recommended() {
         <div>
             <Head><title>{`Recommended`}</title></Head>
             <Header />
-            <p className='font-bold text-white text-4xl lg:text-5xl mx-8 xl:mx-10 my-6 text-center md:text-left'>{recRes.length > 0 ? 'Chosen For You' : ''}</p>
-            <div className='my-10 font-bold text-center mx-6 text-white'>
-                <p className='text-2xl md:text-3xl lg:text-4xl mb-2'>{recRes.length > 0 ? '' : 'There are currently no recommendations'}</p>
-                <p className='text-lg md:text-xl lg:text-2xl'>{recRes.length > 0 ? '': 'Give a film/show a ♡ and check back!'}</p>
-            </div>
+            <LocalStorageMessage results={recRes} id={'recommendations'} />
             <Results results={recRes} />
         </div>
     );
