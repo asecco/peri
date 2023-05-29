@@ -8,7 +8,7 @@ import Panels from "../components/Info/Panels";
 import Comment from "../components/Info/Comment";
 import { ToastContainer } from 'react-toastify';
 
-function MovieInfo({ movie, cast, recommend }) {
+function Info({ movie, cast, recommend }) {
     const router = useRouter();
     const [mediaType, setMediaType] = useState(null);
     const [releaseYear, setReleaseYear] = useState([]);
@@ -23,54 +23,49 @@ function MovieInfo({ movie, cast, recommend }) {
     const seasons = movie.seasons;
 
     useEffect(() => {
-        if(router.query.type === 'tv') {
+        if (router.query.type === 'tv') {
             setMediaType('tv');
         } else {
             setMediaType('movie');
         }
-
-        if(mediaType === 'movie') {
-            const sliced = movie.release_date?.slice(0, -6)
+    
+        if (mediaType === 'movie') {
+            const sliced = movie.release_date?.slice(0, -6);
             setReleaseYear(sliced);
-        } else if(mediaType === 'tv') {
-            const sliced = movie.first_air_date?.slice(0, -6)
+    
+            if (movie.runtime) {
+                const minutes = movie.runtime % 60;
+                const hours = Math.floor(movie.runtime / 60);
+                setRunTime(`${hours}h ${minutes}min`);
+            }
+        } else if (mediaType === 'tv') {
+            const sliced = movie.first_air_date?.slice(0, -6);
             setReleaseYear(sliced);
+    
+            if (movie.episode_run_time && movie.episode_run_time.length > 0) {
+                setRunTime(`${movie.episode_run_time[0]} mins`);
+            } else {
+                setRunTime('N/A mins');
+            }
         } else {
             setReleaseYear(movie?.release_date);
+            setRunTime('N/A mins');
         }
-    }, [mediaType, router.query.type, releaseYear, movie?.release_date, movie?.first_air_date]);
-
-    useEffect(() => {
-        if(movie.release_dates) {
-            if(movie.release_dates.results.length > 0) {
-                const rating = movie.release_dates.results.find(obj => obj.iso_3166_1 === 'US');
-                if(rating) {
-                    const cert = rating.release_dates.find(obj => obj.certification !== '');
-                    if(cert) {
-                        setCertification(cert.certification);
-                    } else {
-                        setCertification('N/A');
-                    }
+    
+        if (movie.release_dates && movie.release_dates.results.length > 0) {
+            const rating = movie.release_dates.results.find(obj => obj.iso_3166_1 === 'US');
+            if (rating) {
+                const cert = rating.release_dates.find(obj => obj.certification !== '');
+                if (cert) {
+                    setCertification(cert.certification);
                 } else {
                     setCertification('N/A');
                 }
-            }
-        }
-    }, [movie.release_dates, certification,]);
-
-    useEffect(() => {
-        if(mediaType === 'movie') {
-            const minutes = movie.runtime % 60;
-            const hours = Math.floor(movie.runtime / 60);
-            setRunTime(`${hours}h ${minutes}min`);
-        } else {
-            if(movie.episode_run_time === undefined || movie.episode_run_time.length === 0) {
-                setRunTime(`N/A mins`);
             } else {
-                setRunTime(`${movie.episode_run_time[0]} mins`);
+                setCertification('N/A');
             }
         }
-    }, [movie.runtime, movie.episode_run_time, runtime, mediaType]);
+    }, [mediaType, router.query.type, movie]);
 
     return (
         <div>
@@ -80,7 +75,7 @@ function MovieInfo({ movie, cast, recommend }) {
             <Description movie={movie} mediaType={mediaType} releaseYear={releaseYear} runtime={runtime} certification={certification} />
             <Panels mediaType={mediaType} seasons={seasons} movie={movie} recArr={recArr} castArr={castArr} />
             <Comment title={movie.title || movie.original_name}type={mediaType} id={movie.id}/>
-    </div>
+        </div>
     );
 }
 
@@ -115,4 +110,4 @@ export async function getServerSideProps(context) {
     }
 }
 
-export default MovieInfo;
+export default Info;
