@@ -21,8 +21,7 @@ export default function Home({ results, nowPlaying }) {
 }
 
 export async function getServerSideProps() {
-	const trending = `trending/all/week?api_key=${process.env.NEXT_PUBLIC_API_KEY}`;
-	const req = await fetch(`https://api.themoviedb.org/3/${trending}`).then((res) => res.json())
+	const req = await fetch(`https://api.themoviedb.org/3/trending/all/week?api_key=${API_KEY}`).then((res) => res.json())
 	const nowPlaying = await fetch(`${API_URL}movie/now_playing?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
 
     const shuffleArray = (array) => {

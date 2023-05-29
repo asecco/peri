@@ -19,7 +19,7 @@ function Panels({ mediaType, seasons, movie, recArr, castArr }) {
                     <p className="font-bold text-white text-2xl md:text-4xl mx-8 mt-10 md:mt-4 lg:mt-0">Seasons:</p>
                     <FlipMove className="grid grid-cols-2 px-5 my-10 ml-2 md:grid-cols-6 lg:grid-cols-7 xl:grid-cols-8 2xl:grid-cols-9 3xl:grid-cols-10">
                         {seasons?.map((season) => season.poster_path && (
-                            <Seasons result={season} id={movie.id} />
+                            <Seasons key={season.id} result={season} id={movie.id} />
                         ))}
                     </FlipMove>
                 </div>
@@ -29,7 +29,7 @@ function Panels({ mediaType, seasons, movie, recArr, castArr }) {
                 <p className="font-bold text-white text-2xl md:text-4xl mx-8">{recArr?.length > 0 ? 'You May Enjoy:' : ''}</p>
                 <FlipMove className="px-5 my-10 ml-2 grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 3xl:grid-cols-8">
                     {recArr?.map((rec) => rec.backdrop_path && (
-                        <Recommend result={rec} />
+                        <Recommend key={rec.id} result={rec} />
                     ))}
                 </FlipMove>
             </div>
@@ -38,7 +38,7 @@ function Panels({ mediaType, seasons, movie, recArr, castArr }) {
                 <p className="font-bold text-white text-2xl md:text-4xl mx-8">Cast:</p>
                 <FlipMove className="px-5 my-10 ml-2 grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 3xl:grid-cols-8">
                     {castArr?.map((cast) => cast.profile_path && (
-                        <Cast member={cast} />
+                        <Cast key={cast.id} member={cast} />
                     ))}
                 </FlipMove>
             </div>

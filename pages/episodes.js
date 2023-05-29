@@ -20,7 +20,7 @@ function EpisodeList({ seasonNum, season, episodes, title }) {
                     <p className="text-center md:text-left text-base md:text-xl lg:text-2xl text-white line-clamp-14 mb-6 md:mb-0">{overview}</p>
                     {episodes?.map((episode) => episode.still_path && (
                     <>
-                        <Episodes result={episode} />
+                        <Episodes key={episode.id} result={episode} />
                     </>
                     ))}
                 </div>
