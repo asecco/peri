@@ -7,6 +7,7 @@ import { API_KEY, API_URL } from '../utils/constants';
 
 function Favorites() {
     const [favRes, setFavRes] = useState([]);
+    const [isLoaded, setIsLoaded] = useState(false);
     useEffect(() => {
         const searchReq = async () => {
             const favArr = [];
@@ -17,6 +18,7 @@ function Favorites() {
                 favArr.push(favReq);
             }
             setFavRes(favArr);
+            setIsLoaded(true);
         }
         searchReq();
     }, []);
@@ -25,7 +27,7 @@ function Favorites() {
         <div>
             <Head><title>{`Favorites`}</title></Head>
             <Header />
-            <LocalStorageMessage results={favRes} id={'favorites'} />
+            {isLoaded &&<LocalStorageMessage results={favRes} id={'favorites'} />}
             <Results results={favRes} />
         </div>
     );

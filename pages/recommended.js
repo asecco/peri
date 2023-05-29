@@ -7,6 +7,7 @@ import { API_KEY, API_URL } from '../utils/constants';
 
 function Recommended() {
     const [recRes, setRecRes] = useState([]);
+    const [isLoaded, setIsLoaded] = useState(false);
     useEffect(() => {
         const searchReq = async () => {
             const recArr = [];
@@ -45,6 +46,7 @@ function Recommended() {
                 return b.vote_count - a.vote_count;
             });
             setRecRes(splicedArr);
+            setIsLoaded(true);
         }
         searchReq();
     }, []);
@@ -53,7 +55,7 @@ function Recommended() {
         <div>
             <Head><title>{`Recommended`}</title></Head>
             <Header />
-            <LocalStorageMessage results={recRes} id={'recommendations'} />
+            {isLoaded &&<LocalStorageMessage results={recRes} id={'recommendations'} />}
             <Results results={recRes} />
         </div>
     );
