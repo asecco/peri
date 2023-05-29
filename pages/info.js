@@ -7,11 +7,8 @@ import ModalVideo from 'react-modal-video';
 import Image from "next/image";
 import { StarIcon, PlayIcon, HeartIcon, FilmIcon } from '@heroicons/react/outline';
 import Header from '../components/Header';
-import Cast from "../components/Cast";
-import Recommend from "../components/Recommend";
-import Seasons from "../components/Seasons";
 import Comment from "../components/Comment";
-import FlipMove from "react-flip-move";
+import Panels from "../components/Info/Panels";
 import { ToastContainer, toast } from 'react-toastify';
 import { toastNotify, alertParams } from "../utils/notifications";
 
@@ -21,7 +18,6 @@ function MovieInfo({ movie, cast, recommend }) {
     const [isOpen, setOpen] = useState(false);
     const [mediaType, setMediaType] = useState(null);
     const [releaseYear, setReleaseYear] = useState([]);
-    const [recommendDiv, setRecommendDiv] = useState(false);
 
     const castArr = cast.cast?.slice(0, 12);
     recommend.results?.sort((a, b) => {
@@ -43,7 +39,6 @@ function MovieInfo({ movie, cast, recommend }) {
         } else if(mediaType === 'tv') {
             const sliced = movie.first_air_date?.slice(0, -6)
             setReleaseYear(sliced);
-            setRecommendDiv(true);
         } else {
             setReleaseYear(movie?.release_date);
         }
@@ -188,39 +183,7 @@ function MovieInfo({ movie, cast, recommend }) {
                     </div>
                 </div>
             </div>
-
-            <div>
-                <p className="font-bold text-white text-2xl md:text-4xl mx-8 mt-10 md:mt-4 lg:mt-0">{mediaType != 'tv' ? '' : 'Seasons:'}</p>
-                <FlipMove className="grid grid-cols-2 px-5 my-10 ml-2 md:grid-cols-6 lg:grid-cols-7 xl:grid-cols-8 2xl:grid-cols-9 3xl:grid-cols-10">
-                    {seasons?.map((season) => season.poster_path && (
-                    <>
-                        <Seasons result={season} id={movie.id} />
-                    </>
-                    ))}
-                </FlipMove>
-            </div>
-
-            <div hidden={recommendDiv}>
-                <p className="font-bold text-white text-2xl md:text-4xl mx-8">{recArr?.length > 0 ? 'You May Enjoy:' : ''}</p>
-                <FlipMove className="px-5 my-10 ml-2 grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 3xl:grid-cols-8">
-                    {recArr?.map((rec) => rec.backdrop_path && (
-                    <>
-                        <Recommend result={rec} />
-                    </>
-                    ))}
-                </FlipMove>
-            </div>
-
-            <div>
-                <p className="font-bold text-white text-2xl md:text-4xl mx-8">Cast:</p>
-                <FlipMove className="px-5 my-10 ml-2 grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 3xl:grid-cols-8">
-                    {castArr?.map((cast) => cast.profile_path && (
-                    <>
-                        <Cast member={cast} />
-                    </>
-                    ))}
-                </FlipMove>
-            </div>
+            <Panels mediaType={mediaType} seasons={seasons} movie={movie} recArr={recArr} castArr={castArr} />
             <Comment title={movie.title || movie.original_name}type={mediaType} id={movie.id}/>
     </div>
     );
