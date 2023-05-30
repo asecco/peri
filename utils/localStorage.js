@@ -22,12 +22,12 @@ export const localStorageFavorites = (movie, mediaType) => {
             favorites.splice(index, 1);
             localStorage.setItem('favorites', JSON.stringify(favorites));
             setIsFav(false);
-            toastNotify('remove');
+            toastNotify(false);
         } else {
             favorites.push({ id: movie?.id, type: mediaType });
             localStorage.setItem('favorites', JSON.stringify(favorites));
             setIsFav(true);
-            toastNotify('add');
+            toastNotify(true);
         }
     };
     return { isFav, checkFav };

@@ -10,7 +10,7 @@ const alertParams = {
 }
 
 const toastNotify = (status) => {
-    if(status === 'add') {
+    if(status) {
         toast.success('Added to favorites', alertParams);
     } else {
         toast.error('Removed from favorites', alertParams);

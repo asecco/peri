@@ -74,7 +74,7 @@ function Info({ movie, cast, recommend }) {
             <Header />
             <Description movie={movie} mediaType={mediaType} releaseYear={releaseYear} runtime={runtime} certification={certification} />
             <Panels mediaType={mediaType} seasons={seasons} movie={movie} recArr={recArr} castArr={castArr} />
-            <Comment title={movie.title || movie.original_name}type={mediaType} id={movie.id}/>
+            <Comment title={movie.title || movie.original_name} type={mediaType} id={movie.id}/>
         </div>
     );
 }

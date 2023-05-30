@@ -7,10 +7,10 @@ import FlipMove from 'react-flip-move';
 import { BASE_URL, API_KEY, API_URL } from "../utils/constants";
 
 function CastInfo({ castInfo, known }) {
-    const knownFor = known.slice(0, 8);
-    knownFor?.sort((a, b) => {
+    known?.sort((a, b) => {
         return b.vote_count - a.vote_count;
     });
+    const knownFor = known.slice(0, 8);
     const [age, setAge] = useState([]);
 
     useEffect(() => {
