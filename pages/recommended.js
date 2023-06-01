@@ -41,10 +41,10 @@ function Recommended() {
                 return obj.vote_count >= 100;
             });
 
-            const splicedArr = filteredAndSortedArr.splice(0, 20);
-            splicedArr.sort((a, b) => { //Sorts by vote count
+            filteredAndSortedArr.sort((a, b) => { //Sorts by vote count
                 return b.vote_count - a.vote_count;
             });
+            const splicedArr = filteredAndSortedArr.splice(0, 20);
             setRecRes(splicedArr);
             setIsLoaded(true);
         }
