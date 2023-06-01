@@ -14,6 +14,9 @@ function Favorites() {
     useEffect(() => {
         const fetchFavorites = async () => {
             const favorites = JSON.parse(localStorage.getItem('favorites'));
+            if(favorites) {
+                setIsLoaded(true);
+            }
             const startIndex = (page - 1) * 10;
             const endIndex = startIndex + 10;
             const favSlice = favorites.slice(startIndex, endIndex);
@@ -30,7 +33,6 @@ function Favorites() {
                 favArr.push(favReq);
             }
             setFavRes(favArr);
-            setIsLoaded(true);
         };
         fetchFavorites();
     }, [page]);
