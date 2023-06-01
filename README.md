@@ -45,7 +45,6 @@ Peri was originally designed to be similar to a modern streaming media service w
 - Comment section for reviewing/discussing with the community
 - Search functionality with autocomplete suggestions
 - Local storage for saving favorites
-- Lazy loading
 - Server-side rendering via Next.js
 
 ## Frequently Asked Questions
