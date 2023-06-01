@@ -1,11 +1,13 @@
 import Head from 'next/head';
+import { TrendingUpIcon  } from '@heroicons/react/outline';
 import Header from '../components/Header';
 import NowPlayingBanner from "../components/NowPlayingBanner";
 import Results from "../components/Results";
 import FeaturedMovie from '../components/FeaturedMovie';
+import StreamingToday from '../components/StreamingToday';
 import { API_KEY, API_URL } from '../utils/constants';
 
-export default function Home({ results, nowPlaying, featured, reviews }) {
+export default function Home({ results, nowPlaying, featured, reviews, tv }) {
 	return (
 		<div>
 			<Head>
@@ -15,18 +17,30 @@ export default function Home({ results, nowPlaying, featured, reviews }) {
 			</Head>
 			<Header />
 			<NowPlayingBanner nowPlaying={nowPlaying} />
-            <p className='font-bold text-white text-4xl lg:text-5xl mx-8 xl:mx-10 mt-14 text-center md:text-left'>Trending</p>
+			<StreamingToday tv={tv} />
+			<div className="flex mt-8">
+                <p className="font-bold text-white text-4xl lg:text-5xl mx-8 xl:mx-10 text-center md:text-left">Trending</p>
+                <TrendingUpIcon className="h-12 w-12 lg:h-14 lg:w-14 -ml-6 text-green-400"/>
+            </div>
             <Results results={results} />
-			{reviews.length >= 2 &&<FeaturedMovie featured={featured} reviews={reviews} />}
+			{reviews.length > 0 &&<FeaturedMovie featured={featured} reviews={reviews} />}
 		</div>
   	);
 }
 
 export async function getServerSideProps() {
-	const req = await fetch(`https://api.themoviedb.org/3/trending/all/week?api_key=${API_KEY}`).then((res) => res.json())
-	const nowPlaying = await fetch(`${API_URL}movie/now_playing?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
-	const featured = nowPlaying.results[Math.floor(Math.random() * nowPlaying.results.length)];
-	const reviews = await fetch(`${API_URL}movie/${featured.id}/reviews?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
+	const requests = [
+		fetch(`${API_URL}trending/movie/day?api_key=${API_KEY}`).then((res) => res.json()),
+		fetch(`${API_URL}movie/now_playing?api_key=${API_KEY}&language=en-US`).then((res) => res.json()),
+		fetch(`${API_URL}trending/tv/day?api_key=${API_KEY}&language=en-US`).then((res) => res.json())
+	  ];
+	  
+	  const [trending, nowPlaying, tv] = await Promise.all(requests);
+
+	  const featured = nowPlaying.results[Math.floor(Math.random() * nowPlaying.results.length)]; 
+	  const reviews = await fetch(`${API_URL}movie/${featured.id}/reviews?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
+
+	  const tvTrending = tv.results.filter((tvShow) => tvShow.original_language === 'en');
 
     const shuffleArray = (array) => {
 		for (let i = array.length - 1; i > 0; i--) {
@@ -38,10 +52,11 @@ export async function getServerSideProps() {
 
 	return {
 		props: {
-			results: req.results,
+			results: trending.results,
 			nowPlaying: shuffleArray(nowPlaying.results),
 			featured: featured,
-			reviews: reviews.results
+			reviews: reviews.results,
+			tv: tvTrending
 		}
 	};
 } 

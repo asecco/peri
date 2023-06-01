@@ -8,9 +8,9 @@ const Thumbnail = forwardRef(({ result }, ref) => {
     const handleMouseLeave = () => setIsHovered(false);
 
     const getRatingColor = (rating) => {
-        if (rating < 5.9) {
+        if (rating <= 5.9) {
             return 'bg-red-500';
-        } else if (rating < 7.9) {
+        } else if (rating <= 7.9) {
             return 'bg-yellow-500';
         } else {
             return 'bg-green-500';
