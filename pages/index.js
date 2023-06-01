@@ -2,9 +2,10 @@ import Head from 'next/head';
 import Header from '../components/Header';
 import NowPlayingBanner from "../components/NowPlayingBanner";
 import Results from "../components/Results";
+import FeaturedMovie from '../components/FeaturedMovie';
 import { API_KEY, API_URL } from '../utils/constants';
 
-export default function Home({ results, nowPlaying }) {
+export default function Home({ results, nowPlaying, featured, reviews }) {
 	return (
 		<div>
 			<Head>
@@ -16,6 +17,7 @@ export default function Home({ results, nowPlaying }) {
 			<NowPlayingBanner nowPlaying={nowPlaying} />
             <p className='font-bold text-white text-4xl lg:text-5xl mx-8 xl:mx-10 mt-14 text-center md:text-left'>Trending</p>
             <Results results={results} />
+			{reviews.length >= 2 &&<FeaturedMovie featured={featured} reviews={reviews} />}
 		</div>
   	);
 }
@@ -23,6 +25,8 @@ export default function Home({ results, nowPlaying }) {
 export async function getServerSideProps() {
 	const req = await fetch(`https://api.themoviedb.org/3/trending/all/week?api_key=${API_KEY}`).then((res) => res.json())
 	const nowPlaying = await fetch(`${API_URL}movie/now_playing?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
+	const featured = nowPlaying.results[Math.floor(Math.random() * nowPlaying.results.length)];
+	const reviews = await fetch(`${API_URL}movie/${featured.id}/reviews?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
 
     const shuffleArray = (array) => {
 		for (let i = array.length - 1; i > 0; i--) {
@@ -36,6 +40,8 @@ export async function getServerSideProps() {
 		props: {
 			results: req.results,
 			nowPlaying: shuffleArray(nowPlaying.results),
+			featured: featured,
+			reviews: reviews.results
 		}
 	};
 } 
