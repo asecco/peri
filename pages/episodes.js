@@ -10,7 +10,7 @@ function EpisodeList({ seasonNum, season, episodes, title }) {
     const poster = targetSeason?.poster_path;
 
     return (
-        <div>
+        <div className='-mr-16 md:mx-auto'>
             <Head><title>{`${title} | Season ${seasonNum}`}</title></Head>
             <Header />
             <div className="mx-auto px-20 flex flex-col-reverse gap-10 object-bottom md:flex-row mb-8">

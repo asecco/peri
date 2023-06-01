@@ -23,7 +23,7 @@ function FeaturedMovie({ featured, reviews }) {
                 <FilmIcon className="h-12 w-12 lg:h-14 lg:w-14 -ml-6 text-blue-400"/>
             </div>
             <div className="px-4 ml-5 sm:ml-0 mb-8 py-10 sm:px-10">
-                <div className="grid grid-cols-1 md:grid-cols-3 items-center border-4 shadow-md rounded-lg relative h-[30rem]">
+                <div className="grid grid-cols-1 md:grid-cols-3 items-center border-4 shadow-md rounded-lg relative h-[35rem]">
                     <a href={`/info?type=${'movie'}&id=${featured.id}`} rel="noopener noreferrer" className="flex flex-col">
                         <Image priority={true} className="object-center object-cover" layout="fill" objectFit="cover" src={`${BASE_URL}${featured.backdrop_path || movie.poster_path}`} alt='' />
                         <div className="text-center z-50">
@@ -31,15 +31,15 @@ function FeaturedMovie({ featured, reviews }) {
                         </div>
                     </a>
 
-                    <Slider {...settings} className="mx-8 md:col-span-2 lg:col-span-2 lg:mx-8 bg-primary rounded-lg">
+                    <Slider {...settings} className="mx-6 md:col-span-2 lg:mx-8 bg-primary rounded-lg">
                         {reviews.slice(0, 3)?.map((review, index) => (
                             <div key={index} className="justify-between p-8">
                                 <div className="mt-4 line-clamp-8">
-                                    <p className="text-2xl font-bold text-red-400 sm:text-3xl">{review.author_details.rating ? `${review.author_details.rating}/10`  : ''}</p>
+                                    <p className="text-2xl font-bold text-red-400 sm:text-3xl">{review.author_details?.rating ? `${review.author_details?.rating}/10`  : ''}</p>
                                     <p className="text-white mt-4">{review.content}</p>
                                 </div>
                                 <a href={`${review.url}`} rel="noopener noreferrer" target="_blank">
-                                    <p className="text-white text-base mt-8 underline">{`- ${review.author} (${review.created_at.substring(0, 10)})`}</p>
+                                    <p className="text-white text-base mt-6 underline">{`- ${review.author} (${review.created_at?.substring(0, 10)})`}</p>
                                 </a>
                             </div>
                         ))}

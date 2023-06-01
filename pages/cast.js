@@ -25,7 +25,7 @@ function CastInfo({ castInfo, known }) {
     }, [castInfo.birthday]);
 
     return (
-        <div>
+        <div className='-mr-16 md:mx-auto'>
             <Head><title>{castInfo.name}</title></Head>
             <Header />
             <div className="mx-auto px-20 flex flex-col-reverse gap-10 object-bottom md:flex-row">
