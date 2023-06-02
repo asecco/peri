@@ -27,7 +27,7 @@ function FeaturedMovie({ featured, reviews }) {
                     <a href={`/info?type=${'movie'}&id=${featured.id}`} rel="noopener noreferrer" className="flex flex-col">
                         <Image priority={true} className="object-center object-cover" layout="fill" objectFit="cover" src={`${BASE_URL}${featured.backdrop_path || movie.poster_path}`} alt='' />
                         <div className="text-center z-50">
-                            <h2 className="text-red-400 text-4xl font-bold sm:text-5xl line-clamp-3">{featured.title || featured.original_title}</h2>
+                            <h2 className="text-red-400 text-4xl font-bold sm:text-5xl line-clamp-3 drop-shadow-[0_3.2px_3.2px_rgba(0,0,0,0.9)]">{featured.title || featured.original_title}</h2>
                         </div>
                     </a>
 
