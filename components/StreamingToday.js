@@ -16,7 +16,7 @@ function StreamingToday({ tv }) {
                         <p className="text-white font-black mx-auto md:mx-0 text-5xl md:text-6xl lg:text-7xl">{index + 1}</p>
                         <div className='flex-shrink-0 hover:opacity-50 transition duration-200 ease-in transform sm:hover:scale-105'>
                             <Link href={`/info?type=tv&id=${show.id}`}>
-                                <Image priority={true} className="rounded-lg" src={`${BASE_URL}${show.poster_path}`} alt='' width={160} height={240}/>
+                                <Image className="rounded-lg" src={`${BASE_URL}${show.poster_path}`} alt='' width={160} height={240}/>
                             </Link>
                         </div>
                     </div>

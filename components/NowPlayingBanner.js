@@ -28,7 +28,7 @@ function NowPlayingBanner({ nowPlaying }) {
                                 <div className="text-red-400 font-bold text-4xl lg:text-5xl text-center">{movie.title || movie.original_title}</div>
                                 <div className="text-white text-lg lg:text-xl mt-4 font-medium md:line-clamp-4 lg:line-clamp-6">{movie.overview}</div>
                             </div>
-                            <Image priority={true} className="object-center object-cover" src={`${BASE_URL}${movie.backdrop_path || movie.poster_path}`} alt='' height={1080} width={1920} />
+                            <Image priority={true} className="object-center object-fit w-full" src={`${BASE_URL}${movie.backdrop_path || movie.poster_path}`} alt='' height={1080} width={1920} />
                         </Link>
                     </div>
                 ))}
