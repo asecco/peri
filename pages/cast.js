@@ -16,7 +16,7 @@ function CastInfo({ castInfo, known }) {
     useEffect(() => {
         const today = new Date();
         const birthDate = new Date(castInfo.birthday);
-        const age = today.getFullYear() - birthDate.getFullYear();
+        let age = today.getFullYear() - birthDate.getFullYear();
         const m = today.getMonth() - birthDate.getMonth();
         if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
             age--;
@@ -36,7 +36,7 @@ function CastInfo({ castInfo, known }) {
                 </div>
 
                 <div className="w-8/12 md:w-5/12 lg:w-3/12 mx-10 md:mx-14">
-                    <Image priority={true} layout="responsive" src={`${BASE_URL}${castInfo.profile_path}`} alt='' height={960} width={640}/>
+                    <Image priority={true} src={`${BASE_URL}${castInfo.profile_path}`} alt='' height={1920} width={1280}/>
                 </div>
             </div>
 

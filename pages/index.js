@@ -3,11 +3,10 @@ import { TrendingUpIcon  } from '@heroicons/react/outline';
 import Header from '../components/Header';
 import NowPlayingBanner from "../components/NowPlayingBanner";
 import Results from "../components/Results";
-import FeaturedMovie from '../components/FeaturedMovie';
 import StreamingToday from '../components/StreamingToday';
 import { API_KEY, API_URL } from '../utils/constants';
 
-export default function Home({ results, nowPlaying, featured, reviews, tv }) {
+export default function Home({ results, nowPlaying, tv }) {
 	return (
 		<div>
 			<Head>
@@ -23,7 +22,6 @@ export default function Home({ results, nowPlaying, featured, reviews, tv }) {
                 <TrendingUpIcon className="h-12 w-12 lg:h-14 lg:w-14 -ml-6 text-green-400"/>
             </div>
             <Results results={results} />
-			{reviews.length > 0 &&<FeaturedMovie featured={featured} reviews={reviews} />}
 		</div>
   	);
 }
@@ -34,12 +32,8 @@ export async function getServerSideProps() {
 		fetch(`${API_URL}movie/now_playing?api_key=${API_KEY}&language=en-US`).then((res) => res.json()),
 		fetch(`${API_URL}trending/tv/day?api_key=${API_KEY}&language=en-US`).then((res) => res.json())
 	  ];
-	  
+
 	  const [trending, nowPlaying, tv] = await Promise.all(requests);
-
-	  const featured = nowPlaying.results[Math.floor(Math.random() * nowPlaying.results.length)]; 
-	  const reviews = await fetch(`${API_URL}movie/${featured.id}/reviews?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
-
 	  const tvTrending = tv.results.filter((tvShow) => tvShow.original_language === 'en');
 
     const shuffleArray = (array) => {
@@ -54,8 +48,6 @@ export async function getServerSideProps() {
 		props: {
 			results: trending.results,
 			nowPlaying: shuffleArray(nowPlaying.results),
-			featured: featured,
-			reviews: reviews.results,
 			tv: tvTrending
 		}
 	};
