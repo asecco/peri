@@ -7,21 +7,17 @@ import { API_KEY, API_URL } from '../utils/constants';
 
 function Favorites() {
     const [favRes, setFavRes] = useState([]);
-    const [isLoaded, setIsLoaded] = useState(false);
     const [page, setPage] = useState(1);
     const [hasMore, setHasMore] = useState(true);
 
     useEffect(() => {
         const fetchFavorites = async () => {
             const favorites = JSON.parse(localStorage.getItem('favorites'));
-            if(favorites) {
-                setIsLoaded(true);
-            }
             const startIndex = (page - 1) * 10;
             const endIndex = startIndex + 10;
-            const favSlice = favorites.slice(startIndex, endIndex);
+            const favSlice = favorites?.slice(startIndex, endIndex);
 
-            if (startIndex >= favorites.length) {
+            if (startIndex >= favorites?.length) {
                 setHasMore(false);
                 return;
             }
@@ -56,7 +52,7 @@ function Favorites() {
         <div>
             <Head><title>{`Favorites`}</title></Head>
             <Header />
-            {isLoaded && <LocalStorageMessage results={favRes} id={'favorites'} />}
+            <LocalStorageMessage results={favRes} id={'favorites'} />
             <Results results={favRes} />
         </div>
     );

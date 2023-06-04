@@ -12,11 +12,11 @@ function Recommended() {
         const searchReq = async () => {
             const recArr = [];
             const favorites = JSON.parse(localStorage.getItem('favorites'));
-            const favoriteIds = favorites.map((favorite) => favorite.id);
-            const shuffledIds = favoriteIds.sort(() => 0.5 - Math.random());
-            const selectedIds = shuffledIds.slice(0, 10); //Selects 10 random movies from favorites to get recommendations from
+            const favoriteIds = favorites?.map((favorite) => favorite.id);
+            const shuffledIds = favoriteIds?.sort(() => 0.5 - Math.random());
+            const selectedIds = shuffledIds?.slice(0, 10); //Selects 10 random movies from favorites to get recommendations from
 
-            for (let i = 0; i < selectedIds.length; i++) {
+            for (let i = 0; i < selectedIds?.length; i++) {
                 const favorite = favorites.find((fav) => fav.id === selectedIds[i]);
                 const recommendReq = await fetch(`${API_URL}${favorite.type}/${favorite.id}/recommendations?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
                 for (let j in recommendReq.results) {
