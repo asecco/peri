@@ -33,16 +33,18 @@ function Panels({ mediaType, seasons, movie, recArr, castArr }) {
                     ))}
                 </FlipMove>
             </div>
-
-            <div>
-                <p className="font-bold text-white text-3xl md:text-4xl 3xl:text-5xl mx-8">Cast</p>
-                <FlipMove className="px-5 my-10 ml-2 grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 3xl:grid-cols-8">
-                    {castArr?.map((cast) => cast.profile_path && (
-                        <Cast key={cast.id} member={cast} />
-                    ))}
-                </FlipMove>
-            </div>
-        </div>
+            
+            {castArr?.length > 0 && (
+                <div>
+                    <p className="font-bold text-white text-3xl md:text-4xl 3xl:text-5xl mx-8">Cast</p>
+                    <FlipMove className="px-5 my-10 ml-2 grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 3xl:grid-cols-8">
+                        {castArr?.map((cast) => cast.profile_path && (
+                            <Cast key={cast.id} member={cast} />
+                        ))}
+                    </FlipMove>
+                </div>
+            )}
+       </div>
     );
 }
 

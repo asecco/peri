@@ -1,30 +1,32 @@
 import Head from 'next/head';
-import React, { useState, useRef } from 'react';
+import Image from "next/image";
+import Link from 'next/link';
+import React, { useState, useRef, useEffect } from 'react';
 import { SearchIcon } from '@heroicons/react/outline';
 import Header from '../components/Header';
 import Results from '../components/Results';
-import { API_KEY, API_URL } from '../utils/constants';
+import { API_KEY, API_URL, BASE_URL } from '../utils/constants';
+import { debounce } from "debounce";
 
 function Search() {
     const [searchQuery, setSearchQuery] = useState("");
     const [searchResults, setSearchResults] = useState([]);
     const [autoCompleteResults, setAutoCompleteResults] = useState([]);
     const searchInputRef = useRef(null);
+    useEffect(() => {
+        searchInputRef.current.focus();
+    }, []);
 
     const handleInputChange = (event) => {
         setSearchQuery(event.target.value);
-        if (event.target.value.length >= 5) {
-            fetchAutoCompleteResults(event.target.value);
-        } else {
-            setAutoCompleteResults([]);
-        }
+        debounce(() => fetchAutoCompleteResults(event.target.value), 1200)();
     };
 
     const fetchAutoCompleteResults = async (query) => {
         if (query.trim() !== "") {
             const autocompleteReq = await fetch(`${API_URL}search/multi?api_key=${API_KEY}&language=en-US&query=${query}&include_adult=false`).then((res) => res.json());
             const sortedResults = sortResults(autocompleteReq.results);
-            setAutoCompleteResults(sortedResults.slice(0, 5));
+            setAutoCompleteResults(sortedResults.slice(0, 3));
         } else {
             setAutoCompleteResults([]);
         }
@@ -36,14 +38,12 @@ function Search() {
         const sortedResults = sortResults(searchReq.results);
         setSearchResults(sortedResults);
         setAutoCompleteResults([]);
-        searchInputRef.current.blur(); //Removes focus from search bar
+        searchInputRef.current.blur();
     };
 
     const clearSearchResults = () => {
         setSearchResults([]);
         setAutoCompleteResults([]);
-        setSearchQuery("");
-        searchInputRef.current.focus(); // Set focus back to search input
     };
 
     const sortResults = (results) => { //Sorts by vote count
@@ -62,18 +62,21 @@ function Search() {
                     {autoCompleteResults.length > 0 && searchResults.length === 0 && (
                         <div className="absolute z-10 w-full mt-1">
                             {autoCompleteResults.map((result) => (
-                                <a key={result.id} href={`/info?type=${result.media_type}&id=${result.id}`} rel="noopener noreferrer">
-                                    <div className="text-white bg-gray-800 text-center hover:text-red-400 rounded-md shadow-md p-2 mb-2 cursor-pointer">
-                                    {result.title || result.name} • {result.media_type}
-                                    {(result.release_date || result.first_air_date) && (
-                                        <>
-                                        {' • '}
-                                        {result.release_date ? result.release_date.substring(0, 4) : result.first_air_date.substring(0, 4)}
-                                        </>
-                                    )}
+                                <Link key={result.id} href={`/info?type=${result.media_type}&id=${result.id}`}>
+                                    <div className="flex bg-gray-800 text-white text-xl md:text-3xl hover:text-red-400 rounded-md shadow-md p-1 mb-2 cursor-pointer">
+                                        {result.poster_path || result.profile_path ? <Image priority={true} className="rounded-lg" src={`${BASE_URL}${result.poster_path || result.profile_path}`} alt='' width={80} height={120}/> : ''}
+                                        <div className='flex flex-col ml-2'>
+                                            <h2>{result.title || result.name}</h2>
+                                            {(result.release_date || result.first_air_date) && (
+                                                <>
+                                                {result.release_date ? `(${result.release_date.substring(0, 4)})` : `(${result.first_air_date.substring(0, 4)})`}
+                                                </>
+                                            )}
+                                        </div>
                                     </div>
-                                </a>
+                                </Link>
                             ))}
+                            <p className='text-white text-center text-lg md:text-xl bg-gray-800 hover:text-red-400 cursor-pointer rounded-md shadow-md p-2' onClick={search}>More Results</p>
                         </div>
                     )}
                 </div>
