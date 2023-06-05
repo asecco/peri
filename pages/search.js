@@ -62,7 +62,7 @@ function Search() {
                     {autoCompleteResults.length > 0 && searchResults.length === 0 && (
                         <div className="absolute z-10 w-full mt-1">
                             {autoCompleteResults.map((result) => (
-                                <Link key={result.id} href={`/info?type=${result.media_type}&id=${result.id}`}>
+                                <Link key={result.id} href={result.profile_path ? `/cast?id=${result.id}` : `/info?type=${result.media_type}&id=${result.id}`}>
                                     <div className="flex bg-gray-800 text-white text-xl md:text-3xl hover:text-red-400 rounded-md shadow-md p-1 mb-2 cursor-pointer">
                                         {result.poster_path || result.profile_path ? <Image priority={true} className="rounded-lg" src={`${BASE_URL}${result.poster_path || result.profile_path}`} alt='' width={80} height={120}/> : ''}
                                         <div className='flex flex-col ml-2'>
