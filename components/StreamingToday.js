@@ -11,7 +11,7 @@ function StreamingToday({ tv }) {
                 <CalendarIcon className="h-12 w-12 lg:h-14 lg:w-14 -ml-6 text-red-400"/>
             </div>
             <div className="grid grid-cols-2 -ml-8 md:ml-2 md:grid-cols-3 lg:grid-cols-6 gap-6 my-10">
-                {tv.slice(0, 6)?.map((show, index) => (
+                {tv?.slice(0, 6)?.map((show, index) => (
                     <div key={show.id} className="grid grid-cols-2 md:flex items-center">
                         <p className="text-white font-black mx-auto md:mx-0 text-5xl md:text-6xl lg:text-7xl">{index + 1}</p>
                         <div className='flex-shrink-0 hover:opacity-50 transition duration-200 ease-in transform sm:hover:scale-105'>
