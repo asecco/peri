@@ -2,7 +2,9 @@ import Head from 'next/head';
 import Image from "next/image";
 import { useRouter } from 'next/router';
 import React, { useState, useRef, useEffect } from 'react';
+import { db } from '@vercel/postgres';
 import Header from '../components/Header';
+import PopularCollections from '../components/PopularCollections';
 import { API_KEY, API_URL, BASE_URL } from '../utils/constants';
 import { Modal } from 'react-responsive-modal';
 import { debounce } from "debounce";
@@ -10,7 +12,7 @@ import { v4 as uuid } from 'uuid';
 import { ToastContainer, toast } from 'react-toastify';
 import { alertParams } from '../utils/notifications';
 
-function Collections() {
+function Collections({ collections }) {
     const router = useRouter();
     const [autoCompleteResults, setAutoCompleteResults] = useState([]);
     const [selectedMovies, setSelectedMovies] = useState([]);
@@ -113,8 +115,13 @@ function Collections() {
             <Head><title>Collections</title></Head>
             <Header />
             <ToastContainer theme="dark"/>
-            <button onClick={onOpenModal} className="h-14 w-20 lg:h-16 lg:w-24 text-white bg-red-400 hover:opacity-75 text-lg font-bold rounded-lg inline-flex items-center justify-center">Create Collection</button>
-            <Modal open={modalOpen} onClose={onCloseModal} center styles={{ modal: {background: '#202F3B'}}}>
+            <div className="text-center">
+                <button onClick={onOpenModal} className="bg-white text-black text-3xl font-bold rounded-md border-b-2 border-red-400 hover:bg-red-400 hover:text-white shadow-md py-2 px-8 inline-flex items-center">
+                    <span className="mr-2">Create Collection</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon></svg>
+                </button>
+            </div>
+            <Modal open={modalOpen} onClose={onCloseModal} center showCloseIcon={false} styles={{ modal: {background: '#202F3B'}}}>
                 <form className="flex items-center mx-auto max-w-xl mb-5 relative">
                     <div className="relative w-full mb-96">
                         <input ref={searchInputRef} type="text" onChange={handleInputChange} className="h-16 w-full rounded-md focus:shadow focus:outline-1 focus:outline-red-400 text-black text-center text-2xl lg:text-3xl" placeholder="Search..."></input>
@@ -140,11 +147,29 @@ function Collections() {
                 <div className='text-center'>
                     <input ref={titleInputRef} type="text" className="h-12 w-full rounded-md focus:shadow focus:outline-1 focus:outline-red-400 text-black text-center text-2xl lg:text-3xl my-4" placeholder="Title"></input>
                     <textarea ref={descriptionInputRef} type="text" className="h-28 w-full rounded-md focus:shadow focus:outline-1 focus:outline-red-400 text-black text-center text-xl lg:text-2xl mb-4" placeholder="Description"></textarea>
-                    <button onClick={handleSubmit} className="h-14 w-20 lg:h-16 lg:w-24 text-white bg-red-400 hover:opacity-75 text-lg font-bold rounded-lg inline-flex items-center justify-center">Create</button>
+                    <button onClick={handleSubmit} className="bg-white text-black text-2xl font-bold rounded-md border-b-2 border-red-400 hover:bg-red-400 hover:text-white shadow-md py-2 px-8 inline-flex items-center">
+                        <span className="mr-2">Create</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"> <path fill="currentcolor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path></svg>
+                    </button>
                 </div>
             </Modal>
+            <PopularCollections collections={collections} />
         </div>
   );
+}
+
+export async function getServerSideProps() {
+    const client = await db.connect();
+    const result = await client.query('SELECT * FROM collections ORDER BY RANDOM() LIMIT 3');
+    client.release();
+
+    const collections = result.rows;
+
+    return {
+        props: {
+            collections
+        },
+    };
 }
 
 export default Collections;
