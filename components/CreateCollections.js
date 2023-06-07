@@ -20,7 +20,7 @@ function CreateCollections({ modalOpen, onCloseModal, handleSubmit, searchInputR
         <Modal open={modalOpen} onClose={onCloseModal} center showCloseIcon={false} styles={{ modal: {background: '#202F3B'}}}>
             <div>
                 {showForm ? (
-                    <form className="flex items-center mx-auto mb-5 relative">
+                    <form className="flex items-center mx-auto mb-5 relative w-[40rem]">
                         <div className="relative w-full">
                             <input ref={searchInputRef} type="text" onChange={handleInputChange} className="h-16 w-full rounded-md focus:shadow focus:outline-1 focus:outline-red-400 text-black text-center text-2xl lg:text-3xl" placeholder="Search..."></input>
                             {autoCompleteResults.length > 0 && (
@@ -40,10 +40,6 @@ function CreateCollections({ modalOpen, onCloseModal, handleSubmit, searchInputR
                                     ))}
                                 </div>
                             )}
-                            <div className='text-center mt-72'>
-                                <input ref={titleInputRef} type="text" className="h-12 w-full rounded-md focus:shadow focus:outline-1 focus:outline-red-400 text-black text-center text-2xl lg:text-3xl my-4" placeholder="Title"></input>
-                                <textarea ref={descriptionInputRef} type="text" className="h-28 w-full rounded-md focus:shadow focus:outline-1 focus:outline-red-400 text-black text-center text-xl lg:text-2xl" placeholder="Description"></textarea>
-                            </div>
                         </div>
                     </form>
                 ) : (
@@ -56,7 +52,7 @@ function CreateCollections({ modalOpen, onCloseModal, handleSubmit, searchInputR
                                         <div className="flex items-center space-x-2">
                                             <button onClick={() => handleReorder(index, 'up', undefined)} disabled={index === 0} className="text-white hover:text-red-400 focus:outline-none cursor-pointer"><FaArrowUp /></button>
                                             <button onClick={() => handleReorder(index, 'down', undefined)} disabled={index === selectedMovies.length - 1} className="text-white hover:text-red-400 focus:outline-none cursor-pointer"><FaArrowDown /></button>
-                                            <span className="mr-2 line-clamp-1">{movie.title || movie.name}</span>
+                                            <span className="mr-2 truncate">{movie.title || movie.name}</span>
                                         </div>
                                         <button onClick={() => handleReorder(undefined, 'delete', movie.id)} className="text-white hover:text-red-400 focus:outline-none cursor-pointer"><FaTrash /></button>
                                     </li>
@@ -65,6 +61,10 @@ function CreateCollections({ modalOpen, onCloseModal, handleSubmit, searchInputR
                         )}
                     </div>
                 )}
+                <div className={showForm ? 'mt-72': 'mt-0'}>
+                    <input ref={titleInputRef} type="text" className="h-12 w-full rounded-md focus:shadow focus:outline-1 focus:outline-red-400 text-black text-center text-2xl lg:text-3xl my-4" placeholder="Title"></input>
+                    <textarea ref={descriptionInputRef} type="text" className="h-28 w-full rounded-md focus:shadow focus:outline-1 focus:outline-red-400 text-black text-center text-xl lg:text-2xl" placeholder="Description"></textarea>
+                </div>
                 <div className="text-center">
                     <button onClick={handleSubmit} className="bg-white text-black text-2xl font-bold rounded-md border-b-2 border-red-400 hover:bg-red-400 hover:text-white shadow-md py-2 px-8 inline-flex items-center">Create</button>
                     <button onClick={toggleForm} className="bg-white text-black text-2xl font-bold rounded-md border-b-2 border-red-400 hover:bg-red-400 hover:text-white shadow-md py-2 px-8 inline-flex items-center mx-2">{showForm ? 'Reorder' : 'Add More'}</button>
