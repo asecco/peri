@@ -20,7 +20,7 @@ function CreateCollections({ modalOpen, onCloseModal, handleSubmit, searchInputR
         <Modal open={modalOpen} onClose={onCloseModal} center showCloseIcon={false} styles={{ modal: {background: '#202F3B'}}}>
             <div>
                 {showForm ? (
-                    <form className="flex items-center mx-auto mb-5 relative w-[40rem]">
+                    <form className="flex items-center mx-auto mb-5 relative md:w-[40rem]">
                         <div className="relative w-full">
                             <input ref={searchInputRef} type="text" onChange={handleInputChange} className="h-16 w-full rounded-md focus:shadow focus:outline-1 focus:outline-red-400 text-black text-center text-2xl lg:text-3xl" placeholder="Search..."></input>
                             {autoCompleteResults.length > 0 && (
@@ -45,7 +45,7 @@ function CreateCollections({ modalOpen, onCloseModal, handleSubmit, searchInputR
                 ) : (
                     <div className="text-center">
                         {selectedMovies.length > 0 && (
-                            <ul className="flex flex-col items-center mb-4 w-[40rem] h-72 overflow-y-scroll">
+                            <ul className="flex flex-col items-center mb-4 md:w-[40rem] h-72 overflow-y-scroll">
                                 <p className="text-white">{`${selectedMovies.length} items`}</p>
                                 {selectedMovies?.map((movie, index) => (
                                     <li key={movie.id} className="flex items-center justify-between w-full text-white text-xl md:text-3xl rounded-md shadow-md p-2">
@@ -66,8 +66,8 @@ function CreateCollections({ modalOpen, onCloseModal, handleSubmit, searchInputR
                     <textarea ref={descriptionInputRef} type="text" className="h-28 w-full rounded-md focus:shadow focus:outline-1 focus:outline-red-400 text-black text-center text-xl lg:text-2xl" placeholder="Description"></textarea>
                 </div>
                 <div className="text-center">
-                    <button onClick={handleSubmit} className="bg-white text-black text-2xl font-bold rounded-md border-b-2 border-red-400 hover:bg-red-400 hover:text-white shadow-md py-2 px-8 inline-flex items-center">Create</button>
                     <button onClick={toggleForm} className="bg-white text-black text-2xl font-bold rounded-md border-b-2 border-red-400 hover:bg-red-400 hover:text-white shadow-md py-2 px-8 inline-flex items-center mx-2">{showForm ? 'Reorder' : 'Add More'}</button>
+                    <button onClick={handleSubmit} className="bg-white text-black text-2xl font-bold rounded-md border-b-2 border-red-400 hover:bg-red-400 hover:text-white shadow-md py-2 px-8 inline-flex items-center">Create</button>
                 </div>
             </div>
         </Modal>

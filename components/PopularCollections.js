@@ -4,7 +4,7 @@ import { BASE_URL } from "../utils/constants";
 
 function PopularCollections({ collections }) {
     return (
-        <div className="w-1/2 mx-auto">
+        <div className="w-3/4 mx-auto">
             {collections?.map((collection) => (
                 <Link key={collection.id} href={`collections/${collection.id}`}>
                     <div className="m-4 bg-primary border-2 rounded-lg shadow-md transition duration-200 ease-in transform sm:hover:scale-105">

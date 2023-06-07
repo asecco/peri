@@ -23,7 +23,7 @@ function Header() {
                     <div className='relative'>
                         <button onMouseEnter={handleDropdownOpen} onMouseLeave={handleDropdownClose} className="flex items-center focus:outline-none"><HeaderItem title='EXPLORE' Icon={MapIcon} /></button>
                         {isDropdownOpen && (
-                            <div onMouseEnter={handleDropdownOpen} onMouseLeave={handleDropdownClose} className="absolute py-2 w-36 bg-primary border-2 text-center rounded-lg shadow-lg z-50">
+                            <div onMouseEnter={handleDropdownOpen} onMouseLeave={handleDropdownClose} className="absolute py-2 w-36 -mx-16 md:mx-0 bg-primary border-2 text-center rounded-lg shadow-lg z-50">
                                 <Link href={`/favorites`}><p className="py-2 text-lg text-white hover:bg-red-400">Favorites</p></Link>
                                 <Link href={`/recommended`}><p className="py-2 text-lg text-white hover:bg-red-400">Recommended</p></Link>
                                 <Link href={`/collections`}><p className="py-2 text-lg text-white hover:bg-red-400">Collections</p></Link>
