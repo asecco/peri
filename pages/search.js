@@ -15,6 +15,11 @@ function Search() {
     const searchInputRef = useRef(null);
     useEffect(() => {
         searchInputRef.current.focus();
+        document.addEventListener("click", (event) => {
+            if (event.target !== searchInputRef.current) {
+                setAutoCompleteResults([]);
+            }
+        });
     }, []);
 
     const handleInputChange = (event) => {

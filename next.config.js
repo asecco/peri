@@ -36,6 +36,10 @@ const nextConfig = {
             source: '/upcoming/:page',
             destination: '/upcoming',
         },
+        {
+            source: '/collections/:id',
+            destination: '/collections/:id',
+        },
         ];
     },
 };

@@ -13,6 +13,7 @@
     "@next/codemod": "^13.4.4",
     "@tailwindcss/line-clamp": "^0.4.0",
     "@vercel/analytics": "^1.0.1",
+    "@vercel/postgres": "^0.3.0",
     "debounce": "^1.2.1",
     "glob-parent": "^6.0.2",
     "got": "^12.2.0",
@@ -30,7 +31,8 @@
     "sharp": "^0.32.1",
     "slick-carousel": "^1.8.1",
     "tailwind-scrollbar-hide": "^1.1.7",
-    "trim-newlines": "^4.0.2"
+    "trim-newlines": "^4.0.2",
+    "uuidv4": "^6.2.13"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.7",

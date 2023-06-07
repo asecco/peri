@@ -22,10 +22,10 @@ const Thumbnail = forwardRef(({ result }, ref) => {
 
     return (
         <div ref={ref} className='p-2 lg:mx-2 group cursor-pointer transition duration-200 ease-in transform sm:hover:scale-105 hover:z-40 relative' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-            <Link href={`/info?type=${result.media_type}&id=${result.id}`}>
-                <Image className='group-hover:opacity-50 rounded-lg' src={`${BASE_URL}${result.poster_path}`} alt='' height={1920} width={1280}/>
-                <div className='p-2 text-center' title={result.title || result.original_name}>
-                    <h2 className='mt-1 text-xl lg:text-2xl text-white transition-all duration-100 ease-in-out group-hover:font-normal group-hover:text-red-400 line-clamp-2 max-w-md'>{result.title || result.original_name}</h2>
+            <Link href={result.poster_path ? `/info?type=${result.media_type}&id=${result.id}` : `/cast?id=${result.id}`}>
+                <Image className='group-hover:opacity-50 rounded-lg' src={`${BASE_URL}${result.poster_path || result.profile_path}`} alt='' height={1920} width={1280}/>
+                <div className='p-2 text-center' title={result.title || result.original_name || result.name}>
+                    <h2 className='mt-1 text-xl lg:text-2xl text-white transition-all duration-100 ease-in-out group-hover:font-normal group-hover:text-red-400 line-clamp-2 max-w-md'>{result.title || result.original_name || result.name}</h2>
                 </div>
                 {isHovered && !!result.vote_average && (
                     <div className='absolute top-2 left-2'>
