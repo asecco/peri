@@ -78,6 +78,11 @@ function Collections({ collections }) {
             return;
         }
 
+        if (selectedMovies.length > 40) {
+            toast.error("Please select no more than 40 items", alertParams);
+            return;
+        }
+
         try {
             const response = await fetch('/api/db', {
                 method: 'POST',
@@ -109,6 +114,31 @@ function Collections({ collections }) {
         }
     };
 
+    const handleMoveUp = (index) => {
+        if (index > 0) {
+          const updatedMovies = [...selectedMovies];
+          const temp = updatedMovies[index];
+          updatedMovies[index] = updatedMovies[index - 1];
+          updatedMovies[index - 1] = temp;
+          setSelectedMovies(updatedMovies);
+        }
+    };
+    
+    const handleMoveDown = (index) => {
+        if (index < selectedMovies.length - 1) {
+            const updatedMovies = [...selectedMovies];
+            const temp = updatedMovies[index];
+            updatedMovies[index] = updatedMovies[index + 1];
+            updatedMovies[index + 1] = temp;
+            setSelectedMovies(updatedMovies);
+        }
+    };
+    
+    const handleDelete = (movieId) => {
+        const updatedMovies = selectedMovies.filter((movie) => movie.id !== movieId);
+        setSelectedMovies(updatedMovies);
+    };
+
     return (
         <div>
             <Head><title>Collections</title></Head>
@@ -120,7 +150,7 @@ function Collections({ collections }) {
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon></svg>
                 </button>
             </div>
-            <CreateCollections modalOpen={modalOpen} onCloseModal={onCloseModal} handleSubmit={handleSubmit} searchInputRef={searchInputRef} titleInputRef={titleInputRef} descriptionInputRef={descriptionInputRef} autoCompleteResults={autoCompleteResults} handleInputChange={handleInputChange} addMovie={addMovie} />
+            <CreateCollections modalOpen={modalOpen} onCloseModal={onCloseModal} handleSubmit={handleSubmit} searchInputRef={searchInputRef} titleInputRef={titleInputRef} descriptionInputRef={descriptionInputRef} autoCompleteResults={autoCompleteResults} handleInputChange={handleInputChange} addMovie={addMovie} selectedMovies={selectedMovies} handleMoveUp={handleMoveUp} handleMoveDown={handleMoveDown} handleDelete={handleDelete} />
             <PopularCollections collections={collections} />
         </div>
   );
