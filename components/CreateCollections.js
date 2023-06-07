@@ -4,9 +4,8 @@ import { FaArrowUp, FaArrowDown, FaTrash } from 'react-icons/fa';
 import { Modal } from 'react-responsive-modal';
 import { BASE_URL } from "../utils/constants";
 
-function CreateCollections({ modalOpen, onCloseModal, handleSubmit, searchInputRef, titleInputRef, descriptionInputRef, autoCompleteResults, handleInputChange, addMovie, selectedMovies, handleMoveUp, handleMoveDown, handleDelete }) {
+function CreateCollections({ modalOpen, onCloseModal, handleSubmit, searchInputRef, titleInputRef, descriptionInputRef, autoCompleteResults, handleInputChange, addMovie, selectedMovies, handleReorder }) {
     const [showForm, setShowForm] = useState(true);
-
     const toggleForm = () => {
         setShowForm(!showForm);
     };
@@ -55,11 +54,11 @@ function CreateCollections({ modalOpen, onCloseModal, handleSubmit, searchInputR
                                 {selectedMovies?.map((movie, index) => (
                                     <li key={movie.id} className="flex items-center justify-between w-full text-white text-xl md:text-3xl rounded-md shadow-md p-2">
                                         <div className="flex items-center space-x-2">
-                                            <button onClick={() => handleMoveUp(index)} disabled={index === 0} className="text-white hover:text-red-400 focus:outline-none cursor-pointer"><FaArrowUp /></button>
-                                            <button onClick={() => handleMoveDown(index)} disabled={index === selectedMovies.length - 1} className="text-white hover:text-red-400 focus:outline-none cursor-pointer"><FaArrowDown /></button>
+                                            <button onClick={() => handleReorder(index, 'up', undefined)} disabled={index === 0} className="text-white hover:text-red-400 focus:outline-none cursor-pointer"><FaArrowUp /></button>
+                                            <button onClick={() => handleReorder(index, 'down', undefined)} disabled={index === selectedMovies.length - 1} className="text-white hover:text-red-400 focus:outline-none cursor-pointer"><FaArrowDown /></button>
                                             <span className="mr-2 line-clamp-1">{movie.title || movie.name}</span>
                                         </div>
-                                        <button onClick={() => handleDelete(movie.id)} className="text-white hover:text-red-400 focus:outline-none cursor-pointer"><FaTrash /></button>
+                                        <button onClick={() => handleReorder(undefined, 'delete', movie.id)} className="text-white hover:text-red-400 focus:outline-none cursor-pointer"><FaTrash /></button>
                                     </li>
                                 ))}
                             </ul>
