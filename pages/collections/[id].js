@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { db } from '@vercel/postgres';
 import Header from '../../components/Header';
 import Results from '../../components/Results';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { alertParams } from '../../utils/notifications';
 
 export default function Collection({ collection }) {
@@ -27,7 +27,6 @@ export default function Collection({ collection }) {
         <div>
             <Head><title>{collection.title}</title></Head>
             <Header />
-            <ToastContainer theme="dark"/>
             <div className="text-center mb-4">
                 <button onClick={copyToClipboard} title="Click to Copy" className="bg-white text-black text-lg md:text-xl italic rounded-md border-b-2 border-red-400 hover:bg-red-400 hover:text-white shadow-md py-2 px-8 inline-flex items-center">
                     <span className="mr-2">{url}</span>

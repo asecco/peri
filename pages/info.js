@@ -6,7 +6,6 @@ import Header from '../components/Header';
 import Description from "../components/Info/Description";
 import Panels from "../components/Info/Panels";
 import Comment from "../components/Info/Comment";
-import { ToastContainer } from 'react-toastify';
 
 function Info({ movie, cast, recommend }) {
     const router = useRouter();
@@ -70,7 +69,6 @@ function Info({ movie, cast, recommend }) {
     return (
         <div className='-mr-16 md:mx-auto'>
             <Head><title>{movie?.title || movie?.original_name}</title></Head>
-            <ToastContainer theme="dark"/>
             <Header />
             <Description movie={movie} mediaType={mediaType} releaseYear={releaseYear} runtime={runtime} certification={certification} />
             <Panels mediaType={mediaType} seasons={seasons} movie={movie} recArr={recArr} castArr={castArr} />

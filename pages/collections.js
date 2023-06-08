@@ -8,7 +8,7 @@ import CreateCollections from '../components/CreateCollections';
 import { API_KEY, API_URL } from '../utils/constants';
 import { debounce } from "debounce";
 import { v4 as uuid } from 'uuid';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { alertParams } from '../utils/notifications';
 
 function Collections({ collections }) {
@@ -137,7 +137,6 @@ function Collections({ collections }) {
         <div>
             <Head><title>Collections</title></Head>
             <Header />
-            <ToastContainer theme="dark"/>
             <div className="text-center">
                 <button onClick={onOpenModal} className="bg-white text-black text-3xl font-bold rounded-md border-b-2 border-red-400 hover:bg-red-400 hover:text-white shadow-md py-2 px-8 inline-flex items-center">
                     <span className="mr-2">Create Collection</span>
@@ -151,26 +150,33 @@ function Collections({ collections }) {
 }
 
 export async function getServerSideProps() {
-    try {
-    const client = await db.connect();
-    const result = await client.query('SELECT * FROM collections ORDER BY RANDOM() LIMIT 3');
-    client.release();
+    let retries = 0;
 
-    const collections = result.rows;
+    while (retries < 3) {
+        try {
+            const client = await db.connect();
+            const result = await client.query('SELECT * FROM collections ORDER BY RANDOM() LIMIT 3');
+            client.release();
 
+            const collections = result.rows;
+
+            return {
+                props: {
+                    collections
+                },
+            };
+        } catch (error) {
+            retries++;
+            console.log(`Failed to connect to the database. Retrying... (Attempt ${retries})`);
+            await new Promise((resolve) => setTimeout(resolve, 1000));
+        }
+    }
     return {
-        props: {
-            collections
+        redirect: {
+            destination: '/',
+            permanent: false,
         },
     };
-    } catch (error) {
-        return {
-            redirect: {
-                destination: '/',
-                permanent: false,
-            },
-        };
-    }
 }
 
 export default Collections;
