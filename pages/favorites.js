@@ -34,7 +34,8 @@ function Favorites() {
     }, [page]);
 
     const handleScroll = () => {
-        if (window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
+        const isAtBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight;
+        if (isAtBottom) {
             if (hasMore) {
                 setPage((prevPage) => prevPage + 1);
             }
