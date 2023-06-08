@@ -4,11 +4,7 @@ const nextConfig = {
     swcMinify: true,
     images: {
         domains: ['image.tmdb.org'],
-    },
-    experimental: {
-        images: {
-            unoptimized: true,
-        },
+        unoptimized: true,
     },
     async rewrites() {
         return [

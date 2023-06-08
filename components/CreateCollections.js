@@ -24,7 +24,7 @@ function CreateCollections({ modalOpen, onCloseModal, handleSubmit, searchInputR
                         <div className="relative w-full">
                             <input ref={searchInputRef} type="text" onChange={handleInputChange} className="h-16 w-full rounded-md focus:shadow focus:outline-1 focus:outline-red-400 text-black text-center text-2xl lg:text-3xl" placeholder="Search..."></input>
                             {autoCompleteResults.length > 0 && (
-                                <div className="absolute z-10 w-full mt-1 h-72 overflow-y-scroll touch-pan-y">
+                                <div className="absolute z-10 w-full mt-1 h-72 overflow-y-scroll">
                                     {autoCompleteResults.map((result) => (
                                         <div onClick={() => addMovie(result)} key={result.id} className="flex bg-gray-800 text-white text-xl md:text-3xl hover:text-red-400 rounded-md shadow-md p-1 mb-2 cursor-pointer">
                                             {result.poster_path || result.profile_path ? <Image priority={true} className="rounded-lg" src={`${BASE_URL}${result.poster_path || result.profile_path}`} alt='' width={80} height={120}/> : ''}
@@ -45,7 +45,7 @@ function CreateCollections({ modalOpen, onCloseModal, handleSubmit, searchInputR
                 ) : (
                     <div className="text-center">
                         {selectedMovies.length > 0 && (
-                            <ul className="flex flex-col items-center mb-4 md:w-[40rem] h-72 overflow-y-scroll touch-pan-y">
+                            <ul className="flex flex-col items-center mb-4 md:w-[40rem] h-72 overflow-y-scroll">
                                 <p className="text-white">{`${selectedMovies.length} items`}</p>
                                 {selectedMovies?.map((movie, index) => (
                                     <li key={movie.id} className="flex items-center justify-between w-full text-white text-xl md:text-3xl rounded-md shadow-md p-2">
