@@ -12,7 +12,7 @@ function StreamingToday({ tv }) {
             </div>
             <div className="grid grid-cols-2 -ml-8 md:ml-2 md:grid-cols-3 lg:grid-cols-6 gap-6 my-10">
                 {tv?.slice(0, 6)?.map((show, index) => (
-                    <div key={show.id} className="grid grid-cols-2 md:flex items-center mx-2 md:mx-8">
+                    <div key={show.id} className="grid grid-cols-2 md:flex items-center mx-8">
                         <p className="text-white font-black mx-auto md:mx-0 text-5xl md:text-6xl lg:text-7xl">{index + 1}</p>
                         <div className='flex-shrink-0 hover:opacity-50 transition duration-200 ease-in transform sm:hover:scale-105'>
                             <Link href={`/info?type=tv&id=${show.id}`}>

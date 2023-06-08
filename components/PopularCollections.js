@@ -15,7 +15,7 @@ function PopularCollections({ collections }) {
                         </div>
                         <div className="px-4 pb-4">
                             <div className="grid grid-cols-2 md:flex flex-wrap justify-center">
-                                {collection.list?.slice(0, 5).map((item, index) => (
+                                {collection.list?.slice(0, 4).map((item, index) => (
                                     <Image key={index} className="rounded-lg m-2" src={`${BASE_URL}${item.poster_path || item.profile_path}`} alt='' width={112} height={168}/>
                                 ))}
                             </div>

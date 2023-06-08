@@ -44,14 +44,16 @@ Peri was originally designed to be similar to a modern streaming media service w
 - Embedded trailers
 - Comment section for reviewing/discussing with the community
 - Search functionality with autocomplete suggestions
+- Unique collections allowing you to create your own lists and share them with others
+- Lazy loading
 - Local storage for saving favorites
 - Server-side rendering via Next.js
 
 ## Frequently Asked Questions
 ### What is the purpose of Peri, and why should I use it?
 - I've always wanted Peri to be a great resource for avid movie/tv fans like myself to browse different content and find what they desire. In today's world, there are dozens of different streaming services with varying amounts of content. This can make it troublesome to know where to look, and that's where Peri comes in!
-- If you're debating why you should start using Peri over any alternatives, I think that a strength of Peri is that it's not overly complex and includes a lot of unique features as listed above.
-- I'm also consistently updating the site and always looking for ways to improve the overall feel and functionality.
+- If you're debating why you should start using Peri over any alternatives, I would say that Peri is a great resource for finding new content to watch. The recommendations are personalized based on what you've enjoyed in the past, and the site is designed to be as simple and easy to use as possible.
+- The site is also consistently updated and I'm always looking for ways to improve the overall feel and functionality.
 
 ### Can I use Peri without creating an account?
 - Yes! I want to keep this site as simple and convenient for all users, so you are never required to register an account or give any personal information.
@@ -110,6 +112,7 @@ yarn run dev
 - [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org)
 - [![Next.js](https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org)
 - [![Tailwind CSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
+- [![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)](https://postgresql.org)
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
