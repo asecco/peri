@@ -151,6 +151,7 @@ function Collections({ collections }) {
 }
 
 export async function getServerSideProps() {
+    try {
     const client = await db.connect();
     const result = await client.query('SELECT * FROM collections ORDER BY RANDOM() LIMIT 3');
     client.release();
@@ -162,6 +163,14 @@ export async function getServerSideProps() {
             collections
         },
     };
+    } catch (error) {
+        return {
+            redirect: {
+                destination: '/',
+                permanent: false,
+            },
+        };
+    }
 }
 
 export default Collections;
