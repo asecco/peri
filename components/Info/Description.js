@@ -64,7 +64,7 @@ function Description({ movie, mediaType, releaseYear, runtime, certification }) 
                             <button onClick={checkFav} title="Favorite" className="transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 h-14 w-20 lg:h-16 lg:w-24 bg-gray-600 hover:bg-white text-white hover:text-primary text-lg font-bold rounded-lg inline-flex items-center justify-center"><HeartIcon className={isFav ? 'h-12 text-red-400 fill-red-400' : 'h-12'} /></button>
                         </div>
                     </div>
-                    <div className="w-8/12 md:w-5/12 lg:w-3/12 mx-10 md:mx-14">
+                    <div className="w-9/12 md:w-5/12 lg:w-3/12 mx-10 md:mx-14">
                         {movie?.poster_path ? <Image priority={true} src={`${BASE_URL}${movie?.poster_path}`} alt='' height={1920} width={1280}/> : ''}
                     </div>
                 </div>

@@ -22,7 +22,7 @@ function EpisodeList({ seasonNum, season, episodes, title }) {
                         <Episodes key={episode.id} result={episode} />
                     ))}
                 </div>
-                <div className="w-8/12 md:w-5/12 lg:w-4/12 mx-10 md:mx-14">
+                <div className="w-9/12 md:w-5/12 lg:w-4/12 mx-10 md:mx-14">
                     <Image priority={true} src={`${BASE_URL}${poster}`} alt='' height={1920} width={1280}/>
                 </div>
             </div>
