@@ -11,9 +11,10 @@ function PopularCollections({ collections }) {
                         <div className="p-4">
                             <h2 className="text-red-400 text-2xl font-bold text-center mb-2">{collection.title}</h2>
                             <p className="text-white text-base text-center">{collection.date}</p>
+                            <p className="text-white text-base text-center">{collection.list?.length} items</p>
                         </div>
                         <div className="px-4 pb-4">
-                            <div className="flex flex-wrap justify-center">
+                            <div className="grid grid-cols-2 md:flex flex-wrap justify-center">
                                 {collection.list?.slice(0, 5).map((item, index) => (
                                     <Image key={index} className="rounded-lg m-2" src={`${BASE_URL}${item.poster_path || item.profile_path}`} alt='' width={112} height={168}/>
                                 ))}
