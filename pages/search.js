@@ -66,15 +66,15 @@ function Search() {
                     <input ref={(ref) => searchInputRef.current = ref} type="text" value={searchQuery} onChange={handleInputChange} onClick={clearSearchResults} className="h-16 w-full rounded-md focus:shadow focus:outline-1 focus:outline-red-400 text-black text-center text-2xl lg:text-3xl" placeholder="Search..."></input>
                     {autoCompleteResults.length > 0 && searchResults.length === 0 && (
                         <div className="absolute z-10 w-full mt-1">
-                            {autoCompleteResults.map((result) => (
-                                <Link key={result.id} href={result.profile_path ? `/cast?id=${result.id}` : `/info?type=${result.media_type}&id=${result.id}`}>
+                            {autoCompleteResults?.map((result) => (
+                                <Link key={result?.id} href={result?.profile_path ? `/cast?id=${result.id}` : `/info?type=${result.media_type}&id=${result.id}`}>
                                     <div className="flex bg-gray-800 text-white text-xl md:text-3xl hover:text-red-400 rounded-md shadow-md p-1 mb-2 cursor-pointer">
-                                        {result.poster_path || result.profile_path ? <Image priority={true} className="rounded-lg" src={`${BASE_URL}${result.poster_path || result.profile_path}`} alt='' width={80} height={120}/> : ''}
+                                        {result?.poster_path || result?.profile_path ? <Image priority={true} className="rounded-lg" src={`${BASE_URL}${result?.poster_path || result?.profile_path}`} alt='' width={80} height={120}/> : ''}
                                         <div className='flex flex-col ml-2'>
-                                            <h2>{result.title || result.name}</h2>
-                                            {(result.release_date || result.first_air_date) && (
+                                            <h2>{result?.title || result?.name}</h2>
+                                            {(result?.release_date || result?.first_air_date) && (
                                                 <>
-                                                {result.release_date ? `(${result.release_date.substring(0, 4)})` : `(${result.first_air_date.substring(0, 4)})`}
+                                                {result?.release_date ? `(${result?.release_date.substring(0, 4)})` : `(${result?.first_air_date.substring(0, 4)})`}
                                                 </>
                                             )}
                                         </div>

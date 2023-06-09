@@ -24,15 +24,15 @@ function CreateCollections({ modalOpen, onCloseModal, handleSubmit, searchInputR
                         <div className="relative w-full">
                             <input ref={searchInputRef} type="text" onChange={handleInputChange} className="h-16 w-full rounded-md focus:shadow focus:outline-1 focus:outline-red-400 text-black text-center text-2xl lg:text-3xl" placeholder="Search..."></input>
                             {autoCompleteResults.length > 0 && (
-                                <div className="absolute z-10 w-full mt-1 h-72 overflow-y-scroll">
+                                <div className="w-full mt-1 z-50 h-72 overflow-y-scroll">
                                     {autoCompleteResults.map((result) => (
-                                        <div onClick={() => addMovie(result)} key={result.id} className="flex bg-gray-800 text-white text-xl md:text-3xl hover:text-red-400 rounded-md shadow-md p-1 mb-2 cursor-pointer">
-                                            {result.poster_path || result.profile_path ? <Image priority={true} className="rounded-lg" src={`${BASE_URL}${result.poster_path || result.profile_path}`} alt='' width={80} height={120}/> : ''}
+                                        <div onClick={() => addMovie(result)} key={result?.id} className="flex bg-gray-800 text-white text-xl md:text-3xl hover:text-red-400 rounded-md shadow-md p-1 mb-2 cursor-pointer">
+                                            {result?.poster_path || result?.profile_path ? <Image priority={true} className="rounded-lg" src={`${BASE_URL}${result?.poster_path || result?.profile_path}`} alt='' width={80} height={120}/> : ''}
                                             <div className='flex flex-col ml-2'>
-                                                <h2>{result.title || result.name}</h2>
-                                                {(result.release_date || result.first_air_date) && (
+                                                <h2>{result?.title || result?.name}</h2>
+                                                {(result?.release_date || result?.first_air_date) && (
                                                     <>
-                                                    {result.release_date ? `(${result.release_date.substring(0, 4)})` : `(${result.first_air_date.substring(0, 4)})`}
+                                                    {result?.release_date ? `(${result?.release_date.substring(0, 4)})` : `(${result?.first_air_date.substring(0, 4)})`}
                                                     </>
                                                 )}
                                             </div>
@@ -48,7 +48,7 @@ function CreateCollections({ modalOpen, onCloseModal, handleSubmit, searchInputR
                             <ul className="flex flex-col items-center mb-4 md:w-[40rem] h-72 overflow-y-scroll">
                                 <p className="text-white">{`${selectedMovies.length} items`}</p>
                                 {selectedMovies?.map((movie, index) => (
-                                    <li key={movie.id} className="flex items-center justify-between w-full text-white text-xl md:text-3xl rounded-md shadow-md p-2">
+                                    <li key={movie?.id} className="flex items-center justify-between w-full text-white text-xl md:text-3xl rounded-md shadow-md p-2">
                                         <div className="flex items-center space-x-2">
                                             <button onClick={() => handleReorder(index, 'up', undefined)} disabled={index === 0} className="text-white hover:text-red-400 focus:outline-none cursor-pointer"><FaArrowUp /></button>
                                             <button onClick={() => handleReorder(index, 'down', undefined)} disabled={index === selectedMovies.length - 1} className="text-white hover:text-red-400 focus:outline-none cursor-pointer"><FaArrowDown /></button>
@@ -61,7 +61,7 @@ function CreateCollections({ modalOpen, onCloseModal, handleSubmit, searchInputR
                         )}
                     </div>
                 )}
-                <div className={showForm ? 'mt-72': 'mt-0'}>
+                <div>
                     <input ref={titleInputRef} type="text" className="h-12 w-full rounded-md focus:shadow focus:outline-1 focus:outline-red-400 text-black text-center text-2xl lg:text-3xl my-4" placeholder="Title"></input>
                     <textarea ref={descriptionInputRef} type="text" className="h-28 w-full rounded-md focus:shadow focus:outline-1 focus:outline-red-400 text-black text-center text-xl lg:text-2xl" placeholder="Description"></textarea>
                 </div>
