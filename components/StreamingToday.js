@@ -6,7 +6,7 @@ import { CalendarIcon  } from '@heroicons/react/outline';
 function StreamingToday({ tv }) {
     return (
         <div>
-            <div className="flex mt-8">
+            <div className="flex mt-8 items-center">
                 <p className="font-bold text-white text-4xl lg:text-5xl mx-6 xl:mx-8 text-center md:text-left">Streaming Today</p>
                 <CalendarIcon className="h-12 w-12 lg:h-14 lg:w-14 -ml-6 text-red-400"/>
             </div>
