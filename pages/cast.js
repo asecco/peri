@@ -30,12 +30,12 @@ function CastInfo({ castInfo, known }) {
             <Header />
             <div className="mx-auto px-20 flex flex-col-reverse gap-10 object-bottom md:flex-row">
                 <div className="flex flex-col gap-4 md:w-5/12 lg:w-6/12 xl:w-8/12 2xl:w-10/12">
-                    <h1 className="font-bold text-3xl md:text-5xl lg:text-7xl text-center text-red-400">{castInfo.name}</h1>
-                    <p className="font-bold lg:text-xl 2xl:text-2xl text-white text-center">{`Born: ${castInfo.birthday}(age ${age}), ${castInfo.place_of_birth || ''}`}</p>
-                    <p className="text-center md:text-left text-base md:text-lg lg:text-2xl text-white line-clamp-8 md:line-clamp-10 lg:line-clamp-14 mb-6 md:mb-0">{castInfo.biography}</p>
+                    <h1 className="font-bold text-3xl md:text-5xl lg:text-7xl 3xl:text-9xl text-center text-red-400">{castInfo.name}</h1>
+                    <p className="font-bold lg:text-xl 3xl:text-3xl text-white text-center">{`Born: ${castInfo.birthday}(age ${age}), ${castInfo.place_of_birth || ''}`}</p>
+                    <p className="text-center md:text-left text-base md:text-lg lg:text-2xl 3xl:text-4xl text-white line-clamp-8 md:line-clamp-10 lg:line-clamp-14 mb-6 md:mb-0">{castInfo.biography}</p>
                 </div>
 
-                <div className="w-9/12 md:w-5/12 lg:w-3/12 mx-10 md:mx-14">
+                <div className="w-9/12 md:w-5/12 lg:w-3/12 2xl:w-4/12 mx-10 md:mx-14">
                     <Image priority={true} src={`${BASE_URL}${castInfo.profile_path}`} alt='' height={1920} width={1280}/>
                 </div>
             </div>
