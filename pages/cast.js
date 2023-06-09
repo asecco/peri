@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import Recommend from '../components/Recommend';
 import FlipMove from 'react-flip-move';
 import { BASE_URL, API_KEY, API_URL } from "../utils/constants";
+import { blurUrl } from '../utils/helper';
 
 function CastInfo({ castInfo, known }) {
     known?.sort((a, b) => {
@@ -36,7 +37,7 @@ function CastInfo({ castInfo, known }) {
                 </div>
 
                 <div className="w-9/12 md:w-4/12 lg:w-3/12 2xl:w-4/12 mx-10 md:mx-14">
-                    <Image priority={true} src={`${BASE_URL}${castInfo.profile_path}`} alt='' height={1920} width={1280}/>
+                    <Image placeholder='blur' blurDataURL={blurUrl} priority={true} src={`${BASE_URL}${castInfo.profile_path}`} alt='' height={1920} width={1280}/>
                 </div>
             </div>
 

@@ -7,6 +7,7 @@ import Header from '../components/Header';
 import Results from '../components/Results';
 import { API_KEY, API_URL, BASE_URL } from '../utils/constants';
 import { debounce } from "debounce";
+import { blurUrl } from '../utils/helper';
 
 function Search() {
     const [searchQuery, setSearchQuery] = useState("");
@@ -69,7 +70,7 @@ function Search() {
                             {autoCompleteResults?.map((result) => (
                                 <Link key={result?.id} href={result?.profile_path ? `/cast?id=${result.id}` : `/info?type=${result.media_type}&id=${result.id}`}>
                                     <div className="flex bg-gray-800 text-white text-xl md:text-3xl hover:text-red-400 rounded-md shadow-md p-1 mb-2 cursor-pointer">
-                                        {result?.poster_path || result?.profile_path ? <Image priority={true} className="rounded-lg" src={`${BASE_URL}${result?.poster_path || result?.profile_path}`} alt='' width={80} height={120}/> : ''}
+                                        {result?.poster_path || result?.profile_path ? <Image placeholder='blur' blurDataURL={blurUrl} priority={true} className="rounded-lg" src={`${BASE_URL}${result?.poster_path || result?.profile_path}`} alt='' width={80} height={120}/> : ''}
                                         <div className='flex flex-col ml-2'>
                                             <h2>{result?.title || result?.name}</h2>
                                             {(result?.release_date || result?.first_air_date) && (

@@ -7,6 +7,7 @@ import { BASE_URL, YOUTUBE_API_KEY, YOUTUBE_API_URL, WATCHMODE_API_KEY } from '.
 import { localStorageFavorites } from '../../utils/localStorage';
 import { alertParams } from "../../utils/notifications";
 import { toast } from 'react-toastify';
+import { blurUrl } from "../../utils/helper";
 
 function Description({ movie, mediaType, releaseYear, runtime, certification }) {
     const { isFav, checkFav } = localStorageFavorites(movie, mediaType);
@@ -65,7 +66,7 @@ function Description({ movie, mediaType, releaseYear, runtime, certification }) 
                         </div>
                     </div>
                     <div className="w-9/12 md:w-4/12 lg:w-3/12 2xl:w-4/12 mx-10 md:mx-14">
-                        {movie?.poster_path ? <Image priority={true} src={`${BASE_URL}${movie?.poster_path}`} alt='' height={1920} width={1280}/> : ''}
+                        {movie?.poster_path ? <Image placeholder='blur' blurDataURL={blurUrl} priority={true} src={`${BASE_URL}${movie?.poster_path}`} alt='' height={1920} width={1280}/> : ''}
                     </div>
                 </div>
             </div>

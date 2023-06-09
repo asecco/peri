@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from 'next/link';
 import { BASE_URL } from "../utils/constants";
+import { blurUrl } from '../utils/helper';
 
 function PopularCollections({ collections }) {
     return (
@@ -16,7 +17,7 @@ function PopularCollections({ collections }) {
                         <div className="px-4 pb-4">
                             <div className="flex flex-wrap justify-center">
                                 {collection.list?.slice(0, 4).map((item, index) => (
-                                    <Image key={index} className="rounded-lg m-2" src={`${BASE_URL}${item?.poster_path || item?.profile_path}`} alt='' width={112} height={168}/>
+                                    <Image placeholder='blur' blurDataURL={blurUrl} key={index} className="rounded-lg m-2" src={`${BASE_URL}${item?.poster_path || item?.profile_path}`} alt='' width={112} height={168}/>
                                 ))}
                             </div>
                         </div>

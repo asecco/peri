@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { FaArrowUp, FaArrowDown, FaTrash } from 'react-icons/fa';
 import { Modal } from 'react-responsive-modal';
 import { BASE_URL } from "../utils/constants";
+import { blurUrl } from '../utils/helper';
 
 function CreateCollections({ modalOpen, onCloseModal, handleSubmit, searchInputRef, titleInputRef, descriptionInputRef, autoCompleteResults, handleInputChange, addMovie, selectedMovies, handleReorder }) {
     const [showForm, setShowForm] = useState(true);
@@ -27,7 +28,7 @@ function CreateCollections({ modalOpen, onCloseModal, handleSubmit, searchInputR
                                 <div className="w-full mt-1 z-50 h-72 overflow-y-scroll">
                                     {autoCompleteResults.map((result) => (
                                         <div onClick={() => addMovie(result)} key={result?.id} className="flex bg-gray-800 text-white text-xl md:text-3xl hover:text-red-400 rounded-md shadow-md p-1 mb-2 cursor-pointer">
-                                            {result?.poster_path || result?.profile_path ? <Image priority={true} className="rounded-lg" src={`${BASE_URL}${result?.poster_path || result?.profile_path}`} alt='' width={80} height={120}/> : ''}
+                                            {result?.poster_path || result?.profile_path ? <Image placeholder='blur' blurDataURL={blurUrl} priority={true} className="rounded-lg" src={`${BASE_URL}${result?.poster_path || result?.profile_path}`} alt='' width={80} height={120}/> : ''}
                                             <div className='flex flex-col ml-2'>
                                                 <h2>{result?.title || result?.name}</h2>
                                                 {(result?.release_date || result?.first_air_date) && (

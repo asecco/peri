@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import Episodes from '../components/Episodes';
 import Head from 'next/head';
 import { BASE_URL, API_KEY, API_URL } from '../utils/constants';
+import { blurUrl } from '../utils/helper';
 
 function EpisodeList({ seasonNum, season, episodes, title }) {
     const targetSeason = season.find((s) => s.season_number === seasonNum);
@@ -23,7 +24,7 @@ function EpisodeList({ seasonNum, season, episodes, title }) {
                     ))}
                 </div>
                 <div className="w-9/12 md:w-5/12 lg:w-4/12 mx-10 md:mx-14">
-                    <Image priority={true} src={`${BASE_URL}${poster}`} alt='' height={1920} width={1280}/>
+                    <Image placeholder='blur' blurDataURL={blurUrl} priority={true} src={`${BASE_URL}${poster}`} alt='' height={1920} width={1280}/>
                 </div>
             </div>
         </div>
