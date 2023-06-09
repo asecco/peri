@@ -45,7 +45,7 @@ function Description({ movie, mediaType, releaseYear, runtime, certification }) 
             <StreamingSources watchModeSources={watchModeSources} modalOpen={modalOpen} onCloseModal={onCloseModal} />
             <div className="w-full">
                 <div className="mx-auto px-10 flex flex-col-reverse gap-10 object-bottom md:flex-row">
-                    <div className="flex flex-col gap-4 md:w-5/12 lg:w-6/12 xl:w-8/12 2xl:w-10/12">
+                    <div className="flex flex-col gap-4 md:w-6/12 lg:w-8/12 xl:w-9/12 2xl:w-10/12">
                         <h1 className="font-bold text-3xl md:text-5xl lg:text-7xl 3xl:text-9xl text-center text-red-400">{movie?.title || movie?.original_name}</h1>
                         <div className="flex items-center justify-center space-x-5 lg:space-x-20 font-bold text-lg lg:text-xl 3xl:text-3xl text-center text-white">
                             <p className="border-2 border-white px-1">{mediaType !== 'tv' ? certification : movie?.status}</p>
