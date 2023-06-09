@@ -1,7 +1,7 @@
 function LocalStorageMessage({ results, id }) {
     return (
         <div>
-            <p className='font-bold text-white text-4xl lg:text-5xl mx-8 xl:mx-10 my-6 text-center md:text-left'>
+            <p className='font-bold text-white text-4xl lg:text-5xl mx-6 xl:mx-8 my-6 text-center md:text-left'>
                 {id === 'recommendations' && results.length > 0 ? 'Chosen For You' : id === 'favorites' && results.length > 0 ? "You've Enjoyed" : ''}
             </p>
             {!results.length > 0 && (

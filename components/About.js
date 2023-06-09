@@ -9,7 +9,7 @@ function About() {
 
     return (
         <div>
-            <Modal open={modalOpen} onClose={onCloseModal} center showCloseIcon={false} styles={{ modal: {background: '#202F3B'}}}>
+            <Modal open={modalOpen} onClose={onCloseModal} center styles={{ modal: {background: '#202F3B'}}}>
                 <div className="p-4 sm:p-6 lg:p-8 shadow-2xl rounded-lg">
                     <div className="relative rounded-md bg-red-400 px-4 py-4 xl:px-8 text-white text-center text-xl md:text-3xl xl:text-5xl font-bold">About</div>
                     <div className="mt-4 text-white text-2xl">

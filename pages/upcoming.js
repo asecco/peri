@@ -9,7 +9,7 @@ function Upcoming({ upcoming, page, totalPages }) {
         <div>
             <Head><title>{`Upcoming`}</title></Head>
             <Header />
-            <p className='font-bold text-white text-4xl lg:text-5xl mx-8 xl:mx-10 my-6 text-center md:text-left'>Upcoming</p>
+            <p className='font-bold text-white text-4xl lg:text-5xl mx-6 xl:mx-8 my-6 text-center md:text-left'>Upcoming</p>
             <Results results={upcoming} />
             <Footer type={'upcoming'} page={page} totalPages={totalPages} />
         </div>
