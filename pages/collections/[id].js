@@ -38,9 +38,9 @@ export default function Collection({ collection }) {
                 </button>
             </div>
             <div>
-                <h1 className="font-bold text-3xl md:text-5xl lg:text-7xl text-center text-red-400 mx-12">{collection?.title}</h1>
-                <p className='text-white text-center text-lg my-2'>{`Created on ${collection?.date}`}</p>
-                <p className="text-white text-center text-base md:text-xl lg:text-2xl mx-12">{collection?.description}</p>
+                <h1 className="font-bold text-3xl md:text-5xl lg:text-7xl 3xl:text-9xl text-center text-red-400 mx-12">{collection?.title}</h1>
+                <p className='text-white text-center text-lg mx:text-xl lg:text-2xl 3xl:text-4xl my-2'>{`Created on ${collection?.date}`}</p>
+                <p className="text-white text-center text-lg md:text-xl lg:text-2xl 3xl:text-4xl mx-12">{collection?.description}</p>
             </div>
             <Results results={collection.list} />
         </div>
@@ -48,22 +48,38 @@ export default function Collection({ collection }) {
 }
 
 export async function getServerSideProps(context) {
-    const client = await db.connect();
-    const id = context.params.id;
-  
-    const result = await client.query('SELECT * FROM collections WHERE id = $1', [id]);
-    client.release();
-    const collection = result.rows[0];
+    let retries = 0;
 
-    if(!collection) {
-        return {
-            notFound: true,
-        };
+    while (retries < 3) {
+        try {
+            const client = await db.connect();
+            const id = context.params.id;
+        
+            const result = await client.query('SELECT * FROM collections WHERE id = $1', [id]);
+            client.release();
+            const collection = result.rows[0];
+
+            if(!collection) {
+                return {
+                    notFound: true,
+                };
+            } else {
+                return {
+                    props: {
+                        collection: collection,
+                    },
+                };
+            }
+        } catch (error) {
+            retries++;
+            console.log(`Failed to connect to the database. Retrying... (Attempt ${retries})`);
+            await new Promise((resolve) => setTimeout(resolve, 1000));
+        }
     }
-
     return {
-        props: {
-            collection
+        redirect: {
+            destination: '/',
+            permanent: false,
         },
     };
 }
