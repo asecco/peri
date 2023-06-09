@@ -35,7 +35,7 @@ function CastInfo({ castInfo, known }) {
                     <p className="text-center md:text-left text-base md:text-lg lg:text-2xl 3xl:text-4xl text-white line-clamp-8 md:line-clamp-10 lg:line-clamp-14 mb-6 md:mb-0">{castInfo.biography}</p>
                 </div>
 
-                <div className="w-9/12 md:w-5/12 lg:w-3/12 2xl:w-4/12 mx-10 md:mx-14">
+                <div className="w-9/12 md:w-4/12 lg:w-3/12 2xl:w-4/12 mx-10 md:mx-14">
                     <Image priority={true} src={`${BASE_URL}${castInfo.profile_path}`} alt='' height={1920} width={1280}/>
                 </div>
             </div>
