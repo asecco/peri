@@ -3,11 +3,11 @@ import Link from 'next/link';
 import { BASE_URL } from "../utils/constants";
 import { CalendarIcon  } from '@heroicons/react/outline';
 
-function StreamingToday({ tv }) {
+function StreamingNow({ tv }) {
     return (
         <div>
             <div className="flex mt-8 items-center">
-                <p className="font-bold text-white text-4xl lg:text-5xl mx-6 xl:mx-8 text-center md:text-left">Streaming Today</p>
+                <p className="font-bold text-white text-4xl lg:text-5xl mx-6 xl:mx-8 text-center md:text-left">Streaming Now</p>
                 <CalendarIcon className="h-12 w-12 lg:h-14 lg:w-14 -ml-6 text-red-400"/>
             </div>
             <div className="grid grid-cols-2 -ml-8 md:ml-2 md:grid-cols-3 lg:grid-cols-6 gap-6 my-10">
@@ -26,4 +26,4 @@ function StreamingToday({ tv }) {
     );
 }
 
-export default StreamingToday;
+export default StreamingNow;

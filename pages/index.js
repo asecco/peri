@@ -3,7 +3,7 @@ import { TrendingUpIcon  } from '@heroicons/react/outline';
 import Header from '../components/Header';
 import NowPlayingBanner from "../components/NowPlayingBanner";
 import Results from "../components/Results";
-import StreamingToday from '../components/StreamingToday';
+import StreamingNow from '../components/StreamingNow';
 import { API_KEY, API_URL } from '../utils/constants';
 
 export default function Home({ results, nowPlaying, tv }) {
@@ -16,7 +16,7 @@ export default function Home({ results, nowPlaying, tv }) {
 			</Head>
 			<Header />
 			<NowPlayingBanner nowPlaying={nowPlaying} />
-			<StreamingToday tv={tv} />
+			<StreamingNow tv={tv} />
 			<div className="flex mt-8 items-center">
                 <p className="font-bold text-white text-4xl lg:text-5xl mx-6 xl:mx-8 text-center md:text-left">Trending</p>
                 <TrendingUpIcon className="h-12 w-12 lg:h-14 lg:w-14 -ml-6 text-green-400"/>
