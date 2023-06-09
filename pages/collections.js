@@ -155,7 +155,7 @@ export async function getServerSideProps() {
     while (retries < 3) {
         try {
             const client = await db.connect();
-            const result = await client.query('SELECT * FROM collections ORDER BY RANDOM() LIMIT 3');
+            const result = await client.query('SELECT * FROM collections ORDER BY RANDOM() LIMIT 6');
             client.release();
 
             const collections = result.rows;
