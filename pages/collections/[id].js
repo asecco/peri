@@ -21,8 +21,7 @@ export default function Collection({ collection }) {
             console.log('Web Share API not supported');
         }
     };
-      
-
+       
     return (
         <div>
             <Head><title>{collection.title}</title></Head>
