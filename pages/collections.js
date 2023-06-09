@@ -9,7 +9,7 @@ import { API_KEY, API_URL } from '../utils/constants';
 import { debounce } from "debounce";
 import { v4 as uuid } from 'uuid';
 import { toast } from 'react-toastify';
-import { alertParams } from '../utils/notifications';
+import { alertParams } from '../utils/helper';
 
 function Collections({ collections }) {
     const router = useRouter();

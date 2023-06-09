@@ -3,7 +3,7 @@ import { db } from '@vercel/postgres';
 import Header from '../../components/Header';
 import Results from '../../components/Results';
 import { toast } from 'react-toastify';
-import { alertParams } from '../../utils/notifications';
+import { alertParams } from '../../utils/helper';
 
 export default function Collection({ collection }) {
     const url = `peri.vercel.app/collections/${collection?.id}`
@@ -21,7 +21,7 @@ export default function Collection({ collection }) {
             console.log('Web Share API not supported');
         }
     };
-       
+
     return (
         <div>
             <Head><title>{collection.title}</title></Head>

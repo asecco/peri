@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { toastNotify } from "../utils/notifications";
+import { toast } from 'react-toastify';
+import { alertParams } from "../utils/helper";
 
 export const localStorageFavorites = (movie, mediaType) => {
     const [isFav, setIsFav] = useState(false);
@@ -22,12 +23,12 @@ export const localStorageFavorites = (movie, mediaType) => {
             favorites.splice(index, 1);
             localStorage.setItem('favorites', JSON.stringify(favorites));
             setIsFav(false);
-            toastNotify(false);
+            toast.error('Removed from favorites', alertParams);
         } else {
             favorites.push({ id: movie?.id, type: mediaType });
             localStorage.setItem('favorites', JSON.stringify(favorites));
             setIsFav(true);
-            toastNotify(true);
+            toast.success('Added to favorites', alertParams);
         }
     };
     return { isFav, checkFav };
