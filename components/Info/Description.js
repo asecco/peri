@@ -54,7 +54,7 @@ function Description({ movie, mediaType, releaseYear, runtime, certification }) 
                             <p>{runtime}</p>
                             <StarIcon className="h-4 my-4 md:h-6 3xl:h-10 lg:mx-2 lg:my-0 text-yellow-400 fill-yellow-400" />{Math.round(movie?.vote_average * 10) / 10}/10
                         </div>
-                        <p className="text-lg md:text-xl lg:text-2xl 3xl:text-4xl text-white text-center italic">{movie?.tagline}</p>
+                        <p className="text-base md:text-lg lg:text-xl 3xl:text-3xl text-white text-center italic">{movie?.tagline}</p>
                         <p className="text-center text-lg md:text-left md:text-xl lg:text-2xl 3xl:text-4xl text-white line-clamp-14">{movie?.description || movie?.overview}</p>
                         <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId={trailerID} onClose={() => setOpen(false)} />
 
