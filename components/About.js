@@ -9,15 +9,14 @@ function About() {
 
     return (
         <div>
-            <Modal open={modalOpen} onClose={onCloseModal} center styles={{ modal: {background: '#202F3B'}}}>
+            <Modal open={modalOpen} onClose={onCloseModal} center showCloseIcon={false} styles={{ modal: {background: '#202F3B'}}}>
                 <div className="p-4 sm:p-6 lg:p-8 shadow-2xl rounded-lg">
                     <div className="relative rounded-md bg-red-400 px-4 py-4 xl:px-8 text-white text-center text-xl md:text-3xl xl:text-5xl font-bold">About</div>
                     <div className="mt-4 text-white text-2xl">
-                        <p className='my-4'>Hopefully you're enjoying using the site as much as I enjoyed making it! If you have a moment, I'd really appreciate you starring the project on GitHub.</p>
-                        <p>Throughout the development process(still ongoing) my goal has always been to create a site that is easy to use and gather information from.
-                            As an avid movie/tv fan myself, I want Peri to be a community for like-minded individuals to find the content they desire and share their
-                            thoughts with the community. I'm always open to suggestions and feedback, so if you have any ideas or comments, please feel free to reach
-                            out to me. I'm always looking for ways to improve the site!
+                        <p className='my-4'>Hopefully you're enjoying using the site as much as I enjoy working on it! If you have a moment, I'd really appreciate you starring the project on GitHub.</p>
+                        <p>My goal with Peri has always been to create something that is easy to use and gather information from, hopefully fostering a community of avid movie fans like myself along the
+                            way. I'm always open to suggestions and feedback, so if you have any ideas or comments, please feel free to reach out to me through email or GitHub. I'm always looking for
+                            ways to improve Peri!
                         </p>
                         <hr className="h-px my-6 bg-gray-400 border-0"></hr>
                         <div className='flex justify-center gap-6'>
