@@ -25,10 +25,10 @@ function CastInfo({ castInfo, known }) {
     }, [castInfo.birthday]);
 
     return (
-        <div className='-mr-16 md:mx-auto'>
+        <div>
             <Head><title>{castInfo.name}</title></Head>
             <Header />
-            <div className="mx-auto px-20 flex flex-col-reverse gap-10 object-bottom md:flex-row">
+            <div className="mx-auto px-10 flex flex-col-reverse gap-10 object-bottom md:flex-row">
                 <div className="flex flex-col gap-4 md:w-5/12 lg:w-6/12 xl:w-8/12 2xl:w-10/12">
                     <h1 className="font-bold text-3xl md:text-5xl lg:text-7xl 3xl:text-9xl text-center text-red-400">{castInfo.name}</h1>
                     <p className="font-bold lg:text-xl 3xl:text-3xl text-white text-center">{`Born: ${castInfo.birthday}(age ${age}), ${castInfo.place_of_birth || ''}`}</p>

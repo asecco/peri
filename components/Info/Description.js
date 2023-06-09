@@ -44,7 +44,7 @@ function Description({ movie, mediaType, releaseYear, runtime, certification }) 
         <div>
             <StreamingSources watchModeSources={watchModeSources} modalOpen={modalOpen} onCloseModal={onCloseModal} />
             <div className="w-full">
-                <div className="mx-auto px-20 flex flex-col-reverse gap-10 object-bottom md:flex-row">
+                <div className="mx-auto px-10 flex flex-col-reverse gap-10 object-bottom md:flex-row">
                     <div className="flex flex-col gap-4 md:w-5/12 lg:w-6/12 xl:w-8/12 2xl:w-10/12">
                         <h1 className="font-bold text-3xl md:text-5xl lg:text-7xl 3xl:text-9xl text-center text-red-400">{movie?.title || movie?.original_name}</h1>
                         <div className="flex items-center justify-center space-x-5 lg:space-x-20 font-bold text-lg lg:text-xl 3xl:text-3xl text-center text-white">
@@ -52,7 +52,7 @@ function Description({ movie, mediaType, releaseYear, runtime, certification }) 
                             <p>{releaseYear}</p>
                             <p className="xl:truncate">{genres}</p>
                             <p>{runtime}</p>
-                            <StarIcon className="h-4 my-4 md:h-8 lg:h-6 lg:mx-2 3xl:h-10 lg:my-0 text-yellow-400 fill-yellow-400" />{Math.round(movie?.vote_average * 10) / 10}/10
+                            <StarIcon className="h-4 my-4 md:h-6 3xl:h-10 lg:mx-2 lg:my-0 text-yellow-400 fill-yellow-400" />{Math.round(movie?.vote_average * 10) / 10}/10
                         </div>
                         <p className="text-lg md:text-xl lg:text-2xl 3xl:text-4xl text-white text-center italic">{movie?.tagline}</p>
                         <p className="text-center text-lg md:text-left md:text-xl lg:text-2xl 3xl:text-4xl text-white line-clamp-14">{movie?.description || movie?.overview}</p>

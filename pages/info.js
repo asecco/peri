@@ -67,7 +67,7 @@ function Info({ movie, cast, recommend }) {
     }, [mediaType, router.query.type, movie]);
 
     return (
-        <div className='-mr-16 md:mx-auto'>
+        <div>
             <Head><title>{movie?.title || movie?.original_name}</title></Head>
             <Header />
             <Description movie={movie} mediaType={mediaType} releaseYear={releaseYear} runtime={runtime} certification={certification} />
