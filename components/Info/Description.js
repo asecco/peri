@@ -3,7 +3,7 @@ import { StarIcon, PlayIcon, HeartIcon, FilmIcon } from '@heroicons/react/outlin
 import React, { useState } from 'react';
 import ModalVideo from 'react-modal-video';
 import StreamingSources from "./StreamingSources";
-import { BASE_URL, YOUTUBE_API_KEY, YOUTUBE_API_URL, WATCHMODE_API_KEY } from '../../utils/constants';
+import { BASE_URL } from '../../utils/constants';
 import { localStorageFavorites } from '../../utils/localStorage';
 import { toast } from 'react-toastify';
 import { blurUrl, alertParams } from "../../utils/helper";

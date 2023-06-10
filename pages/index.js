@@ -33,21 +33,18 @@ export async function getServerSideProps() {
 		fetch(`${API_URL}trending/tv/day?api_key=${API_KEY}&language=en-US`).then((res) => res.json())
 	  ];
 
-	  const [trending, nowPlaying, tv] = await Promise.all(requests);
-	  const tvTrending = tv.results.filter((tvShow) => tvShow.original_language === 'en');
+	const [trending, nowPlaying, tv] = await Promise.all(requests);
+	const tvTrending = tv.results.filter((tvShow) => tvShow.original_language === 'en');
 
-    const shuffleArray = (array) => {
-		for (let i = array.length - 1; i > 0; i--) {
-			const j = Math.floor(Math.random() * (i + 1));
-			[array[i], array[j]] = [array[j], array[i]];
-		}
-      	return array;
+    const filterArray = (array) => {
+		const filteredArray = array.filter(item => item.original_language === 'en');
+      	return filteredArray;
   	};
 
 	return {
 		props: {
 			results: trending.results,
-			nowPlaying: shuffleArray(nowPlaying.results),
+			nowPlaying: filterArray(nowPlaying.results),
 			tv: tvTrending
 		}
 	};
