@@ -9,6 +9,7 @@ function Favorites() {
     const [favRes, setFavRes] = useState([]);
     const [page, setPage] = useState(1);
     const [hasMore, setHasMore] = useState(true);
+    const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
         const fetchFavorites = async () => {
@@ -29,6 +30,7 @@ function Favorites() {
                 favArr.push(favReq);
             }
             setFavRes(favArr);
+            setIsLoaded(true);
         };
         fetchFavorites();
     }, [page]);
@@ -53,7 +55,7 @@ function Favorites() {
         <div>
             <Head><title>{`Favorites`}</title></Head>
             <Header />
-            <LocalStorageMessage results={favRes} id={'favorites'} />
+            {isLoaded && <LocalStorageMessage results={favRes} id={'favorites'} />}
             <Results results={favRes} />
         </div>
     );
