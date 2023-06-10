@@ -10,7 +10,7 @@ function Episodes({result}) {
             <div className="px-0 md:px-6">
                 <div className="text-red-400 font-bold text-xl lg:text-2xl 3xl:text-4xl mt-2 lg:mt-0">{`${result?.episode_number}. ${result?.name}`}</div>
                 <div className="flex items-center text-center space-x-2 md:space-x-4 lg:space-x-10 m-2 text-base md:text-lg 3xl:text-2xl text-white">
-                    <p>{`${result?.runtime} mins`}</p>
+                    <p>{result?.runtime ? `${result?.runtime} mins` : 'N/A'}</p>
                     <p>{result?.air_date}</p>
                     <StarIcon className="h-4 my-4 md:h-5 lg:h-6 3xl:h-8 lg:mx-2 lg:my-0 text-yellow-400 fill-yellow-400" />{Math.round(result?.vote_average * 10) / 10}/10
                 </div>
