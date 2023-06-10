@@ -15,30 +15,50 @@ function Description({ movie, mediaType, releaseYear, runtime, certification }) 
     const [isOpen, setOpen] = useState(false);
     const [trailerID, setTrailerId] = useState([]);
     const checkTrailer = async () => {
-        const trailer = await fetch(`${YOUTUBE_API_URL}${movie?.title || movie?.original_name}+${mediaType}+trailer&part=snippet&maxResults=1&type=video&key=${YOUTUBE_API_KEY}`);
-        if(!trailer.ok) { //If api request fails/exceeds daily quota
-            toast.error('No trailer available', alertParams);
-        } else {
-            const trailerData = await trailer.json();
-            const trailerId = trailerData.items[0].id.videoId;
-            setTrailerId(trailerId);
-            setOpen(true);
+        try {
+            const response = await fetch('/api/trailer', {
+            method: 'POST',
+            body: JSON.stringify({ movie, mediaType }),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            });
+            if (!response.ok) {
+                toast.error('No trailer available', alertParams);
+            } else {
+                const { trailerId } = await response.json();
+                setTrailerId(trailerId);
+                setOpen(true);
+            }
+        } catch (error) {
+            toast.error('Error occurred', alertParams);
         }
-    }
+    };      
 
     const [watchModeSources, setWatchModeSources] = useState([]);
     const [modalOpen, setModalOpen] = useState(false);
     const onOpenModal = () => setModalOpen(true);
     const onCloseModal = () => setModalOpen(false);
     const streamAvailability = async () => {
-        const watchMode = await fetch(`https://api.watchmode.com/v1/title/${mediaType}-${movie?.id}/sources/?apiKey=${WATCHMODE_API_KEY}`).then((res) => res.json());
-        if(watchMode.length > 0) {
-            setWatchModeSources(watchMode.filter((v,i,a)=>a.findIndex(v2=>(v2.name===v.name))===i));
-            onOpenModal();
-        } else {
-            toast.error('Not available to stream', alertParams);
+        try {
+            const response = await fetch('/api/streamingsources', {
+            method: 'POST',
+            body: JSON.stringify({ mediaType, movie }),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            });
+            if (response.ok) {
+                const { sources } = await response.json();
+                setWatchModeSources(sources);
+                onOpenModal();
+            } else {
+                toast.error('Not available to stream', alertParams);
+            }
+        } catch (error) {
+            toast.error('Error occurred', alertParams);
         }
-    }
+    };      
 
     return (
         <div>
