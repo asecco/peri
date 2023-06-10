@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Header from '../components/Header';
-import Episodes from '../components/Episodes';
+import Header from '../components/Header/Header';
+import Episodes from '../components/Info/Episodes';
 import Head from 'next/head';
 import { BASE_URL, API_KEY, API_URL } from '../utils/constants';
 import { blurUrl } from '../utils/helper';

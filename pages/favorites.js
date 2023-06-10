@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import React, { useState, useEffect } from 'react';
-import Header from '../components/Header';
-import Results from '../components/Results';
-import LocalStorageMessage from '../components/LocalStorageMesage';
+import Header from '../components/Header/Header';
+import Results from '../components/Layout/Results';
+import LocalStorageMessage from '../components/Layout/LocalStorageMesage';
 import { API_KEY, API_URL } from '../utils/constants';
 
 function Favorites() {

@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import React, { useState, useEffect } from 'react';
 import Image from "next/image";
-import Header from '../components/Header';
-import Recommend from '../components/Recommend';
+import Header from '../components/Header/Header';
+import Recommend from '../components/Info/Recommend';
 import FlipMove from 'react-flip-move';
 import { BASE_URL, API_KEY, API_URL } from "../utils/constants";
 import { blurUrl } from '../utils/helper';

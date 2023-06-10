@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Seasons from '../Seasons';
-import Recommend from '../Recommend';
-import Cast from '../Cast';
+import Seasons from './Seasons';
+import Recommend from './Recommend';
+import Cast from './Cast';
 import FlipMove from 'react-flip-move';
 
 function Panels({ mediaType, seasons, movie, recArr, castArr }) {

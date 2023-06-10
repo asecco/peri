@@ -1,7 +1,7 @@
 import Head from 'next/head';
-import Header from '../components/Header';
-import Results from '../components/Results';
-import Footer from '../components/Footer';
+import Header from '../components/Header/Header';
+import Results from '../components/Layout/Results';
+import Footer from '../components/Footer/Footer';
 import { API_KEY, API_URL } from '../utils/constants';
 
 function Upcoming({ upcoming, page, totalPages }) {

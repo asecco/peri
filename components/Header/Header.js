@@ -2,9 +2,9 @@ import { HomeIcon, MapIcon, CalendarIcon, VideoCameraIcon, FilmIcon, SearchIcon 
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import PeriLogo from '../public/peri.png';
+import PeriLogo from '../../public/peri.png';
 import HeaderItem from './HeaderItem';
-import About from '../components/About';
+import About from './About';
 
 function Header() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);

@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { BASE_URL } from '../utils/constants';
+import { BASE_URL } from '../../utils/constants';
 import { StarIcon } from '@heroicons/react/outline';
-import { blurUrl } from '../utils/helper';
+import { blurUrl } from '../../utils/helper';
 
 function Episodes({result}) {
     return (

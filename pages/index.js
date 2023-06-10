@@ -1,9 +1,9 @@
 import Head from 'next/head';
 import { TrendingUpIcon  } from '@heroicons/react/outline';
-import Header from '../components/Header';
-import NowPlayingBanner from "../components/NowPlayingBanner";
-import Results from "../components/Results";
-import StreamingNow from '../components/StreamingNow';
+import Header from '../components/Header/Header';
+import NowPlayingBanner from "../components/Home/NowPlayingBanner";
+import Results from "../components/Layout/Results";
+import StreamingNow from '../components/Home/StreamingNow';
 import { API_KEY, API_URL } from '../utils/constants';
 
 export default function Home({ results, nowPlaying, tv }) {

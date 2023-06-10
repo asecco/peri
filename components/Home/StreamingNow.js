@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { BASE_URL } from "../utils/constants";
+import { BASE_URL } from "../../utils/constants";
 import { CalendarIcon  } from '@heroicons/react/outline';
 
 function StreamingNow({ tv }) {

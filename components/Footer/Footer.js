@@ -1,6 +1,6 @@
 import { ArrowCircleLeftIcon, ArrowCircleRightIcon } from '@heroicons/react/outline';
-import FooterItem from "../components/FooterItem";
-import PaginationFooter from '../components/PaginationFooter';
+import FooterItem from "./FooterItem";
+import PaginationFooter from './PaginationFooter';
 import { useRouter } from "next/router";
 
 function Footer({ type, genre, page, totalPages}) {

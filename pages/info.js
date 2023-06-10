@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { useRouter } from "next/router";
 import { API_KEY, API_URL } from '../utils/constants';
 import React, { useState, useEffect } from 'react';
-import Header from '../components/Header';
+import Header from '../components/Header/Header';
 import Description from "../components/Info/Description";
 import Panels from "../components/Info/Panels";
 import Comment from "../components/Info/Comment";

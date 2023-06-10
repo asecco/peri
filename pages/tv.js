@@ -1,8 +1,8 @@
 import Head from 'next/head';
-import Header from '../components/Header';
-import Results from '../components/Results';
-import Footer from '../components/Footer';
-import Genres from '../components/Genres';
+import Header from '../components/Header/Header';
+import Results from '../components/Layout/Results';
+import Footer from '../components/Footer/Footer';
+import Genres from '../components/Layout/Genres';
 import requestsTV from '../utils/requestsTV';
 import { API_URL } from '../utils/constants';
 

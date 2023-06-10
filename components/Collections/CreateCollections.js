@@ -2,8 +2,8 @@ import Image from "next/image";
 import React, { useState, useEffect } from 'react';
 import { FaArrowUp, FaArrowDown, FaTrash } from 'react-icons/fa';
 import { Modal } from 'react-responsive-modal';
-import { BASE_URL } from "../utils/constants";
-import { blurUrl } from '../utils/helper';
+import { BASE_URL } from "../../utils/constants";
+import { blurUrl } from '../../utils/helper';
 
 function CreateCollections({ modalOpen, onCloseModal, handleSubmit, searchInputRef, titleInputRef, descriptionInputRef, autoCompleteResults, handleInputChange, addMovie, selectedMovies, handleReorder }) {
     const [showForm, setShowForm] = useState(true);

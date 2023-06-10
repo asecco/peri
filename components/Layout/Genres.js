@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
 import React, { useState } from 'react';
-import requests from '../utils/requests';
-import requestsTV from '../utils/requestsTV';
-import { useHorizontalScroll } from '../utils/useHorizontalScroll';
+import requests from '../../utils/requests';
+import requestsTV from '../../utils/requestsTV';
+import { useHorizontalScroll } from '../../utils/useHorizontalScroll';
 
 function Genres({ type, genre }) {
     const router = useRouter();

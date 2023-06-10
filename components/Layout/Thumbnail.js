@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, forwardRef } from 'react';
-import { BASE_URL } from "../utils/constants";
-import { blurUrl } from '../utils/helper';
+import { BASE_URL } from "../../utils/constants";
+import { blurUrl } from '../../utils/helper';
 
 const Thumbnail = forwardRef(({ result }, ref) => {
     const [isHovered, setIsHovered] = useState(false);

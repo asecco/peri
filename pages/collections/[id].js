@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { db } from '@vercel/postgres';
-import Header from '../../components/Header';
-import Results from '../../components/Results';
+import Header from '../../components/Header/Header';
+import Results from '../../components/Layout/Results';
 import { toast } from 'react-toastify';
 import { alertParams } from '../../utils/helper';
 

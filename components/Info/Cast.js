@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from 'next/link';
-import { BASE_URL } from "../utils/constants";
-import { blurUrl } from '../utils/helper';
+import { BASE_URL } from "../../utils/constants";
+import { blurUrl } from '../../utils/helper';
 
 function Cast({ member }) {
     return (
