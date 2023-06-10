@@ -2,8 +2,8 @@ import { YOUTUBE_API_KEY, YOUTUBE_API_URL } from '../../utils/constants';
 
 export default async function handler(request, response) {
     try {
-        const { movie, mediaType } = request.body;
-        const trailer = await fetch(`${YOUTUBE_API_URL}${movie?.title || movie?.original_name}+${mediaType}+trailer&part=snippet&maxResults=1&type=video&key=${YOUTUBE_API_KEY}`);
+        const { title, mediaType } = request.body;
+        const trailer = await fetch(`${YOUTUBE_API_URL}${title}+${mediaType}+trailer&part=snippet&maxResults=1&type=video&key=${YOUTUBE_API_KEY}`);
         if (!trailer.ok) {
             response.status(400).json({ error: 'No trailer available' });
         } else {

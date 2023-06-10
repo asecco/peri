@@ -15,10 +15,11 @@ function Description({ movie, mediaType, releaseYear, runtime, certification }) 
     const [isOpen, setOpen] = useState(false);
     const [trailerID, setTrailerId] = useState([]);
     const checkTrailer = async () => {
+        const title = movie?.title || movie?.original_name;
         try {
             const response = await fetch('/api/trailer', {
             method: 'POST',
-            body: JSON.stringify({ movie, mediaType }),
+            body: JSON.stringify({ title, mediaType }),
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -40,10 +41,11 @@ function Description({ movie, mediaType, releaseYear, runtime, certification }) 
     const onOpenModal = () => setModalOpen(true);
     const onCloseModal = () => setModalOpen(false);
     const streamAvailability = async () => {
+        const id = movie?.id;
         try {
             const response = await fetch('/api/streamingsources', {
             method: 'POST',
-            body: JSON.stringify({ mediaType, movie }),
+            body: JSON.stringify({ mediaType, id }),
             headers: {
                 'Content-Type': 'application/json',
             },
