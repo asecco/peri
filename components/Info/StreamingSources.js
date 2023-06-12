@@ -1,6 +1,6 @@
 import { Modal } from 'react-responsive-modal';
 
-function StreamingSources({ watchModeSources, modalOpen, onCloseModal }) {
+function StreamingSources({ watchModeSources, modalOpen, onCloseModal, mediaType }) {
     return (
         <Modal open={modalOpen} onClose={onCloseModal} center showCloseIcon={false} styles={{ modal: {background: '#202F3B'}}}>
             <div className="shadow-2xl rounded-lg">
@@ -12,7 +12,7 @@ function StreamingSources({ watchModeSources, modalOpen, onCloseModal }) {
                         {watchModeSources.map((source, index) => (
                             <a key={index} href={source.web_url} target="_blank" rel="noreferrer" className="flex items-center justify-between py-1 rounded-md hover:text-red-400">
                                 <h3>{source.name}</h3>
-                                <p className="pl-20">{source.price ? `$${source.price}/EP` : 'Sub'}</p>
+                                <p className="pl-20">{mediaType === 'movie' ? (source.price ? (`$${source.price}`) : ('Sub')) : (source.price ? (`$${source.price}/EP`) : ('Sub'))}</p>
                             </a>
                         ))}
                     </div>

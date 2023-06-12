@@ -64,7 +64,7 @@ function Description({ movie, mediaType, releaseYear, runtime, certification }) 
 
     return (
         <div>
-            <StreamingSources watchModeSources={watchModeSources} modalOpen={modalOpen} onCloseModal={onCloseModal} />
+            <StreamingSources watchModeSources={watchModeSources} modalOpen={modalOpen} onCloseModal={onCloseModal} mediaType={mediaType} />
             <div className="w-full">
                 <div className="mx-auto px-10 flex flex-col-reverse gap-10 object-bottom md:flex-row">
                     <div className="flex flex-col gap-4 md:w-6/12 lg:w-8/12 xl:w-9/12 2xl:w-10/12">
