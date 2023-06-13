@@ -14,9 +14,9 @@ function Footer({ type, genre, page, totalPages, voteAverage, minYear, maxYear, 
         <div className='flex flex-row justify-center gap-x-2 mb-14 md:mb-0 items-center h-auto'>
             {type === 'upcoming' ? (
                 <>
-                <div onClick={() => router.push(`/upcoming/${page - 1}`)}><FooterItem title='Previous' Icon={ArrowCircleLeftIcon} /></div>
-                <PaginationFooter page={page} totalPages={totalPages} setPage={(pageNum) => router.push(`/upcoming/${pageNum}`)} />
-                <div onClick={() => router.push(`/upcoming/${page + 1}`)}><FooterItem title='Next' Icon={ArrowCircleRightIcon} /></div>
+                <div onClick={() => router.push(`/${type}/${page - 1}`)}><FooterItem title='Previous' Icon={ArrowCircleLeftIcon} /></div>
+                <PaginationFooter page={page} totalPages={totalPages} setPage={(pageNum) => router.push(`/${type}/${pageNum}`)} />
+                <div onClick={() => router.push(`/${type}/${page + 1}`)}><FooterItem title='Next' Icon={ArrowCircleRightIcon} /></div>
                 </>
             ) : (
                 <>

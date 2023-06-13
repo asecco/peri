@@ -13,7 +13,7 @@ const nextConfig = {
             destination: '/episodes',
         },
         {
-            source: '/:type/:id',
+            source: '/info/:type/:id',
             destination: '/info',
         },
         {

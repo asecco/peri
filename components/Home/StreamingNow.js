@@ -14,7 +14,7 @@ function StreamingNow({ tv }) {
                 {tv?.slice(0, 6)?.map((show, index) => (
                     <div key={show?.id} className="grid grid-cols-2 md:flex items-center ml-6">
                         <div className='flex-shrink-0 hover:opacity-50 transition duration-200 ease-in transform sm:hover:scale-105'>
-                            <Link href={`/tv/${show?.id}`}>
+                            <Link href={`/info/tv/${show?.id}`}>
                                 <Image className="rounded-lg" src={`${BASE_URL}${show?.poster_path}`} alt='' width={160} height={240}/>
                             </Link>
                         </div>
