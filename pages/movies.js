@@ -36,12 +36,6 @@ export async function getServerSideProps(context) {
         req = `${API_URL}${requests[genre]?.url}&page=${page}&with_original_language=en&vote_average.gte=${voteAverage}&primary_release_date.gte=${minYear}&primary_release_date.lte=${maxYear}&sort_by=${sortBy}`;
     }
 
-    if (!requests[genre]) {
-        return {
-            notFound: true,
-        };
-    }
-
     const res = await fetch(req).then((res) => res.json());
     const movies = res.results?.map((movie) => {
         return {
@@ -50,12 +44,18 @@ export async function getServerSideProps(context) {
         };
     });
 
+    if (!requests[genre]) {
+        return {
+            notFound: true,
+        };
+    }
+
     return {
         props: {
-            movies,
+            movies: movies || null,
             genre,
             page,
-            totalPages: res.total_pages,
+            totalPages: res.total_pages || null,
             voteAverage,
             minYear,
             maxYear,

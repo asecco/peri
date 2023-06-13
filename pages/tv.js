@@ -36,12 +36,6 @@ export async function getServerSideProps(context) {
         req = `${API_URL}${requestsTV[genre]?.url}&page=${page}&with_original_language=en&vote_average.gte=${voteAverage}&first_air_date.gte=${minYear}&first_air_date.lte=${maxYear}&sort_by=${sortBy}`;
     }
 
-    if (!requestsTV[genre]) {
-        return {
-            notFound: true,
-        };
-    }
-
     const res = await fetch(req).then((res) => res.json());
     const tv = res.results?.map((tv) => {
         return {
@@ -50,12 +44,18 @@ export async function getServerSideProps(context) {
         };
     });
 
+    if (!requestsTV[genre]) {
+        return {
+            notFound: true,
+        };
+    }
+
     return {
         props: {
-            tv,
+            tv: tv || null,
             genre,
             page,
-            totalPages: res.total_pages,
+            totalPages: res.total_pages || null,
             voteAverage,
             minYear,
             maxYear,
