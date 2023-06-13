@@ -9,15 +9,15 @@ const nextConfig = {
     async rewrites() {
         return [
         {
-            source: '/tv/season',
+            source: '/tv/:id/season/:num',
             destination: '/episodes',
         },
         {
-            source: '/info',
+            source: '/:type/:id',
             destination: '/info',
         },
         {
-            source: '/cast',
+            source: '/cast/:id',
             destination: '/cast',
         },
         {

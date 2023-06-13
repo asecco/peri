@@ -22,7 +22,7 @@ function NowPlayingBanner({ nowPlaying }) {
             <Slider {...settings}>
                 {nowPlaying?.slice(0, 3)?.map((movie) => (
                     <div className='w-full relative h-[35rem] overflow-hidden hover:cursor-pointer' key={movie?.id}>
-                        <Link href={`/info?type=movie&id=${movie?.id}`}>
+                        <Link href={`/movie/${movie?.id}`}>
                             <div className="absolute z-20 flex flex-col justify-center h-full w-full drop-shadow-[0_3.2px_3.2px_rgba(0,0,0,0.9)]">
                                 <div className="text-red-400 font-black text-5xl lg:text-7xl 3xl:text-8xl text-center">{movie?.title || movie?.original_title}</div>
                             </div>

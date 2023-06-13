@@ -7,7 +7,7 @@ import FlipMove from 'react-flip-move';
 import { BASE_URL, API_KEY, API_URL } from "../utils/constants";
 import { blurUrl } from '../utils/helper';
 
-function CastInfo({ castInfo, known }) {
+function Cast({ castInfo, known }) {
     known?.sort((a, b) => {
         return b.vote_count - a.vote_count;
     });
@@ -74,4 +74,4 @@ export async function getServerSideProps(context) {
     }
 }
 
-export default CastInfo;
+export default Cast;
