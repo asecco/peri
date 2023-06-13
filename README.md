@@ -26,7 +26,7 @@
 
 ---
 
-<p align="center"> Browse your favorite movies/tv and find the perfect watch for the night, personalized with recommendations based on what you’ve enjoyed.
+<p align="center"> Browse your favorite movies/tv and find the perfect watch for any occasion, personalized with recommendations based on what you’ve enjoyed.
   <br> 
 </p>
 
