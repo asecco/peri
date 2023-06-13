@@ -15,6 +15,7 @@ function Description({ movie, mediaType, releaseYear, runtime, certification }) 
     const [isOpen, setOpen] = useState(false);
     const [trailerID, setTrailerId] = useState([]);
     const checkTrailer = async () => {
+        toast.info('Fetching trailer, please wait...', alertParams);
         const title = movie?.title || movie?.original_name;
         try {
             const response = await fetch('/api/trailer', {
@@ -41,6 +42,7 @@ function Description({ movie, mediaType, releaseYear, runtime, certification }) 
     const onOpenModal = () => setModalOpen(true);
     const onCloseModal = () => setModalOpen(false);
     const streamAvailability = async () => {
+        toast.info('Fetching links, please wait...', alertParams);
         const id = movie?.id;
         try {
             const response = await fetch('/api/streamingsources', {
