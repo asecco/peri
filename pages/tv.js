@@ -31,9 +31,15 @@ export async function getServerSideProps(context) {
 
     let req;
     if (genre === 'popular') {
-        req = `${API_URL}${requestsTV[genre].url}&page=${page}&with_original_language=en`;
+        req = `${API_URL}${requestsTV[genre]?.url}&page=${page}&with_original_language=en`;
     } else {
-        req = `${API_URL}${requestsTV[genre].url}&page=${page}&with_original_language=en&vote_average.gte=${voteAverage}&first_air_date.gte=${minYear}&first_air_date.lte=${maxYear}&sort_by=${sortBy}`;
+        req = `${API_URL}${requestsTV[genre]?.url}&page=${page}&with_original_language=en&vote_average.gte=${voteAverage}&first_air_date.gte=${minYear}&first_air_date.lte=${maxYear}&sort_by=${sortBy}`;
+    }
+
+    if (!requestsTV[genre]) {
+        return {
+            notFound: true,
+        };
     }
 
     const res = await fetch(req).then((res) => res.json());
