@@ -15,7 +15,7 @@ function Filters({ type, genre }) {
 
     const updateFilters = (event) => {
         event.preventDefault();
-        router.replace({ pathname: `${type}/${genre}/1`, query: { voteAverage: voteAverage, minYear: releaseDate[0], maxYear: releaseDate[1], sortBy: sortBy}}, `${type}/${genre}/1`);
+        router.replace({ pathname: `${type}/${genre}/1`, query: { voteAverage: voteAverage, minYear: releaseDate[0], maxYear: releaseDate[1], sortBy: sortBy}});
     };
 
     return (

@@ -7,7 +7,7 @@ function Footer({ type, genre, page, totalPages, voteAverage, minYear, maxYear, 
     const router = useRouter();
     const pageRoute = (pageNumber) => {
         const newPage = Math.max(pageNumber, 1);
-        router.push({ pathname: `/${type}/${genre}/${newPage}`, query: { voteAverage: voteAverage, minYear: minYear, maxYear: maxYear, sortBy: sortBy }}, `/${type}/${genre}/${newPage}`);
+        router.push({ pathname: `/${type}/${genre}/${newPage}`, query: { voteAverage: voteAverage, minYear: minYear, maxYear: maxYear, sortBy: sortBy }});
     }
 
     return (
