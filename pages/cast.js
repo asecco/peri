@@ -37,18 +37,20 @@ function Cast({ castInfo, known }) {
                 </div>
 
                 <div className="w-9/12 md:w-4/12 lg:w-3/12 2xl:w-4/12 mx-10 md:mx-14">
-                    <Image placeholder='blur' blurDataURL={blurUrl} priority={true} src={`${BASE_URL}${castInfo.profile_path}`} alt='' height={1920} width={1280}/>
+                    {castInfo.profile_path ? <Image placeholder='blur' blurDataURL={blurUrl} priority={true} src={`${BASE_URL}${castInfo.profile_path}`} alt='' height={1920} width={1280}/> : ''}
                 </div>
             </div>
 
-            <div>
-                <p className="font-bold text-white text-2xl md:text-4xl mx-9">Known For</p>
-                <FlipMove className="px-5 my-10 ml-2 grid grid-cols-2 md:grid-cols-4 xl:grid-cols-4">
-                    {knownFor?.map((movie) => movie.backdrop_path && (
-                        <Recommend key={movie.id} result={movie} />
-                    ))}
-                </FlipMove>
-            </div>
+            {knownFor?.filter(movie => movie.backdrop_path).length > 0 && (
+                <div>
+                    <p className="font-bold text-white text-2xl md:text-4xl mx-9">Known For</p>
+                    <FlipMove className="px-5 my-10 ml-2 grid grid-cols-2 md:grid-cols-4 xl:grid-cols-4">
+                        {knownFor?.map((movie) => movie.backdrop_path && (
+                            <Recommend key={movie.id} result={movie} />
+                        ))}
+                    </FlipMove>
+                </div>
+            )}
         </div>
     );
 }

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useState, forwardRef } from 'react';
 import { BASE_URL } from "../../utils/constants";
 import { blurUrl } from '../../utils/helper';
+import fallbackImage from '../../public/fallback.png';
 
 const Thumbnail = forwardRef(({ result }, ref) => {
     const [isHovered, setIsHovered] = useState(false);
@@ -21,10 +22,12 @@ const Thumbnail = forwardRef(({ result }, ref) => {
 
     const ratingColor = getRatingColor(result.vote_average);
 
+    const poster = result?.poster_path || result?.profile_path ? `${BASE_URL}${result.poster_path || result.profile_path}` : fallbackImage;
+
     return (
         <div ref={ref} className='p-2 lg:mx-2 group cursor-pointer transition duration-200 ease-in transform sm:hover:scale-105 hover:z-40 relative' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-            <Link href={result.poster_path ? `/info/${result.media_type}/${result.id}` : `/cast/${result.id}`}>
-                <Image placeholder='blur' blurDataURL={blurUrl} className='group-hover:opacity-50 rounded-lg' src={`${BASE_URL}${result.poster_path || result.profile_path}`} alt='' height={1920} width={1280}/>
+            <Link href={result.poster_path || (poster === fallbackImage && result.media_type !== 'person') ? `/info/${result.media_type}/${result.id}` : `/cast/${result.id}`}>
+                <Image placeholder='blur' blurDataURL={blurUrl} className='group-hover:opacity-50 rounded-lg' src={poster} alt='' height={1920} width={1280}/>
                 <div className='p-2 text-center' title={result.title || result.original_name || result.name}>
                     <h2 className='mt-1 text-xl lg:text-2xl text-white transition-all duration-100 ease-in-out group-hover:font-normal group-hover:text-red-400 line-clamp-2 max-w-md'>{result.title || result.original_name || result.name}</h2>
                 </div>
