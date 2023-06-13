@@ -11,7 +11,7 @@ function Footer({ type, genre, page, totalPages, voteAverage, minYear, maxYear, 
     }
 
     return (
-        <div className='flex flex-row justify-center gap-x-2 py-10 md:py-0 items-center h-auto'>
+        <div className='flex flex-row justify-center gap-x-2 mb-14 md:mb-0 items-center h-auto'>
             {type === 'upcoming' ? (
                 <>
                 <div onClick={() => router.push(`/upcoming/${page - 1}`)}><FooterItem title='Previous' Icon={ArrowCircleLeftIcon} /></div>
