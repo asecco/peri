@@ -19,11 +19,11 @@ function Filters({ type, genre }) {
     };
 
     return (
-        <div className='w-1/5 mt-5 mr-8'>
+        <div>
             {genre !== 'popular' ? (
-                <div>
-                    <details className='overflow-hidden rounded-md absolute w-1/5 z-50'>
-                        <summary className="flex cursor-pointer items-center justify-center bg-white p-4 text-black">
+                <div className='mx-8 md:mx-6 xl:mx-8 pb-4'>
+                    <details className='overflow-hidden rounded-md absolute w-10/12 md:w-2/12 z-50'>
+                        <summary className="flex cursor-pointer items-center justify-center bg-white text-black p-2">
                             <span className="text-xl font-bold">Filters</span>
                             <span className="text-black">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="h-4 w-4"><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
@@ -40,7 +40,7 @@ function Filters({ type, genre }) {
                             <header className="space-y-1 border-t border-gray-300 p-2 text-center">
                                 <span className="text-base font-medium text-black">Release Date</span>
                                 <Slider range onChange={handleRangeChange} defaultValue={releaseDate} keyboard min={1900} max={currentYear} step={1} />
-                                <p className="text-base text-black">{`${releaseDate}`}</p>
+                                <p className="text-base text-black">{`${releaseDate[0]} - ${releaseDate[1]}`}</p>
                             </header>
 
                             <header className="space-y-1 border-t border-gray-300 p-2 text-center">
@@ -54,7 +54,7 @@ function Filters({ type, genre }) {
                                 </select>
                             </header>
 
-                            <div className='text-center'>
+                            <div className='text-center border-t border-gray-300'>
                                 <button onClick={updateFilters} className="bg-red-400 text-white text-lg font-bold rounded-md hover:bg-red-500 shadow-md py-2 px-4 my-2">Update</button>
                             </div>
                         </div>

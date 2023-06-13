@@ -47,3 +47,11 @@ body {
   background-size: 100% 4px;
   background-position: 0 100%;
 }
+
+.rc-slider .rc-slider-rail {
+  background-color: #202F3B;
+}
+
+.rc-slider .rc-slider-track {
+  background-color: #F87171;
+}

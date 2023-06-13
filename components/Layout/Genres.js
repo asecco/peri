@@ -25,10 +25,8 @@ function Genres({ type, genre }) {
                 </div>
                 <div className="absolute top-0 right-0 bg-gradient-to-l from-[#202F3B] h-10 w-1/12" />
             </nav>
-            <div className="flex justify-between">
-                <p className='font-bold text-white text-4xl lg:text-5xl mx-6 xl:mx-8 my-6 text-center md:text-left'>{requestObject[genre].title}</p>
-                <Filters type={type} genre={genre} />
-            </div>
+            <p className='font-bold text-white text-4xl lg:text-5xl mx-6 xl:mx-8 my-6 text-center md:text-left'>{requestObject[genre].title}</p>
+            <Filters type={type} genre={genre} />
         </div>
     );
 }
