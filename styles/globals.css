@@ -5,10 +5,15 @@
 @import "slick-carousel/slick/slick.css";
 @import "slick-carousel/slick/slick-theme.css";
 @import 'react-responsive-modal/styles.css';
+@font-face {
+  font-family: 'IBMPlexSans';
+  src: url('../public/fonts/IBMPlexSans-Regular.ttf') format('truetype');
+}
 
 body {
   background-color: #202F3B;
-  color: lightgray;
+  color: white;
+  font-family: 'IBMPlexSans', sans-serif;
 }
 
 ::-webkit-scrollbar {
