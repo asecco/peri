@@ -14,7 +14,7 @@ function Favorites() {
     useEffect(() => {
         const fetchFavorites = async () => {
             const favorites = JSON.parse(localStorage.getItem('favorites'));
-            if (favorites.length < 1) {
+            if (favorites?.length < 1) {
                 setIsLoaded(true);
                 return;
             }
