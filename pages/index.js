@@ -11,7 +11,7 @@ export default function Home({ results, nowPlaying, tv }) {
 		<div>
 			<Head>
 				<title>Peri</title>
-				<meta name="description" content="Movie/TV library for finding the perfect watch for the night" />
+				<meta name="description" content="Movie/TV library for finding the perfect watch for any occasion" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Header />
