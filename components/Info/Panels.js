@@ -15,8 +15,8 @@ function Panels({ mediaType, seasons, movie, recArr, castArr }) {
         <div>
             {mediaType === 'tv' && (
                 <div>
-                    <p className="font-bold text-white text-3xl md:text-4xl 3xl:text-5xl mx-8 mt-10 md:mt-4 lg:mt-0 text-center md:text-left">Seasons</p>
-                    <div className="grid grid-cols-2 px-5 my-10 ml-2 md:grid-cols-6 lg:grid-cols-7 xl:grid-cols-8 2xl:grid-cols-9 3xl:grid-cols-10">
+                    <p className="font-bold text-white text-3xl md:text-4xl 3xl:text-6xl mx-8 mt-10 md:mt-4 lg:mt-0 text-center md:text-left">Seasons</p>
+                    <div className="grid grid-cols-2 px-5 my-10 ml-2 md:grid-cols-6 lg:grid-cols-7 xl:grid-cols-8">
                     {seasons?.filter((season) => season.season_number > 0)?.map((season) => season.poster_path && (
                             <Seasons key={season.id} result={season} id={movie.id} />
                         ))}
@@ -25,8 +25,8 @@ function Panels({ mediaType, seasons, movie, recArr, castArr }) {
             )}
 
             <div hidden={recommendDiv}>
-                <p className="font-bold text-white text-3xl md:text-4xl 3xl:text-5xl mx-8 mt-10 md:mt-4 lg:mt-0 text-center md:text-left">{recArr?.length > 0 ? 'You May Enjoy' : ''}</p>
-                <div className="px-5 my-10 ml-2 grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 3xl:grid-cols-8">
+                <p className="font-bold text-white text-3xl md:text-4xl 3xl:text-6xl mx-8 mt-10 md:mt-4 lg:mt-0 text-center md:text-left">{recArr?.length > 0 ? 'You May Enjoy' : ''}</p>
+                <div className="px-5 my-10 ml-2 grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6">
                     {recArr?.map((rec) => rec.backdrop_path && (
                         <Recommend key={rec.id} result={rec} />
                     ))}
@@ -35,8 +35,8 @@ function Panels({ mediaType, seasons, movie, recArr, castArr }) {
             
             {castArr?.filter(cast => cast.profile_path).length > 0 && (
                 <div>
-                    <p className="font-bold text-white text-3xl md:text-4xl 3xl:text-5xl mx-8 text-center md:text-left">Cast</p>
-                    <div className="px-5 my-10 ml-2 grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 3xl:grid-cols-8">
+                    <p className="font-bold text-white text-3xl md:text-4xl 3xl:text-6xl mx-8 text-center md:text-left">Cast</p>
+                    <div className="px-5 my-10 ml-2 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
                         {castArr?.map((cast) => cast.profile_path && (
                             <Cast key={cast.id} member={cast} />
                         ))}
