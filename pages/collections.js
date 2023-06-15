@@ -20,8 +20,6 @@ function Collections({ collections }) {
     const onOpenModal = () => setModalOpen(true);
     const onCloseModal = () => {
         setModalOpen(false);
-        setSelectedMovies([]);
-        setAutoCompleteResults([]);
     };
 
     useEffect(() => {
