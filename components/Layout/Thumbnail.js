@@ -1,11 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState, forwardRef } from 'react';
+import { useState } from 'react';
 import { BASE_URL } from "../../utils/constants";
 import { blurUrl } from '../../utils/helper';
 import fallbackImage from '../../public/fallback.png';
 
-const Thumbnail = forwardRef(({ result }, ref) => {
+function Thumbnail({ result }) {
     const [isHovered, setIsHovered] = useState(false);
     const handleMouseEnter = () => setIsHovered(true);
     const handleMouseLeave = () => setIsHovered(false);
@@ -25,7 +25,7 @@ const Thumbnail = forwardRef(({ result }, ref) => {
     const poster = result?.poster_path || result?.profile_path ? `${BASE_URL}${result.poster_path || result.profile_path}` : fallbackImage;
 
     return (
-        <div ref={ref} className='p-2 lg:mx-2 group cursor-pointer transition duration-200 ease-in transform sm:hover:scale-105 hover:z-40 relative' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+        <div className='p-2 lg:mx-2 group cursor-pointer transition duration-200 ease-in transform sm:hover:scale-105 hover:z-40 relative' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
             <Link href={result.poster_path || (poster === fallbackImage && result.media_type !== 'person') ? `/info/${result.media_type}/${result.id}` : `/cast/${result.id}`}>
                 <Image placeholder='blur' blurDataURL={blurUrl} className='group-hover:opacity-50 rounded-lg' src={poster} alt='' height={1920} width={1280}/>
                 <div className='p-2 text-center' title={result.title || result.original_name || result.name}>
@@ -42,7 +42,6 @@ const Thumbnail = forwardRef(({ result }, ref) => {
             </Link>
         </div>
     );
-});
+};
 
-Thumbnail.displayName = 'Thumbnail';
 export default Thumbnail;
