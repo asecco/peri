@@ -62,7 +62,9 @@ function Description({ movie, mediaType, releaseYear, runtime, certification }) 
         } catch (error) {
             toast.error('Error occurred', alertParams);
         }
-    };      
+    };
+
+    const btnStyles = 'transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 bg-white text-primary font-bold rounded-lg border-b-2 border-red-400 hover:bg-red-400 hover:text-white shadow-md py-2 px-6 items-center'
 
     return (
         <div>
@@ -83,9 +85,9 @@ function Description({ movie, mediaType, releaseYear, runtime, certification }) 
                         <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId={trailerID} onClose={() => setOpen(false)} />
 
                         <div className="flex items-center justify-center space-x-4 my-2">
-                            <button onClick={streamAvailability} title="Play" className="transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 h-14 w-20 lg:h-16 lg:w-24 3xl:h-24 3xl:w-32 bg-gray-600 hover:bg-white text-white hover:text-primary text-lg font-bold rounded-lg inline-flex items-center justify-center"><PlayIcon className="h-12 3xl:h-20" /></button>
-                            <button onClick={checkTrailer} title="Watch Trailer" className="transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 h-14 w-20 lg:h-16 lg:w-24 3xl:h-24 3xl:w-32 bg-gray-600 hover:bg-white text-white hover:text-primary text-lg font-bold rounded-lg inline-flex items-center justify-center"><FilmIcon className="h-12 3xl:h-20" /></button>
-                            <button onClick={checkFav} title="Favorite" className="transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 h-14 w-20 lg:h-16 lg:w-24 3xl:h-24 3xl:w-32 bg-gray-600 hover:bg-white text-white hover:text-primary text-lg font-bold rounded-lg inline-flex items-center justify-center"><HeartIcon className={isFav ? 'h-12 3xl:h-20 text-red-400 fill-red-400' : 'h-12 3xl:h-20'} /></button>
+                            <button onClick={streamAvailability} title="Play" className={btnStyles}><PlayIcon className="h-10 md:h-12 3xl:h-20" /></button>
+                            <button onClick={checkTrailer} title="Watch Trailer" className={btnStyles}><FilmIcon className="h-10 md:h-12 3xl:h-20" /></button>
+                            <button onClick={checkFav} title="Favorite" className={isFav ? `${btnStyles} hover:bg-white` : btnStyles }><HeartIcon className={isFav ? 'h-10 md:h-12 3xl:h-20 text-red-400 fill-red-400' : 'h-10 md:h-12 3xl:h-20'} /></button>
                         </div>
                     </div>
                     <div className="w-9/12 md:w-4/12 lg:w-3/12 2xl:w-4/12 mx-10 md:mx-14">
