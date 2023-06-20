@@ -34,10 +34,10 @@ export async function getServerSideProps() {
 	  ];
 
 	const [trending, nowPlaying, tv] = await Promise.all(requests);
-	const tvTrending = tv.results.filter((tvShow) => tvShow.original_language === 'en');
+	const tvTrending = tv.results?.filter((tvShow) => tvShow.original_language === 'en');
 
     const filterArray = (array) => {
-		const filteredArray = array.filter(item => item.original_language === 'en');
+		const filteredArray = array?.filter(item => item.original_language === 'en');
       	return filteredArray;
   	};
 
