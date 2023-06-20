@@ -30,7 +30,7 @@
   <br> 
 </p>
 
-![demo](https://github.com/asecco/peri/assets/40510223/bd177949-df1b-4ffb-85e8-0625cf52a8db)
+![demo](https://github.com/asecco/peri/assets/40510223/19bdb52a-ef38-4126-84a8-1004dd77e74a)
 
 <p align="center">Like what you see? Please consider giving Peri a GitHub star ⭐, it will help a lot!</p>
 
