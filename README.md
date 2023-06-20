@@ -94,14 +94,12 @@ cd peri
 yarn install
 ```
 
-3. Create a file for the environment variables in the root directory called `.env.local` in the following format
+3. Open the file `.env` in the root directory and replace the `PLACE_KEY_HERE` placeholder with your API keys after registering on [TMDB](https://www.themoviedb.org/documentation/api), [Watchmode](https://api.watchmode.com), and [YouTube](https://developers.google.com/youtube/v3/getting-started). All API keys are free to obtain with limits. The TMDB key is the only one that is absolutely ***required*** in order for the majority of the project's features to function locally without errors.
 ```js
-NEXT_PUBLIC_API_KEY = key
-WATCHMODE_API_KEY = key
-YOUTUBE_API_KEY = key
+NEXT_PUBLIC_API_KEY = PLACE_KEY_HERE
+WATCHMODE_API_KEY = PLACE_KEY_HERE
+YOUTUBE_API_KEY = PLACE_KEY_HERE
 ```
-
-4. Replace "key" with your API keys after registering on [TMDB](https://www.themoviedb.org/documentation/api), [Watchmode](https://api.watchmode.com), and [YouTube](https://developers.google.com/youtube/v3/getting-started). All API keys are free to obtain.
 
 5. Start the development server
 ```sh
