@@ -52,20 +52,19 @@ Peri was originally designed to be similar to a modern streaming media service w
 ## Frequently Asked Questions
 ### What is the purpose of Peri, and why should I use it?
 - I've always wanted Peri to be a great resource for avid movie/tv fans like myself to browse different content and find what they desire. In today's world, there are dozens of different streaming services with varying amounts of content. This can make it troublesome to know where to look, and that's where Peri comes in!
-- If you're debating why you should start using Peri over any alternatives, I would say that Peri is a great resource for finding new content to watch. The recommendations are personalized based on what you've enjoyed in the past, and the site is designed to be as simple and easy to use as possible.
-- The site is also consistently updated and I'm always looking for ways to improve the overall feel and functionality.
+- Peri's recommendations are personalized based on what you've enjoyed in the past, and the site is designed to be as simple and easy to use as possible. The site is also consistently updated and I'm always looking for ways to improve the overall feel and functionality.
 
 ### Can I use Peri without creating an account?
 - Yes! I want to keep this site as simple and convenient for all users, so you are never required to register an account or give any personal information.
-- For the community discussion/review section, there is an optional field for your email, but you're not required to give one in order to post. While this is great for preserving anonymity for users, in order to prevent spam and inappropriate posts, a moderator will have to approve the post before it gets displayed to everyone on the site.
+- For the community discussion/review section, there is an optional field for your email, but you're not required to give one to post. While this is great for preserving anonymity for users, in order to prevent spam and inappropriate posts, a moderator will have to approve the post before it gets displayed to everyone on the site.
 
 ### My favorites disappeared, what happened to them?
-- Instead of opting for a more traditional account creation process, I use your browser's local storage to store the favorites. I find this is better for simplicity's sake and overall convenience for users.
+- Instead of opting for a more traditional account creation process, I use your browser's local storage to store the favorites. This is better for simplicity's sake and overall convenience for users.
 - If you recently lost your favorites, you likely switched your browser/device or cleared your browser's cache. Unfortunately, there is not currently a way of retrieving the lost data.
 
-### Can I request new features or suggest improvements for Peri?
-- Definitely! I would love to hear any feedback from the community for ways to improve the site.
-- To get started, head over to the [discussion](https://github.com/asecco/peri/discussions/categories/features-improvements) section and start a new thread.
+### Can I ask for new features or suggest any improvements for Peri?
+- Definitely! I would love to hear any feedback from the community on ways to improve the site.
+- To get started, head over to the [discussion](https://github.com/asecco/peri/discussions/categories/features-improvetoion and start a new thread.
 
 ### Can I contribute to this project?
 - Yes! Head down to the [contributing](#contributing) section to learn more about how you can help!
@@ -75,7 +74,7 @@ I would love to expand upon this project over time with continuous updates to en
 
 Pull requests are welcome for simple bug fixes and general improvements! Head over to the [issues](https://github.com/asecco/peri/issues) section to see if there is anything currently open, and head down to the [setup](#setup) section to get your development environment configured.
 
-If you want to contribute new features or drastically change a current feature. Please open a [discussion](https://github.com/asecco/peri/discussions/categories/general) before working on it, so that I can ensure this is a change that I feel is properly suited for this project.
+If you want to contribute new features or drastically change a current feature. Please open a [discussion](https://github.com/asecco/peri/discussions/categories/general) before working on it, to ensure this is a change that I feel is properly suited for this project.
 
 ![upates2](https://user-images.githubusercontent.com/40510223/184010219-96e98fde-8f7e-4383-8fac-f25b2f914d0f.gif)
 ![updates](https://user-images.githubusercontent.com/40510223/184007866-240f831c-6d52-43b5-8414-b5c1f93f0aa0.gif)
@@ -94,7 +93,7 @@ cd peri
 yarn install
 ```
 
-3. Open the file `.env` in the root directory and replace the `PLACE_KEY_HERE` placeholder with your API keys after registering on [TMDB](https://www.themoviedb.org/documentation/api), [Watchmode](https://api.watchmode.com), and [YouTube](https://developers.google.com/youtube/v3/getting-started). All API keys are free to obtain with limits. The TMDB key is the only one that is absolutely ***required*** in order for the majority of the project's features to function locally without errors.
+3. Open the `.env` file in the root directory and replace the `PLACE_KEY_HERE` placeholders with your API keys after registering on [TMDB](https://www.themoviedb.org/documentation/api), [Watchmode](https://api.watchmode.com), and [YouTube](https://developers.google.com/youtube/v3/getting-started). All API keys are free to obtain with limits. The TMDB key is the only one that is absolutely ***required*** for the majority of the project's features to function locally without errors.
 ```js
 NEXT_PUBLIC_API_KEY = PLACE_KEY_HERE
 WATCHMODE_API_KEY = PLACE_KEY_HERE
