@@ -100,7 +100,7 @@ WATCHMODE_API_KEY = PLACE_KEY_HERE
 YOUTUBE_API_KEY = PLACE_KEY_HERE
 ```
 
-5. Start the development server
+4. Start the development server
 ```sh
 yarn run dev
 ```
