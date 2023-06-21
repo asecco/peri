@@ -64,7 +64,7 @@ Peri was originally designed to be similar to a modern streaming media service w
 
 ### Can I ask for new features or suggest any improvements for Peri?
 - Definitely! I would love to hear any feedback from the community on ways to improve the site.
-- To get started, head over to the [discussion](https://github.com/asecco/peri/discussions/categories/features-improvetoion and start a new thread.
+- To get started, head over to the [discussion](https://github.com/asecco/peri/discussions/categories/features-improvements) section and start a new thread.
 
 ### Can I contribute to this project?
 - Yes! Head down to the [contributing](#contributing) section to learn more about how you can help!
