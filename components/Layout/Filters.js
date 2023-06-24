@@ -21,7 +21,7 @@ function Filters({ type, genre }) {
     return (
         <div>
             {genre !== 'popular' ? (
-                <div className='mx-8 md:mx-6 xl:mx-8 pb-4'>
+                <div className='mx-8 pb-4'>
                     <details className='overflow-hidden rounded-md absolute w-10/12 md:w-2/12 z-50'>
                         <summary className="flex cursor-pointer items-center justify-center bg-white text-black p-2">
                             <span className="text-xl font-bold mr-2">Filters</span>
