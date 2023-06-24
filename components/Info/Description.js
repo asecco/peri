@@ -7,6 +7,7 @@ import { BASE_URL } from '../../utils/constants';
 import { localStorageFavorites } from '../../utils/localStorage';
 import { toast } from 'react-toastify';
 import { blurUrl, alertParams } from "../../utils/helper";
+import fallbackImage from '../../public/fallback.png';
 
 function Description({ movie, mediaType, releaseYear, runtime, certification }) {
     const { isFav, checkFav } = localStorageFavorites(movie, mediaType);
@@ -65,6 +66,7 @@ function Description({ movie, mediaType, releaseYear, runtime, certification }) 
     };
 
     const btnStyles = 'transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 bg-white text-primary font-bold rounded-lg border-b-2 border-red-400 hover:bg-red-400 hover:text-white shadow-md py-2 px-6 items-center'
+    const poster = movie?.poster_path ? `${BASE_URL}${movie.poster_path}` : fallbackImage;
 
     return (
         <div>
@@ -91,7 +93,7 @@ function Description({ movie, mediaType, releaseYear, runtime, certification }) 
                         </div>
                     </div>
                     <div className="w-9/12 md:w-4/12 lg:w-3/12 2xl:w-4/12 mx-10 md:mx-14">
-                        {movie?.poster_path ? <Image placeholder='blur' blurDataURL={blurUrl} priority={true} src={`${BASE_URL}${movie?.poster_path}`} alt='' height={1920} width={1280}/> : ''}
+                        <Image placeholder='blur' blurDataURL={blurUrl} priority={true} src={poster} alt='' height={1920} width={1280}/>
                     </div>
                 </div>
             </div>
