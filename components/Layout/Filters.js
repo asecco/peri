@@ -1,14 +1,23 @@
 import React, { useState } from 'react';
 import { useRouter } from "next/router";
+import { ArrowUpIcon, ArrowDownIcon } from '@heroicons/react/outline';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
+
 
 function Filters({ type, genre }) {
     const router = useRouter();
     const currentYear = new Date().getFullYear();
-    const [voteAverage, setVoteAverage] = useState(0);
-    const [releaseDate, setReleaseDate] = useState([1900, currentYear]);
-    const [sortBy, setSortBy] = useState('vote_count.desc');
+    const [voteAverage, setVoteAverage] = useState(router.query.voteAverage || 0);
+    const [releaseDate, setReleaseDate] = useState([router.query.minYear || 1900, router.query.maxYear || currentYear]);
+    const [sortBy, setSortBy] = useState(router.query.sortBy || 'vote_count.desc');
+
+    const [sortDirection, setSortDirection] = useState(sortBy.split('.')[1] || 'desc');
+    const updateSortDirection = () => {
+        const newSortDirection = sortDirection === 'desc' ? 'asc' : 'desc';
+        setSortBy(`${sortBy.split('.')[0]}.${newSortDirection}`);
+        setSortDirection(newSortDirection);
+    };
 
     const handleRangeChange = (newRange) => setReleaseDate(newRange);
     const handleRatingChange = (event) => setVoteAverage(event);
@@ -45,13 +54,18 @@ function Filters({ type, genre }) {
 
                             <header className="space-y-1 border-t border-gray-300 p-2 text-center">
                                 <span className="text-base font-medium text-black">Sort By</span>
-                                <select onChange={(e) => setSortBy(e.target.value)} value={sortBy} className="w-full text-black text-center">
-                                    <option value="vote_count.desc">Rating Count(default)</option>
-                                    <option value="popularity.desc">Popularity</option>
-                                    <option value="vote_average.desc">Rating</option>
-                                    <option value="primary_release_date.desc">Release Date</option>
-                                    <option value="revenue.desc">Revenue</option>
-                                </select>
+                                <div className='flex items-center'>
+                                    <select onChange={(e) => setSortBy(`${e.target.value}.${sortDirection}`)} value={sortBy.split('.')[0]} className="w-full text-black text-center">
+                                        <option value="vote_count">Rating Count ({sortDirection})</option>
+                                        <option value="popularity">Popularity ({sortDirection})</option>
+                                        <option value="vote_average">Rating ({sortDirection})</option>
+                                        <option value="primary_release_date">Release Date ({sortDirection})</option>
+                                        <option value="revenue">Revenue ({sortDirection})</option>
+                                    </select>
+                                    <button title={sortDirection} onClick={updateSortDirection}>
+                                        {sortDirection === 'desc' ? <ArrowDownIcon className="h-8 w-8 text-black md:hover:text-red-400" /> : <ArrowUpIcon className="h-8 w-8 text-black md:hover:text-red-400" />}
+                                    </button>
+                                </div>
                             </header>
 
                             <div className='text-center border-t border-gray-300'>
