@@ -43,7 +43,7 @@ export async function getServerSideProps() {
 
 	return {
 		props: {
-			results: trending.results,
+			results: trending.results?.slice(0, 10),
 			nowPlaying: filterArray(nowPlaying.results),
 			tv: tvTrending
 		}
