@@ -38,7 +38,7 @@ export default function Collection({ collection }) {
             </div>
             <div>
                 <h1 className="font-bold text-3xl md:text-5xl lg:text-7xl 3xl:text-9xl text-center text-red-400 mx-12">{collection?.title}</h1>
-                <p className='text-white text-center text-lg mx:text-xl lg:text-2xl 3xl:text-4xl my-2'>{`Created on ${collection?.date}`}</p>
+                <p className='text-white text-center text-lg mx:text-xl lg:text-2xl 3xl:text-4xl my-2'>{`Created on ${collection?.date} with ${collection?.list.length} items`}</p>
                 <p className="text-white text-center text-lg md:text-xl lg:text-2xl 3xl:text-4xl mx-12">{collection?.description}</p>
             </div>
             <Results results={collection.list} />

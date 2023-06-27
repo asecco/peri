@@ -55,6 +55,8 @@ function Collections({ collections }) {
     const addMovie = (result) => {
         if (selectedMovies.some(movie => movie.id === result.id)) {
             toast.error(`${result.title || result.name} is already in collection`, alertParams);
+            searchInputRef.current.value = "";
+            searchInputRef.current.focus();
             return;
         }
         toast.success(`${result.title || result.name} added to collection`, alertParams);
@@ -101,9 +103,6 @@ function Collections({ collections }) {
 
                 if (response.ok) {
                     toast.success('Collection created!', alertParams);
-                    // setSelectedMovies([]);
-                    // titleInputRef.current.value = "";
-                    // descriptionInputRef.current.value = "";
                     setTimeout(() => {
                         router.push(`collections/${small_id}`);
                     }, 1200);
@@ -156,11 +155,12 @@ function Collections({ collections }) {
 
 export async function getServerSideProps() {
     let retries = 0;
+    const ids = ['b09144bb', '4a7f6aae', '28aa1934', '7bdd5d50']
 
     while (retries < 3) {
         try {
             const client = await db.connect();
-            const result = await client.query('SELECT * FROM collections ORDER BY RANDOM() LIMIT 6');
+            const result = await client.query('SELECT * FROM collections WHERE id = ANY($1)', [ids]);
             client.release();
 
             const collections = result.rows;
