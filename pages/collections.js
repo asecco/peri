@@ -76,39 +76,46 @@ function Collections({ collections }) {
             return;
         }
 
-        if (selectedMovies.length > 40) {
-            toast.error("Please select no more than 40 items", alertParams);
+        if (selectedMovies.length > 50) {
+            toast.error("Please select no more than 50 items", alertParams);
             return;
         }
 
-        try {
-            const response = await fetch('/api/db', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    id: small_id,
-                    title: titleInputRef.current.value,
-                    description: descriptionInputRef.current.value,
-                    date: today.toISOString().substring(0, 10),
-                    list: selectedMovies
-                })
-            });
+        let retries = 0;
+        while (retries < 3) {
+            try {
+                toast.info('Creating collection, please wait...', alertParams);
+                const response = await fetch('/api/db', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        id: small_id,
+                        title: titleInputRef.current.value,
+                        description: descriptionInputRef.current.value,
+                        date: today.toISOString().substring(0, 10),
+                        list: selectedMovies
+                    })
+                });
 
-            if (response.ok) {
-                toast.success('Collection saved!', alertParams);
-                setSelectedMovies([]);
-                titleInputRef.current.value = "";
-                descriptionInputRef.current.value = "";
-                setTimeout(() => {
-                    router.push(`collections/${small_id}`);
-                }, 1500);
-            } else {
-                toast.error('Error saving collection', alertParams);
+                if (response.ok) {
+                    toast.success('Collection created!', alertParams);
+                    // setSelectedMovies([]);
+                    // titleInputRef.current.value = "";
+                    // descriptionInputRef.current.value = "";
+                    setTimeout(() => {
+                        router.push(`collections/${small_id}`);
+                    }, 1200);
+                    return;
+                } else {
+                    toast.error('Error creating collection', alertParams);
+                }
+            } catch (error) {
+                retries++;
+                console.log(`Failed to connect to the database. Retrying... (Attempt ${retries})`);
+                await new Promise((resolve) => setTimeout(resolve, 1000));
             }
-        } catch (error) {
-            toast.error('Error saving collection', alertParams);
         }
     };
 
