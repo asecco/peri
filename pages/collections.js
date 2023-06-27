@@ -155,12 +155,12 @@ function Collections({ collections }) {
 
 export async function getServerSideProps() {
     let retries = 0;
-    const ids = ['b09144bb', '4a7f6aae', '28aa1934', '7bdd5d50']
+    const ids = ['4a7f6aae', 'a3267601', '7bdd5d50', '28aa1934']
 
     while (retries < 3) {
         try {
             const client = await db.connect();
-            const result = await client.query('SELECT * FROM collections WHERE id = ANY($1)', [ids]);
+            const result = await client.query('SELECT * FROM collections WHERE id = ANY($1) ORDER BY array_position($1, id)', [ids]);
             client.release();
 
             const collections = result.rows;
