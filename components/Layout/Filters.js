@@ -4,7 +4,6 @@ import { ArrowUpIcon, ArrowDownIcon } from '@heroicons/react/outline';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
-
 function Filters({ type, genre }) {
     const router = useRouter();
     const currentYear = new Date().getFullYear();

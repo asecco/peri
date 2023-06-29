@@ -53,7 +53,7 @@ function CreateCollections({ modalOpen, onCloseModal, handleSubmit, searchInputR
                                         <div className="flex items-center space-x-2">
                                             <button onClick={() => handleReorder(index, 'up', undefined)} disabled={index === 0} className="text-white hover:text-red-400 focus:outline-none cursor-pointer"><FaArrowUp /></button>
                                             <button onClick={() => handleReorder(index, 'down', undefined)} disabled={index === selectedMovies.length - 1} className="text-white hover:text-red-400 focus:outline-none cursor-pointer"><FaArrowDown /></button>
-                                            <span className="mr-2 truncate">{movie.title || movie.name}</span>
+                                            <span className="mr-2">{movie.title || movie.name}</span>
                                         </div>
                                         <button onClick={() => handleReorder(undefined, 'delete', movie.id)} className="text-white hover:text-red-400 focus:outline-none cursor-pointer"><FaTrash /></button>
                                     </li>
