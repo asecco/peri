@@ -10,7 +10,7 @@ function StreamingNow({ tv }) {
                 <p className="font-bold text-white text-4xl lg:text-5xl mx-8">Streaming Now</p>
                 <CalendarIcon className="h-12 w-12 lg:h-14 lg:w-14 -ml-6 text-red-400"/>
             </div>
-            <div className="grid grid-cols-2 ml-2 md:ml-4 md:grid-cols-3 lg:grid-cols-6 gap-6 my-10">
+            <div className="grid grid-cols-2 ml-2 md:ml-4 md:grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-0 my-10">
                 {tv?.slice(0, 6)?.map((show, index) => (
                     <div key={show?.id} className="grid grid-cols-2 md:flex items-center ml-10 md:ml-6">
                         <div className='flex-shrink-0 hover:opacity-50 transition duration-200 ease-in transform sm:hover:scale-105'>
