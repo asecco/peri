@@ -10,8 +10,12 @@ export default function Collection({ collection }) {
     const shareText = `Check out this collection: ${collection?.title}`
 
     const copyToClipboard = () => {
-        navigator.clipboard.writeText(url);
-        toast.success('Copied!', alertParams);
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(url);
+            toast.success('Copied!', alertParams);
+        } else {
+            toast.error('Failed to copy!', alertParams);
+        }
     };
 
     const handleShare = () => {
