@@ -51,7 +51,7 @@ function Header() {
                         <div className='h-full w-full fixed overflow-scroll z-50 bg-primary'>
                             <div className="flex flex-col text-3xl font-bold gap-y-8 mx-8 animate-dropdown">
                                 <Link href={`/`}>
-                                    <div className="flex items-center">
+                                    <div onClick={() => setMobileMenu(!mobileMenu)} className="flex items-center">
                                         <HomeIcon className='h-10' />
                                         <p className='hover:text-red-400 ml-2'>Home</p>
                                     </div>
