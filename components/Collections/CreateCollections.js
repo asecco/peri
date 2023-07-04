@@ -4,8 +4,9 @@ import { FaArrowUp, FaArrowDown, FaTrash } from 'react-icons/fa';
 import { Modal } from 'react-responsive-modal';
 import { BASE_URL } from "../../utils/constants";
 import { blurUrl } from '../../utils/helper';
+import { Reorder } from 'framer-motion';
 
-function CreateCollections({ modalOpen, onCloseModal, handleSubmit, searchInputRef, titleInputRef, descriptionInputRef, autoCompleteResults, handleInputChange, addMovie, selectedMovies, handleReorder }) {
+function CreateCollections({ modalOpen, onCloseModal, handleSubmit, searchInputRef, titleInputRef, descriptionInputRef, autoCompleteResults, handleInputChange, addMovie, selectedMovies, setSelectedMovies, handleReorder }) {
     const [showForm, setShowForm] = useState(true);
     const toggleForm = () => {
         setShowForm(!showForm);
@@ -48,16 +49,20 @@ function CreateCollections({ modalOpen, onCloseModal, handleSubmit, searchInputR
                         {selectedMovies.length > 0 && (
                             <ul className="flex flex-col items-center mb-4 md:w-[40rem] h-72 overflow-y-scroll">
                                 <p className="text-white">{`${selectedMovies.length} items`}</p>
-                                {selectedMovies?.map((movie, index) => (
-                                    <li key={movie?.id} className="flex items-center justify-between w-full text-white text-xl md:text-3xl rounded-md shadow-md p-2">
-                                        <div className="flex items-center space-x-2">
-                                            <button onClick={() => handleReorder(index, 'up', undefined)} disabled={index === 0} className="text-white hover:text-red-400 focus:outline-none cursor-pointer"><FaArrowUp /></button>
-                                            <button onClick={() => handleReorder(index, 'down', undefined)} disabled={index === selectedMovies.length - 1} className="text-white hover:text-red-400 focus:outline-none cursor-pointer"><FaArrowDown /></button>
-                                            <span className="mr-2">{movie.title || movie.name}</span>
-                                        </div>
-                                        <button onClick={() => handleReorder(undefined, 'delete', movie.id)} className="text-white hover:text-red-400 focus:outline-none cursor-pointer"><FaTrash /></button>
-                                    </li>
-                                ))}
+                                <Reorder.Group axis="y" values={selectedMovies} onReorder={setSelectedMovies} className="w-full">
+                                    {selectedMovies?.map((movie, index) => (
+                                        <Reorder.Item value={movie} key={movie?.id}>
+                                            <li className="flex items-center justify-between w-full text-white text-xl md:text-3xl rounded-md shadow-md p-2 cursor-pointer border-2 my-2">
+                                                <div className="flex items-center space-x-2">
+                                                    <button onClick={() => handleReorder(index, 'up', undefined)} disabled={index === 0} className="text-white hover:text-red-400 focus:outline-none cursor-pointer"><FaArrowUp /></button>
+                                                    <button onClick={() => handleReorder(index, 'down', undefined)} disabled={index === selectedMovies.length - 1} className="text-white hover:text-red-400 focus:outline-none cursor-pointer"><FaArrowDown /></button>
+                                                    <span className="mr-2">{movie.title || movie.name}</span>
+                                                </div>
+                                                <button onClick={() => handleReorder(undefined, 'delete', movie.id)} className="text-white hover:text-red-400 focus:outline-none cursor-pointer"><FaTrash /></button>
+                                            </li>
+                                        </Reorder.Item>
+                                    ))}
+                                </Reorder.Group>
                             </ul>
                         )}
                     </div>
