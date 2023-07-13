@@ -18,7 +18,7 @@ function Header() {
             <About />
             {!isMobile ? (
                 <header className="flex flex-col sm:flex-row mb-2 justify-between items-center h-auto mt-2">
-                    <div className='flex flex-grow max-w-2xl mt-2 md:mt-0'>
+                    <div className='flex flex-grow max-w-full mt-2 md:mt-0'>
                         <Link href={`/`}><HeaderItem title='HOME' Icon={HomeIcon} /></Link>
                         <Link href={`/search`}><HeaderItem title='SEARCH' Icon={SearchIcon} /></Link>
                         <Link href={`/movies`}><HeaderItem title='MOVIES' Icon={FilmIcon} /></Link>
@@ -28,7 +28,7 @@ function Header() {
                         <Link href={`/recommended`}><HeaderItem title='RECOMMENDED' Icon={ThumbUpIcon} /></Link>
                         <Link href={`/collections`}><HeaderItem title='COLLECTIONS' Icon={CollectionIcon} /></Link>
                     </div>
-                    <Image priority={true} className='object-contain overflow-hidden' src={PeriLogo} alt='Peri' width={200} height={80} />
+                    <Image priority={true} src={PeriLogo} alt='Peri' width={200} height={80} />
                 </header>
             ) : (
                 <header> {/* Mobile Header */}
