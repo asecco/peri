@@ -27,7 +27,7 @@ function NowPlayingBanner({ nowPlaying }) {
                                 <div className="text-red-400 font-black text-5xl lg:text-7xl 3xl:text-8xl text-center">{movie?.title || movie?.original_title}</div>
                             </div>
                             <div className="absolute inset-0 bg-gradient-to-tr from-primary to-transparent"></div>
-                            <Image placeholder='blur' blurDataURL={blurUrl} priority={true} className="object-cover object-center w-full h-full" src={`https://image.tmdb.org/t/p/w1280${movie?.backdrop_path}`} alt='' height={1080} width={1920} />
+                            <Image placeholder='blur' blurDataURL={blurUrl} className="object-cover object-center w-full h-full" src={`https://image.tmdb.org/t/p/w1280${movie?.backdrop_path}`} alt='' height={1080} width={1920} />
                         </Link>
                     </div>
                 ))}

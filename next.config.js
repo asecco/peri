@@ -6,6 +6,10 @@ const nextConfig = {
         domains: ['image.tmdb.org'],
         unoptimized: true,
     },
+    i18n: {
+        locales: ['en-US'],
+        defaultLocale: 'en-US',
+    },
     async rewrites() {
         return [
         {
