@@ -1,9 +1,21 @@
-function LocalStorageMessage({ results, id }) {
+function LocalStorageMessage({ results, id, searchReq, type }) {
+    const movieBtnStyles = 'bg-white text-black border-b-2 rounded-l-md border-red-400 hover:bg-red-400 hover:text-white shadow-md py-2 px-4';
+    const tvBtnStyles = 'bg-white text-black border-b-2 border-l-2 rounded-r-md border-red-400 hover:bg-red-400 hover:text-white shadow-md py-2 px-8';
+    
     return (
         <div>
-            <p className='font-bold text-white text-4xl lg:text-5xl mx-8 my-6 text-center md:text-left'>
-                {id === 'recommendations' && results.length > 0 ? 'Chosen For You' : id === 'favorites' && results.length > 0 ? "You've Enjoyed" : ''}
-            </p>
+            <div className='font-bold text-white text-4xl lg:text-5xl mx-8 my-6 text-center md:text-left'>
+                {id === 'recommendations' && results.length > 0 ?
+                <div>
+                    <p>Chosen For You</p>
+                    <div className='text-center text-2xl md:text-3xl 3xl:text-5xl font-bold mt-8 md:mt-4'>
+                        <button onClick={() => searchReq('movie')} className={type === 'movie' ? `${movieBtnStyles} bg-red-500` : `${movieBtnStyles}`}>Movies</button>
+                        <button onClick={() => searchReq('tv')} className={type === 'tv' ? `${tvBtnStyles} bg-red-500` : `${tvBtnStyles}`}>TV</button>
+                    </div>
+                </div>
+                :
+                id === 'favorites' && results.length > 0 ? "You've Enjoyed" : ''}
+            </div>
             {results.length < 1 && (
                 <div className='my-10 font-bold text-center mx-6 text-white'>
                     <p className='text-2xl md:text-3xl lg:text-4xl mb-2'>{`There are currently no ${id}`}</p>
