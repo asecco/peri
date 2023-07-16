@@ -58,6 +58,30 @@ Peri was originally designed to be similar to a modern streaming media service w
 - Yes! I want to keep this site as simple and convenient for all users, so you are never required to register an account or give any personal information.
 - For the community discussion/review section, there is an optional field for your email, but you're not required to give one to post. While this is great for preserving anonymity for users, in order to prevent spam and inappropriate posts, a moderator will have to approve the post before it gets displayed to everyone on the site.
 
+### I use Trakt, is there a way for me to import my existing data to Peri?
+- Yes, there is support for importing your Trakt movies/shows that you've rated into Peri favorites. You can export your data by being a Trakt VIP member or by using amazing tools like [this](https://darekkay.com/blog/trakt-tv-backup/).
+- Peri currently supports importing TXT/JSON files in the following format:
+```json
+[
+  {
+    "rated_at": "2023-07-16T15:47:24.000Z",
+    "rating": 8,
+    "type": "movie",
+    "movie": {
+      "title": "Pulp Fiction",
+      "year": 1994,
+      "ids": {
+        "trakt": 554,
+        "slug": "pulp-fiction-1994",
+        "imdb": "tt0110912",
+        "tmdb": 680
+      }
+    }
+  },
+]
+```
+- Any movie/show that you've rated an 8 or greater will be imported.
+
 ### My favorites disappeared, what happened to them?
 - Instead of opting for a more traditional account creation process, I use your browser's local storage to store the favorites. This is better for simplicity's sake and overall convenience for users.
 - If you recently lost your favorites, you likely switched your browser/device or cleared your browser's cache. Unfortunately, there is not currently a way of retrieving the lost data.
