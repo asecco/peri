@@ -42,7 +42,7 @@ function Genres({ type, genre }) {
                 <ArrowCircleLeftIcon onClick={() => arrowScroll('left')} className="absolute top-0 left-4 md:left-6 w-10 h-full hover:text-red-400 hover:cursor-pointer" />
                 <ArrowCircleRightIcon onClick={() => arrowScroll('right')} className="absolute top-0 right-4 md:right-6 w-10 h-full hover:text-red-400 hover:cursor-pointer" />
             </nav>
-            <p className='font-bold text-white text-4xl lg:text-5xl mx-8 my-6 text-center md:text-left'>{requestObject[genre].title}</p>
+            <p className='font-bold text-white text-4xl md:text-5xl mx-8 my-6 text-center md:text-left'>{requestObject[genre].title}</p>
             <Filters type={type} genre={genre} />
         </div>
     );

@@ -7,7 +7,7 @@ function StreamingNow({ tv }) {
     return (
         <div>
             <div className="flex justify-center md:justify-start md:mt-8 items-center">
-                <p className="font-bold text-white text-4xl lg:text-5xl mx-8">Streaming Now</p>
+                <p className="font-bold text-white text-4xl md:text-5xl mx-8">Streaming Now</p>
                 <CalendarIcon className="h-12 w-12 lg:h-14 lg:w-14 -ml-6 text-red-400"/>
             </div>
             <div className="grid grid-cols-2 ml-2 md:ml-4 md:grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-0 my-10">

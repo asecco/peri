@@ -4,7 +4,7 @@ function LocalStorageMessage({ results, id, searchReq, type }) {
     
     return (
         <div>
-            <div className='font-bold text-white text-4xl lg:text-5xl mx-8 my-6 text-center md:text-left'>
+            <div className='font-bold text-white text-4xl md:text-5xl mx-8 my-6 text-center md:text-left'>
                 {id === 'recommendations' && results.length > 0 ?
                 <div>
                     <p>Chosen For You</p>
