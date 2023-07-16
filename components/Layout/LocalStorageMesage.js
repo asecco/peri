@@ -1,3 +1,5 @@
+import UploadFile from './UploadFile';
+
 function LocalStorageMessage({ results, id, searchReq, type }) {
     const movieBtnStyles = 'bg-white text-black border-b-2 rounded-l-md border-red-400 hover:bg-red-400 hover:text-white shadow-md py-2 px-4';
     const tvBtnStyles = 'bg-white text-black border-b-2 border-l-2 rounded-r-md border-red-400 hover:bg-red-400 hover:text-white shadow-md py-2 px-8';
@@ -14,7 +16,13 @@ function LocalStorageMessage({ results, id, searchReq, type }) {
                     </div>
                 </div>
                 :
-                id === 'favorites' && results.length > 0 ? "You've Enjoyed" : ''}
+                id === 'favorites' && results.length > 0 ?
+                <div className="flex justify-center md:justify-start items-center">
+                    <p>You've Enjoyed</p>
+                    <UploadFile />
+                </div>
+                :
+                null}
             </div>
             {results.length < 1 && (
                 <div className='my-10 font-bold text-center mx-6 text-white'>
