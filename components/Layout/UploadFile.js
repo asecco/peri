@@ -47,7 +47,7 @@ function UploadFile() {
         <div className='hidden md:block'>
             <label className='flex items-center mx-2 group'>
                 <CloudUploadIcon className="h-8 w-8 text-red-400 group-hover:text-red-500 cursor-pointer"/>
-                <p className="text-base font-bold text-red-400 group-hover:text-red-500 cursor-pointer">Upload Trakt file</p>
+                <p className="text-base font-bold text-red-400 group-hover:text-red-500 cursor-pointer">Upload Trakt Data</p>
                 <input onChange={uploadFile} type="file" name='favorites' accept='.txt, .json' className='hidden'></input>
             </label>
         </div>

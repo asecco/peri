@@ -27,7 +27,7 @@ function LocalStorageMessage({ results, id, searchReq, type }) {
             {results.length < 1 && (
                 <div className='my-10 font-bold text-center mx-6 text-white'>
                     <p className='text-2xl md:text-3xl lg:text-4xl mb-2'>{`There are currently no ${id}`}</p>
-                    <p className='text-lg md:text-xl lg:text-2xl'>{'Give a film/show a ♡ and check back!'}</p>
+                    <p className='text-lg md:text-xl lg:text-2xl'>{'Give a film/show a ❤️ and check back!'}</p>
                 </div>
             )}
         </div>

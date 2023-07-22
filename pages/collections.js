@@ -155,7 +155,7 @@ function Collections({ collections }) {
 
 export async function getServerSideProps() {
     let retries = 0;
-    const ids = ['4a7f6aae', 'a3267601', '7bdd5d50', '28aa1934']
+    const ids = ['4a7f6aae', 'a3267601', '7bdd5d50', '28aa1934', '7a149f40', 'ae2d9dfa']
 
     while (retries < 3) {
         try {
