@@ -11,7 +11,7 @@ function Cast({ castInfo, known }) {
     known?.sort((a, b) => {
         return b.vote_count - a.vote_count;
     });
-    const knownFor = known?.slice(0, 8);
+    const knownFor = known?.filter((movie, index, array) => array.findIndex(obj => obj.id === movie.id) === index)?.slice(0, 8);
     const [age, setAge] = useState([]);
 
     useEffect(() => {
@@ -69,7 +69,7 @@ export async function getServerSideProps(context) {
         };
     }
     const cast = await fetch(`${API_URL}person/${id}?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
-    const knownFor = await fetch(`${API_URL}person/${id}/movie_credits?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
+    const knownFor = await fetch(`${API_URL}person/${id}/combined_credits?api_key=${API_KEY}&language=en-US`).then((res) => res.json());
     
     return {
         props: {
