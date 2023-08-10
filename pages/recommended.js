@@ -10,8 +10,8 @@ import { alertParams } from "../utils/helper";
 function Recommended() {
     const [recRes, setRecRes] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
-    const [type, setType] = useState('movie',);
-    const searchReq = async (type = 'movie') => {
+    const [type, setType] = useState('movie');
+    const searchReq = async (type) => {
         setType(type);
         const recArr = [];
         const favorites = JSON.parse(localStorage.getItem('favorites'));
@@ -60,7 +60,7 @@ function Recommended() {
     };
 
     useEffect(() => {
-        searchReq();
+        searchReq(type);
     }, []);
 
     return (

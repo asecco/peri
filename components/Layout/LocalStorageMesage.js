@@ -1,18 +1,18 @@
 import UploadFile from './UploadFile';
 
 function LocalStorageMessage({ results, id, searchReq, type }) {
-    const movieBtnStyles = 'bg-white text-black border-b-2 rounded-l-md border-red-400 hover:bg-red-400 hover:text-white shadow-md py-2 px-4';
-    const tvBtnStyles = 'bg-white text-black border-b-2 border-l-2 rounded-r-md border-red-400 hover:bg-red-400 hover:text-white shadow-md py-2 px-8';
+    const movieBtnStyles = 'bg-white border-b-2 rounded-l-md border-red-500 hover:opacity-75 shadow-md py-2 px-4';
+    const tvBtnStyles = 'bg-white border-b-2 border-l-2 rounded-r-md border-red-500 hover:opacity-75 shadow-md py-2 px-8';
     
     return (
         <div>
             <div className='font-bold text-white text-4xl md:text-5xl mx-8 my-6 text-center md:text-left'>
                 {id === 'recommendations' && results.length > 0 ?
                 <div>
-                    <p>Chosen For You</p>
+                    <h2>{type === 'movie' ? 'Movies' : 'TV'} Chosen For You</h2>
                     <div className='text-center text-2xl md:text-3xl 3xl:text-5xl font-bold mt-8 md:mt-4'>
-                        <button onClick={() => searchReq('movie')} className={type === 'movie' ? `${movieBtnStyles} bg-red-500` : `${movieBtnStyles}`}>Movies</button>
-                        <button onClick={() => searchReq('tv')} className={type === 'tv' ? `${tvBtnStyles} bg-red-500` : `${tvBtnStyles}`}>TV</button>
+                        <button onClick={() => searchReq('movie')} className={type === 'movie' ? `${movieBtnStyles} bg-red-400` : `${movieBtnStyles} text-red-400`}>Movies</button>
+                        <button onClick={() => searchReq('tv')} className={type === 'tv' ? `${tvBtnStyles} bg-red-400` : `${tvBtnStyles} text-red-400`}>TV</button>
                     </div>
                 </div>
                 :
