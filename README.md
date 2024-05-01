@@ -7,10 +7,9 @@
 
 <div align="center">
 
-  [![Last Commit](https://img.shields.io/github/last-commit/asecco/peri)](https://github.com/asecco/peri)
-  [![GitHub stars](https://img.shields.io/github/stars/asecco/peri)](https://github.com/asecco/peri/stargazers)
-  [![GitHub Issues](https://img.shields.io/github/issues/asecco/peri.svg)](https://github.com/asecco/peri/issues)
-  [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
+  [![Last Commit](https://img.shields.io/github/last-commit/asecco/peri?style=for-the-badge)](https://github.com/asecco/peri)
+  [![GitHub stars](https://img.shields.io/github/stars/asecco/peri?style=for-the-badge)](https://github.com/asecco/peri/stargazers)
+  [![GitHub Issues](https://img.shields.io/github/issues/asecco/peri.svg?style=for-the-badge)](https://github.com/asecco/peri/issues)
 
 </div>
 
@@ -32,10 +31,10 @@
 
 ![demo](https://github.com/asecco/peri/assets/40510223/19bdb52a-ef38-4126-84a8-1004dd77e74a)
 
-<p align="center">Like what you see? Please consider giving Peri a GitHub star ⭐, it will help a lot!</p>
+<p align="center">Like what you see? Please consider giving <strong>Peri</strong> a GitHub star ⭐, it will help a lot!</p>
 
 ## About
-Peri was originally designed to be similar to a modern streaming media service with the UI being inspired by platforms such as [Plex](https://www.plex.tv) and [Hulu](https://www.hulu.com). Peri includes no streaming functionality and serves as an extensive database of films and tv series, allowing you to browse and garner information on whichever type of media you desire.
+Peri was originally designed to be similar to a modern streaming media service UI, being inspired by platforms such as [Plex](https://www.plex.tv) and [Hulu](https://www.hulu.com). Peri includes no streaming functionality and serves as an extensive database of films and tv series, allowing you to browse and garner information on whichever type of media you desire.
 
 ## Features
 - Personalized recommendations
